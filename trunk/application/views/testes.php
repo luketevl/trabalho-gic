@@ -2,12 +2,12 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title><?php echo ($Titulo) ?></title>
+	<title>Titulo</title>
 </head>
 <body>
 
 <div id="container">
-	<h1><?php echo $Mensagem ?></h1>
+	<h1>Bem vindo</h1>
 
 	<div id="body">
 		<?php 
@@ -19,7 +19,22 @@
 			Echo form_fieldset_close();
 			echo form_close();
 		?>
+	<ul>
+	
+		<?php
+			foreach($estacionamentos as $a){
+			 echo '<li>' . $a->nome_esta . ' </li>';
+			 
+			 
+				
+				
+			}
+			 ?>
+		
+		
+	</ul>
 	</div>
+	
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
