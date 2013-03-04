@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Titulo</title>
+	<title>{Titulo}</title>
 </head>
 <body>
 
@@ -19,20 +19,15 @@
 			Echo form_fieldset_close();
 			echo form_close();
 		?>
-	<ul>
-	
+	<!--
 		<?php
 			foreach($estacionamentos as $a){
 			 echo '<li>' . $a->nome_esta . ' </li>';
 			 
-			 
-				
-				
 			}
-			 ?>
+			 ?> -->
 		
-		
-	</ul>
+		{Mensagem}
 	</div>
 	
 
