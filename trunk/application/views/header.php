@@ -60,8 +60,11 @@
 
 
 <footer>
-	<h1>Rodape</h1>
+	<p class="copri">
+		Desenvolvidor por luketevl: Todos os direitos reservados.
+	</p>
 </footer>
+
 </body>
 </html>
 
