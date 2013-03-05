@@ -1,11 +1,13 @@
-
+* {
+	margin:0px;
+	
+}
 	::selection{ background-color: #E13300; color: white; }
 	::moz-selection{ background-color: #E13300; color: white; }
 	::webkit-selection{ background-color: #E13300; color: white; }
 
 	body {
 		background-color: #fff;
-		margin: 40px;
 		font: 13px/20px normal Helvetica, Arial, sans-serif;
 		color: #4F5155;
 	}
@@ -14,16 +16,28 @@
 		color: #003399;
 		background-color: transparent;
 		font-weight: normal;
+		text-decoration:none;
+	}
+	
+	section#content	a:hover{
+		background-color: white;
+		opacity:0.6;
 	}
 
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
+	h1{
 		margin: 0 0 14px 0;
 		padding: 14px 15px 10px 15px;
+	}
+	header{
+		margin: 0 0 14px 0;
+		padding: 0px 15px 10px 15px;
+	}
+
+	h1,header {
+		color: #444;
+		background-color: transparent;
+		font-size: 19px;
+		font-weight: normal;
 	}
 
 	code {
@@ -41,17 +55,93 @@
 		margin: 0 15px 0 15px;
 	}
 	
-	p.footer{
+	/*p.footer{
 		text-align: right;
 		font-size: 11px;
 		border-top: 1px solid #D0D0D0;
 		line-height: 32px;
 		padding: 0 10px 0 10px;
 		margin: 20px 0 0 0;
-	}
+	} */
 	
 	#container{
 		margin: 10px;
 		border: 1px solid #D0D0D0;
 		-webkit-box-shadow: 0 0 8px #D0D0D0;
 	}
+
+
+
+	header#cabecalho{
+		/*background-color: red;*/
+		width:97%;
+		height:170px;
+		border-bottom-width:1./*3px;
+		border-bottom-style:so*/lid;
+	}
+	
+	header{
+	    border-bottom: 1px;
+    	border-bottom-style: solid;
+    	border-color: #D0D0D0 ;
+	
+	}
+	section#content{
+		width:100%;
+		height: auto;
+	}
+
+	section{
+		width:22%;
+	}
+	/*
+	section#column-left{
+		background-color: yellow;
+		float:left;
+		border-right-width:1px;
+		border-right-style:solid;
+		border-color: #D0D0D0;
+	} */
+	section#column-right{
+		/*background-color: pink;*/
+		float:right;
+		border-left-width:1px;
+		border-left-style:solid;
+		border-color: #D0D0D0 ;
+		padding-right:7px;
+	}
+	
+	section#column-left{
+		/*background-color: green;*/
+		width:77%;
+		float:left;
+	}
+	
+	article{
+		color:#E13300;
+		border-style:solid;
+		border-width:1px;
+		width:23%;
+		float:left;
+		margin-left:8px;
+		margin-top: 8px;
+		padding:5px;
+		border-color: #D0D0D0;
+	}
+	
+	section#column-right article{
+		width:90%;
+		
+	}
+	footer{
+		/*background-color: blue;*/
+		width:100%;
+		height:200px;
+/*		
+ 	VOLTAR COM ESSAS PROPRIEDADES
+ 		border-top-width:1px;
+		border-top-style:solid;
+		border-color:#D0D0D0;
+		*/
+		position: inherit;
+	}	
