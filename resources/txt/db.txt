@@ -1,0 +1,57 @@
+Universo
+	- Portal
+
+Entidades
+	- Perfil
+	- Usuarios
+	- Post
+	- log
+	
+Tabelas
+	- Perfil(id_perf, nome_perf,funcoes_perf);
+	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,id_perf)
+	- Post(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,id_usu);
+	- log(id_log, nome_table, id_user,dt_modificacao)
+
+DCL
+
+drop database portal;
+create database portal;
+use portal;
+create table perfil(
+	id_perf int unsigned auto_increment not null primary key,
+	nome_perf varchar(100) not null,
+	funcoes_perf text not null
+	);
+	
+create table usuarios(
+	id_usu int unsigned auto_increment not null primary key,
+	nome_usu varchar(100) not null,
+	login_usu varchar(45) not null,
+	pass_usu varchar(45) not null,
+	dt_criacao datetime not null,
+	id_perf int not null,
+	foreign key(id_perf) references perfil(id_perf)
+);
+
+create table post(
+	id_post int unsigned auto_increment not null primary key,
+	titulo_post varchar(100) not null,
+	conteudo_post text not null,
+	ref_post text not null,
+	status_post char(1) not null,
+	dt_criacao datetime not null,
+	dt_modificacao datetime null,
+	id_usu int not null,
+	foreign key(id_usu) references usuarios(id_usu)
+);
+
+create table log(
+	id_log int unsigned auto_increment not null primary key,
+	nome_table varchar(45) not null,
+	dt_modificacao datetime null,
+	id_usu int not null,
+	foreign key(id_usu) references usuarios(id_usu)
+);
+
+DML
