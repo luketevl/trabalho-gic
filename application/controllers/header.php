@@ -4,7 +4,7 @@ class Header extends CI_Controller{
 	
 	public function index(){
 		$data = array('title' => 'Titulo');
-		$this->parser->parse('header',$data);
+		$this->parser->parse('common/header',$data);
 	}
 	
 }

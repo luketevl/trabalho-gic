@@ -57,3 +57,26 @@ create table log(
 );
 
 DML
+
+
+insert into post values('',
+'Trabalho de GIC inovador, muito trabalho deve ser feito',
+'O goleiro Bruno Fernandes de Suza culpu Luiz Henrique Ferreira Rmã,  Macarrã, pela mrte de Eliza Samudi, mdel cm quem teve um filh, durante  seu depiment, na tarde desta quarta-feira (6), n Fórum de Cntagem, em Minas Gerais.  jgadr afirmu que, na nite d crime, Macarrã e Jrge Luiz Rsa, menr de idade na épca, deixaram  síti cm Eliza e Bruninh e vltaram mais tarde smente cm a criança. Perguntei para eles: pxa, cadê Eliza? Pel amr de Deus,  que vcês fizeram cm ela?, afirmu. Neste mment, Macarrã falu assim: ó, eu reslvi  prblema,  prblema que tant te atrmentava.',
+'http://globo.com',
+'A',
+now(),
+now(),
+1,
+1);
+
+
+insert into perfil values('',
+'Administrador',
+'000');
+
+insert into usuarios values('',
+'Lucas Henrique'
+,'lukete'
+,'123456'
+,now()
+,1)
