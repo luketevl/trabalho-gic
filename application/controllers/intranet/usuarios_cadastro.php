@@ -4,6 +4,7 @@ class Usuarios_cadastro extends CI_Controller {
 	
 	public function index(){
 		$data = array ('teste' => 'atoa');
+		$this->parser->parse('intranet/usuarios_cadastro',$data);
 	}
 }
 
