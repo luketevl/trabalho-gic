@@ -10,7 +10,7 @@ Entidades
 Tabelas
 	- Perfil(id_perf, nome_perf,funcoes_perf);
 	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,id_perf)
-	- Post(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,id_usu);
+	- Post(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,obs_post,id_usu_aprovou,id_usu);
 	- log(id_log, nome_table, id_user,dt_modificacao)
 
 DCL
@@ -42,6 +42,7 @@ create table post(
 	status_post char(1) not null,
 	dt_criacao datetime not null,
 	dt_modificacao datetime null,
+	obs_post text null,
 	id_usu_aprovou int not null,
 	foreign key(id_usu_aprovou) references usuarios(id_usu),
 	id_usu int not null,
