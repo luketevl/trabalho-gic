@@ -8,7 +8,7 @@
 				'Mensagem' => 'Ola, tudo bem'
 			); 
 			
-			$this->parser->parse('testes',$data);
+			$this->load->view('example');
 			
 			/* $this->load->model('testes_model');
 			$data['estacionamentos'] = $this->testes_model->getTeste();
