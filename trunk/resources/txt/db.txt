@@ -10,7 +10,7 @@ Entidades
 	
 Tabelas
 	- Perfil(id_perf, nome_perf,funcoes_perf,editavel);
-	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,avatar_usu,id_perf)
+	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,dt_nascimento ,avatar_usu,id_perf)
 	- Post(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,obs_post,keywords_post,id_usu_aprovou,id_usu);
 	- Log(id_log, nome_table, id_user,dt_modificacao)
 	- Imagens(id_img, nome_img,id_post)
@@ -33,6 +33,7 @@ create table usuarios(
 	login_usu varchar(45) not null,
 	pass_usu varchar(45) not null,
 	dt_criacao datetime not null,
+	dt_nascimento date not null,
 	avatar_usu text null,
 	id_perf int not null,
 	foreign key(id_perf) references perfil(id_perf)
@@ -101,6 +102,7 @@ insert into usuarios values('',
 'Lucas Henrique'
 ,'lukete'
 ,'123456'
+,now()
 ,now()
 ,'http://gosublogger.com/2008/06/blogger-xml-template-freedom-wall.html'
 ,1) ;
