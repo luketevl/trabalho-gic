@@ -12,8 +12,6 @@ class Usuarios_cadastro extends CI_Controller {
 	}
 	
 	public function save(){
-		echo $GLOBALS ($data['nome']) ;
-		echo $a = "Merda";
 		
 	}
 	
