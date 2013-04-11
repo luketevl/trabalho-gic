@@ -3,7 +3,9 @@
 class Principal extends CI_Controller{
 	
 	function index(){
-		$this->load->view('intranet/principal');
+		$data  = array('link' => 'http://google.com' );
+		
+		$this->parser->parse('intranet/principal',$data);
 		
 	}
 	
