@@ -20,44 +20,8 @@
 </head>
 <body>
 <header id="cabecalho">
-<nav>
-	     <div class="demo-list clear">
-          <ul>
-            <li>
-              <input tabindex="21" type="checkbox" id="input-1">
-              <label for="input-1">Checkbox, <span>#input-1</span></label>
-            </li>
-            <li>
-              <input tabindex="22" type="checkbox" id="input-2" checked>
-              <label for="input-2">Checkbox, <span>#input-2</span></label>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <input tabindex="23" type="radio" id="input-3" name="demo-radio">
-              <label for="input-3">Radio button, <span>#input-3</span></label>
-            </li>
-            <li>
-              <input tabindex="24" type="radio" id="input-4" name="demo-radio" checked>
-              <label for="input-4">Radio button, <span>#input-4</span></label>
-            </li>
-          </ul>
-          <script>
-          $(document).ready(function(){
-            var callbacks_list = $('.demo-callbacks ul');
-            function callback_log(id, type) {
-              $('.demo-callbacks ul').prepend('<li><span>#' + id + '</span> is ' + type.toLowerCase() + '</li>');
-            };
-            $('.demo-list input').bind('is.Created is.Clicked is.Changed is.Checked is.Unchecked is.Disabled is.Enabled is.Destroyed', function(event){
-              callback_log(this.id, event.namespace);
-            }).iCheck({
-              checkboxClass: 'icheckbox_square-blue',
-              radioClass: 'iradio_square-blue',
-              increaseArea: '20%'
-            });
-          });
-          </script>
-        </div>
+<nav id="user">
+	<span>Bem vindo [Apelido] | <a href="#">{[Cadastrar], [Sair]}</span></a>
 </nav>
 </header>
 <section id="content">
@@ -119,7 +83,7 @@
 
 <footer>
 	<p class="copri">
-		Desenvolvidor por luketevl: Todos os direitos reservados.
+		Desenvolvido por luketevl: Todos os direitos reservados.
 	</p>
 </footer>
 

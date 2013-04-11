@@ -5,13 +5,15 @@ Entidades
 	- Perfil
 	- Usuarios
 	- Post
-	- log
+	- Log
+	- Imagens
 	
 Tabelas
-	- Perfil(id_perf, nome_perf,funcoes_perf);
-	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,id_perf)
-	- Post(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,obs_post,id_usu_aprovou,id_usu);
-	- log(id_log, nome_table, id_user,dt_modificacao)
+	- Perfil(id_perf, nome_perf,funcoes_perf,editavel);
+	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,avatar_usu,id_perf)
+	- Post(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,obs_post,keywords_post,id_usu_aprovou,id_usu);
+	- Log(id_log, nome_table, id_user,dt_modificacao)
+	- Imagens(id_img, nome_img,id_post)
 
 DCL
 
@@ -21,7 +23,8 @@ use portal;
 create table perfil(
 	id_perf int unsigned auto_increment not null primary key,
 	nome_perf varchar(100) not null,
-	funcoes_perf text not null
+	funcoes_perf text not null,
+	editavel char not null
 	);
 	
 create table usuarios(
@@ -30,6 +33,7 @@ create table usuarios(
 	login_usu varchar(45) not null,
 	pass_usu varchar(45) not null,
 	dt_criacao datetime not null,
+	avatar_usu text null,
 	id_perf int not null,
 	foreign key(id_perf) references perfil(id_perf)
 );
@@ -42,14 +46,18 @@ create table post(
 	status_post char(1) not null,
 	dt_criacao datetime not null,
 	dt_modificacao datetime null,
+	img_principal_post text null,
 	obs_post text null,
+	keywords_post text null,
 	id_usu_aprovou int not null,
 	foreign key(id_usu_aprovou) references usuarios(id_usu),
 	id_usu int not null,
 	foreign key(id_usu) references usuarios(id_usu)
 );
 
-create table log(
+
+
+create table log_atividade(
 	id_log int unsigned auto_increment not null primary key,
 	nome_table varchar(45) not null,
 	dt_modificacao datetime null,
@@ -57,27 +65,42 @@ create table log(
 	foreign key(id_usu) references usuarios(id_usu)
 );
 
-DML
+create table imagens(
+	id_img int unsigned auto_increment not null primary key,
+	nome_img varchar(45) not null,
+	id_post int not null,
+	foreign key(id_post) references post(id_post)
+);
+
+#DML
 
 
 insert into post values('',
 'Trabalho de GIC inovador, muito trabalho deve ser feito',
-'O goleiro Bruno Fernandes de Suza culpu Luiz Henrique Ferreira Rmã,  Macarrã, pela mrte de Eliza Samudi, mdel cm quem teve um filh, durante  seu depiment, na tarde desta quarta-feira (6), n Fórum de Cntagem, em Minas Gerais.  jgadr afirmu que, na nite d crime, Macarrã e Jrge Luiz Rsa, menr de idade na épca, deixaram  síti cm Eliza e Bruninh e vltaram mais tarde smente cm a criança. Perguntei para eles: pxa, cadê Eliza? Pel amr de Deus,  que vcês fizeram cm ela?, afirmu. Neste mment, Macarrã falu assim: ó, eu reslvi  prblema,  prblema que tant te atrmentava.',
+'O goleiro Bruno Fernandes de Suza culpu Luiz Henrique Ferreira Rmï¿½,  Macarrï¿½, pela mrte de Eliza Samudi, mdel cm quem teve um filh, durante  seu depiment, na tarde desta quarta-feira (6), n Fï¿½rum de Cntagem, em Minas Gerais.  jgadr afirmu que, na nite d crime, Macarrï¿½ e Jrge Luiz Rsa, menr de idade na ï¿½pca, deixaram  sï¿½ti cm Eliza e Bruninh e vltaram mais tarde smente cm a crianï¿½a. Perguntei para eles: pxa, cadï¿½ Eliza? Pel amr de Deus,  que vcï¿½s fizeram cm ela?, afirmu. Neste mment, Macarrï¿½ falu assim: ï¿½, eu reslvi  prblema,  prblema que tant te atrmentava.',
 'http://globo.com',
 'A',
 now(),
 now(),
+'http://restrito.cotemig.com.br/portal/intranet_images/logo-cot.gif',
+'muito bem feito, parabens',
+'teste,mama,lu',
 1,
 1);
 
 
-insert into perfil values('',
+insert into perfil values('1',
 'Administrador',
-'000');
+'1111',0),
+('2',
+'UsuÃ¡rio Comum',
+'1100',0)
+;
 
 insert into usuarios values('',
 'Lucas Henrique'
 ,'lukete'
 ,'123456'
 ,now()
-,1)
+,'http://gosublogger.com/2008/06/blogger-xml-template-freedom-wall.html'
+,1) ;
