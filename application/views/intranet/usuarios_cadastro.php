@@ -1,8 +1,11 @@
 <?php 
-	echo form_open('intranet/usuarios_cadastro');
+
+	echo form_open('intranet/usuarios_cadastro/save');
 	echo form_fieldset('Dados pessoais');
 	echo form_label('Nome','lbl_name');
 	echo form_input('nome');
+	echo form_label('Data de Nascimento','lbl_dt_nasc');
+	echo form_input('dt_nascimento');
 	echo form_fieldset_close();		
 	echo form_fieldset('Dados de acesso');
 	echo form_label('Codigo de acesso','lbl_cod');
