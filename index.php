@@ -199,7 +199,19 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
-require_once BASEPATH.'core/CodeIgniter.php';
+ 
+// meu comentario
+ /* --------------------------------------------------------------------
+ * LOAD THE DATAMAPPER BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ */
+ /* 
+  * @author luketevl
+  * */
+ 
+require_once APPPATH.'third_party/datamapper/bootstrap.php';
+
+ require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
 /* Location: ./index.php */

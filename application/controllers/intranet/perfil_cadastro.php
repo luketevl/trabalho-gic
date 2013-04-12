@@ -4,6 +4,7 @@ class Perfil_cadastro extends CI_Controller {
 	
 	public function index(){
 		$data = array ('teste' => 'atoa');
+		$p = new Perfis();
 		$this->parser->parse('intranet/perfil_cadastro',$data);
 	}
 	
