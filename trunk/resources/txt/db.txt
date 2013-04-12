@@ -9,10 +9,10 @@ Entidades
 	- Imagens
 	
 Tabelas
-	- Perfil(id_perf, nome_perf,funcoes_perf,editavel);
+	- Perfis(id_perf, nome_perf,funcoes_perf,editavel);
 	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,dt_nascimento ,avatar_usu,id_perf)
-	- Post(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,obs_post,keywords_post,id_usu_aprovou,id_usu);
-	- Log(id_log, nome_table, id_user,dt_modificacao)
+	- Posts(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,obs_post,keywords_post,id_usu_aprovou,id_usu);
+	- Logs(id_log, nome_table, id_user,dt_modificacao)
 	- Imagens(id_img, nome_img,id_post)
 
 DCL
@@ -20,7 +20,7 @@ DCL
 drop database portal;
 create database portal;
 use portal;
-create table perfil(
+create table perfis(
 	id_perf int unsigned auto_increment not null primary key,
 	nome_perf varchar(100) not null,
 	funcoes_perf text not null,
@@ -39,7 +39,7 @@ create table usuarios(
 	foreign key(id_perf) references perfil(id_perf)
 );
 
-create table post(
+create table posts(
 	id_post int unsigned auto_increment not null primary key,
 	titulo_post varchar(100) not null,
 	conteudo_post text not null,
@@ -58,7 +58,7 @@ create table post(
 
 
 
-create table log_atividade(
+create table log_atividades(
 	id_log int unsigned auto_increment not null primary key,
 	nome_table varchar(45) not null,
 	dt_modificacao datetime null,
