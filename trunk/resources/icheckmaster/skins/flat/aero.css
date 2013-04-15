@@ -14,6 +14,7 @@
 
 .icheckbox_flat-aero {
     background-position: 0 0;
+    float:left;
 }
     .icheckbox_flat-aero.checked {
         background-position: -22px 0;
