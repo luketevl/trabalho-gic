@@ -18,15 +18,4 @@
 	echo form_submit('enviar','Enviar');
 	echo form_close();
 	
-	
-	
 ?>
-<div class="icheckbox">
-  <input type="checkbox" checked>
-</div>
-<div class="iradio">
-  <input type="radio" name="some" checked>
-</div>
-<div class="iradio">
-  <input type="radio" name="some">
-</div>
