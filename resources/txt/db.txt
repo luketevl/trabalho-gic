@@ -9,7 +9,7 @@ Entidades
 	- Imagens
 	
 Tabelas
-	- Perfis(id_perf, nome_perf,funcoes_perf,editavel);
+	- Perfis(id_perf, nome_perf,funcoes_perf,acesso_perf,editavel);
 	- Usuarios(id_usu, nome_usu, login_usu, pass_usu,dt_criacao,dt_nascimento ,avatar_usu,id_perf)
 	- Posts(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,obs_post,keywords_post,id_usu_aprovou,id_usu);
 	- Logs(id_log, nome_table, id_user,dt_modificacao)
@@ -24,6 +24,7 @@ create table perfis(
 	id_perf int unsigned auto_increment not null primary key,
 	nome_perf varchar(100) not null,
 	funcoes_perf text not null,
+	acesso_perf text null,
 	editavel char not null
 	);
 	
