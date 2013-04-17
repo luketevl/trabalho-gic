@@ -1,14 +1,15 @@
 <header>
-	<script type="text/javascript" src="../../resources/js/jquery.js" ></script>
-	<script type="text/javascript" src="../../resources/icheckmaster/js/jquery.icheck.js"></script>
-	<link href="../../resources/icheckmaster/skins/line/blue.css" rel="stylesheet">
-	<link href="../../resources/css/style.css" rel="stylesheet">
 	
-	<link rel="stylesheet" href="../../resources/flat-ui-master/css/flat-ui.css" />
-	<script src="../../resources/flat-ui-master/js/jquery.tagsinput.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/icheckmaster/skins/line/blue.css" />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/style.css" />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>/resources/flat-ui-master/css/flat-ui.css" />
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.js" ></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/icheckmaster/js/jquery.icheck.js"></script>
+	<script src="<?php echo base_url(); ?>/resources/flat-ui-master/js/jquery.tagsinput.js"></script>
 	
 	
-	<!--<link href="../../resources/icheckmaster/css/demo.css" rel="stylesheet"> -->
+	<!--<link href="<?php echo base_url(); ?>resources/icheckmaster/css/demo.css" rel="stylesheet"> -->
+    
      <script>
             $(document).ready(function(){
               $('.skin-line input').each(function(){
@@ -26,6 +27,7 @@
             });
             </script>
 </header>
+
 <h1>Cadastrar Usuarios</h1>
 	<div class="control-group">
 	<input type="text" value="" placeholder="Inactive" class="" />
@@ -41,16 +43,16 @@
 	?>
  <div class="skin skin-line">
   
-    <input type="checkbox" name="ck_criar" value="1" />
+    <input type="checkbox" name="ck_criar" value="C" />
     <label>Criar</label>
   
-    <input type="checkbox" name="ck_aprovar" value="1" />
+    <input type="checkbox" name="ck_aprovar" value="A" />
     <label>Aprovar</label>
 
-    <input type="checkbox" name="ck_alterar" value="1" />
+    <input type="checkbox" name="ck_alterar" value="E" />
     <label>Alterar</label>
     
-    <input type="checkbox" name="ck_apagar" value="1" />
+    <input type="checkbox" name="ck_apagar" value="T" />
     <label>Apagar</label>
 </div>
 <?php

@@ -37,5 +37,29 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+
+/*		Constantes para PERMISSAO */
+
+define('PERMISSAO_CRIAR',		'C');
+define('PERMISSAO_APROVAR',		'A');
+define('PERMISSAO_ALTERAR',		'E');
+define('PERMISSAO_APAGAR',		'T');
+
+/*		Constantes para MENU */
+define('MENU_PERFIS',		'F');
+define('MENU_USUARIOS',		'U');
+define('MENU_POSTS',		'P');
+
+
+
+
+
+
+
+
+
+
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
