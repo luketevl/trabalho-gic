@@ -17,12 +17,12 @@ class Perfil_cadastro extends CI_Controller {
 		$campos['editavel']           = $this->input->post('hd_editavel');
 	    $p->setFields($campos);
         if(empty($campos['id_perf'])){
-            
-            
+        	$p->inserir();
+            echo "nao existe";
+			redirect('index.php/intranet/perfil_cadastro');	
         }
-			//redirect('index.php/intranet/perfil_cadastro');	
 	}
 }
 
 /* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* Location: ./application/controllers/perfil_cadastro.php */

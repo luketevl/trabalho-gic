@@ -36,5 +36,14 @@
             return $p->where('id_perf',$id)
             ->get();
         }
+		
+		public function inserir(){
+            $p = new Perfis();
+			$p->nome_perf = $this->campos['nome_perf'];
+			$p->funcoes_perf = $this->campos['funcoes_perf'];
+			$p->acesso_perf = $this->campos['acesso_perf'];
+			$p->editavel = $this->campos['editavel'];
+			$p->save();
+		}
 	}
 ?>
