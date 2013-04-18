@@ -35,6 +35,8 @@
 	
 <?php
 	echo form_open('index.php/intranet/perfil_cadastro/save');
+    echo form_hidden('hd_id','escondidinho');
+    echo form_hidden('hd_editavel','escondidinho editavel');
 	echo form_fieldset('Dados do perfil');
 	echo form_label('Nome','lbl_nome');
 	echo form_input('nome');
@@ -72,13 +74,13 @@
     ?>
          <div class="skin skin-line">
       
-            <input type="checkbox" name="perfil" />
+            <input type="checkbox" name="ck_perfil" value="F" />
             <label>Perfil</label>
       
-            <input type="checkbox" name="users"/>
+            <input type="checkbox" name="ck_users" value="U"/>
             <label>Usuarios</label>
     
-             <input type="checkbox" name="posts" />
+             <input type="checkbox" name="ck_posts" value="P" />
              <label>Posts</label>
         
         </div>

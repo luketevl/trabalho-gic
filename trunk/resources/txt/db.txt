@@ -2,7 +2,7 @@ Universo
 	- Portal
 
 Entidades
-	- Perfil
+	- perfis
 	- Usuarios
 	- Post
 	- Log
@@ -26,7 +26,7 @@ create table perfis(
 	funcoes_perf text not null,
 	acesso_perf text null,
 	editavel char not null
-	);
+	)ENGINE= MYISAM;
 	
 create table usuarios(
 	id_usu int unsigned auto_increment not null primary key,
@@ -37,8 +37,8 @@ create table usuarios(
 	dt_nascimento date not null,
 	avatar_usu text null,
 	id_perf int not null,
-	foreign key(id_perf) references perfil(id_perf)
-);
+	foreign key(id_perf) references perfis(id_perf)
+)ENGINE= MYISAM;
 
 create table posts(
 	id_post int unsigned auto_increment not null primary key,
@@ -55,7 +55,7 @@ create table posts(
 	foreign key(id_usu_aprovou) references usuarios(id_usu),
 	id_usu int not null,
 	foreign key(id_usu) references usuarios(id_usu)
-);
+)ENGINE= MYISAM;
 
 
 
@@ -65,19 +65,19 @@ create table log_atividades(
 	dt_modificacao datetime null,
 	id_usu int not null,
 	foreign key(id_usu) references usuarios(id_usu)
-);
+)ENGINE= MYISAM;
 
 create table imagens(
 	id_img int unsigned auto_increment not null primary key,
 	nome_img varchar(45) not null,
 	id_post int not null,
 	foreign key(id_post) references post(id_post)
-);
+)ENGINE= MYISAM;
 
 #DML
 
 
-insert into post values('',
+insert into posts values('',
 'Trabalho de GIC inovador, muito trabalho deve ser feito',
 'O goleiro Bruno Fernandes de Suza culpu Luiz Henrique Ferreira Rm�,  Macarr�, pela mrte de Eliza Samudi, mdel cm quem teve um filh, durante  seu depiment, na tarde desta quarta-feira (6), n F�rum de Cntagem, em Minas Gerais.  jgadr afirmu que, na nite d crime, Macarr� e Jrge Luiz Rsa, menr de idade na �pca, deixaram  s�ti cm Eliza e Bruninh e vltaram mais tarde smente cm a crian�a. Perguntei para eles: pxa, cad� Eliza? Pel amr de Deus,  que vc�s fizeram cm ela?, afirmu. Neste mment, Macarr� falu assim: �, eu reslvi  prblema,  prblema que tant te atrmentava.',
 'http://globo.com',
@@ -91,12 +91,12 @@ now(),
 1);
 
 
-insert into perfil values('1',
+insert into perfis values('1',
 'Administrador',
-'1111',0),
+'1111',0000,0),
 ('2',
 'Usuário Comum',
-'1100',0)
+'1100',0000,0)
 ;
 
 insert into usuarios values('',
