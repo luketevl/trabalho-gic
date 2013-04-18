@@ -35,7 +35,7 @@
 	
 <?php
 	echo form_open('index.php/intranet/perfil_cadastro/save');
-    echo form_hidden('hd_id','escondidinho');
+    echo form_hidden('hd_id','');
     echo form_hidden('hd_editavel','escondidinho editavel');
 	echo form_fieldset('Dados do perfil');
 	echo form_label('Nome','lbl_nome');
