@@ -3,24 +3,24 @@
 class Perfil_cadastro extends CI_Controller {
 	
 	public function index(){
-		$data = array ('teste' => 'atoa');
-		$p = new Perfis();
+        $data = array();
 		$this->parser->parse('intranet/perfil_cadastro',$data);
-	
 	}
 	
 	public function save(){
-		$dados = array(
-			'id_perf' 	     => null, 
-			'nome_perf'	 	 => ($this->input->post('nome')),
-			'funcoes_perf'	 => ($this->input->post('ck_criar') . $this->input->post('ck_aprovar') .$this->input->post('ck_alterar').$this->input->post('ck_apagar')),
-			'acesso_perf'	 => ($this->input->post('ck_criar') . $this->input->post('ck_aprovar') .$this->input->post('ck_alterar').$this->input->post('ck_apagar'))
-		);
-        print_r($dados);
-        die;
-		if($this->perfil_dados($dados)){
-			redirect('welcome');	
-		}
+		$p = new Perfis();
+		$campos = $p->getFields();    
+		$campos['id_perf']            = $this->input->post('hd_id');
+		$campos['nome_perf']          = ($this->input->post('nome'));
+        $campos['funcoes_perf']	      = ($this->input->post('ck_criar') . $this->input->post('ck_aprovar') .$this->input->post('ck_alterar').$this->input->post('ck_apagar'));
+		$campos['acesso_perf']    	  = ($this->input->post('ck_perfil') . $this->input->post('ck_users') .$this->input->post('ck_posts'));
+		$campos['editavel']           = $this->input->post('hd_editavel');
+	    $p->setFields($campos);
+        if(empty($campos['id_perf'])){
+            
+            
+        }
+			//redirect('index.php/intranet/perfil_cadastro');	
 	}
 }
 

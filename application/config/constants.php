@@ -54,12 +54,5 @@ define('MENU_POSTS',		'P');
 
 
 
-
-
-
-
-
-
-
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
