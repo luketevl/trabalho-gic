@@ -26,7 +26,7 @@ class Perfil_cadastro extends CI_Controller {
         	$p->inserir();
         }
         else{
-        	$p->editar($campos["id_perf"]);
+        	$p->editar($campos['id_perf']);
         	 
         }
 			redirect('index.php/intranet/perfil_cadastro');	
