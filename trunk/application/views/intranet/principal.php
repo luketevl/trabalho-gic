@@ -3,15 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>CodeIgniter</title>
-		<!--
-		<script type="text/javascript" src="../../resources/js/jquery.js"></script>
-		<script type="text/javascript" src="../../resources/sidr-menu-responsive/jquery.sidr.min.js"></script>
-		<link rel="stylesheet" href="../../resources/sidr-menu-responsive/stylesheets/jquery.sidr.dark.css" />
-		-->
-		<script type="text/javascript" src="../resources/js/jquery.js"></script>
-		<script type="text/javascript" src="../resources/sidr-menu-responsive/jquery.sidr.min.js"></script>
-		<link rel="stylesheet" href="../resources/sidr-menu-responsive/stylesheets/jquery.sidr.dark.css" />
-
+		<script type="text/javascript" src="<?php echo base_url()?>/resources/js/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo base_url()?>/resources/sidr-menu-responsive/jquery.sidr.min.js"></script>
+		<link rel="stylesheet" href="<?php echo base_url()?>/resources/sidr-menu-responsive/stylesheets/jquery.sidr.dark.css" />
 	</head>
 	<body>
 
@@ -39,6 +33,11 @@
 					</li>
 				</ul>
 			</div>
+			<section>
+			</section>
+			<iframe src="<?php echo base_url()?>views/intranet/principal" />
+  <p>Your browser does not support iframes.</p>
+</iframe>
 			<script>
 				$(document).ready(function() {
 					$('#simple-menu').sidr();

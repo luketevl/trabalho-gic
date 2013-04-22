@@ -2,11 +2,11 @@
 
 	class Perfis extends DataMapper{
 		
-		private $campos = array(	'id_perf'       ,
-		                            'nome_perf'     ,
-		                            'funcoes_perf'  ,
-		                            'acesso_perf'   ,
-		                            'editavel'
+		private $campos = array(	'id_perf'      =>"" ,
+		                            'nome_perf'    =>"" ,
+		                            'funcoes_perf' =>"" ,
+		                            'acesso_perf'  =>"" ,
+		                            'editavel'	   =>""
 									
 		);
 		
@@ -43,7 +43,17 @@
 			$p->funcoes_perf = $this->campos['funcoes_perf'];
 			$p->acesso_perf = $this->campos['acesso_perf'];
 			$p->editavel = $this->campos['editavel'];
+			print_f ($p);
 			$p->save();
+		}
+		
+		public function editar($id){
+			$p = new Perfis();
+			$this->campos['id_perf']=$id;
+			$p->where('id_perf',$id)
+			  ->update($this->campos);
+// 			$affected = $p->db->affected_rows();
+// 			echo("$affected user accounts were marked for deletion.");
 		}
 	}
 ?>
