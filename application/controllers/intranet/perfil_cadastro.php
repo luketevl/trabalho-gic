@@ -27,12 +27,12 @@ class Perfil_cadastro extends CI_Controller {
         }
         else{
         	$p->editar($campos["id_perf"]);
-        	
+        	 
         }
 			redirect('index.php/intranet/perfil_cadastro');	
 	}
 	
-	public function load_form_edit($id=2){
+	public function load_form_edit($id=3){
 		$p = new Perfis();
 		$p = $p->get_by_id($id);
 		$campos = array();

@@ -37,7 +37,7 @@
 			}
 
 			function disabled_all(){
-				if($('input:hidden[name=hd_editavel]').val()==1){
+				if($('input:hidden[name=hd_editavel]').val()==0){
 					$('input').each(function(){
 						$(this).iCheck('disable');
 					});
