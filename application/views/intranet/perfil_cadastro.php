@@ -1,51 +1,17 @@
-<header>
+<head>
 	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/icheckmaster/skins/line/blue.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/style.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/resources/flat-ui-master/css/flat-ui.css" />
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/jquery.js" ></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/jquery.js" ></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/load.js" ></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/functions.js" ></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/icheckmaster/js/jquery.icheck.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery_validate/jquery-validate.js"></script>
 	
 	<!--<link href="<?php echo base_url(); ?>resources/icheckmaster/css/demo.css" rel="stylesheet"> -->
     
-     <script>
-            $(document).ready(function(){
-                // Pega valor dos acessos
-              $('.skin-line input').each(function(){
-                  var self = $(this),
-                  label = self.next(),
-                  label_text = label.text();
-                label.remove();
-	               	  self.iCheck({
-	                  checkboxClass: 'icheck_line-blue',
-	                  radioClass: 'icheck_line-blue',
-	                  insert: '<div class="icheck_line-icon"></div>' + label_text
-                });
-              });
-                is_checked($('input:hidden[name=hd_acesso]').val());
-                is_checked($('input:hidden[name=hd_funcoes]').val());
-              	disabled_all();
-
-                function is_checked(hd_opcoes){
-				hd_opcoes = (hd_opcoes=="undefined")?"":hd_opcoes;
-				var qtd = hd_opcoes.length;
-				for(i=0;i<qtd;i++){
-					var tmp = hd_opcoes.substring(i,i+1);
-					$('input:checkbox[value='+tmp+']').iCheck('check');
-				}
-			}
-
-			function disabled_all(){
-				if($('input:hidden[name=hd_editavel]').val()==0){
-					$('input').each(function(){
-						$(this).iCheck('disable');
-					});
-				}
-			}
-            });
-            </script>
-</header>
+</head>
 
 <h1>Cadastrar Perfil</h1>
 	<div class="control-group">
