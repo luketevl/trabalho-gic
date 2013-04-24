@@ -2,6 +2,7 @@
 $(document).ready(function() {
 	// Pega valor dos acessos
 	createLoad();
+	$("#form").validate();
 	$('.skin-line input').each(function() {
 		var self = $(this), label = self.next(), label_text = label.text();
 		label.remove();

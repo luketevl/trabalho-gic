@@ -43,7 +43,6 @@
 			$p->funcoes_perf = $this->campos['funcoes_perf'];
 			$p->acesso_perf = $this->campos['acesso_perf'];
 			$p->editavel = $this->campos['editavel'];
-			print_f ($p);
 			$p->save();
 		}
 		
@@ -54,6 +53,12 @@
 			  ->update($this->campos);
 // 			$affected = $p->db->affected_rows();
 // 			echo("$affected user accounts were marked for deletion.");
+		}
+		
+		public function delete($id){
+			$p = new Perfis();
+			$p->where('id_perf',$id)
+			  ->delete();
 		}
 	}
 ?>
