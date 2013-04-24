@@ -5,33 +5,25 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/resources/flat-ui-master/css/flat-ui.css" />
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/jquery.js" ></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/load.js" ></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery-validation/dist/jquery.validate.js" ></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/functions.js" ></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/icheckmaster/js/jquery.icheck.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery_validate/jquery-validate.js"></script>
-	
-	<!--<link href="<?php echo base_url(); ?>resources/icheckmaster/css/demo.css" rel="stylesheet"> -->
-    
 </head>
 
 <h1>Cadastrar Perfil</h1>
-	<div class="control-group">
-	<input type="text" value="" placeholder="Inactive" class=""  />
-	</div>
-	
 <?php
-	echo form_open('index.php/intranet/perfil_cadastro/save');
+	echo form_open('index.php/intranet/perfil_cadastro/save','id="form"');
     echo form_hidden('hd_id','{id_perf}');
     echo form_hidden('hd_funcoes','{funcoes_perf}');
     echo form_hidden('hd_acesso','{acesso_perf}');
     echo form_hidden('hd_editavel','{editavel}');
 	echo form_fieldset('Dados do perfil');
 	echo form_label('Nome','lbl_nome');
-	echo form_input('nome','{nome_perf}');
+	echo form_input('nome','{nome_perf}','class="number" ');
 	echo form_fieldset_close();
 	echo form_fieldset('Permissoes');
 	?>
  <div class="skin skin-line">
-  
     <input type="checkbox" name="ck_criar" value="C" />
     <label>Criar</label>
   
@@ -75,8 +67,10 @@
     echo form_fieldset_close();
     echo form_fieldset_close();
 	echo form_submit('save','Salvar');
-	echo form_submit('save_create','Salvar e Criar Novo');
-	echo form_submit('save_close','Salvar e Fechar');
+	echo form_submit('save','Apagar');
+	echo form_button('validate','Validar');
+	// 	echo form_submit('save_create','Salvar e Criar Novo');
+// 	echo form_submit('save_close','Salvar e Fechar');
 	echo form_submit('close','Fechar');
 	echo form_close();
     ?>

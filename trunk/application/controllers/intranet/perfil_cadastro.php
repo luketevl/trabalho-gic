@@ -27,12 +27,11 @@ class Perfil_cadastro extends CI_Controller {
         }
         else{
         	$p->editar($campos['id_perf']);
-        	 
         }
 			redirect('index.php/intranet/perfil_cadastro');	
 	}
 	
-	public function load_form_edit($id=3){
+	public function load_form_edit($id=0){
 		$p = new Perfis();
 		$p = $p->get_by_id($id);
 		$campos = array();
@@ -44,6 +43,13 @@ class Perfil_cadastro extends CI_Controller {
 			$campos['editavel'] 	= $v->editavel;
 		}
 		$this->parser->parse('intranet/perfil_cadastro',$campos);		
+	}
+	
+	public function delete($id){
+		$p = new Perfis();
+		$p->delete($id);
+		redirect('index.php/intranet/perfil_cadastro_list');
+		
 	}
 }
 
