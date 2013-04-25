@@ -68,7 +68,6 @@
 			</a> 
 			<?php echo form_hidden('hd_link',$materias['url']);?>
 			</li>
-			</li>
 		</ul>
 	</div>
 		<script>
@@ -78,13 +77,13 @@
 						$('#simple-menu img').toggleClass('rotate');
 						});
 					$('ul li a').click(function(){
+						var link = $('input:hidden').val();
+						alert(link);
+						$('iframe').attr('src',link);
 						$('li').each(function(){
 							$(this).removeAttr('class');
 							});
 						$(this).parent().attr('class',"active");
-						var link = $('input:hidden').val();
-						alert(link);
-						$('iframe').attr('src',link);
 						});
 				});
 			</script>
