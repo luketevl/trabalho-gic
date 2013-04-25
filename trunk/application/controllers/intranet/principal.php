@@ -4,6 +4,7 @@ class Principal extends CI_Controller{
 	
 	function index(){
 		$this->lang->load('menu');
+		$this->lang->load('principal');
 		$menu = array('principal' 	=> array('url' => base_url().'index.php/intranet/principal' ,
 											 'name' => $this->lang->line('principal')),
 				
@@ -14,7 +15,8 @@ class Principal extends CI_Controller{
 					  						 'name' =>$this->lang->line('perfil')),
 					  		
 					  'materias'	=> array('url' =>base_url().'index.php/intranet/materias_cadastro_list',
-					  						 'name' => $this->lang->line('materias'))
+					  						 'name' => $this->lang->line('materias')),
+				'tp_materias'		=> $this->lang->line('tp_materias')
 				);
 		$this->load->view('intranet/principal',$menu);
 	}

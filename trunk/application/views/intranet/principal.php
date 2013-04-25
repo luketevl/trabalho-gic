@@ -7,19 +7,36 @@
 	src="<?php echo base_url()?>resources/js/common/jquery.js"></script>
 <script type="text/javascript"
 	src="<?php echo base_url()?>resources/sidr-menu-responsive/jquery.sidr.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>resources/tooltipster-master/js/jquery.tooltipster.min.js"></script>
 <link rel="stylesheet"
 	href="<?php echo base_url(); ?>resources/css/style.css" />
 <link rel="stylesheet"
 	href="<?php echo base_url()?>resources/sidr-menu-responsive/stylesheets/jquery.sidr.dark.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/tooltipster-master/css/tooltipster.css" />
+	
+
+	
 </head>
 <body>
 
-
-<!-- Link para abrir menu -->
+<nav id="user">
+	<span class="userInfo">Bem vindo, Lukete
+		<a href="#">
+		| sair
+		</a>
+	 </span>
+	 <span id="circle" class="tooltip" title="<?php echo $tp_materias;?>" >
+	 	<img src="<?php echo base_url();?>resources/icons/post3.png" />
+	 	<p>2</p>
+	 </span>
+</nav>
+<a href="#" id="esconderHeader">Esconder Cabeçalho</a>
+<!-- Link para abrir menu
 	<a id="simple-menu" href="#sidr"><img
 		src="<?php echo base_url();?>resources/icons/arrow-right.png"
 		style="margin-top: -13px; margin-left: -10px;" /> </a>
-		
+		 -->
+		 
 <!-- IFRAME para páginas -->
 	<section id="pagiframe">
 		<iframe src="http://www.google.com" />
@@ -73,17 +90,22 @@
 		<script>
 				$(document).ready(function() {
 					$('#simple-menu').sidr();
+					  $('.tooltip').tooltipster();
 					$('#simple-menu').click(function(){
 						$('#simple-menu img').toggleClass('rotate');
 						});
 					$('ul li a').click(function(){
-						var link = $('input:hidden').val();
-						alert(link);
+						var link = $(this).next('input:hidden').val();
 						$('iframe').attr('src',link);
 						$('li').each(function(){
 							$(this).removeAttr('class');
 							});
 						$(this).parent().attr('class',"active");
+						});
+
+					$('#esconderHeader').click(function(){
+						$(this).text('Mostrar Cabeçalho');
+						$('nav#user').toggle();
 						});
 				});
 			</script>
