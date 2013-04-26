@@ -20,10 +20,18 @@
 <body>
 
 <nav id="user">
-	<span class="userInfo">Bem vindo, Lukete
+	<section id="dadosUser">
+		<img src="<?php echo base_url();?>resources/img/eu.jpg" id="foto" />
+		<span id="userInfo">
+		Lucas Henrique
+	 </span>
 		<a href="#">
-		| sair
+		<img src="<?php echo base_url();?>resources/icons/logout.png" class="exit" />
 		</a>
+		</section>
+	 <span id="circle" class="tooltip" title="<?php echo $tp_materias;?>" >
+	 	<img src="<?php echo base_url();?>resources/icons/post3.png" />
+	 	<p>2</p>
 	 </span>
 	 <span id="circle" class="tooltip" title="<?php echo $tp_materias;?>" >
 	 	<img src="<?php echo base_url();?>resources/icons/post3.png" />
@@ -104,8 +112,13 @@
 						});
 
 					$('#esconderHeader').click(function(){
-						$(this).text('Mostrar Cabeçalho');
-						$('nav#user').toggle();
+						if(!$('nav#user').is(':visible')){
+							$(this).text('Esconder Cabeçalho');
+						}
+						else{
+							$(this).text('Mostrar Cabeçalho');
+						}
+						$('nav#user').toggle(900);
 						});
 				});
 			</script>
