@@ -3,6 +3,8 @@
 	class Testes extends CI_Controller{
 		
 		public function index(){
+			
+			
 			$data = array(
 				'Titulo' => 'Ambiente de testes',
 				'Mensagem' => 'Ola, tudo bem'

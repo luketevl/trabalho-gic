@@ -11,7 +11,7 @@ class Login_Manager {
 	{
 		
 		$this->CI =& get_instance(); 
-		$this->session =& $this->CI->session;
+		$this->session = & $this->CI->session;
 		
 		if( ! isset($params['autologin']) || $params['autologin'] !== FALSE)
 		{

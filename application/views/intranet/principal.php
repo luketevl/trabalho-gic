@@ -25,7 +25,7 @@
 		<span id="userInfo">
 		Lucas Henrique
 	 </span>
-		<a href="#">
+		<a href="<?php echo base_url()?>index.php/intranet/login/deslogar">
 		<img src="<?php echo base_url();?>resources/icons/logout.png" class="exit" />
 		</a>
 		</section>
