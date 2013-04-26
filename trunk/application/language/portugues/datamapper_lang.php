@@ -1,25 +1,25 @@
 <?php
 
-$lang['alpha_dash_dot']		= 'O campo %s deve conter apenas caractéres alfa-numéricos, sublinhados, traços e paradas completas.';
-$lang['alpha_slash_dot']	= 'O campo %s deve conter apenas caractéres alfa-numéricos, underscores, traços, barras e paradas completas.';
-$lang['min_date']			= 'O campo %s deve ser no minímo %s';
-$lang['max_date']			= 'O campo %s não pode exceder %s';
-$lang['min_size']			= 'O campo %s deve ser no minímo %s';
-$lang['max_size']			= 'O campo %s não pode exceder %s';
-$lang['transaction']		= 'O %s falhou para %s';
-$lang['unique']				= 'O %s que você tentou já está sendo usado.';
-$lang['unique_pair']		= 'A combinação de %s e %s que você tentou já está sendo usada.';
-$lang['valid_date']			= 'O campo %s deve conter uma data válida.';
-$lang['valid_date_group']	= 'Os campos %s$s devem conter uma data válida';
-$lang['valid_match']		= 'O campo %s deve conter apenas %s';
+$lang['alpha_dash_dot']		= 'The %s field may only contain alpha-numeric characters, underscores, dashes, and full stops.';
+$lang['alpha_slash_dot']	= 'The %s field may only contain alpha-numeric characters, underscores, dashes, slashes, and full stops.';
+$lang['min_date']			= 'The %s field must be at least %s.';
+$lang['max_date']			= 'The %s field can not exceed %s.';
+$lang['min_size']			= 'The %s field must be at least %s.';
+$lang['max_size']			= 'The %s field can not exceed %s.';
+$lang['transaction']		= 'The %s failed to %s.';
+$lang['unique'] 			= 'The %s you supplied is already taken.';
+$lang['unique_pair'] 		= 'The combination of %s and %s you supplied is already taken.';
+$lang['valid_date']			= 'The %s field must contain a valid date.';
+$lang['valid_date_group']	= 'The %2$s fields must contain a valid date.';
+$lang['valid_match']		= 'The %s field may only be %s.';
 
-$lang['related_required']	= 'O relacionamento %s é necessário.';
-$lang['related_min_size']	= 'O relacionamento %s deve ser no minímo %s.';
-$lang['related_max_size']	= 'O relacionamento %s não pode exceder %s.';
+$lang['related_required']	= 'The %s relationship is required.';
+$lang['related_min_size']	= 'The %s relationship must be at least %s.';
+$lang['related_max_size']	= 'The %s relationship can not exceed %s.';
 
-$lang['dm_save_rel_failer']	= 'O relacionamento %s não está definido corretamente.';
-$lang['dm_save_rel_nothis']	= 'Não foi possível salvar o relacionamento %s: O objeto não está salvo.';
-$lang['dm_save_rel_noobj']	= 'Não foi possível saver o relacionamento %s: O objeto relacionado não foi salvo.';
+$lang['dm_save_rel_failed']	= 'The %s relationship is not properly defined.';
+$lang['dm_save_rel_nothis']	= 'Unable to save the %s relationship: This object is not saved.';
+$lang['dm_save_rel_noobj']	= 'Unable to save the %s relationship: The related object was not saved.';
 
 /* End of file datamapper_lang.php */
-/* Location: ./application/language/pt_BR/datamapper_lang.php */
+/* Location: ./application/language/english/datamapper_lang.php */
