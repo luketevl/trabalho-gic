@@ -23,7 +23,7 @@
 	<section id="dadosUser">
 		<img src="<?php echo base_url();?>resources/img/eu.jpg" id="foto" />
 		<span id="userInfo">
-		Lucas Henrique
+		<?php echo $this->session->userdata('nome_usu');?>
 	 </span>
 		<a href="<?php echo base_url()?>index.php/intranet/login/deslogar">
 		<img src="<?php echo base_url();?>resources/icons/logout.png" class="exit" />

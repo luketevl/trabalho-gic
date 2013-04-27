@@ -14,7 +14,7 @@ class Usuarios extends DataMapper{
 		parent::DataMapper();
 	}
 	
-	public function get_by_id($email){
+	public function get_by_email($email){
 		$u = new Usuarios();
 		return $u->where('email_usu',$email)->get();
 	}

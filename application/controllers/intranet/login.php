@@ -10,6 +10,81 @@ class Login extends CI_Controller{
 		}
 	}
 	
+	/*			FACEBOOK
+	 */
+	public function facebook(){
+if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['code'])){
+ 
+  // Informe o seu App ID abaixo
+  $appId = FB_APP_ID;
+ 
+  // Digite o App Secret do seu aplicativo abaixo:
+  $appSecret = FB_APP_SECRET;
+ 
+  // Url informada no campo "Site URL"
+  $redirectUri = urlencode(FB_SITELOGIN);
+ 
+  // Obtém o código da query string
+  $code = $_GET['code'];
+ 
+  // Monta a url para obter o token de acesso e assim obter os dados do usuário
+  $token_url = "https://graph.facebook.com/oauth/access_token?"
+  . "client_id=" . $appId . "&redirect_uri=" . $redirectUri
+  . "&client_secret=" . $appSecret . "&code=" . $code;
+ 
+  //pega os dados
+  $response = @file_get_contents($token_url);
+  if($response){
+    $params = null;
+    parse_str($response, $params);
+    if(isset($params['access_token']) && $params['access_token']){
+      $graph_url = "https://graph.facebook.com/me?access_token="
+      . $params['access_token'];
+      $user = json_decode(file_get_contents($graph_url));
+ 
+    // nesse IF verificamos se veio os dados corretamente
+      if(isset($user->email) && $user->email){
+ 
+    /*
+    *Apartir daqui, você já tem acesso aos dados usuario, podendo armazená-los
+    *em sessão, cookie ou já pode inserir em seu banco de dados para efetuar
+    *autenticação.
+    *No meu caso, solicitei todos os dados abaixo e guardei em sessões.
+    */
+ 
+        $dados['email_usu'] = $user->email;
+        $dados['nome'] = $user->name;
+        $dados['dp_nascimento'] = $user->birthday;
+        $dados['localizacao'] = $user->location->name;
+        $dados['uid_facebook'] = $user->id;
+        $dados['user_facebook'] = $user->username;
+        $dados['link_facebook'] = $user->link;
+       // $this->logar($dados);
+      }
+      echo "<pre>";
+      print_r($user);
+      echo "</pre>";
+      
+      
+    }else{
+      echo "Erro de conexão com Facebook";
+      exit(0);
+    }
+ 
+  }else{
+    echo "Erro de conexão com Facebook";
+    exit(0);
+  }
+}else if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['error'])){
+  echo 'Permissão não concedida';
+}
+	}
+	
+	/*			FACEBOOK
+	*/
+
+	
+	
 	public function cadastrar(){
 		$u = new Usuarios();
 		$dados = array( 'nome_usu'			=> $this->input->post('nome') , 
@@ -19,14 +94,12 @@ class Login extends CI_Controller{
 						'avatar_usu'		=> $this->input->post('img_avatar'),
 						'id_perf'			=> $this->input->post('id_perf')
 					  );
-		
-		$aux2 = $this->verifica_dados_usuario($dados); 
-		if(!$aux2){
-		
-			$u->inserir($dados);
-			$this->logar($dados);
-			
-			
+		if($this->exist_user($dados['email_usu'])){
+			echo "Existe";			
+		}
+		else{
+				$u->inserir($dados);
+				$this->logar($dados);
 		}
 	}
 	
@@ -79,5 +152,14 @@ class Login extends CI_Controller{
 			$result['id_perf']			= $u->id_perf;
 		}
 		return $result;
+	}
+	private function exist_user($email){
+		$u = new Usuarios();
+		$u = $u->get_by_email($email);
+		$aux = $this->dados_usuario($u);
+		if(empty($aux)){
+			return false;
+		}
+		return true;
 	}
 }
