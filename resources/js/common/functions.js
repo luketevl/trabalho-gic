@@ -15,6 +15,9 @@ $(document).ready(function() {
 	is_checked($('input:hidden[name=hd_acesso]').val());
 	is_checked($('input:hidden[name=hd_funcoes]').val());
 	disabled_all();
+	$('a[name="fb_login"]').click(function(){
+		createLoad();
+	});
 	createNotificationUser('https://twimg0-a.akamaihd.net/profile_images/770845756/45_normal.jpg','Criei um novo POST chamado MEU TESTE, tem como olhar? Obrigado');
 	function is_checked(hd_opcoes) {
 //		hd_opcoes = (hd_opcoes == undefined) ? "" : hd_opcoes;
