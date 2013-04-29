@@ -29,11 +29,11 @@
 		<img src="<?php echo base_url();?>resources/icons/logout.png" class="exit" />
 		</a>
 		</section>
-	 <span id="circle" class="tooltip" title="<?php echo $tp_materias;?>" >
+	 <span id="circle" class="tooltip" title="<?php echo $tp_posts;?>" >
 	 	<img src="<?php echo base_url();?>resources/icons/post3.png" />
 	 	<p>2</p>
 	 </span>
-	 <span id="circle" class="tooltip" title="<?php echo $tp_materias;?>" >
+	 <span id="circle" class="tooltip" title="<?php echo $tp_posts;?>" >
 	 	<img src="<?php echo base_url();?>resources/icons/post3.png" />
 	 	<p>2</p>
 	 </span>
@@ -88,10 +88,10 @@
 			<li><a href="#"> <img
 					src="<?php echo base_url();?>resources/icons/post2.png" id="arrow" />
 					<aside class="sub">
-						<?php echo $materias['name']?>
+						<?php echo $posts['name']?>
 					</aside>
 			</a> 
-			<?php echo form_hidden('hd_link',$materias['url']);?>
+			<?php echo form_hidden('hd_link',$posts['url']);?>
 			</li>
 		</ul>
 	</div>

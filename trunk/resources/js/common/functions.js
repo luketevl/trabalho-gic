@@ -2,6 +2,7 @@
 $(document).ready(function() {
 	// Pega valor dos acessos
 	createLoad();
+	$('.tooltip').tooltipster();
 	$("#form").validate();
 	$('.skin-line input').each(function() {
 		var self = $(this), label = self.next(), label_text = label.text();
@@ -64,6 +65,10 @@ $(document).ready(function() {
 });
 $(window).load(function(){
 		$('#canvasloader-container').addClass("centro hide");
+		CKEDITOR.replace( 'editor1', {
+		    toolbar: 'Basic',
+		    uiColor: '#9AB8F3'
+		});
 });
 
 

@@ -1,2 +1,2 @@
 <?php
-$lang['tp_materias'] 	=	'Você possui matérias para avaliar.';
+$lang['tp_posts'] 	=	'Você possui matérias para avaliar.';

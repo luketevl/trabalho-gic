@@ -311,18 +311,19 @@ span#circle >img{
 }
 
 #signFb span{
-   background-color:#3A589B;   
-   font-size:16px;
-   color:#FFFFFF;
-   font-weight:bold;
-   margin-top:4px;
-   margin-left:59px;
-   position:absolute;
-   padding-top:19px;
-   padding-bottom:18px;
-   padding-right:30px;
-   padding-left:10px;
-   float:right;
+	border-radius:0px 2px 2px 0px;
+	background-color:#3A589B;   
+	font-size:16px;
+	color:#FFFFFF;
+	font-weight:bold;
+	margin-top:4px;
+	margin-left:59px;
+	position:absolute;
+	padding-top:19px;
+	padding-bottom:18px;
+	padding-right:30px;
+	padding-left:10px;
+	float:right;
 }
 .fieldsetLogin{
     width:400px;
