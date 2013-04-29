@@ -19,6 +19,8 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/bootstrap-tooltip.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.placeholder.js"></script>
     <script type="text/javascript" src="http://vjs.zencdn.net/c/video.js"></script>
+     <script type="text/javascript" src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
+	<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css" rel="stylesheet">
    <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
    -->
@@ -27,7 +29,7 @@
 <h1>Cadastrar Materia</h1>
 <?php
 
-echo form_open('intranet/posts');
+echo form_open('intranet/posts_cadastro/save');
 echo form_fieldset('Materias');
 
 echo form_label('Titulo','lbl_titulo'). "<br />";
@@ -44,6 +46,7 @@ echo form_textarea('referencias') . "<br />";
 echo form_fieldset_close();
 
 ?>
+<textarea class="ckeditor" name="editor1"></textarea>
 <section class="palavrasChave">
           <h3 class="demo-panel-title">Palavra Chave</h3>
           <input name="tagsinput" id="tagsinput" class="tagsinput" value="" style="display: none;">
@@ -54,5 +57,8 @@ echo form_fieldset_close();
             });
         </script>
 <?php 
+echo form_submit('Enviar','enviar');
 echo form_close();
 ?>
+
+

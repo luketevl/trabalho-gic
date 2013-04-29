@@ -13,7 +13,6 @@
 </head>
 
 <?php
-echo form_open('index.php/intranet/login/cadastrar','id="formNew"');
 echo form_fieldset('Entrar','class="fieldsetLogin"');
 echo form_open('index.php/intranet/login/entrar','id="formLogin"');
 echo form_label('Email','lbl_email'). "<br />";
@@ -24,6 +23,7 @@ echo form_submit('btn_logar','Entrar'). "<br />";
 echo form_close();
 echo form_fieldset_close();
 
+echo form_open('index.php/intranet/login/cadastrar','id="formNew"');
 echo form_fieldset('Cadastrar','class="fieldsetLogin"');
 echo form_label('Nome','lbl_nome') . "<br />";
 echo form_input('nome'). "<br />";
@@ -38,7 +38,7 @@ echo form_close();
 echo form_fieldset_close();
 ?>
 
-<section id="signFb">
+<section id="signFb" class="tooltip" title="<?php echo $tp_fb_login;?>" >
 	<a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo FB_APP_ID;?>&redirect_uri=<?php echo FB_SITELOGIN;?>&scope=<?php echo FB_SCOPE;?>" name="fb_login">
 	<img src="<?php echo base_url();?>resources/icons/fb2.png" style="position:absolute;" />
 	<span>Continuar</span>
