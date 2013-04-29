@@ -53,29 +53,32 @@ if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['code'])){
     */
  
         $dados['email_usu'] = $user->email;
-        $dados['nome'] = $user->name;
+        $dados['nome_usu'] = $user->name;
         $dados['dp_nascimento'] = $user->birthday;
         $dados['localizacao'] = $user->location->name;
         $dados['uid_facebook'] = $user->id;
         $dados['user_facebook'] = $user->username;
         $dados['link_facebook'] = $user->link;
-       // $this->logar($dados);
+        $this->logar($dados);
       }
-      echo "<pre>";
-      print_r($user);
-      echo "</pre>";
+//       echo "<pre>";
+//       print_r($user);
+//       echo "</pre>";
       
       
     }else{
       echo "Erro de conexão com Facebook";
+	  redirect('intranet/login');
       exit(0);
     }
  
   }else{
     echo "Erro de conexão com Facebook";
+    redirect('index.php/intranet/login');
     exit(0);
   }
 }else if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['error'])){
+    redirect('index.php/intranet/login');
   echo 'Permissão não concedida';
 }
 	}

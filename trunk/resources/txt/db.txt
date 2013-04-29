@@ -6,13 +6,15 @@ Entidades
 	- perfis
 	- Usuarios
 	- Post
+	- Categorias
 	- Log
 	- Imagens
 	
 Tabelas
 	- Perfis(id_perf, nome_perf,funcoes_perf,acesso_perf,editavel);
 	- Usuarios(id_usu, nome_usu, email_usu, pass_usu,dt_criacao,dt_nascimento ,avatar_usu,id_perf)
-	- Posts(id_post, titulo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,obs_post,keywords_post,id_usu_aprovou,id_usu);
+	- Posts(id_post, titulo_post, resumo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,obs_post,keywords_post,id_usu_aprovou,id_usu,id_cat);
+	- Categorias(id_cat,nome_cat,fk_id_cat)
 	- Logs(id_log, nome_table, id_user,dt_modificacao)
 	- Imagens(id_img, nome_img,id_post)
 
@@ -41,9 +43,17 @@ create table usuarios(
 	foreign key(id_perf) references perfis(id_perf)
 )ENGINE= MYISAM;
 
+create table categorias(
+	id_cat int unsigned auto_increment not null primary key,
+	nome_cat varchar(100) not null,
+	fk_id_cat int not null,
+	foreign key(fk_id_cat) references categorias(id_cat)
+	)ENGINE= MYISAM;
+	
 create table posts(
 	id_post int unsigned auto_increment not null primary key,
 	titulo_post varchar(100) not null,
+	resumo_post varchar(100) not null,
 	conteudo_post text not null,
 	ref_post text not null,
 	status_post char(1) not null,
@@ -55,9 +65,10 @@ create table posts(
 	id_usu_aprovou int not null,
 	foreign key(id_usu_aprovou) references usuarios(id_usu),
 	id_usu int not null,
-	foreign key(id_usu) references usuarios(id_usu)
+	foreign key(id_usu) references usuarios(id_usu),
+	id_cat int not null,
+	foreign key(id_cat) references categorias(id_cat)
 )ENGINE= MYISAM;
-
 
 
 create table log_atividades(
@@ -77,7 +88,6 @@ create table imagens(
 
 #DML
 
-
 insert into posts values('',
 'Trabalho de GIC inovador, muito trabalho deve ser feito',
 'O goleiro Bruno Fernandes de Suza culpu Luiz Henrique Ferreira Rm�,  Macarr�, pela mrte de Eliza Samudi, mdel cm quem teve um filh, durante  seu depiment, na tarde desta quarta-feira (6), n F�rum de Cntagem, em Minas Gerais.  jgadr afirmu que, na nite d crime, Macarr� e Jrge Luiz Rsa, menr de idade na �pca, deixaram  s�ti cm Eliza e Bruninh e vltaram mais tarde smente cm a crian�a. Perguntei para eles: pxa, cad� Eliza? Pel amr de Deus,  que vc�s fizeram cm ela?, afirmu. Neste mment, Macarr� falu assim: �, eu reslvi  prblema,  prblema que tant te atrmentava.',
@@ -90,7 +100,6 @@ now(),
 'teste,mama,lu',
 1,
 1);
-
 
 insert into perfis values('1',
 'Administrador',

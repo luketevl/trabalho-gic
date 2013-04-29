@@ -14,7 +14,7 @@ class Principal extends CI_Controller{
 					  'perfil'		=> array('url' =>base_url().'index.php/intranet/perfil_cadastro_list',
 					  						 'name' =>$this->lang->line('perfil')),
 					  		
-					  'materias'	=> array('url' =>base_url().'index.php/intranet/materias_cadastro_list',
+					  'materias'	=> array('url' =>base_url().'index.php/intranet/materias',
 					  						 'name' => $this->lang->line('materias')),
 				'tp_materias'		=> $this->lang->line('tp_materias')
 				);

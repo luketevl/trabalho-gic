@@ -8,6 +8,9 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery-validation/dist/jquery.validate.js" ></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/functions.js" ></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>resources/icheckmaster/js/jquery.icheck.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>resources/tooltipster-master/js/jquery.tooltipster.min.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/tooltipster-master/css/tooltipster.css" />
 </head>
 
 <h1>Cadastrar Perfil</h1>
