@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Posts extends CI_Controller{
+class Posts_Cadastro extends CI_Controller{
 	public function index(){
 		if($this->login_permission->is_logado()){
 			$this->load->view('intranet/posts_cadastro');
@@ -10,20 +10,14 @@ class Posts extends CI_Controller{
 	}
 
 	public function get_ckeditor_content(){
-		if (!empty($_POST)){
-			foreach ( $_POST as $key => $value ){
-				if ( ( !is_string($value) && !is_numeric($value) ) || !is_string($key) )
-					continue;
-				if ( get_magic_quotes_gpc() )
-					$value = htmlspecialchars( stripslashes((string)$value) );
-				else
-					$value = htmlspecialchars( (string)$value );
-				//echo htmlspecialchars( (string)$key );
-// 				echo $value;
-			}
+		$value = $this->input->post('editor1');
+		if ( get_magic_quotes_gpc() ){
+			$value = htmlspecialchars( stripslashes((string)$value) );
+		}
+		else{
+			$value = htmlspecialchars( (string)$value );
 		}
 		return $value;
-
 	}
 	
 	public function save(){

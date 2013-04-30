@@ -25,7 +25,7 @@ if (!empty($_POST))
 			$value = htmlspecialchars( stripslashes((string)$value) );
 		else
 			$value = htmlspecialchars( (string)$value );
-			echo htmlspecialchars( (string)$key );
+			//echo htmlspecialchars( (string)$key );
 			echo $value;
 	}
 }

@@ -29,7 +29,7 @@
 <h1>Cadastrar Materia</h1>
 <?php
 
-echo form_open('intranet/posts_cadastro/save');
+echo form_open('index.php/intranet/posts_cadastro/save');
 echo form_fieldset('Materias');
 
 echo form_label('Titulo','lbl_titulo'). "<br />";
