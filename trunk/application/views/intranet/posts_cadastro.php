@@ -19,8 +19,10 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/bootstrap-tooltip.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.placeholder.js"></script>
     <script type="text/javascript" src="http://vjs.zencdn.net/c/video.js"></script>
-     <script type="text/javascript" src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery-ui/ui/jquery-ui.js"></script>
 	<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet">
    <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
    -->
@@ -38,27 +40,34 @@ echo form_input('titulo') . "<br />";
 echo form_label('Descricao Resumida','lbl_desc_resumida') . "<br />";
 echo form_input('desc_resumida') . "<br />";
 
-echo form_label('Conteudo','lbl_conteudo') . "<br />";
-echo form_textarea('conteudo') . "<br />";
+echo form_label('Categoria','lbl_categoria') . "<br />";
+echo form_input('ac_categoria','','id="ac_categoria"') . "<br />";
 
-echo form_label('Referencias','lbl_ref') . "<br />";
-echo form_textarea('referencias') . "<br />"; 
-echo form_fieldset_close();
+// echo form_label('Conteudo','lbl_conteudo') . "<br />";
+// echo form_textarea('editor1') . "<br />";
+
+// echo form_label('Referencias','lbl_ref') . "<br />";
+// echo form_textarea('referencias') . "<br />"; 
 
 ?>
-<textarea class="ckeditor" name="editor1"></textarea>
-<section class="palavrasChave">
-          <h3 class="demo-panel-title">Palavra Chave</h3>
-          <input name="tagsinput" id="tagsinput" class="tagsinput" value="" style="display: none;">
-</section>
+<!-- <section class="palavrasChave"> -->
+<!--           <h3 class="demo-panel-title">Palavra Chave</h3> 
+          <input name="tagsinput" id="tagsinput" class="tagsinput" value="" style="display: none;">-->
+<!-- </section> -->
         <script>
         $(document).ready(function(){
 	        $("#tagsinput").tagsInput();
+	        $('#ac_categoria').autocomplete(
+	        	    {
+	        	      source: "categoria_cadastro/au_get_all",
+	        	      minLength: 2
+	        	    });
             });
         </script>
-<?php 
-echo form_submit('Enviar','enviar');
-echo form_close();
+<?php //  
+// echo form_fieldset_close();
+// echo form_submit('Enviar','enviar');
+// echo form_close();
 ?>
 
 

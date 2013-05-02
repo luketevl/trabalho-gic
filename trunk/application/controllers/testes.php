@@ -10,7 +10,7 @@
 				'Mensagem' => 'Ola, tudo bem'
 			); 
 			
-			$this->load->view('example');
+			$this->load->view('testes');
 			
 			/* $this->load->model('testes_model');
 			$data['estacionamentos'] = $this->testes_model->getTeste();
