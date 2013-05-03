@@ -10,10 +10,10 @@ class Categoria_Cadastro extends CI_Controller{
 		$result = array();
 		$result=$this->func_array($c);
 		
-		echo "<pre>";
-		echo print_r(json_encode($result));
-		echo "</pre>";die;
-		return json_encode($result);
+// 		echo "<pre>";
+// 		echo print_r(json_encode($result));
+// 		echo "</pre>";die;
+		echo json_encode($result);
 	}
 	
 	private function func_array(Categorias $c){
