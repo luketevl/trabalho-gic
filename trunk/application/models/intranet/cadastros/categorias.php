@@ -30,6 +30,13 @@
             return $c->where('id_perf',$id)
             ->get();
         }
+        
+        public function get_by_nome($nome=""){
+            $c = new Categorias();
+            return $c->like('nome_cat',$nome,'both')
+            ->get();
+        }
+        
 		
 	}
 ?>

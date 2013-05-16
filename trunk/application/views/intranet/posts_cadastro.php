@@ -50,6 +50,17 @@ echo form_input('ac_categoria','','id="ac_categoria"') . "<br />";
 // echo form_textarea('referencias') . "<br />"; 
 
 ?>
+ 
+<div class="ui-widget">
+  <label for="city">Your city: </label>
+  <input id="city" />
+  Powered by <a href="http://geonames.org">geonames.org</a>
+</div>
+ 
+<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
+  Result:
+  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+</div>
 <!-- <section class="palavrasChave"> -->
 <!--           <h3 class="demo-panel-title">Palavra Chave</h3> 
           <input name="tagsinput" id="tagsinput" class="tagsinput" value="" style="display: none;">-->
@@ -57,12 +68,17 @@ echo form_input('ac_categoria','','id="ac_categoria"') . "<br />";
         <script>
         $(document).ready(function(){
 	        $("#tagsinput").tagsInput();
-	        $('#ac_categoria').autocomplete(
-	        	    {
-	        	      source: "categoria_cadastro/au_get_all",
-	        	      minLength: 2
-	        	    });
-            });
+	            $( "#ac_categoria" ).autocomplete({
+		            source: "categoria_cadastro/au_get_by_name",
+			            minLength: 1,
+			            select: function(event, ui) {
+			            	if(ui.item){
+			            	alert ($(event.target).val(ui.item.value).val());
+			            	}
+			            },
+			                
+	            });
+        });
         </script>
 <?php //  
 // echo form_fieldset_close();

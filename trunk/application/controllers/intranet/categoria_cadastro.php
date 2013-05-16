@@ -4,27 +4,37 @@ class Categoria_Cadastro extends CI_Controller{
 		$this->load->view('intranet/categoria_cadastro');
 	}
 	
-	public function au_get_all(){
+	public function au_get_by_name(){
 		$c = new Categorias();
-		$c = $c->getAll();
+		$c = $c->get_by_nome($_GET['term']);
 		$result = array();
 		$result=$this->func_array($c);
 		
 // 		echo "<pre>";
-// 		echo print_r(json_encode($result));
-// 		echo "</pre>";die;
+// 		echo print_r($result);
+// 		echo "</pre>";
+
 		echo json_encode($result);
 	}
 	
+	
+	
 	private function func_array(Categorias $c){
 		$campos = array(	
-							'id_cat'   		=>$c->id_cat ,
-							'value'  	=>$c->nome_cat ,
-							'fk_id_cat' 	=>$c->fk_id_cat
-					
-		);
+				'valores' => array(
+				array(	
+											'id_cat'   		=>$c->id_cat ,
+											'nome_cat'  	=>$c->nome_cat ,
+											'fk_id_cat' 	=>$c->fk_id_cat
+										  ),
+									
+				array(	
+											'id_cat'   		=>$c->id_cat ,
+											'nome_cat'  	=>$c->nome_cat ,
+											'fk_id_cat' 	=>$c->fk_id_cat
+							  ))
+				);
 		return $campos;
-		
 	}
 	
 }
