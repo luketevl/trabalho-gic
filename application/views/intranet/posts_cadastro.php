@@ -32,6 +32,9 @@
 <?php
 
 echo form_open('index.php/intranet/posts_cadastro/save');
+echo form_hidden('hd_id','{id_post}');
+echo form_hidden('hd_cat_id','{id_cat}');
+
 echo form_fieldset('Materias');
 
 echo form_label('Titulo','lbl_titulo'). "<br />";
@@ -43,47 +46,22 @@ echo form_input('desc_resumida') . "<br />";
 echo form_label('Categoria','lbl_categoria') . "<br />";
 echo form_input('ac_categoria','','id="ac_categoria"') . "<br />";
 
-// echo form_label('Conteudo','lbl_conteudo') . "<br />";
-// echo form_textarea('editor1') . "<br />";
-
-// echo form_label('Referencias','lbl_ref') . "<br />";
-// echo form_textarea('referencias') . "<br />"; 
-
+echo form_label('Conteudo','lbl_conteudo') . "<br />";
+echo form_textarea('editor1') . "<br />";
 ?>
+
  
-<div class="ui-widget">
-  <label for="city">Your city: </label>
-  <input id="city" />
-  Powered by <a href="http://geonames.org">geonames.org</a>
-</div>
- 
-<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
-  Result:
-  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>
-<!-- <section class="palavrasChave"> -->
-<!--           <h3 class="demo-panel-title">Palavra Chave</h3> 
-          <input name="tagsinput" id="tagsinput" class="tagsinput" value="" style="display: none;">-->
-<!-- </section> -->
-        <script>
-        $(document).ready(function(){
-	        $("#tagsinput").tagsInput();
-	            $( "#ac_categoria" ).autocomplete({
-		            source: "categoria_cadastro/au_get_by_name",
-			            minLength: 1,
-			            select: function(event, ui) {
-			            	if(ui.item){
-			            	alert ($(event.target).val(ui.item.value).val());
-			            	}
-			            },
-			                
-	            });
-        });
-        </script>
-<?php //  
-// echo form_fieldset_close();
-// echo form_submit('Enviar','enviar');
-// echo form_close();
+<section class="palavrasChave">
+	<h3 class="demo-panel-title">Palavra Chave</h3> 
+	<input name="tagsinput" id="tagsinput" class="tagsinput" value="" style="display: none;">
+</section>
+
+<?php  
+echo form_label('Referencias','lbl_ref') . "<br />";
+echo form_textarea('referencias') . "<br />"; 
+echo form_fieldset_close();
+echo form_submit('Enviar','enviar');
+echo form_close();
 ?>
 
 

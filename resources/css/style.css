@@ -332,5 +332,6 @@ span#circle >img{
 }
 .palavrasChave{
     width:100%;
-    height:41px;
+    height:80;
+    margin-bottom:100px;
 }

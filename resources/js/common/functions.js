@@ -4,6 +4,7 @@ $(document).ready(function() {
 	createLoad();
 	$('.tooltip').tooltipster();
 	$("#form").validate();
+	$("#tagsinput").tagsInput();
 	$('.skin-line input').each(function() {
 		var self = $(this), label = self.next(), label_text = label.text();
 		label.remove();
@@ -62,6 +63,38 @@ $(document).ready(function() {
 			});
 	}
 	
+
+        var cache = {};
+        var dados;
+        function log( message ) {
+            $('[name="hd_cat_id"]').val(message);
+          }
+        $( "#ac_categoria" ).autocomplete({
+          source: function( request, response ) {
+            var term = request.term;
+            if ( term in cache ) {
+              response( cache[ term ] );
+              return;
+            }
+            $.getJSON( "categoria_cadastro/au_get_by_name", request, function( data, status, xhr ) {
+              cache[ term ] = data;
+              response( $.map( data, function( item ) {
+                return {
+                  label: item.nome_cat,
+                  value: item.nome_cat,
+                  id: item.id_cat
+                }
+              }));
+              dados = data;
+              console.log(dados);
+            });
+          },
+          minLength: 2,
+          select: function( event, ui ) {
+              log( ui.item.id);
+            },
+        });
+        
 });
 $(window).load(function(){
 		$('#canvasloader-container').addClass("centro hide");

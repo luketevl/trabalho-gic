@@ -21,14 +21,14 @@ class Categoria_Cadastro extends CI_Controller{
 	
 	private function func_array(Categorias $c){
 		$campos = array(	array(
-											'id'   		=>$c->id_cat ,
-											'label'  	=>$c->nome_cat ,
+											'id_cat'   		=>$c->id_cat ,
+											'nome_cat'  	=>$c->nome_cat ,
 											'fk_id_cat' 	=>$c->fk_id_cat
 										  ),
 									
 				array(	
 											'id_cat'   		=>$c->id_cat ,
-											'label'  	=>$c->nome_cat ,
+											'nome_cat'  	=>$c->nome_cat ,
 											'fk_id_cat' 	=>$c->fk_id_cat
 							  )
 				);

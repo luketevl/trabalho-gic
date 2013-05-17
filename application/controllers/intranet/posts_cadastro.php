@@ -35,9 +35,11 @@ class Posts_Cadastro extends CI_Controller{
 		$aux['img_principal_post'] = $this->input->post('');
 		$aux['obs_post'] = $this->input->post('');
 		$aux['keywords_post'] = $this->input->post('');
-		$aux['id_usu_aprovou'] = $this->input->post('');
+		
+		$aux['id_usu_aprovou'] = $this->session->userdata('id_usu');
 		$aux['id_usu'] = $this->session->userdata('id_usu');
-		$aux['id_cat'] = $this->input->post('');
+		$aux['id_cat'] = $this->input->post('hd_cat_id');
+		
 		echo "<pre>";
 		print_r($aux);
 		echo "</pre>";
