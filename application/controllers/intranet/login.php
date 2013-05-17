@@ -92,13 +92,17 @@ class Login extends CI_Controller{
 	
 	public function cadastrar(){
 		$u = new Usuarios();
+	
+		
 		$dados = array( 'nome_usu'			=> $this->input->post('nome') , 
 						'email_usu'			=> $this->input->post('email'), 
 						'pass_usu'			=> $this->input->post('senha'),
 						'dt_nascimento'		=> $this->input->post('dp_nascimento'),
+						'dt_criacao'		=> unix_to_human(time(), TRUE, 'us'), // U.S. time with seconds,
 						'avatar_usu'		=> $this->input->post('img_avatar'),
 						'id_perf'			=> $this->input->post('id_perf')
 					  );
+		
 		if($this->exist_user($dados['email_usu'])){
 			echo "Existe";			
 		}
