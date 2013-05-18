@@ -108,6 +108,8 @@ class Login extends CI_Controller{
 		}
 		else{
 				$u->inserir($dados);
+				$u = $u->get_last_id();
+				$dados['id_usu'] = $u->id_usu;
 				$this->logar($dados);
 		}
 	}

@@ -1,3 +1,4 @@
+
 <?php
 class Usuarios extends DataMapper{
 	public $campos = array( 'id_usu'		=>"",
@@ -36,5 +37,12 @@ class Usuarios extends DataMapper{
 		$u->avatar_usu = $campos['avatar_usu'];
 		$u->id_perf = $campos['id_perf'];
 		$u->save();
+	}
+	
+	public function get_last_id(){
+		$u = new Usuarios();
+		return $u->select('id_usu')
+		  ->order_by('id_usu','desc')
+		  ->get(1);
 	}
 }
