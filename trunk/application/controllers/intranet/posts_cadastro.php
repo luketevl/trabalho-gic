@@ -30,11 +30,11 @@ class Posts_Cadastro extends CI_Controller{
 		$aux['ref_post'] = $this->input->post('referencias');
 		
 		$aux['status_post'] = $this->input->post('');
-		$aux['dt_criacao'] = $this->input->post('');
-		$aux['dt_modificacao'] = $this->input->post('');
+		$aux['dt_criacao'] = unix_to_human(time(), TRUE, 'us');
+		$aux['dt_modificacao']= null;
 		$aux['img_principal_post'] = $this->input->post('');
 		$aux['obs_post'] = $this->input->post('');
-		$aux['keywords_post'] = $this->input->post('');
+		$aux['keywords_post'] = $this->input->post('hd_keywords');
 		
 		$aux['id_usu_aprovou'] = $this->session->userdata('id_usu');
 		$aux['id_usu'] = $this->session->userdata('id_usu');
@@ -42,7 +42,7 @@ class Posts_Cadastro extends CI_Controller{
 		
 		echo "<pre>";
 		print_r($aux);
-		echo "</pre>";
+		echo "</pre>";die;
 		$p->setFields($aux);
 		$p->inserir();
 	}

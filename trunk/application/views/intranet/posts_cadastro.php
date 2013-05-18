@@ -34,6 +34,7 @@
 echo form_open('index.php/intranet/posts_cadastro/save');
 echo form_hidden('hd_id','{id_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
+echo form_hidden('hd_keywords','{id_cat}');
 
 echo form_fieldset('Materias');
 

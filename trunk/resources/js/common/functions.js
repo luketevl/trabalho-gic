@@ -5,6 +5,9 @@ $(document).ready(function() {
 	$('.tooltip').tooltipster();
 	$("#form").validate();
 	$("#tagsinput").tagsInput();
+	
+	
+
 	$('.skin-line input').each(function() {
 		var self = $(this), label = self.next(), label_text = label.text();
 		label.remove();
@@ -63,6 +66,16 @@ $(document).ready(function() {
 			});
 	}
 	
+	function get_key_words(){
+		var keys="";
+		$('[name="hd_keywords"]').val('');
+		$('span.tag').each(function(){
+			keys += $.trim($(this).text()) +"|";
+		});
+		$('[name="hd_keywords"]').val(keys);
+};
+$('#tagsinput_tagsinput').focusout(function(){get_key_words();});
+
 
         var cache = {};
         var dados;
