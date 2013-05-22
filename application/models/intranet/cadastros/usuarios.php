@@ -1,4 +1,3 @@
-
 <?php
 class Usuarios extends DataMapper{
 	public $campos = array( 'id_usu'		=>"",

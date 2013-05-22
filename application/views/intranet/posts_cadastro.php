@@ -33,35 +33,45 @@
 
 echo form_open('index.php/intranet/posts_cadastro/save');
 echo form_hidden('hd_id','{id_post}');
+echo form_hidden('hd_status','{status_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
-echo form_hidden('hd_keywords','{id_cat}');
+echo form_hidden('hd_keywords','{keywords_post}');
 
 echo form_fieldset('Materias');
 
 echo form_label('Titulo','lbl_titulo'). "<br />";
-echo form_input('titulo') . "<br />";
+echo form_input('titulo','{titulo_post}');
+
+echo form_label('Data Criacao','lbl_dt_aprovacao');
+echo form_input('dtcriacao','{dt_criacao}','readonly=readonly');
+
+echo form_label('Data Aprovacao','lbl_dt_aprovacao');
+echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly') . "<br />";
+
 
 echo form_label('Descricao Resumida','lbl_desc_resumida') . "<br />";
-echo form_input('desc_resumida') . "<br />";
+echo form_input('desc_resumida','{resumo_post}') . "<br />";
+
+echo form_label('URL do video','lbl_url_youtube') . "<br />";
+echo form_input('url_youtube','{url_youtube}') . "<br />";
 
 echo form_label('Categoria','lbl_categoria') . "<br />";
 echo form_input('ac_categoria','','id="ac_categoria"') . "<br />";
 
 echo form_label('Conteudo','lbl_conteudo') . "<br />";
-echo form_textarea('editor1') . "<br />";
+echo form_textarea('editor1','{conteudo_post}') . "<br />";
 ?>
 
- 
 <section class="palavrasChave">
 	<h3 class="demo-panel-title">Palavra Chave</h3> 
-	<input name="tagsinput" id="tagsinput" class="tagsinput" value="" style="display: none;">
+	<input name="tagsinput" id="tagsinput" class="tagsinput" value="{keywords_post}" style="display: none;">
 </section>
 
 <?php  
 echo form_label('Referencias','lbl_ref') . "<br />";
-echo form_textarea('referencias') . "<br />"; 
+echo form_textarea('referencias','{ref_post}') . "<br />"; 
 echo form_fieldset_close();
-echo form_submit('Enviar','enviar');
+echo form_submit('enviar','Enviar');
 echo form_close();
 ?>
 

@@ -57,5 +57,13 @@ define('FB_SITELOGIN',	'http://localhost/portal-gic/index.php/intranet/login/fac
 define('FB_APP_SECRET',	'9e36c1f5179ec980ec77484d06faaf9f');
 define('FB_SCOPE',	'email,user_website,user_location,user_birthday,user_photos');
 
+
+
+/* Constantes de STATUS */
+define('ABERTO'		,'N');
+define('APROVADO'	,'A');
+define('REJEITADO'	,'R');
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
