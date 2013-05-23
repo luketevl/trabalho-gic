@@ -35,22 +35,24 @@ class Posts_Cadastro extends CI_Controller{
 		$aux['dt_modificacao']= null;
 		$aux['img_principal_post'] = $this->input->post('');
 		$aux['url_youtube'] = $this->input->post('url_youtube');
-		$aux['obs_post'] = $this->input->post('');
+		$aux['obs_post'] = "";
 		$aux['keywords_post'] = $this->input->post('hd_keywords');
 		
 		$aux['id_usu_aprovou'] = $this->session->userdata('id_usu');
 		$aux['id_usu'] = $this->session->userdata('id_usu');
 		$aux['id_cat'] = $this->input->post('hd_cat_id');
-		
 		$p->setFields($aux);
-		if($aux['id_post']>0){
+		if(empty($aux['id_post'])){
 			$p->inserir();
 			$aux['status_post'] = ABERTO;
+			$p = $p->get_last_id();
+			$aux['id_post'] = $p->id_post;
 		}
 		else{
 			$aux['status_post'] = $this->input->post('hd_status');
 			$p->editar($aux['id_post']);
 		}
+		$this->load_form_edit($aux['id_post']);
 	}
 	
 	public function load_form_edit($id=1){
@@ -79,5 +81,27 @@ class Posts_Cadastro extends CI_Controller{
 // 		echo "</pre>";
 // 		die;
 		$this->parser->parse('intranet/posts_cadastro',$dados);
+	}
+	
+	public function aprovar($id){
+		$p = new Posts();
+		$this->justificar($justificativa,APROVADO,$id);
+		$p->aprovar($this->form->input('hd_id'));
+	}
+	
+	public function rejeitar($id){
+		$p = new Posts();
+		$this->justificar($justificativa,REJEITADO,$id);
+		$p->rejeitar($this->form->input('hd_id'));
+	}
+	
+	public function justificar($justificativa,$status,$id_post){
+		$h = new Historicos();
+		$aux = $h->getFields();
+		$aux['descricao_hist'] = $justificativa;
+		$aux['status'] = $status;
+		$aux['id_post'] = $id_post;
+		$h->setFields($aux);
+		$h->inserir();
 	}
 }
