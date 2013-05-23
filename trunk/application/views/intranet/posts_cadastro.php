@@ -72,6 +72,8 @@ echo form_label('Referencias','lbl_ref') . "<br />";
 echo form_textarea('referencias','{ref_post}') . "<br />"; 
 echo form_fieldset_close();
 echo form_submit('enviar','Enviar');
+echo form_button('aprovar','Aprovar');
+echo form_button('recusar','Recusar');
 echo form_close();
 ?>
 

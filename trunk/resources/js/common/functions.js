@@ -2,6 +2,7 @@
 $(document).ready(function() {
 	// Pega valor dos acessos
 	createLoad();
+	disabled_all();
 	$('.tooltip').tooltipster();
 	$("#form").validate();
 	$("#tagsinput").tagsInput();
@@ -19,7 +20,6 @@ $(document).ready(function() {
 	});
 	is_checked($('input:hidden[name=hd_acesso]').val());
 	is_checked($('input:hidden[name=hd_funcoes]').val());
-	disabled_all();
 	$('a[name="fb_login"]').click(function(){
 		createLoad();
 	});
@@ -36,9 +36,12 @@ $(document).ready(function() {
 	}
 
 	function disabled_all() {
-		if ($('input:hidden[name=hd_editavel]').val() == 0) {
+		if ($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) {
 			$('input').each(function() {
 				$(this).iCheck('disable');
+			});
+			$('textarea').each(function() {
+				$(this).attr('readonly','readonly');
 			});
 		}
 	}
