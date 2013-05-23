@@ -15,7 +15,7 @@ Tabelas
 	- Perfis(id_perf, nome_perf,funcoes_perf,acesso_perf,editavel);
 	- Usuarios(id_usu, nome_usu, email_usu, pass_usu,dt_criacao,dt_nascimento ,avatar_usu,id_perf)
 	- Posts(id_post, titulo_post, resumo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,url_youtube,obs_post,keywords_post,id_usu_aprovou,id_usu,id_cat);
-	- Historicos(id_hist, descricao_hist,id_post,dt_criacao);
+	- Historicos(id_hist, descricao_hist,status,id_post,dt_criacao);
 	- Comentarios(id_comen, comentario_comen,id_post,id_top,id_usu)
 	- Topicos(id_top, nome_top, resumo_top,dt_criacao)
 	- Categorias(id_cat,nome_cat,fk_id_cat)
@@ -68,9 +68,10 @@ create table comentarios(
 create table historicos(
 	id_hist int unsigned auto_increment not null primary key,
 	descricao_hist text not null,
-	status_post char(1) not null,
 	id_post int not null,
-	foreign key(id_post) references posts(id_post)
+	foreign key(id_post) references posts(id_post),
+	status_post char(1) not null,
+	dt_criacao datetime not null
 )ENGINE = MYISAM;
 
 create table categorias(

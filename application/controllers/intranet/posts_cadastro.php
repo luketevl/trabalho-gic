@@ -23,6 +23,27 @@ class Posts_Cadastro extends CI_Controller{
 	}
 	
 	public function save(){
+		
+		$config['upload_path'] = './././resources/img/uploads/';
+		echo $config['upload_path'];
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '10000';
+		$config['max_width']  = '10024';
+		$config['max_height']  = '1768';
+		$this->upload->initialize($config);
+		if($this->upload->do_upload()){
+			echo "<pre>";
+			echo print_r($this->upload->data());
+			echo "</pre>";
+			echo "sem erro". $this->upload->display_errors();
+		}
+		else{
+			echo "<pre>";
+			echo print_r($this->upload->data());
+			echo "</pre>";
+			echo "erro". $this->upload->display_errors();
+		}
+		
 		$p = new Posts();
 		$aux = $p->getFields();
 		$aux['id_post'] = $this->input->post('hd_id');
@@ -30,10 +51,10 @@ class Posts_Cadastro extends CI_Controller{
 		$aux['resumo_post'] = $this->input->post('desc_resumida');
 		$aux['conteudo_post'] = $this->get_ckeditor_content();
 		$aux['ref_post'] = $this->input->post('referencias');
-		
 		$aux['dt_criacao'] = unix_to_human(time(), TRUE, 'us');
 		$aux['dt_modificacao']= null;
-		$aux['img_principal_post'] = $this->input->post('');
+		$dados_img = $this->upload->data();
+		$aux['img_principal_post'] = $dados_img['file_name'];
 		$aux['url_youtube'] = $this->input->post('url_youtube');
 		$aux['obs_post'] = "";
 		$aux['keywords_post'] = $this->input->post('hd_keywords');
@@ -70,7 +91,7 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['img_principal_post'] = $p->img_principal_post			;
 			$dados['url_youtube']= $p->url_youtube					;
 			$dados['obs_post']= $p->obs_post					;
-			$dados['keywords_post']= $p->keywords_post				;
+			$dados['keywords_post']= str_replace('|',',',$p->keywords_post);
 			$dados['id_usu_aprovou']= $p->id_usu_aprovou				;
 			$dados['id_usu']= $p->id_usu						;
 			$dados['id_cat']= $p->id_cat								;

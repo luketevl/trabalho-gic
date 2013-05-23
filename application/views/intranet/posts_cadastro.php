@@ -31,7 +31,7 @@
 <h1>Cadastrar Materia</h1>
 <?php
 
-echo form_open('index.php/intranet/posts_cadastro/save');
+echo form_open_multipart('index.php/intranet/posts_cadastro/save');
 echo form_hidden('hd_id','{id_post}');
 echo form_hidden('hd_status','{status_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
@@ -44,6 +44,8 @@ echo form_input('titulo','{titulo_post}');
 
 echo form_label('Data Criacao','lbl_dt_aprovacao');
 echo form_input('dtcriacao','{dt_criacao}','readonly=readonly');
+
+echo form_upload('userfile');
 
 echo form_label('Data Aprovacao','lbl_dt_aprovacao');
 echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly') . "<br />";

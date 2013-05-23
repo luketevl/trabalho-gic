@@ -2,10 +2,10 @@
 $(document).ready(function() {
 	// Pega valor dos acessos
 	createLoad();
-	disabled_all();
 	$('.tooltip').tooltipster();
 	$("#form").validate();
 	$("#tagsinput").tagsInput();
+	disabled_all();
 	
 	
 
@@ -34,7 +34,6 @@ $(document).ready(function() {
 			}
 		}
 	}
-
 	function disabled_all() {
 		if ($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) {
 			$('input').each(function() {
@@ -42,6 +41,11 @@ $(document).ready(function() {
 			});
 			$('textarea').each(function() {
 				$(this).attr('readonly','readonly');
+			});
+			console.log($('div span a'));
+			$('#tagsinput_addTag').remove();
+			$('div span a').each(function (){
+				$(this).remove();
 			});
 		}
 	}
