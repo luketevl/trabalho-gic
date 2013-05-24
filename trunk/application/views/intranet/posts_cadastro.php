@@ -75,8 +75,27 @@ echo form_textarea('referencias','{ref_post}') . "<br />";
 echo form_fieldset_close();
 echo form_submit('enviar','Enviar');
 echo form_button('aprovar','Aprovar');
-echo form_button('recusar','Recusar');
+echo form_button('rejeitar','Rejeitar');
+echo form_button('publicar','Publicar');
 echo form_close();
 ?>
 
+<script>
+$(document).ready(function(){
+	$(':button').click(function(ev){
+		ev.preventDefault();
+		var temp = $(this).attr('name');
+		if(temp == 'aprovar'){
+			$('form').attr('action','posts_cadastro/aprovar');
+		}
+		else if(temp == 'rejeitar'){
+			$('form').attr('action','posts_cadastro/rejeitar');
+			}
+		else if(temp == 'publicar'){
+			$('form').attr('action','posts_cadastro/publicar');
+			}
+	$('form').submit();	
+		});
+});
+</script>
 

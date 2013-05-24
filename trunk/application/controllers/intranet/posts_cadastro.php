@@ -23,25 +23,23 @@ class Posts_Cadastro extends CI_Controller{
 	}
 	
 	public function save(){
-		
 		$config['upload_path'] = './././resources/img/uploads/';
-		echo $config['upload_path'];
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '10000';
 		$config['max_width']  = '10024';
 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
 		if($this->upload->do_upload()){
-			echo "<pre>";
-			echo print_r($this->upload->data());
-			echo "</pre>";
-			echo "sem erro". $this->upload->display_errors();
+// 			echo "<pre>";
+// 			echo print_r($this->upload->data());
+// 			echo "</pre>";
+// 			echo "sem erro". $this->upload->display_errors();
 		}
 		else{
-			echo "<pre>";
-			echo print_r($this->upload->data());
-			echo "</pre>";
-			echo "erro". $this->upload->display_errors();
+// 			echo "<pre>";
+// 			echo print_r($this->upload->data());
+// 			echo "</pre>";
+// 			echo "erro". $this->upload->display_errors();
 		}
 		
 		$p = new Posts();
@@ -58,25 +56,25 @@ class Posts_Cadastro extends CI_Controller{
 		$aux['url_youtube'] = $this->input->post('url_youtube');
 		$aux['obs_post'] = "";
 		$aux['keywords_post'] = $this->input->post('hd_keywords');
-		
-		$aux['id_usu_aprovou'] = $this->session->userdata('id_usu');
+		$aux['id_usu_aprovou'] = null; //= $this->session->userdata('id_usu');
 		$aux['id_usu'] = $this->session->userdata('id_usu');
 		$aux['id_cat'] = $this->input->post('hd_cat_id');
-		$p->setFields($aux);
 		if(empty($aux['id_post'])){
-			$p->inserir();
 			$aux['status_post'] = ABERTO;
+			$p->setFields($aux);
+			$p->inserir();
 			$p = $p->get_last_id();
 			$aux['id_post'] = $p->id_post;
 		}
 		else{
 			$aux['status_post'] = $this->input->post('hd_status');
+			$p->setFields($aux);
 			$p->editar($aux['id_post']);
 		}
 		$this->load_form_edit($aux['id_post']);
 	}
 	
-	public function load_form_edit($id=1){
+	public function load_form_edit($id=0){
 		$p = new Posts();
 		$p = $p->get_by_id($id);
 		foreach($p->all as $key=>$valor){
@@ -104,16 +102,24 @@ class Posts_Cadastro extends CI_Controller{
 		$this->parser->parse('intranet/posts_cadastro',$dados);
 	}
 	
-	public function aprovar($id){
+	public function aprovar($id=0){
 		$p = new Posts();
-		$this->justificar($justificativa,APROVADO,$id);
-		$p->aprovar($this->form->input('hd_id'));
+		$id= $this->form->input('hd_id');
+		$p->aprovar($id);
+		echo $id ;die;
 	}
 	
-	public function rejeitar($id){
+	public function rejeitar($id=0){
 		$p = new Posts();
+		$id= $this->form->input('hd_id');
 		$this->justificar($justificativa,REJEITADO,$id);
-		$p->rejeitar($this->form->input('hd_id'));
+		$p->rejeitar($id);
+	}
+
+	public function publicar($id=0){
+		$p = new Posts();
+		$id= $this->form->input('hd_id');
+		$p->publicar($id);
 	}
 	
 	public function justificar($justificativa,$status,$id_post){

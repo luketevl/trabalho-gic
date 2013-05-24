@@ -107,4 +107,10 @@
 			$p->where('id_post',$id)
 				->update(array('status_post' => REJEITADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us')));
 		}
+		
+		public function publicar($id){
+			$p = new Posts();
+			$p->where('id_post',$id)
+				->update(array('status_post' => PUBLICADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us')));
+		}
 }
