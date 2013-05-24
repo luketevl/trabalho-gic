@@ -82,6 +82,12 @@ echo form_close();
 
 <script>
 $(document).ready(function(){
+	if($('[name="hd_id"]').val()==""){
+		$(':button').each(function(){
+			$(this).attr('disabled','disabled');
+		});
+	}
+	
 	$(':button').click(function(ev){
 		ev.preventDefault();
 		var temp = $(this).attr('name');
