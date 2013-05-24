@@ -63,6 +63,7 @@ define('FB_SCOPE',	'email,user_website,user_location,user_birthday,user_photos')
 define('ABERTO'		,'N');
 define('APROVADO'	,'A');
 define('REJEITADO'	,'R');
+define('PUBLICADO'	,'P');
 
 
 /* End of file constants.php */
