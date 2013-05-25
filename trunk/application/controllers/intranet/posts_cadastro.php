@@ -83,7 +83,22 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['resumo_post'] = $p->resumo_post					;
 			$dados['conteudo_post'] = $p->conteudo_post				;
 			$dados['ref_post'] = $p->ref_post					;
-			$dados['status_post'] = $p->status_post					;
+			
+			if($p->status_post == APROVADO){
+				$dados['status_post'] ='Aprovado';
+				
+			}
+			else if($p->status_post == REJEITADO){
+				$dados['status_post'] ='REJEITADO';
+				
+			}
+			else if($p->status_post == PUBLICADO){
+				$dados['status_post'] ='Publicado';
+			}
+			else{
+				$dados['status_post'] ='Normal';
+			}
+			
 			$dados['dt_criacao'] = $p->dt_criacao;
 			$dados['dt_modificacao']= $p->dt_modificacao			;
 			$dados['img_principal_post'] = $p->img_principal_post			;
@@ -104,22 +119,24 @@ class Posts_Cadastro extends CI_Controller{
 	
 	public function aprovar($id=0){
 		$p = new Posts();
-		$id= $this->form->input('hd_id');
+		$id= $this->input->post('hd_id');
 		$p->aprovar($id);
-		echo $id ;die;
+		$this->load_form_edit($id);
 	}
 	
 	public function rejeitar($id=0){
 		$p = new Posts();
-		$id= $this->form->input('hd_id');
+		$id= $this->input->post('hd_id');
 		$this->justificar($justificativa,REJEITADO,$id);
 		$p->rejeitar($id);
+		$this->load_form_edit($id);
 	}
 
 	public function publicar($id=0){
 		$p = new Posts();
-		$id= $this->form->input('hd_id');
+		$id= $this->input->post('hd_id');
 		$p->publicar($id);
+		$this->load_form_edit($id);
 	}
 	
 	public function justificar($justificativa,$status,$id_post){

@@ -28,9 +28,28 @@
    <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
    -->
+   
+   <style>
+   #list {
+   	margin: -20px;
+   	width:103%;
+   	border-style: solid;
+   	border-width: 2px;
+   }
+   #list table td.coluna{
+   	text-align:center;
+   	border-style: solid;
+   	border-width:1px;
+   	padding: 10px 10px 10px 10px;
+   	width: 150px;
+   }
+   #list table td{
+   	border-style:none;
+   }
+   </style>
 </head>
 
-
+<!-- 
 <form method="post" action="mostrar.php" id="form">
     <div>
         <label for="nome">Nome:</label>
@@ -44,3 +63,33 @@
         <input type="submit" />
     </div>
 </form>
+
+ -->
+ 
+ <section id="list">
+ 	<table>
+ 		<tr>
+ 			<td class="coluna">Titulo</td>
+ 			<td class="coluna">Resumo</td>
+ 			<td class="coluna">Data Criacao</td>
+ 			<td class="coluna">Data Aprovacao</td>
+ 			<td class="coluna">Categoria</td> 
+ 			<td class="coluna">Status</td>
+ 		</tr>
+ 		<tr>
+	 		<td>Content 1</td>
+	 		<td>Content 1</td>
+	 		<td>Content 1</td>
+	 		<td>Content 1</td>
+	 		<td>Content 1</td>
+	 		<td>Content 1</td>
+ 		</tr>
+ 		
+ 	</table>
+ 	
+ </section>
+ {stored}
+ {id_post}
+ {/stored}
+ 
+ 
