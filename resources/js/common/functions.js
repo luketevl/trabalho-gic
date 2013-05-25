@@ -37,7 +37,7 @@ $(document).ready(function() {
 	function disabled_all() {
 		if ($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) {
 			$('input').each(function() {
-				$(this).iCheck('disable');
+				$(this).attr('readonly','readonly');
 			});
 			$('textarea').each(function() {
 				$(this).attr('readonly','readonly');

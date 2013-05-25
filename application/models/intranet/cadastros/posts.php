@@ -113,4 +113,11 @@
 			$p->where('id_post',$id)
 				->update(array('status_post' => PUBLICADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us')));
 		}
+		
+		public function get_posts_dono($id){
+			$p = new Posts();
+			return $p->where('id_usu',$id)
+				->get();
+		}
+		
 }
