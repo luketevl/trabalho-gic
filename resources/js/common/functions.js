@@ -7,7 +7,8 @@ $(document).ready(function() {
 	$("#tagsinput").tagsInput();
 	disabled_all();
 	
-	
+	$('table tbody tr:odd').addClass('tbImpar');
+	$('table tbody tr:even').addClass('tbPar');
 
 	$('.skin-line input').each(function() {
 		var self = $(this), label = self.next(), label_text = label.text();

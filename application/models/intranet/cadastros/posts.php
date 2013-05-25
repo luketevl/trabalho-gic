@@ -18,7 +18,8 @@
 									'id_usu'  			 =>"" ,
 									'id_cat'	  		 =>""
 		);
-	
+	public $has_one = array('categorias');
+		
 		function Posts(){
 			parent::DataMapper();
 		}
@@ -119,5 +120,4 @@
 			return $p->where('id_usu',$id)
 				->get();
 		}
-		
-}
+	}
