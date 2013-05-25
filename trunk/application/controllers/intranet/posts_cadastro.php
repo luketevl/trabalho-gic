@@ -83,22 +83,8 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['resumo_post'] = $p->resumo_post					;
 			$dados['conteudo_post'] = $p->conteudo_post				;
 			$dados['ref_post'] = $p->ref_post					;
-			
-			if($p->status_post == APROVADO){
-				$dados['status_post'] ='Aprovado';
-				
-			}
-			else if($p->status_post == REJEITADO){
-				$dados['status_post'] ='REJEITADO';
-				
-			}
-			else if($p->status_post == PUBLICADO){
-				$dados['status_post'] ='Publicado';
-			}
-			else{
-				$dados['status_post'] ='Normal';
-			}
-			
+			$dados['status'] = $p->status_post				;
+			$dados['status_post'] = converte_status($dados['status']);
 			$dados['dt_criacao'] = $p->dt_criacao;
 			$dados['dt_modificacao']= $p->dt_modificacao			;
 			$dados['img_principal_post'] = $p->img_principal_post			;

@@ -64,7 +64,7 @@ $autoload['libraries'] = array('parser','database','datamapper','form_validation
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form','url','language','date','my_upload');
+$autoload['helper'] = array('form','url','language','date','my_upload','status');
 
 
 /*

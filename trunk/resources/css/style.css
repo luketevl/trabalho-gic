@@ -335,3 +335,32 @@ span#circle >img{
     height:80;
     margin-bottom:100px;
 }
+#list {
+    margin: -20px;
+    width:103%;
+    border-style: solid;
+    border-width: 2px;
+   }
+   #list table td.coluna{
+    text-align:center;
+    border-style: solid;
+    border-width:1px;
+    padding: 10px 10px 10px 10px;
+    width: 150px;
+   }
+   #list table td{
+       padding:8px;
+    border-style:none;
+   }
+   table:hover{
+    cursor:pointer;
+   }
+   table tr:hover{
+    opacity:0.8;
+   }
+   .tbImpar{
+    background-color:#F0FFFF;
+   }
+   .tbPar{
+    background-color:#E6E6FA;
+   }
