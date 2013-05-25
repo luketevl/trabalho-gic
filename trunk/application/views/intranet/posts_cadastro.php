@@ -45,6 +45,9 @@ echo form_input('titulo','{titulo_post}');
 echo form_label('Data Criacao','lbl_dt_aprovacao');
 echo form_input('dtcriacao','{dt_criacao}','readonly=readonly');
 
+echo form_label('Status','lbl_status');
+echo form_input('status','{status_post}','readonly=readonly');
+
 echo form_upload('userfile');
 
 echo form_label('Data Aprovacao','lbl_dt_aprovacao');
@@ -82,23 +85,17 @@ echo form_close();
 
 <script>
 $(document).ready(function(){
-	if($('[name="hd_id"]').val()==""){
-		$(':button').each(function(){
-			$(this).attr('disabled','disabled');
-		});
-	}
-	
 	$(':button').click(function(ev){
 		ev.preventDefault();
 		var temp = $(this).attr('name');
 		if(temp == 'aprovar'){
-			$('form').attr('action','posts_cadastro/aprovar');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/aprovar');
 		}
 		else if(temp == 'rejeitar'){
-			$('form').attr('action','posts_cadastro/rejeitar');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/rejeitar');
 			}
 		else if(temp == 'publicar'){
-			$('form').attr('action','posts_cadastro/publicar');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/publicar');
 			}
 	$('form').submit();	
 		});
