@@ -28,8 +28,6 @@ class Posts_Cadastro_List extends CI_Controller{
 // 		echo "<pre>";
 // 		echo print_r($dados);
 // 		echo "</pre>";
-		$p2 = new Posts();
-		$p2 = $p2->teste();
 		$this->parser->parse('intranet/posts_cadastro_list',$dados);
 	}
 

@@ -75,6 +75,9 @@ class Posts_Cadastro extends CI_Controller{
 	}
 	
 	public function load_form_edit($id=0){
+		if(!empty($_GET['id'])){
+			$id = $_GET['id'];
+		}
 		$p = new Posts();
 		$p = $p->get_by_id($id);
 		foreach($p->all as $key=>$valor){

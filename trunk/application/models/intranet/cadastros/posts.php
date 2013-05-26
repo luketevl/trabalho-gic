@@ -120,4 +120,12 @@
 			return $p->where('id_usu',$id)
 				->get();
 		}
+		public function teste(){
+			$p = new Posts();
+			$p->where('id_posts',120)->get();
+			echo "<pre>";
+			echo print_r($this->has_one);
+			echo print_r();
+			echo "</pre>";
+		}
 	}

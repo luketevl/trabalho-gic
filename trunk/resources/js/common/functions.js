@@ -116,6 +116,13 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
             },
         });
         
+        $('tbody tr').click(function(){
+        	var id = $(this).find('td[name="hd_id"]').text();
+        	console.log(id);
+        	$('[name="id"]').val(id);
+        	$('form').submit();
+        });
+        
 });
 $(window).load(function(){
 		$('#canvasloader-container').addClass("centro hide");
