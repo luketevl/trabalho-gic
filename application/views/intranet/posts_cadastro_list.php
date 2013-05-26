@@ -46,6 +46,10 @@
 </form>
 
  -->
+ <form action="http://localhost/portal-gic/index.php/intranet/posts_cadastro/load_form_edit" method="get" accept-charset="utf-8">
+<?php  echo form_hidden('id',0);
+ 	   echo form_close();
+ ?>
  
  <section id="list">
  	<table>
@@ -58,28 +62,34 @@
 	 			<td class="coluna">Data Aprovacao</td>
 	 			<td class="coluna">Categoria</td> 
 	 			<td class="coluna">Status</td>
+	 			<td class="coluna" name="status" >Acoes</td>
 	 			<td class="coluna" name="status" style="display: none">status_post</td>
 	 		</tr>
  		</thead>
  		<tbody>
 		 {dados}
  		<tr>
- 			<td style="display: none">{id_post}</td>
- 		<a href="#">
+ 			<td style="display: none" name="hd_id" >{id_post}</td>
  			<td>{titulo_post}</td>
- 		</a>
  			<td>{resumo_post}</td>
  			<td>{dt_criacao}</td>
  			<td>{dt_modificacao}</td>
  			<td>{id_cat}</td>
  			<td>{status_post}</td>
  			<td style="display: none">{status_post}</td>
+ 			<td>
+ 				<img src="<?php echo base_url(); ?>resources/icons/aprovar.png" width= 22 height= 22 />
+ 				<img src="<?php echo base_url(); ?>resources/icons/cancel.png" width= 22 height= 22 />
+ 				<img src="<?php echo base_url(); ?>resources/icons/publish.png" width= 22 height= 22 />
+ 				<img src="<?php echo base_url(); ?>resources/icons/edit.png" />
+ 				<img src="<?php echo base_url(); ?>resources/icons/remove.png" />
+ 			
+ 			</td>
+ 		</tbody>
  		</tr>
  		 {/dados}
- 		</tbody>
  		
  	</table>
- 	
  </section>
  
  
