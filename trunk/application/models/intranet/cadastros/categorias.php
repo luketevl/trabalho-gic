@@ -27,7 +27,7 @@
         
         public function get_by_id($id=0){
             $c = new Categorias();
-            return $c->where('id_perf',$id)
+            return $c->where('id_cat',$id)
             ->get();
         }
         

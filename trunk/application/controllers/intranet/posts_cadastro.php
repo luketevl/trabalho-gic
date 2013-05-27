@@ -80,23 +80,26 @@ class Posts_Cadastro extends CI_Controller{
 		}
 		$p = new Posts();
 		$p = $p->get_by_id($id);
+		$c = new Categorias();
 		foreach($p->all as $key=>$valor){
 			$dados['id_post'] = $p->id_post					;
 			$dados['titulo_post'] = $p->titulo_post					;
 			$dados['resumo_post'] = $p->resumo_post					;
 			$dados['conteudo_post'] = $p->conteudo_post				;
 			$dados['ref_post'] = $p->ref_post					;
-			$dados['status'] = $p->status_post				;
-			$dados['status_post'] = converte_status($dados['status']);
-			$dados['dt_criacao'] = $p->dt_criacao;
-			$dados['dt_modificacao']= $p->dt_modificacao			;
+			$dados['status_post'] = $p->status_post;
+			$dados['status'] = converte_status($dados['status_post']);
+			$dados['dt_criacao'] = mdate('%d/%m/%Y',human_to_unix($p->dt_criacao));
+			$dados['dt_modificacao']= mdate('%d/%m/%Y',human_to_unix($p->dt_modificacao));
 			$dados['img_principal_post'] = $p->img_principal_post			;
 			$dados['url_youtube']= $p->url_youtube					;
 			$dados['obs_post']= $p->obs_post					;
 			$dados['keywords_post']= str_replace('|',',',$p->keywords_post);
 			$dados['id_usu_aprovou']= $p->id_usu_aprovou				;
 			$dados['id_usu']= $p->id_usu						;
-			$dados['id_cat']= $p->id_cat								;
+			$dados['id_cat']= $p->id_cat;
+			$c = $c->get_by_id($p->id_cat);
+			$dados['categoria'] = $c->nome_cat;
 		}
 // 		echo "<pre>";
 // 		echo print_r($dados);

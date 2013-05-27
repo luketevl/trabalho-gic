@@ -49,6 +49,18 @@ $(document).ready(function() {
 				$(this).remove();
 			});
 		}
+		if($('[name="hd_status"]').val() == 'N'){
+			$('[name="publicar"]').attr('disabled','disabled');
+		}			
+		else if($('[name="hd_status"]').val() == 'A'){
+			$('[name="aprovar"]').attr('disabled','disabled' );
+		}
+		else if($('[name="hd_status"]').val() == 'P'){
+			$('[name="publicar"]').attr('disabled','disabled');
+			$('[name="aprovar"]').attr('disabled','disabled');
+			$('[name="rejeitar"]').attr('disabled','disabled');
+		}
+		
 	}
 	
 	function createLoad(){

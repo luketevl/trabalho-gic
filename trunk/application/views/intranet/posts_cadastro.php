@@ -43,16 +43,16 @@ echo form_label('Titulo','lbl_titulo'). "<br />";
 echo form_input('titulo','{titulo_post}');
 
 echo form_label('Data Criacao','lbl_dt_aprovacao');
-echo form_input('dtcriacao','{dt_criacao}','readonly=readonly');
+echo form_input('dtcriacao','{dt_criacao}','readonly=readonly class="center"');
 
-echo form_label('Status','lbl_status');
-echo form_input('status','{status_post}','readonly=readonly');
-
-echo form_upload('userfile');
 
 echo form_label('Data Aprovacao','lbl_dt_aprovacao');
-echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly') . "<br />";
+echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"') . "<br />";
 
+echo form_label('Status','lbl_status');
+echo form_input('status','{status}','readonly=readonly ');
+
+echo form_upload('userfile');
 
 echo form_label('Descricao Resumida','lbl_desc_resumida') . "<br />";
 echo form_input('desc_resumida','{resumo_post}') . "<br />";
@@ -61,7 +61,7 @@ echo form_label('URL do video','lbl_url_youtube') . "<br />";
 echo form_input('url_youtube','{url_youtube}') . "<br />";
 
 echo form_label('Categoria','lbl_categoria') . "<br />";
-echo form_input('ac_categoria','','id="ac_categoria"') . "<br />";
+echo form_input('ac_categoria','{categoria}','id="ac_categoria"') . "<br />";
 
 echo form_label('Conteudo','lbl_conteudo') . "<br />";
 echo form_textarea('editor1','{conteudo_post}') . "<br />";

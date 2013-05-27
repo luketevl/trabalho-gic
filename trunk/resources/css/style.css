@@ -364,3 +364,12 @@ span#circle >img{
    .tbPar{
     background-color:#E6E6FA;
    }
+   .center{
+       text-align:center;
+   }
+   .number{
+       text-align:right;
+   }
+   .alfa{
+       text-align:left;
+   }

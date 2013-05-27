@@ -56,12 +56,11 @@
  		<thead>
  			<tr>
 	 			<td class="coluna" name="id_post" style="display: none">id_post</td>
-	 			<td class="coluna">Titulo</td>
-	 			<td class="coluna">Resumo</td>
-	 			<td class="coluna">Data Criacao</td>
-	 			<td class="coluna">Data Aprovacao</td>
+	 			<td class="coluna" style="width: 550px;" >Titulo</td>
+	 			<td class="coluna" style="width: 5px;">Data Criacao</td>
+	 			<td class="coluna" style="width: 5px;">Data Aprovacao</td>
 	 			<td class="coluna">Categoria</td> 
-	 			<td class="coluna">Status</td>
+	 			<td class="coluna" style="width: 5px;">Status</td>
 	 			<td class="coluna" name="status" >Acoes</td>
 	 			<td class="coluna" name="status" style="display: none">status_post</td>
 	 		</tr>
@@ -71,11 +70,10 @@
  		<tr>
  			<td style="display: none" name="hd_id" >{id_post}</td>
  			<td>{titulo_post}</td>
- 			<td>{resumo_post}</td>
- 			<td>{dt_criacao}</td>
- 			<td>{dt_modificacao}</td>
- 			<td>{id_cat}</td>
- 			<td>{status_post}</td>
+ 			<td class="center" >{dt_criacao}</td>
+ 			<td class="center" >{dt_modificacao}</td>
+ 			<td>{categoria}</td>
+ 			<td>{status}</td>
  			<td style="display: none">{status_post}</td>
  			<td>
  				<img src="<?php echo base_url(); ?>resources/icons/aprovar.png" width= 22 height= 22 />
