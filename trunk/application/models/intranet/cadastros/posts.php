@@ -115,9 +115,15 @@
 				->update(array('status_post' => PUBLICADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us')));
 		}
 		
+		public function deletar($id){
+			$p = new Posts();
+			$p->where('id_post',$id)->get();
+			$p->delete();
+		}
+		
 		public function get_posts_dono($id){
 			$p = new Posts();
-			return $p->where('id_usu',$id)
+			return $p->where('id_usu',$id)->order_by('id_post','desc')
 				->get();
 		}
 		public function teste(){

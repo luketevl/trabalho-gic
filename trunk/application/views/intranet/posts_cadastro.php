@@ -80,6 +80,7 @@ echo form_submit('enviar','Enviar');
 echo form_button('aprovar','Aprovar');
 echo form_button('rejeitar','Rejeitar');
 echo form_button('publicar','Publicar');
+echo form_button('remove','Apagar');
 echo form_close();
 ?>
 
@@ -96,6 +97,9 @@ $(document).ready(function(){
 			}
 		else if(temp == 'publicar'){
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/publicar');
+			}
+		else if(temp == 'remove'){
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/deletar');
 			}
 	$('form').submit();	
 		});

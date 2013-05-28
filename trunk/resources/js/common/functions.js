@@ -37,8 +37,8 @@ $(document).ready(function() {
 	}
 	function disabled_all() {
 		if ($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) {
-			$('input').each(function() {
-				$(this).attr('readonly','readonly');
+			$('input:text').each(function() {
+				$(this).attr('disabled','disabled');
 			});
 			$('textarea').each(function() {
 				$(this).attr('readonly','readonly');
@@ -49,18 +49,64 @@ $(document).ready(function() {
 				$(this).remove();
 			});
 		}
-		if($('[name="hd_status"]').val() == 'N'){
-			$('[name="publicar"]').attr('disabled','disabled');
+		$('tbody td[name="hd_status"]').each(function(){
+			hide_button(this,false);
+		});
+		hide_button('',true);
+	}
+	
+	function hide_button(status,param){
+		if(param){
+			if($('[name="hd_status"]').val() == ""){
+				$('[name="publicar"]').hide() ;
+				$('[name="aprovar"]').hide();
+				$('[name="rejeitar"]').hide();
+				$('[name="remove"]').hide();
+				
+			}
+			else if($('[name="hd_status"]').val() == 'N'){
+				$('[name="publicar"]').hide();
+				$('[name="enviar"]').hide();
+			}			
+			else if($('[name="hd_status"]').val() == 'A'){
+				$('[name="enviar"]').hide();
+				$('[name="aprovar"]').hide();
+				$('[name="remove"]').hide();
+				
+			}
+			else if($('[name="hd_status"]').val() == 'P'){
+				$('[name="enviar"]').hide();
+				$('[name="publicar"]').hide();
+				$('[name="aprovar"]').hide();
+				$('[name="rejeitar"]').hide();
+			}
+	}
+	else if(!param){
+		console.log($(status).parent('[name="publicar"]').hide()) ;
+		if($(status).text() == ""){
+			$(status).parent('[name="publicar"]').hide() ;
+			$(status).parent('[name="aprovar"]').hide();
+			$(status).parent('[name="rejeitar"]').hide();
+			$(status).parent('[name="remove"]').hide();
+			
+		}
+		else if($(status).text() == 'N'){
+			$(status).parent('[name="publicar"]').hide();
+			$(status).parent('[name="enviar"]').hide();
 		}			
-		else if($('[name="hd_status"]').val() == 'A'){
-			$('[name="aprovar"]').attr('disabled','disabled' );
+		else if($(status).text() == 'A'){
+			$(status).parent('[name="enviar"]').hide();
+			$(status).parent('[name="aprovar"]').hide();
+			$(status).parent('[name="remove"]').hide();
+			
 		}
-		else if($('[name="hd_status"]').val() == 'P'){
-			$('[name="publicar"]').attr('disabled','disabled');
-			$('[name="aprovar"]').attr('disabled','disabled');
-			$('[name="rejeitar"]').attr('disabled','disabled');
+		else if($(status).text() == 'P'){
+			$(status).parent('[name="enviar"]').hide();
+			$(status).parent('[name="publicar"]').hide();
+			$(status).parent('[name="aprovar"]').hide();
+			$(status).parent('[name="rejeitar"]').hide();
 		}
-		
+	}
 	}
 	
 	function createLoad(){
@@ -95,8 +141,6 @@ $(document).ready(function() {
 		$('[name="hd_keywords"]').val(keys);
 };
 $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
-
-
         var cache = {};
         var dados;
         function log( message ) {

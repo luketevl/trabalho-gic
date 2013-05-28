@@ -74,14 +74,15 @@
  			<td class="center" >{dt_modificacao}</td>
  			<td>{categoria}</td>
  			<td>{status}</td>
- 			<td style="display: none">{status_post}</td>
- 			<td>
- 				<img src="<?php echo base_url(); ?>resources/icons/aprovar.png" width= 22 height= 22 />
- 				<img src="<?php echo base_url(); ?>resources/icons/cancel.png" width= 22 height= 22 />
- 				<img src="<?php echo base_url(); ?>resources/icons/publish.png" width= 22 height= 22 />
- 				<img src="<?php echo base_url(); ?>resources/icons/edit.png" />
- 				<img src="<?php echo base_url(); ?>resources/icons/remove.png" />
- 			
+ 			<td style="display: none" name="hd_status" >{status_post}</td>
+ 			<td name="acoes">
+ 			<?php 
+ 			echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>');
+ 			echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>');
+ 			echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>');
+ 			echo form_button('editar','<img src='.  base_url() .'resources/icons/edit.png width= 22 height= 22 /> <span></span>');
+ 			echo form_button('remover','<img src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>');
+ 			?>
  			</td>
  		</tbody>
  		</tr>

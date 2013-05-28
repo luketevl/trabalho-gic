@@ -21,6 +21,7 @@ Tabelas
 	- Categorias(id_cat,nome_cat,fk_id_cat)
 	- Logs(id_log, nome_table, id_user,dt_modificacao)
 	- Imagens(id_img, nome_img,id_post)
+	- Videos(id_vid, url_vid,id_post)
 
 DCL
 
@@ -114,6 +115,13 @@ create table log_atividades(
 create table imagens(
 	id_img int unsigned auto_increment not null primary key,
 	nome_img varchar(45) not null,
+	id_post int not null,
+	foreign key(id_post) references post(id_post)
+)ENGINE= MYISAM;
+
+create table videos(
+	id_vid int unsigned auto_increment not null primary key,
+	url_vid varchar(45) not null,
 	id_post int not null,
 	foreign key(id_post) references post(id_post)
 )ENGINE= MYISAM;
