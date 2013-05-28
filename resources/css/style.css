@@ -352,10 +352,10 @@ span#circle >img{
        padding:8px;
     border-style:none;
    }
-   table:hover{
+   table tbody:hover{
     cursor:pointer;
    }
-   table tr:hover{
+   table tbody tr:hover{
     opacity:0.8;
    }
    .tbImpar{

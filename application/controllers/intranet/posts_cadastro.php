@@ -131,6 +131,15 @@ class Posts_Cadastro extends CI_Controller{
 		$this->load_form_edit($id);
 	}
 	
+	public function deletar($id=0){
+		$p = new Posts();
+		$id= $this->input->post('hd_id');
+		$p->deletar($id);
+// 		$this->index();
+	}
+	
+	
+	
 	public function justificar($justificativa,$status,$id_post){
 		$h = new Historicos();
 		$aux = $h->getFields();
