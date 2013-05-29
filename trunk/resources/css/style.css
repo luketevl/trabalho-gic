@@ -364,6 +364,10 @@ span#circle >img{
    .tbPar{
     background-color:#E6E6FA;
    }
+	.selected{
+    	background-color:rgba(31, 202, 38, 0.67) !important;
+   }
+   
    .center{
        text-align:center;
    }
@@ -372,4 +376,13 @@ span#circle >img{
    }
    .alfa{
        text-align:left;
+   }
+   button{
+   	margin-right:1px;
+   	cursor:pointer;
+   }
+   #acoes{
+   	margin-top:6px;
+   	margin-left:10px;
+   	margin-bottom:6px;
    }
