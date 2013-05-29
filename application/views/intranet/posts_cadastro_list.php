@@ -28,6 +28,19 @@
    <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
    -->
+   
+   <script>
+	$(document).ready(function(){
+		$('button').click(function(){
+			var id = $('.selected').find('td[name="hd_id"]').text();
+			console.log(id);
+        	$('[name="id"]').val(id);
+			$('[name="adicionar"]').click(function(){
+				window.location = "http://localhost/portal-gic/index.php/intranet/posts_cadastro/";
+				});
+			});
+		});
+   </script>
 </head>
 
 <!-- 
@@ -52,16 +65,26 @@
  ?>
  
  <section id="list">
+ 	<nav id="acoes">
+ 	<?php 
+ 			echo form_button('adicionar','<img src='. base_url() .'resources/icons/add.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="Aprovar Posts"');
+ 			echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="Aprovar Posts"');
+ 			echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+ 			echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+ 			echo form_button('editar','<img src='.  base_url() .'resources/icons/edit.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+ 			echo form_button('remover','<img src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+ 	?>
+ 	</nav>
+ 			<hr />
  	<table>
  		<thead>
  			<tr>
 	 			<td class="coluna" name="id_post" style="display: none">id_post</td>
-	 			<td class="coluna" style="width: 550px;" >Titulo</td>
+	 			<td class="coluna" style="width: 750px;" >Titulo</td>
 	 			<td class="coluna" style="width: 5px;">Data Criacao</td>
 	 			<td class="coluna" style="width: 5px;">Data Aprovacao</td>
 	 			<td class="coluna">Categoria</td> 
 	 			<td class="coluna" style="width: 5px;">Status</td>
-	 			<td class="coluna" name="status" >Acoes</td>
 	 			<td class="coluna" name="status" style="display: none">sts_post</td>
 	 		</tr>
  		</thead>
@@ -75,20 +98,10 @@
  			<td>{categoria}</td>
  			<td>{status}</td>
  			<td style="display: none" name="hd_status" >{status_post}</td>
- 			<td name="acoes">
- 			<?php 
- 			echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>');
- 			echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>');
- 			echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>');
- 			echo form_button('editar','<img src='.  base_url() .'resources/icons/edit.png width= 22 height= 22 /> <span></span>');
- 			echo form_button('remover','<img src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>');
- 			?>
- 			</td>
  		</tr>
  		 {/dados}
  		</tbody>
  		
  	</table>
  </section>
- 
  

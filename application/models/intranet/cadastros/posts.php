@@ -94,7 +94,7 @@
 			$p->id_usu								=$this->campos['id_usu'];
 			$p->id_cat								=$this->campos['id_cat'];
 			$p->where('id_post',$id);
-			$p->update_all('is_all_powerful' , TRUE);
+			$p->update($this->campos);
 		}
 	
 		public function aprovar($id){
@@ -117,8 +117,7 @@
 		
 		public function deletar($id){
 			$p = new Posts();
-			$p->where('id_post',$id)->get();
-			$p->delete();
+			$p->where('id_post',$id)->get()->delete();
 		}
 		
 		public function get_posts_dono($id){

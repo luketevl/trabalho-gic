@@ -76,33 +76,17 @@ echo form_textarea('editor1','{conteudo_post}') . "<br />";
 echo form_label('Referencias','lbl_ref') . "<br />";
 echo form_textarea('referencias','{ref_post}') . "<br />"; 
 echo form_fieldset_close();
-echo form_submit('enviar','Enviar');
-echo form_button('aprovar','Aprovar');
-echo form_button('rejeitar','Rejeitar');
-echo form_button('publicar','Publicar');
-echo form_button('remove','Apagar');
+echo form_submit('enviar','Salvar','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="Aprovar Posts"');
+echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+echo form_button('remover','<img src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
 echo form_close();
 ?>
 
 <script>
 $(document).ready(function(){
-	$(':button').click(function(ev){
-		ev.preventDefault();
-		var temp = $(this).attr('name');
-		if(temp == 'aprovar'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/aprovar');
-		}
-		else if(temp == 'rejeitar'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/rejeitar');
-			}
-		else if(temp == 'publicar'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/publicar');
-			}
-		else if(temp == 'remove'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/deletar');
-			}
-	$('form').submit();	
-		});
+	
 });
 </script>
 

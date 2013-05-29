@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$("#form").validate();
 	$("#tagsinput").tagsInput();
 	disabled_all();
-	
+	hide_button($('[name="hd_status"]').val());
 	$('table tbody tr:odd').addClass('tbImpar');
 	$('table tbody tr:even').addClass('tbPar');
 
@@ -25,6 +25,30 @@ $(document).ready(function() {
 		createLoad();
 	});
 	createNotificationUser('https://twimg0-a.akamaihd.net/profile_images/770845756/45_normal.jpg','Criei um novo POST chamado MEU TESTE, tem como olhar? Obrigado');
+	
+	$(':button').click(function(ev){
+		ev.preventDefault();
+		var temp = $(this).attr('name');
+		if(temp == 'aprovar'){
+			alert('aprovar');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/aprovar');
+		}
+		else if(temp == 'rejeitar'){
+			alert('rejeitar');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/rejeitar');
+			}
+		else if(temp == 'publicar'){
+			alert('publicar');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/publicar');
+			}
+		else if(temp == 'remover'){
+			alert('remover');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/deletar');
+			}
+	$('form').submit();	
+		});
+	
+	
 	function is_checked(hd_opcoes) {
 //		hd_opcoes = (hd_opcoes == undefined) ? "" : hd_opcoes;
 		if(hd_opcoes !=undefined){ 
@@ -36,7 +60,7 @@ $(document).ready(function() {
 		}
 	}
 	function disabled_all() {
-		if ($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) {
+		if (($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) && $('[name="hd_status"]').val() != 'N') {
 			$('input:text').each(function() {
 				$(this).attr('disabled','disabled');
 			});
@@ -49,59 +73,90 @@ $(document).ready(function() {
 				$(this).remove();
 			});
 		}
-		$('tbody tr').each(function(){
-			hide_button(this,false);
-		});
 	}
 	
-	function hide_button(status,param){
-		if(param){
-			if($('[name="hd_status"]').val() == ""){
-				$('[name="publicar"]').hide() ;
-				$('[name="aprovar"]').hide();
-				$('[name="rejeitar"]').hide();
-				$('[name="remove"]').hide();
+	function hide_button(status){
+		$('[name="publicar"]').removeAttr('disabled');
+		$('[name="aprovar"]').removeAttr('disabled');
+		$('[name="rejeitar"]').removeAttr('disabled');
+		$('[name="remove"]').removeAttr('disabled');
+		$('[name="editar"]').removeAttr('disabled');
+		$('[name="remover"]').removeAttr('disabled');
+		
+		$('[name="adicionar"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		$('[name="publicar"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		$('[name="remover"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		$('[name="editar"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
+			if(status == ""){
+				$('[name="publicar"]').attr('disabled','disabled');
+				$('[name="publicar"]').removeClass('tooltip btn-primary');
+				$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
 				
+				$('[name="aprovar"]').attr('disabled','disabled');
+				$('[name="aprovar"]').removeClass('tooltip btn-primary');
+				$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="rejeitar"]').attr('disabled','disabled');
+				$('[name="rejeitar"]').removeClass('tooltip btn-primary');
+				$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="remover"]').attr('disabled','disabled');
+				$('[name="remover"]').removeClass('tooltip btn-primary');
+				$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="editar"]').attr('disabled','disabled');
+				$('[name="editar"]').removeClass('tooltip btn-primary');
+				$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="remover"]').attr('disabled','disabled');
+				$('[name="remover"]').removeClass('tooltip btn-primary');
+				$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
 			}
-			else if($('[name="hd_status"]').val() == 'N'){
-				$('[name="publicar"]').hide();
-				$('[name="enviar"]').hide();
+			else if(status == 'N'){
+				$('[name="publicar"]').attr('disabled','disabled');
+				$('[name="publicar"]').removeClass('tooltip btn-primary');
+				$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+//				$('[name="enviar"]').attr('disabled','disabled');
+//				$('[name="enviar"]').removeClass('tooltip btn-primary');
+//				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
 			}			
-			else if($('[name="hd_status"]').val() == 'A'){
-				$('[name="enviar"]').hide();
-				$('[name="aprovar"]').hide();
-				$('[name="remove"]').hide();
+			else if(status == 'A'){
+				$('[name="enviar"]').attr('disabled','disabled');
+				$('[name="enviar"]').removeClass('tooltip btn-primary');
+				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="aprovar"]').attr('disabled','disabled');
+				$('[name="aprovar"]').removeClass('tooltip btn-primary');
+				$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="remover"]').attr('disabled','disabled');
+				$('[name="remover"]').removeClass('tooltip btn-primary');
+				$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
 				
 			}
-			else if($('[name="hd_status"]').val() == 'P'){
-				$('[name="enviar"]').hide();
-				$('[name="publicar"]').hide();
-				$('[name="aprovar"]').hide();
-				$('[name="rejeitar"]').hide();
+			else if(status == 'P'){
+				$('[name="enviar"]').attr('disabled','disabled');
+				$('[name="enviar"]').removeClass('tooltip btn-primary');
+				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="publicar"]').attr('disabled','disabled');
+				$('[name="publicar"]').removeClass('tooltip btn-primary');
+				$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="aprovar"]').attr('disabled','disabled');
+				$('[name="aprovar"]').removeClass('tooltip btn-primary');
+				$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('[name="rejeitar"]').attr('disabled','disabled');
+				$('[name="rejeitar"]').removeClass('tooltip btn-primary');
+				$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
 			}
 	}
-	else if(!param){
-		var situacao = $(status).find('td[name="hd_status"]').text();
-		console.log($(status).find('[name="publicar"]'));
-		console.log(situacao);
-		if(situacao == 'N'){
-			$(status).find('[name="publicar"]').hide();
-			$(status).find('[name="enviar"]').hide();
-		}			
-		else if(situacao == 'A'){
-			$(status).find('[name="enviar"]').hide();
-			$(status).find('[name="aprovar"]').hide();
-			$(status).find('[name="remove"]').hide();
-			
-		}
-		else if(situacao == 'P'){
-			$(status).find('[name="enviar"]').hide();
-			$(status).find('[name="publicar"]').hide();
-			$(status).find('[name="aprovar"]').hide();
-			$(status).find('[name="rejeitar"]').hide();
-		}
-	}
-	}
+	
 	
 	function createLoad(){
 		$('<div id="canvasloader-container" class="centro"></div>').insertBefore('body');
@@ -147,7 +202,7 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
               response( cache[ term ] );
               return;
             }
-            $.getJSON( "categoria_cadastro/au_get_by_name", request, function( data, status, xhr ) {
+            $.getJSON( "http://localhost/portal-gic/index.php/intranet/categoria_cadastro/au_get_by_name?term=bola", request, function( data, status, xhr ) {
               cache[ term ] = data;
               response( $.map( data, function( item ) {
                 return {
@@ -165,14 +220,19 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
               log( ui.item.id);
             },
         });
-        
         $('tbody tr').click(function(){
+        	$('tbody tr').each(function(){
+        		$(this).removeClass('selected');
+        	});
+        	$(this).addClass('selected');
+        	hide_button($(this).find('td[name="hd_status"]').text());
+        	$('[name="id"]').val($(this).find('td[name="hd_id"]').text());
+        });
+        $('tbody tr').dblclick(function(){
         	var id = $(this).find('td[name="hd_id"]').text();
-        	console.log(id);
         	$('[name="id"]').val(id);
         	$('form').submit();
         });
-        
 });
 $(window).load(function(){
 		$('#canvasloader-container').addClass("centro hide");

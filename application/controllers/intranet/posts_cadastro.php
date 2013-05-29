@@ -5,6 +5,8 @@ class Posts_Cadastro extends CI_Controller{
 		if($this->login_permission->is_logado()){
 			$p = new Posts();
 			$dados = $p->getFields();
+			$dados['status'] ="";
+			$dados['categoria'] ="";
 			$this->parser->parse('intranet/posts_cadastro',$dados);
 		}else{
 			redirect('index.php/intranet/login');
@@ -106,35 +108,70 @@ class Posts_Cadastro extends CI_Controller{
 // 		echo count($dados);
 // 		echo "</pre>";
 // 		die;
-		$this->parser->parse('intranet/posts_cadastro',$dados);
+			$this->parser->parse('intranet/posts_cadastro',$dados);
 	}
 	
 	public function aprovar($id=0){
+		if(!empty($_GET['id'])){
+			$id = $_GET['id'];
+		}else{
+			$id= $this->input->post('hd_id');
+		}
 		$p = new Posts();
-		$id= $this->input->post('hd_id');
 		$p->aprovar($id);
-		$this->load_form_edit($id);
+		if(empty($_GET['id'])){
+			$this->load_form_edit($id);
+		}
+		else{
+			redirect('index.php/intranet/posts_cadastro_list');
+		}
 	}
 	
 	public function rejeitar($id=0){
-		$p = new Posts();
+		if(!empty($_GET['id'])){
+			$id = $_GET['id'];
+		}
+		else{
 		$id= $this->input->post('hd_id');
+		}
+		$p = new Posts();
 		$this->justificar($justificativa,REJEITADO,$id);
 		$p->rejeitar($id);
-		$this->load_form_edit($id);
+		if(empty($_GET['id'])){
+			$this->load_form_edit($id);
+		}
+		else{
+			redirect('index.php/intranet/posts_cadastro_list');
+		}
 	}
 
 	public function publicar($id=0){
-		$p = new Posts();
+		if(!empty($_GET['id'])){
+			$id = $_GET['id'];
+		}
+		else{
 		$id= $this->input->post('hd_id');
+		}
+		$p = new Posts();
 		$p->publicar($id);
-		$this->load_form_edit($id);
+		if(empty($_GET['id'])){
+			$this->load_form_edit($id);
+		}
+		else{
+			redirect('index.php/intranet/posts_cadastro_list');
+		}
 	}
 	
 	public function deletar($id=0){
-		$p = new Posts();
+		if(!empty($_GET['id'])){
+			$id = $_GET['id'];
+		}
+		else {
 		$id= $this->input->post('hd_id');
+		}
+		$p = new Posts();
 		$p->deletar($id);
+			redirect('index.php/intranet/posts_cadastro_list');
 // 		$this->index();
 	}
 	
