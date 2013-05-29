@@ -49,10 +49,9 @@ $(document).ready(function() {
 				$(this).remove();
 			});
 		}
-		$('tbody td[name="hd_status"]').each(function(){
+		$('tbody tr').each(function(){
 			hide_button(this,false);
 		});
-		hide_button('',true);
 	}
 	
 	function hide_button(status,param){
@@ -82,29 +81,24 @@ $(document).ready(function() {
 			}
 	}
 	else if(!param){
-		console.log($(status).parent('[name="publicar"]').hide()) ;
-		if($(status).text() == ""){
-			$(status).parent('[name="publicar"]').hide() ;
-			$(status).parent('[name="aprovar"]').hide();
-			$(status).parent('[name="rejeitar"]').hide();
-			$(status).parent('[name="remove"]').hide();
-			
-		}
-		else if($(status).text() == 'N'){
-			$(status).parent('[name="publicar"]').hide();
-			$(status).parent('[name="enviar"]').hide();
+		var situacao = $(status).find('td[name="hd_status"]').text();
+		console.log($(status).find('[name="publicar"]'));
+		console.log(situacao);
+		if(situacao == 'N'){
+			$(status).find('[name="publicar"]').hide();
+			$(status).find('[name="enviar"]').hide();
 		}			
-		else if($(status).text() == 'A'){
-			$(status).parent('[name="enviar"]').hide();
-			$(status).parent('[name="aprovar"]').hide();
-			$(status).parent('[name="remove"]').hide();
+		else if(situacao == 'A'){
+			$(status).find('[name="enviar"]').hide();
+			$(status).find('[name="aprovar"]').hide();
+			$(status).find('[name="remove"]').hide();
 			
 		}
-		else if($(status).text() == 'P'){
-			$(status).parent('[name="enviar"]').hide();
-			$(status).parent('[name="publicar"]').hide();
-			$(status).parent('[name="aprovar"]').hide();
-			$(status).parent('[name="rejeitar"]').hide();
+		else if(situacao == 'P'){
+			$(status).find('[name="enviar"]').hide();
+			$(status).find('[name="publicar"]').hide();
+			$(status).find('[name="aprovar"]').hide();
+			$(status).find('[name="rejeitar"]').hide();
 		}
 	}
 	}

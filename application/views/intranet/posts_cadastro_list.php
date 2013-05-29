@@ -62,7 +62,7 @@
 	 			<td class="coluna">Categoria</td> 
 	 			<td class="coluna" style="width: 5px;">Status</td>
 	 			<td class="coluna" name="status" >Acoes</td>
-	 			<td class="coluna" name="status" style="display: none">status_post</td>
+	 			<td class="coluna" name="status" style="display: none">sts_post</td>
 	 		</tr>
  		</thead>
  		<tbody>
@@ -84,9 +84,9 @@
  			echo form_button('remover','<img src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>');
  			?>
  			</td>
- 		</tbody>
  		</tr>
  		 {/dados}
+ 		</tbody>
  		
  	</table>
  </section>
