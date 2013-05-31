@@ -45,7 +45,9 @@ $(document).ready(function() {
 			alert('remover');
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/deletar');
 			}
-	$('form').submit();	
+		if(temp != 'adicionar'){
+			$('form').submit();	
+		}
 		});
 	
 	
@@ -204,7 +206,7 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
             }
             $.getJSON( "http://localhost/portal-gic/index.php/intranet/categoria_cadastro/au_get_by_name?term=bola", request, function( data, status, xhr ) {
               cache[ term ] = data;
-              response( $.map( data, function( item ) {
+              response( $.map( data.dados, function( item ) {
                 return {
                   label: item.nome_cat,
                   value: item.nome_cat,
