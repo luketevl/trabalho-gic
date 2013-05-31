@@ -64,6 +64,8 @@ define('ABERTO'		,'N');
 define('APROVADO'	,'A');
 define('REJEITADO'	,'R');
 define('PUBLICADO'	,'P');
+define('1'			,'ADM');
+define('2'			,'COMUM');
 
 
 /* End of file constants.php */

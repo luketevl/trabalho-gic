@@ -66,8 +66,6 @@ class Login extends CI_Controller{
 		//       echo "<pre>";
 		//       print_r($user);
 		//       echo "</pre>";
-		      
-		      
 		    }else{
 		      echo "Erro de conexão com Facebook";
 			  redirect('intranet/login');
@@ -172,5 +170,9 @@ class Login extends CI_Controller{
 			return false;
 		}
 		return true;
+	}
+	
+	public function get_perf(){
+		echo $this->session->userdata('id_perf');
 	}
 }
