@@ -186,4 +186,26 @@ class Posts_Cadastro extends CI_Controller{
 		$h->setFields($aux);
 		$h->inserir();
 	}
+	
+	public function testeEmail(){
+		$config = array(
+				'protocol' => 'smtp',
+				"newline"			=> "\r\n",
+				"smtp_timeout"		=> 30,
+				"validate"			=> TRUE,
+				"smtp_host"			=> 'smtp.gmail.com',
+				"smtp_port"			=> '465',
+				"smtp_user"			=> 'lukete@gmail.com',
+				"smtp_pass"			=> 'keporra157',
+				"mailtype"			=> 'text',
+		);
+		$this->email->initialize($config);
+		$this->email->from('luketevl@gmail.com');
+		$this->email->to('luketevl@gmail.com');
+		$this->email->subject('CABULOSO');
+		$this->email->message('TRABA');
+		if (!@$this->email->send()){
+			echo "nao";
+		}
+	}
 }
