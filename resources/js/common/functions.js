@@ -78,6 +78,10 @@ $(document).ready(function() {
 	}
 	
 	function hide_button(status){
+		var id_perf;
+		$.get("http://localhost/portal-gic/index.php/intranet/login/get_perf",function(data,status){
+		      id_perf = data;
+		    });
 		$('[name="publicar"]').removeAttr('disabled');
 		$('[name="aprovar"]').removeAttr('disabled');
 		$('[name="rejeitar"]').removeAttr('disabled');
@@ -122,6 +126,7 @@ $(document).ready(function() {
 				$('[name="publicar"]').removeClass('tooltip btn-primary');
 				$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
 				
+				
 //				$('[name="enviar"]').attr('disabled','disabled');
 //				$('[name="enviar"]').removeClass('tooltip btn-primary');
 //				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
@@ -157,8 +162,21 @@ $(document).ready(function() {
 				$('[name="rejeitar"]').removeClass('tooltip btn-primary');
 				$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
 			}
+			disable_user_comum(id_perf);
 	}
 	
+	function disable_user_comum(id_perf){
+		if(id_perf!=1){
+			$('[name="aprovar"]').hide();
+			$('[name="publicar"]').hide();
+			$('[name="rejeitar"]').hide();
+		}else{
+			$('[name="aprovar"]').show();
+			$('[name="publicar"]').show();
+			$('[name="rejeitar"]').hide();
+		}
+		
+	}
 	
 	function createLoad(){
 		$('<div id="canvasloader-container" class="centro"></div>').insertBefore('body');
@@ -197,6 +215,9 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
         function log( message ) {
             $('[name="hd_cat_id"]').val(message);
           }
+        
+        
+//        -----------------------------------------------------------------------------------
         $( "#ac_categoria" ).autocomplete({
           source: function( request, response ) {
             var term = request.term;
@@ -222,6 +243,17 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
               log( ui.item.id);
             },
         });
+        
+//        --------------------------------------------TESTE---------------------------------------
+
+        
+        
+        
+        
+        
+        //        ---------------------------------------fim teste--------------------------------------------
+        
+        
         $('tbody tr').click(function(){
         	$('tbody tr').each(function(){
         		$(this).removeClass('selected');
