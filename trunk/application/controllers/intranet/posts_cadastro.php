@@ -25,25 +25,32 @@ class Posts_Cadastro extends CI_Controller{
 		return $value;
 	}
 	
-	public function save(){
+	public function upload(){
+		print_r($_FILES);
+		
 		$config['upload_path'] = './././resources/img/uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '10000';
 		$config['max_width']  = '10024';
 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
-		if($this->upload->do_upload()){
-// 			echo "<pre>";
-// 			echo print_r($this->upload->data());
-// 			echo "</pre>";
-// 			echo "sem erro". $this->upload->display_errors();
+		if($this->upload->do_upload('qqfile')){
+// 						echo "<pre>";
+// 						echo print_r($this->upload->data());
+// 						echo "</pre>";
+			$msg['success'] = "true";
+			echo "{success:true}"; 
 		}
 		else{
-// 			echo "<pre>";
-// 			echo print_r($this->upload->data());
-// 			echo "</pre>";
-// 			echo "erro". $this->upload->display_errors();
+						echo "<pre>";
+						echo print_r($this->upload->data());
+						echo "</pre>";
+						echo "erro". $this->upload->display_errors();
 		}
+	}
+	
+	public function save(){
+		
 		
 		$p = new Posts();
 		$aux = $p->getFields();
