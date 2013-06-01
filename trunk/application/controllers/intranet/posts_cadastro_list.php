@@ -3,11 +3,18 @@
 class Posts_Cadastro_List extends CI_Controller{
 	
 	function index(){
+		$this->lang->load('posts');
 		$id_usu = $this->session->userdata('id_usu');
+		$id_perf = $this->session->userdata('id_perf');
 		$p = new Posts();
 		$c = new Categorias();
-		$p = $p->get_posts_dono($id_usu);
-		$dados = array(array(array()));
+		if($id_perf == COMUM){
+			$p = $p->get_posts_dono($id_usu);
+		}
+		else{
+			$p = $p->getAll();
+		}
+		$dados['dados']=array();
 		foreach($p as $key => $posts){
 			$dados['dados'][$key]['id_post'] = $posts->id_post					;
 			$dados['dados'][$key]['titulo_post'] = $posts->titulo_post					;

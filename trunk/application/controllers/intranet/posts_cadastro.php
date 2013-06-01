@@ -7,6 +7,7 @@ class Posts_Cadastro extends CI_Controller{
 			$dados = $p->getFields();
 			$dados['status'] ="";
 			$dados['categoria'] ="";
+			$this->lang->load('posts');
 			$this->parser->parse('intranet/posts_cadastro',$dados);
 		}else{
 			redirect('index.php/intranet/login');
@@ -77,6 +78,7 @@ class Posts_Cadastro extends CI_Controller{
 	}
 	
 	public function load_form_edit($id=0){
+		$this->lang->load('posts');
 		if(!empty($_GET['id'])){
 			$id = $_GET['id'];
 		}
@@ -118,7 +120,8 @@ class Posts_Cadastro extends CI_Controller{
 			$id= $this->input->post('hd_id');
 		}
 		$p = new Posts();
-		$p->aprovar($id);
+		$id_usu_aprovou = $this->session->userdata('id_usu');
+		$p->aprovar($id,$id_usu_aprovou);
 		if(empty($_GET['id'])){
 			$this->load_form_edit($id);
 		}

@@ -385,4 +385,19 @@ span#circle >img{
    	margin-top:6px;
    	margin-left:10px;
    	margin-bottom:6px;
+   	float:left;
    }
+
+#infoList{
+   	float: right;
+    text-align: right;
+    width: 857px;
+    margin-right: 15px;
+    margin-top: -51px;
+    font-style:italic;
+}
+hr{
+    width:99%;
+    margin-left:5px;
+    height:2px;    
+}
