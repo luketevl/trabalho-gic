@@ -97,10 +97,11 @@
 			$p->update($this->campos);
 		}
 	
-		public function aprovar($id){
+		public function aprovar($id,$id_usu_aprovou=0){
 			$p = new Posts();
 			$p->where('id_post',$id)
-				->update(array('status_post' => APROVADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us')));
+				->update(array('status_post' => APROVADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us') , 
+								'id_usu_aprovou' => $id_usu_aprovou));
 		}
 		
 		public function rejeitar($id){

@@ -2,11 +2,12 @@
 $(document).ready(function() {
 	// Pega valor dos acessos
 	createLoad();
+	 var id_perf=0;
 	$('.tooltip').tooltipster();
 	$("#form").validate();
 	$("#tagsinput").tagsInput();
 	disabled_all();
-	hide_button($('[name="hd_status"]').val());
+	hide_button($('[name="hd_status"]').val(),id_perf);
 	$('table tbody tr:odd').addClass('tbImpar');
 	$('table tbody tr:even').addClass('tbPar');
 
@@ -25,24 +26,19 @@ $(document).ready(function() {
 		createLoad();
 	});
 	createNotificationUser('https://twimg0-a.akamaihd.net/profile_images/770845756/45_normal.jpg','Criei um novo POST chamado MEU TESTE, tem como olhar? Obrigado');
-	
 	$(':button').click(function(ev){
 		ev.preventDefault();
 		var temp = $(this).attr('name');
 		if(temp == 'aprovar'){
-			alert('aprovar');
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/aprovar');
 		}
 		else if(temp == 'rejeitar'){
-			alert('rejeitar');
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/rejeitar');
 			}
 		else if(temp == 'publicar'){
-			alert('publicar');
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/publicar');
 			}
 		else if(temp == 'remover'){
-			alert('remover');
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/deletar');
 			}
 		if(temp != 'adicionar'){
@@ -77,38 +73,65 @@ $(document).ready(function() {
 		}
 	}
 	
-	function hide_button(status){
-		var id_perf;
-		$.get("http://localhost/portal-gic/index.php/intranet/login/get_perf",function(data,status){
-		      id_perf = data;
-		    });
+	function hide_button(status,id_perf){
 		$('[name="publicar"]').removeAttr('disabled');
 		$('[name="aprovar"]').removeAttr('disabled');
 		$('[name="rejeitar"]').removeAttr('disabled');
-		$('[name="remove"]').removeAttr('disabled');
 		$('[name="editar"]').removeAttr('disabled');
 		$('[name="remover"]').removeAttr('disabled');
-		
+
 		$('[name="adicionar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="publicar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block btn-primary');
-		$('[name="remover"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="editar"]').addClass('tooltip btn btn-large btn-block btn-primary');
-		$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
-			if(status == ""){
-				$('[name="publicar"]').attr('disabled','disabled');
-				$('[name="publicar"]').removeClass('tooltip btn-primary');
-				$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				$('[name="aprovar"]').attr('disabled','disabled');
-				$('[name="aprovar"]').removeClass('tooltip btn-primary');
-				$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				$('[name="rejeitar"]').attr('disabled','disabled');
-				$('[name="rejeitar"]').removeClass('tooltip btn-primary');
-				$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
+		$('[name="remover"]').addClass('tooltip btn btn-large btn-block btn-primary');
+
+		if(status == ""){
+			$('[name="publicar"]').attr('disabled','disabled');
+			$('[name="publicar"]').removeClass('tooltip btn-primary');
+			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="aprovar"]').attr('disabled','disabled');
+			$('[name="aprovar"]').removeClass('tooltip btn-primary');
+			$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="rejeitar"]').attr('disabled','disabled');
+			$('[name="rejeitar"]').removeClass('tooltip btn-primary');
+			$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="remover"]').attr('disabled','disabled');
+			$('[name="remover"]').removeClass('tooltip btn-primary');
+			$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="editar"]').attr('disabled','disabled');
+			$('[name="editar"]').removeClass('tooltip btn-primary');
+			$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="remover"]').attr('disabled','disabled');
+			$('[name="remover"]').removeClass('tooltip btn-primary');
+			$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
+		}
+		
+		else if(status == 'N'){
+			$('[name="publicar"]').attr('disabled','disabled');
+			$('[name="publicar"]').removeClass('tooltip btn-primary');
+			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			
+//				$('[name="enviar"]').attr('disabled','disabled');
+//				$('[name="enviar"]').removeClass('tooltip btn-primary');
+//				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
+		}			
+		else if(status == 'A'){
+			$('[name="enviar"]').attr('disabled','disabled');
+			$('[name="enviar"]').removeClass('tooltip btn-primary');
+			$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="aprovar"]').attr('disabled','disabled');
+			$('[name="aprovar"]').removeClass('tooltip btn-primary');
+			$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
+			if(id_perf!=1){
 				$('[name="remover"]').attr('disabled','disabled');
 				$('[name="remover"]').removeClass('tooltip btn-primary');
 				$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
@@ -117,52 +140,44 @@ $(document).ready(function() {
 				$('[name="editar"]').removeClass('tooltip btn-primary');
 				$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
 				
+				
+			}
+		}
+		else if(status == 'P'){
+			$('[name="enviar"]').attr('disabled','disabled');
+			$('[name="enviar"]').removeClass('tooltip btn-primary');
+			$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="publicar"]').attr('disabled','disabled');
+			$('[name="publicar"]').removeClass('tooltip btn-primary');
+			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="aprovar"]').attr('disabled','disabled');
+			$('[name="aprovar"]').removeClass('tooltip btn-primary');
+			$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="rejeitar"]').attr('disabled','disabled');
+			$('[name="rejeitar"]').removeClass('tooltip btn-primary');
+			$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
+			if(id_perf!=1){
 				$('[name="remover"]').attr('disabled','disabled');
 				$('[name="remover"]').removeClass('tooltip btn-primary');
 				$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
+
+				$('[name="editar"]').attr('disabled','disabled');
+				$('[name="editar"]').removeClass('tooltip btn-primary');
+				$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
 			}
-			else if(status == 'N'){
-				$('[name="publicar"]').attr('disabled','disabled');
-				$('[name="publicar"]').removeClass('tooltip btn-primary');
-				$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				
-//				$('[name="enviar"]').attr('disabled','disabled');
-//				$('[name="enviar"]').removeClass('tooltip btn-primary');
-//				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
-			}			
-			else if(status == 'A'){
-				$('[name="enviar"]').attr('disabled','disabled');
-				$('[name="enviar"]').removeClass('tooltip btn-primary');
-				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				$('[name="aprovar"]').attr('disabled','disabled');
-				$('[name="aprovar"]').removeClass('tooltip btn-primary');
-				$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				$('[name="remover"]').attr('disabled','disabled');
-				$('[name="remover"]').removeClass('tooltip btn-primary');
-				$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-			}
-			else if(status == 'P'){
-				$('[name="enviar"]').attr('disabled','disabled');
-				$('[name="enviar"]').removeClass('tooltip btn-primary');
-				$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				$('[name="publicar"]').attr('disabled','disabled');
-				$('[name="publicar"]').removeClass('tooltip btn-primary');
-				$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				$('[name="aprovar"]').attr('disabled','disabled');
-				$('[name="aprovar"]').removeClass('tooltip btn-primary');
-				$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
-				$('[name="rejeitar"]').attr('disabled','disabled');
-				$('[name="rejeitar"]').removeClass('tooltip btn-primary');
-				$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
-			}
-			disable_user_comum(id_perf);
+		}
+		
+	}
+	
+	function valida_hide_button(id_perf){
+		if(id_perf!=1){
+			$('[name="publicar"]').hide();
+			$('[name="aprovar"]').hide();
+			$('[name="rejeitar"]').hide();
+		}
 	}
 	
 	function disable_user_comum(id_perf){
@@ -170,10 +185,15 @@ $(document).ready(function() {
 			$('[name="aprovar"]').hide();
 			$('[name="publicar"]').hide();
 			$('[name="rejeitar"]').hide();
+			$('[name="remover"]').hide();
+			
 		}else{
 			$('[name="aprovar"]').show();
 			$('[name="publicar"]').show();
-			$('[name="rejeitar"]').hide();
+			$('[name="rejeitar"]').show();
+		}
+		if(status == 'N' || status == ""){
+			$('[name="remover"]').show();
 		}
 		
 	}
@@ -253,13 +273,18 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
         
         //        ---------------------------------------fim teste--------------------------------------------
         
-        
+		$.get("http://localhost/portal-gic/index.php/intranet/login/get_perf",function(data,status){
+			id_perf = data;
+			success: valida_hide_button(id_perf);
+				
+		});
+		
         $('tbody tr').click(function(){
         	$('tbody tr').each(function(){
         		$(this).removeClass('selected');
         	});
         	$(this).addClass('selected');
-        	hide_button($(this).find('td[name="hd_status"]').text());
+        	hide_button($(this).find('td[name="hd_status"]').text(),id_perf);
         	$('[name="id"]').val($(this).find('td[name="hd_id"]').text());
         });
         $('tbody tr').dblclick(function(){

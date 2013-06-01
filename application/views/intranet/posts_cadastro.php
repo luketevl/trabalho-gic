@@ -21,13 +21,66 @@
     <script type="text/javascript" src="http://vjs.zencdn.net/c/video.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery-ui/ui/jquery-ui.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery.fineuploader/jquery.fineuploader-3.6.0.js"></script>
+	<link href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet">
    <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
-   -->
 	</head>
+   -->
 
+    <style>
+      /* Fine Uploader
+      -------------------------------------------------- */
+      .qq-upload-list {
+        text-align: left;
+      }
+ 
+      /* For the bootstrapped demos */
+      li.alert-success {
+        background-color: #DFF0D8;
+      }
+ 
+      li.alert-error {
+        background-color: #F2DEDE;
+      }
+ 
+      .alert-error .qq-upload-failed-text {
+        display: inline;
+      }
+    </style>
+  </head>
+    <div id="bootstrapped-fine-uploader"></div>
+ 
+    <script>
+      function createUploader() {
+        var uploader = new qq.FineUploader({
+          element: document.getElementById('bootstrapped-fine-uploader'),
+          request: {
+            endpoint: '/./portal-gic/./resources/img/uploads'
+          },
+          text: {
+            uploadButton: '<div><i class="icon-upload icon-white"></i> Test me now and upload a file</div>'
+          },
+          template: '<div class="qq-uploader span12">' +
+                      '<pre class="qq-upload-drop-area span12"><span>{dragZoneText}</span></pre>' +
+                      '<div class="qq-upload-button btn btn-success" style="width: auto;">{uploadButtonText}</div>' +
+                      '<span class="qq-drop-processing"><span>{dropProcessingText}</span><span class="qq-drop-processing-spinner"></span></span>' +
+                      '<ul class="qq-upload-list" style="margin-top: 10px; text-align: center;"></ul>' +
+                    '</div>',
+          classes: {
+            success: 'alert alert-success',
+            fail: 'alert alert-error'
+          }
+        });
+      }
+        
+      window.onload = createUploader;
+    </script>
+	
+	
+	
 <h1>Cadastrar Materia</h1>
 <?php
 
@@ -76,17 +129,18 @@ echo form_textarea('editor1','{conteudo_post}') . "<br />";
 echo form_label('Referencias','lbl_ref') . "<br />";
 echo form_textarea('referencias','{ref_post}') . "<br />"; 
 echo form_fieldset_close();
-echo form_submit('enviar','Salvar','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
-echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="Aprovar Posts"');
-echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
-echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
-echo form_button('remover','<img src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="Aprovar Posts"');
+echo form_button('enviar','<img src='. base_url() .'resources/icons/save.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_salvar').'"');
+echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_aprovar').'"');
+echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_rejeitar').'"');
+echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_publicar').'"');
+echo form_button('remover','<img title="'.lang('btn_aprovar'). '" src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
 echo form_close();
 ?>
-
 <script>
 $(document).ready(function(){
-	
+	$('[name="enviar"]').click(function(){
+		$('form').submit();
+		});
 });
 </script>
 
