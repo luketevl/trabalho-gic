@@ -51,14 +51,13 @@
       }
     </style>
   </head>
-    <div id="bootstrapped-fine-uploader"></div>
  
     <script>
       function createUploader() {
         var uploader = new qq.FineUploader({
           element: document.getElementById('bootstrapped-fine-uploader'),
           request: {
-            endpoint: '/./portal-gic/./resources/img/uploads'
+            endpoint: ' upload'
           },
           text: {
             uploadButton: '<div><i class="icon-upload icon-white"></i> Test me now and upload a file</div>'
@@ -83,8 +82,10 @@
 	
 <h1>Cadastrar Materia</h1>
 <?php
-
 echo form_open_multipart('index.php/intranet/posts_cadastro/save');
+?> 
+   <div id="bootstrapped-fine-uploader"></div>
+<?php 
 echo form_hidden('hd_id','{id_post}');
 echo form_hidden('hd_status','{status_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
