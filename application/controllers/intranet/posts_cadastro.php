@@ -8,6 +8,7 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['status'] ="";
 			$dados['categoria'] ="";
 			$this->lang->load('posts');
+			$this->lang->load('upload');
 			$this->parser->parse('intranet/posts_cadastro',$dados);
 		}else{
 			redirect('index.php/intranet/login');
@@ -26,8 +27,6 @@ class Posts_Cadastro extends CI_Controller{
 	}
 	
 	public function upload(){
-		print_r($_FILES);
-		
 		$config['upload_path'] = './././resources/img/uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '10000';
@@ -39,7 +38,9 @@ class Posts_Cadastro extends CI_Controller{
 // 						echo print_r($this->upload->data());
 // 						echo "</pre>";
 			$msg['success'] = "true";
-			echo "{success:true}"; 
+			$dados = $this->upload->data();
+			$msg['full_path'] = $dados['full_path'];
+			echo json_encode($msg); 
 		}
 		else{
 						echo "<pre>";

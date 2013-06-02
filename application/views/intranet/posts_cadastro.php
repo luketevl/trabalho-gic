@@ -30,62 +30,39 @@
 	</head>
    -->
 
-    <style>
-      /* Fine Uploader
-      -------------------------------------------------- */
-      .qq-upload-list {
-        text-align: left;
-      }
- 
-      /* For the bootstrapped demos */
-      li.alert-success {
-        background-color: #DFF0D8;
-      }
- 
-      li.alert-error {
-        background-color: #F2DEDE;
-      }
- 
-      .alert-error .qq-upload-failed-text {
-        display: inline;
-      }
-    </style>
   </head>
- 
-    <script>
-      function createUploader() {
-        var uploader = new qq.FineUploader({
-          element: document.getElementById('bootstrapped-fine-uploader'),
-          request: {
-            endpoint: ' upload'
+<script>
+  $(document).ready(function() {
+    var thumbnailuploader = new qq.FineUploader({
+      element: $('#thumbnail-fine-uploader')[0],
+      request: {
+        endpoint: 'upload'
+      },
+      text: {
+    	  uploadButton: $('#btnUpload').text()
           },
-          text: {
-            uploadButton: '<div><i class="icon-upload icon-white"></i> Test me now and upload a file</div>'
-          },
-          template: '<div class="qq-uploader span12">' +
-                      '<pre class="qq-upload-drop-area span12"><span>{dragZoneText}</span></pre>' +
-                      '<div class="qq-upload-button btn btn-success" style="width: auto;">{uploadButtonText}</div>' +
-                      '<span class="qq-drop-processing"><span>{dropProcessingText}</span><span class="qq-drop-processing-spinner"></span></span>' +
-                      '<ul class="qq-upload-list" style="margin-top: 10px; text-align: center;"></ul>' +
-                    '</div>',
-          classes: {
-            success: 'alert alert-success',
-            fail: 'alert alert-error'
+      multiple: false,
+      validation: {
+        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png'],
+      },
+      deleteFile: {
+          enabled: true,
+          forceConfirm: true,
+          endpoint: 'server/file'
+      },
+      callbacks: {
+        onComplete: function(id, fileName, responseJSON) {
+          if (responseJSON.success) {
+            $('#thumbnail-fine-uploader').append('<img src="http://localhost/portal-gic/resources/img/uploads/'+fileName+'" alt="' + fileName + '">');
           }
-        });
+        }
       }
-        
-      window.onload = createUploader;
-    </script>
-	
-	
-	
+    });
+  });
+</script>
 <h1>Cadastrar Materia</h1>
 <?php
 echo form_open_multipart('index.php/intranet/posts_cadastro/save');
-?> 
-   <div id="bootstrapped-fine-uploader"></div>
-<?php 
 echo form_hidden('hd_id','{id_post}');
 echo form_hidden('hd_status','{status_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
@@ -95,6 +72,13 @@ echo form_fieldset('Materias');
 
 echo form_label('Titulo','lbl_titulo'). "<br />";
 echo form_input('titulo','{titulo_post}');
+?> 
+<section id="imagem">
+	<div id="thumbnail-fine-uploader"></div>
+	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload');?></span>
+
+</section>
+<?php 
 
 echo form_label('Data Criacao','lbl_dt_aprovacao');
 echo form_input('dtcriacao','{dt_criacao}','readonly=readonly class="center"');
@@ -105,8 +89,6 @@ echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="cent
 
 echo form_label('Status','lbl_status');
 echo form_input('status','{status}','readonly=readonly ');
-
-echo form_upload('userfile');
 
 echo form_label('Descricao Resumida','lbl_desc_resumida') . "<br />";
 echo form_input('desc_resumida','{resumo_post}') . "<br />";

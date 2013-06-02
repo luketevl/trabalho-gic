@@ -401,3 +401,7 @@ hr{
     margin-left:5px;
     height:2px;    
 }
+
+#imagem{
+    float:right;
+}
