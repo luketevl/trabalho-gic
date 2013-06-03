@@ -93,7 +93,7 @@
 	}
 
 	section{
-		width:22%;
+		/*width:22%;*/
 	}
 	/*
 	section#column-left{
@@ -331,7 +331,7 @@ span#circle >img{
     float:left;
 }
 .palavrasChave{
-    width:50%;
+    width:100%;
     height:80;
     margin-bottom:100px;
     float:left;
@@ -404,20 +404,26 @@ hr{
 }
 
 #imagem{
-    float:left;
     border-width:1px;
-    border-style:solid;
+    border-bottom-style:solid;
     border-color:#bbb;
 }
-input{
+#imagem img{
+    max-width:98%;
+	
+}
+input,textarea .lblInput {
     clear:both;    
-    float:left;   
-    padding: 5px; 
+    padding: 5px;
+    width:98%;
 }
 label , textarea, #cke_editor1{
     clear:both;    
     float:left;    
 }
-textarea{
-    width:98%;
+
+.lblInput{
+	border-style:none !important;
+	float:left;
+	width:200px;
 }
