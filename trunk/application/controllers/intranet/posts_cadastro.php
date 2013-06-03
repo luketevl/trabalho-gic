@@ -34,20 +34,27 @@ class Posts_Cadastro extends CI_Controller{
 		$config['max_width']  = '10024';
 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
+// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";die;
 		if($this->upload->do_upload('qqfile')){
-// 						echo "<pre>";
-// 						echo print_r($this->upload->data());
-// 						echo "</pre>";
+			$img = new Imagens();
+			$dados = $img->getFields();
+			$dadosImg = $this->upload->data();
+			$dados['nome_img'] = $dadosImg['file_name'];
+			// FALTA ID DO POST
+			$img->setFields($dados);
+			$img->insert();
 			$msg['success'] = "true";
-			$dados = $this->upload->data();
-			$msg['full_path'] = $dados['full_path'];
+			$msg['full_path'] = $dadosImg['full_path'];
+// 						echo "<pre>";
+// 						echo print_r($dadosImg);
+// 						echo "</pre>";
 			echo json_encode($msg); 
 		}
 		else{
-						echo "<pre>";
-						echo print_r($this->upload->data());
-						echo "</pre>";
-						echo "erro". $this->upload->display_errors();
+			echo "<pre>";
+			echo print_r($this->upload->data());
+			echo "</pre>";
+			echo "erro". $this->upload->display_errors();
 		}
 	}
 	
