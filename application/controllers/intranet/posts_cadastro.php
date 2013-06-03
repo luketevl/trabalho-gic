@@ -9,6 +9,7 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['categoria'] ="";
 			$this->lang->load('posts');
 			$this->lang->load('upload');
+			$dados['urls'] = array();
 			$this->parser->parse('intranet/posts_cadastro',$dados);
 		}else{
 			redirect('index.php/intranet/login');
@@ -54,6 +55,7 @@ class Posts_Cadastro extends CI_Controller{
 		
 		$p = new Posts();
 		$aux = $p->getFields();
+		
 		$aux['id_post'] = $this->input->post('hd_id');
 		$aux['titulo_post'] = $this->input->post('titulo');
 		$aux['resumo_post'] = $this->input->post('desc_resumida');
@@ -63,12 +65,14 @@ class Posts_Cadastro extends CI_Controller{
 		$aux['dt_modificacao']= null;
 		$dados_img = $this->upload->data();
 		$aux['img_principal_post'] = $dados_img['file_name'];
-		$aux['url_youtube'] = $this->input->post('url_youtube');
 		$aux['obs_post'] = "";
 		$aux['keywords_post'] = $this->input->post('hd_keywords');
 		$aux['id_usu_aprovou'] = null; //= $this->session->userdata('id_usu');
 		$aux['id_usu'] = $this->session->userdata('id_usu');
 		$aux['id_cat'] = $this->input->post('hd_cat_id');
+		$aux['id_cat'] = $this->input->post('hd_cat_id');
+		$aux['url_youtube'] = $this->input->post('url_youtube');
+		$extras['url_youtube_varios'] = $this->input->post('url_youtube_varios');
 		if(empty($aux['id_post'])){
 			$aux['status_post'] = ABERTO;
 			$p->setFields($aux);
@@ -81,36 +85,56 @@ class Posts_Cadastro extends CI_Controller{
 			$p->setFields($aux);
 			$p->editar($aux['id_post']);
 		}
+		$v = new Videos();
+		$dadosVideo = $v->getFields();
+		$dadosVideo['id_post'] = $aux['id_post'];
+			if(is_array($extras['url_youtube_varios'])){
+				foreach($extras['url_youtube_varios'] as $k=>$valor){
+					$dadosVideo['url_vid'] = $valor;
+					$v->setFields($dadosVideo);
+					if(!$v->verifica_url_post($valor)){
+						$v->insert();
+					}
+				}	
+		}
 		$this->load_form_edit($aux['id_post']);
 	}
 	
 	public function load_form_edit($id=0){
 		$this->lang->load('posts');
+		$this->lang->load('upload');
 		if(!empty($_GET['id'])){
 			$id = $_GET['id'];
 		}
 		$p = new Posts();
 		$p = $p->get_by_id($id);
+		$v = new Videos();
+		$v = $v->get_by_idpost($id);
 		$c = new Categorias();
 		foreach($p->all as $key=>$valor){
-			$dados['id_post'] = $p->id_post					;
-			$dados['titulo_post'] = $p->titulo_post					;
-			$dados['resumo_post'] = $p->resumo_post					;
-			$dados['conteudo_post'] = $p->conteudo_post				;
-			$dados['ref_post'] = $p->ref_post					;
+			$dados['id_post'] = $p->id_post;
+			$dados['titulo_post'] = $p->titulo_post;
+			$dados['resumo_post'] = $p->resumo_post;
+			$dados['conteudo_post'] = $p->conteudo_post;
+			$dados['ref_post'] = $p->ref_post;
 			$dados['status_post'] = $p->status_post;
 			$dados['status'] = converte_status($dados['status_post']);
 			$dados['dt_criacao'] = mdate('%d/%m/%Y',human_to_unix($p->dt_criacao));
 			$dados['dt_modificacao']= mdate('%d/%m/%Y',human_to_unix($p->dt_modificacao));
 			$dados['img_principal_post'] = $p->img_principal_post			;
-			$dados['url_youtube']= $p->url_youtube					;
-			$dados['obs_post']= $p->obs_post					;
+			$dados['url_youtube']= $p->url_youtube;
+			$dados['obs_post']= $p->obs_post;
 			$dados['keywords_post']= str_replace('|',',',$p->keywords_post);
-			$dados['id_usu_aprovou']= $p->id_usu_aprovou				;
-			$dados['id_usu']= $p->id_usu						;
+			$dados['id_usu_aprovou']= $p->id_usu_aprovou;
+			$dados['id_usu']= $p->id_usu;
 			$dados['id_cat']= $p->id_cat;
 			$c = $c->get_by_id($p->id_cat);
 			$dados['categoria'] = $c->nome_cat;
+		}
+			$dados['urls'] = array();
+		foreach($v as $k=>$valor){
+			$dados['urls'][$k]['url'] = $valor->url_vid;
+			$dados['urls'][$k]['id_vid'] =$valor->id_vid;
 		}
 // 		echo "<pre>";
 // 		echo print_r($dados);

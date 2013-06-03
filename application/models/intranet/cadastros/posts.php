@@ -134,4 +134,10 @@
 			echo print_r();
 			echo "</pre>";
 		}
+		
+		public function atualiza_principal_video($id,$url){
+			$p = new Posts();
+			$p->where('id_post',$id)
+				->update('url_youtube',$url);
+		}
 	}
