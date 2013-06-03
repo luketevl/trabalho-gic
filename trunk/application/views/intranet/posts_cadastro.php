@@ -68,49 +68,65 @@ echo form_hidden('hd_status','{status_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
 echo form_hidden('hd_keywords','{keywords_post}');
 
-echo form_fieldset('Materias');
+echo form_fieldset('Principal');
 
-echo form_label('Titulo','lbl_titulo'). "<br />";
+echo form_label('Titulo','lbl_titulo');
 echo form_input('titulo','{titulo_post}');
-?> 
-<section id="imagem">
-	<div id="thumbnail-fine-uploader"></div>
-	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload');?></span>
 
-</section>
-<?php 
+echo form_label('Descricao Resumida','lbl_desc_resumida');
+echo form_input('desc_resumida','{resumo_post}');
+
+
+echo form_label('Categoria','lbl_categoria');
+echo form_input('ac_categoria','{categoria}','id="ac_categoria"');
 
 echo form_label('Data Criacao','lbl_dt_aprovacao');
 echo form_input('dtcriacao','{dt_criacao}','readonly=readonly class="center"');
 
+echo form_label('Conteudo','lbl_conteudo');
+echo form_textarea('editor1','{conteudo_post}');
+echo form_fieldset_close();
+
+
+echo form_fieldset('Informacoes');
 
 echo form_label('Data Aprovacao','lbl_dt_aprovacao');
-echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"') . "<br />";
+echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"');
+
+echo form_label('Criado por:','lbl_usu_criou');
+echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"');
+
+echo form_label('Aprovado por:','lbl_usu_aprovou');
+echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"');
 
 echo form_label('Status','lbl_status');
 echo form_input('status','{status}','readonly=readonly ');
 
-echo form_label('Descricao Resumida','lbl_desc_resumida') . "<br />";
-echo form_input('desc_resumida','{resumo_post}') . "<br />";
+echo form_fieldset_close();
 
-echo form_label('URL do video','lbl_url_youtube') . "<br />";
-echo form_input('url_youtube','{url_youtube}') . "<br />";
 
-echo form_label('Categoria','lbl_categoria') . "<br />";
-echo form_input('ac_categoria','{categoria}','id="ac_categoria"') . "<br />";
-
-echo form_label('Conteudo','lbl_conteudo') . "<br />";
-echo form_textarea('editor1','{conteudo_post}') . "<br />";
+echo form_fieldset('Extras');
 ?>
-
+<section id="url">
+<?php 
+echo form_label('URL do video','lbl_url_youtube');
+echo form_input('url_youtube','{url_youtube}','class="linkvideo"');
+?>
+<img src="<?php echo base_url();?>resources/icons/add.png" id="addUrl"/>
+</section>
 <section class="palavrasChave">
 	<h3 class="demo-panel-title">Palavra Chave</h3> 
 	<input name="tagsinput" id="tagsinput" class="tagsinput" value="{keywords_post}" style="display: none;">
 </section>
+	<h3 class="demo-panel-title">Imagens</h3> 
+<section id="imagem">
+	<div id="thumbnail-fine-uploader"></div>
+	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload');?></span>
+</section>
 
 <?php  
-echo form_label('Referencias','lbl_ref') . "<br />";
-echo form_textarea('referencias','{ref_post}') . "<br />"; 
+echo form_label('Referencias','lbl_ref');
+echo form_textarea('referencias','{ref_post}','style="clear:both;"'); 
 echo form_fieldset_close();
 echo form_button('enviar','<img src='. base_url() .'resources/icons/save.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_salvar').'"');
 echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_aprovar').'"');
@@ -123,6 +139,12 @@ echo form_close();
 $(document).ready(function(){
 	$('[name="enviar"]').click(function(){
 		$('form').submit();
+		});
+	$('#addUrl').click(function(){
+		var qtd = $('.linkvideo').length;
+		var clone = $('[name="url_youtube"]').clone().attr('name','url_youtube['+qtd+']');
+		console.log(clone);
+		$('#url').append(clone);
 		});
 });
 </script>
