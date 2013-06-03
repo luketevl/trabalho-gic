@@ -73,18 +73,18 @@ echo form_hidden('hd_keywords','{keywords_post}');
 
 echo form_fieldset('Principal');
 
-echo form_fieldset('','class="lblInput"');
+echo form_fieldset('','class="lblInput" style="width:100%;"');
 echo form_label('Titulo','lbl_titulo');
 echo form_input('titulo','{titulo_post}');
 echo form_fieldset_close();
 
-echo form_fieldset('','class="lblInput"');
+echo form_fieldset('','class="lblInput" style="width:100%;"');
 echo form_label('Descricao Resumida','lbl_desc_resumida');
 echo form_input('desc_resumida','{resumo_post}');
 echo form_fieldset_close();
 
 
-echo form_fieldset('','class="lblInput"');
+echo form_fieldset('','class="lblInput" style="width:250px;"');
 echo form_label('Categoria','lbl_categoria');
 echo form_input('ac_categoria','{categoria}','id="ac_categoria"');
 echo form_fieldset_close();
@@ -96,6 +96,11 @@ echo form_fieldset_close();
 
 
 echo form_fieldset('Informacoes');
+echo form_fieldset('','class="lblInput"');
+echo form_label('Status','lbl_status');
+echo form_input('status','{status}','readonly=readonly ');
+echo form_fieldset_close();
+
 echo form_fieldset('','class="lblInput"');
 echo form_label('Data Criacao','lbl_dt_aprovacao');
 echo form_input('dtcriacao','{dt_criacao}','readonly=readonly class="center"');
@@ -116,10 +121,6 @@ echo form_label('Aprovado por:','lbl_usu_aprovou');
 echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"');
 echo form_fieldset_close();
 
-echo form_fieldset('','class="lblInput"');
-echo form_label('Status','lbl_status');
-echo form_input('status','{status}','readonly=readonly ');
-echo form_fieldset_close();
 
 echo form_fieldset_close();
 

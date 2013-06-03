@@ -58,6 +58,10 @@ class Posts_Cadastro extends CI_Controller{
 		}
 	}
 	
+	public function delete_file(){
+		
+	}
+	
 	public function save(){
 		
 		$p = new Posts();
