@@ -112,6 +112,9 @@ echo form_fieldset('Extras');
 echo form_label('URL do video','lbl_url_youtube');
 echo form_input('url_youtube','{url_youtube}','class="linkvideo"');
 ?>
+{urls}
+<input type="text" value ={url} name =linkvideo[{id_vid}] />
+{/urls}
 <img src="<?php echo base_url();?>resources/icons/add.png" id="addUrl"/>
 </section>
 <section class="palavrasChave">
@@ -142,7 +145,7 @@ $(document).ready(function(){
 		});
 	$('#addUrl').click(function(){
 		var qtd = $('.linkvideo').length;
-		var clone = $('[name="url_youtube"]').clone().attr('name','url_youtube['+qtd+']');
+		var clone = $('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('').focus();
 		console.log(clone);
 		$('#url').append(clone);
 		});
