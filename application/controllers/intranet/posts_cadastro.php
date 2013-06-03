@@ -52,7 +52,6 @@ class Posts_Cadastro extends CI_Controller{
 	
 	public function save(){
 		
-		
 		$p = new Posts();
 		$aux = $p->getFields();
 		$aux['id_post'] = $this->input->post('hd_id');

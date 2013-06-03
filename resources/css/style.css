@@ -331,9 +331,10 @@ span#circle >img{
     float:left;
 }
 .palavrasChave{
-    width:100%;
+    width:50%;
     height:80;
     margin-bottom:100px;
+    float:left;
 }
 #list {
     margin: -20px;
@@ -403,5 +404,20 @@ hr{
 }
 
 #imagem{
-    float:right;
+    float:left;
+    border-width:1px;
+    border-style:solid;
+    border-color:#bbb;
+}
+input{
+    clear:both;    
+    float:left;   
+    padding: 5px; 
+}
+label , textarea, #cke_editor1{
+    clear:both;    
+    float:left;    
+}
+textarea{
+    width:98%;
 }
