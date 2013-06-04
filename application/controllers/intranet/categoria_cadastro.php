@@ -18,6 +18,7 @@ class Categoria_Cadastro extends CI_Controller{
 	}
 	
 	private function func_array(Categorias $c){
+		$campos= array();
 // 		$campos = array(	array(
 // 											'id_cat'   		=>$c->id_cat ,
 // 											'nome_cat'  	=>$c->nome_cat ,

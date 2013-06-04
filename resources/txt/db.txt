@@ -71,7 +71,7 @@ create table historicos(
 	descricao_hist text not null,
 	id_post int not null,
 	foreign key(id_post) references posts(id_post),
-	status_post char(1) not null,
+	status char(1) not null,
 	dt_criacao datetime not null
 )ENGINE = MYISAM;
 

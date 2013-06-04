@@ -173,21 +173,8 @@ class Posts_Cadastro extends CI_Controller{
 	}
 	
 	public function rejeitar($id=0){
-		if(!empty($_GET['id'])){
-			$id = $_GET['id'];
-		}
-		else{
-		$id= $this->input->post('hd_id');
-		}
 		$p = new Posts();
-		$this->justificar($justificativa,REJEITADO,$id);
 		$p->rejeitar($id);
-		if(empty($_GET['id'])){
-			$this->load_form_edit($id);
-		}
-		else{
-			redirect('index.php/intranet/posts_cadastro_list');
-		}
 	}
 
 	public function publicar($id=0){
@@ -222,14 +209,34 @@ class Posts_Cadastro extends CI_Controller{
 	
 	
 	
-	public function justificar($justificativa,$status,$id_post){
+	public function telaJustificar(){
+		$list=0;
+		if(!empty($_GET['id'])){
+			$id = $_GET['id'];
+			$list = 1;
+		}
+		else{
+			$id= $this->input->post('hd_id');
+		}
+		$dados['id'] = $id;
+		$dados['list'] = $list;
+		$this->parser->parse('intranet/justificativa',$dados);
+	}
+	public function justificar(){
 		$h = new Historicos();
 		$aux = $h->getFields();
-		$aux['descricao_hist'] = $justificativa;
-		$aux['status'] = $status;
-		$aux['id_post'] = $id_post;
+		$aux['descricao_hist'] = $this->input->post('justificativa');
+		$aux['status'] = REJEITADO;
+		$aux['id_post'] = $this->input->post('hd_id');
 		$h->setFields($aux);
 		$h->inserir();
+		$this->rejeitar($aux['id_post']);
+		if($this->input->post('listagem')!="1"){
+			$this->load_form_edit($aux['id_post']);
+		}
+		else{
+			redirect('index.php/intranet/posts_cadastro_list');
+		}
 	}
 	
 	public function testeEmail(){

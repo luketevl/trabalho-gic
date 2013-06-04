@@ -33,7 +33,7 @@ $(document).ready(function() {
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/aprovar');
 		}
 		else if(temp == 'rejeitar'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/rejeitar');
+			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/telaJustificar');
 			}
 		else if(temp == 'publicar'){
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/publicar');
@@ -46,7 +46,6 @@ $(document).ready(function() {
 		}
 		});
 	
-	
 	function is_checked(hd_opcoes) {
 //		hd_opcoes = (hd_opcoes == undefined) ? "" : hd_opcoes;
 		if(hd_opcoes !=undefined){ 
@@ -58,13 +57,17 @@ $(document).ready(function() {
 		}
 	}
 	function disabled_all() {
-		if (($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) && $('[name="hd_status"]').val() != 'N') {
+		if (
+				($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) && 
+				($('[name="hd_status"]').val() != 'N' && $('[name="hd_status"]').val() != 'R')) {
 			$('input:text').each(function() {
 				$(this).attr('disabled','disabled');
 			});
+			if($('[name="listagem"]').val() != "1" && $('[name="listagem"]').val()!= "0" ){
 			$('textarea').each(function() {
 				$(this).attr('readonly','readonly');
 			});
+			}
 			console.log($('div span a'));
 			$('#tagsinput_addTag').remove();
 			$('div span a').each(function (){
@@ -169,6 +172,15 @@ $(document).ready(function() {
 				$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
 			}
 		}
+		else if(status == 'R'){
+			$('[name="rejeitar"]').attr('disabled','disabled');
+			$('[name="rejeitar"]').removeClass('tooltip btn-primary');
+			$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="publicar"]').attr('disabled','disabled');
+			$('[name="publicar"]').removeClass('tooltip btn-primary');
+			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
+		}
 		
 	}
 	
@@ -261,7 +273,14 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
           minLength: 2,
           select: function( event, ui ) {
               log( ui.item.id);
+              $('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
             },
+            open: function() {
+            	$('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
+              },
+              close: function() {
+            	  $('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
+              }
         });
         
 //        --------------------------------------------TESTE---------------------------------------

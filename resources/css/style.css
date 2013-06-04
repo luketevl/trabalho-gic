@@ -427,3 +427,6 @@ label , textarea, #cke_editor1{
 	float:left;
 	width:200px;
 }
+.ui-autocomplete-loading {
+    background: white url('../jquery-ui/demos/autocomplete/images/ui-anim_basic_16x16.gif') right center no-repeat;
+  }
