@@ -6,7 +6,7 @@
 				return'Aprovado';
 			}
 			else if($sigla == REJEITADO){
-				return'REJEITADO';
+				return 'Rejeitado';
 			
 			}
 			else if($sigla == PUBLICADO){
