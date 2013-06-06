@@ -257,7 +257,7 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
               response( cache[ term ] );
               return;
             }
-            $.getJSON( "http://localhost/portal-gic/index.php/intranet/categoria_cadastro/au_get_by_name?term=bola", request, function( data, status, xhr ) {
+            $.getJSON( "http://localhost/portal-gic/index.php/intranet/categoria_cadastro/au_get_by_name", request, function( data, status, xhr ) {
               cache[ term ] = data;
               response( $.map( data.dados, function( item ) {
                 return {
