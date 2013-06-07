@@ -33,6 +33,17 @@
   </head>
 <script>
   $(document).ready(function() {
+    $('#failed-fine-uploader').fineUploader({
+      request: {
+        endpoint: 'server/handleUploads'
+      },
+      failedUploadTextDisplay: {
+        mode: 'custom',
+        maxChars: 40,
+        responseProperty: 'error',
+        enableTooltip: true
+      }
+    });
     var thumbnailuploader = new qq.FineUploader({
       element: $('#thumbnail-fine-uploader')[0],
       data: "teste",
@@ -159,14 +170,25 @@ echo form_input('url_youtube','{url_youtube}','class="linkvideo"');
 ?>
 <section id="imagem">
 	<div id="thumbnail-fine-uploader"></div>
-	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload');?></span>
+	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload_img');?></span>
 </section>
+
 
 
 <?php  
 echo form_fieldset_close();
+echo form_fieldset('','class="lblInput" style="width:480px;"');
+echo form_label('Arquivos','lbl_arq');
+
+?>
+<section id="arquivo">
+	<div id="failed-fine-uploader"></div>
+	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload_arq');?></span>
+</section>
 
 
+<?php 
+echo form_fieldset_close();
 echo form_fieldset_close();
 echo form_button('enviar','<img src='. base_url() .'resources/icons/save.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_salvar').'"');
 echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_aprovar').'"');
@@ -182,8 +204,9 @@ $(document).ready(function(){
 		});
 	$('#addUrl').click(function(){
 		var qtd = $('.linkvideo').length;
-		var clone = $('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('');
+		var clone =$('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('');
 		$('#addUrl').before(clone);
+		
 		});
 });
 </script>
