@@ -403,7 +403,7 @@ hr{
     height:2px;    
 }
 
-#imagem{
+#imagem,#arquivo{
     border-width:1px;
     border-bottom-style:solid;
     border-color:#bbb;

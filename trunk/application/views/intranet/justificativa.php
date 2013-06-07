@@ -35,8 +35,8 @@
 echo form_open('index.php/intranet/posts_cadastro/justificar');
 echo form_hidden('hd_id','{id}');
 echo form_hidden('listagem','{list}');
-echo form_fieldset('','class="lblInput" style="width:100%;"');
-echo form_textarea('justificativa','style="width:100%;"');
+echo form_fieldset('Justificativa');
+echo form_textarea('justificativa','','style="width:100%;"');
 echo form_close();
 echo form_button('enviar','<img src='. base_url() .'resources/icons/save.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_salvar').'"');
 
