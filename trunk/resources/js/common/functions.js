@@ -114,6 +114,8 @@ $(document).ready(function() {
 			$('[name="remover"]').attr('disabled','disabled');
 			$('[name="remover"]').removeClass('tooltip btn-primary');
 			$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('#imagem, #arquivo').hide();
 		}
 		
 		else if(status == 'N'){
@@ -143,7 +145,7 @@ $(document).ready(function() {
 				$('[name="editar"]').removeClass('tooltip btn-primary');
 				$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
 				
-				
+				$('#imagem, #arquivo').hide();
 			}
 		}
 		else if(status == 'P'){
@@ -170,6 +172,8 @@ $(document).ready(function() {
 				$('[name="editar"]').attr('disabled','disabled');
 				$('[name="editar"]').removeClass('tooltip btn-primary');
 				$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
+				
+				$('#imagem, #arquivo').hide();
 			}
 		}
 		else if(status == 'R'){
