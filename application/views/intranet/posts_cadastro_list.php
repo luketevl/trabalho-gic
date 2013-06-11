@@ -38,6 +38,74 @@
 				window.location = "../intranet/posts_cadastro/";
 				});
 			});
+		$('a.active').click(function(){
+				nome = $(this).attr('name');
+				btn = this;
+			$('tbody tr').each(function(){
+				var el = this;
+				status = $(el).find('td[name="hd_status"]').text();
+				if(nome == 'novo' && status=='N'){
+					if($(btn).attr('style') === undefined){
+						$(btn).css('color','red');
+						$(el).hide();
+							}
+					else{
+						$(btn).removeAttr('style');
+						$(el).show();
+						}
+					}
+				else if(nome == 'aprovado' && status=='A'){
+					if($(btn).attr('style') === undefined){
+							$(btn).css('color','red');
+							$(el).hide();
+								}
+						else{
+							$(btn).removeAttr('style');
+							$(el).show();
+							}
+					}
+				else if(nome == 'rejeitado' && status=='R'){
+					alert(status);
+					if($(btn).attr('style') === undefined){
+							$(btn).css('color','red');
+							$(el).hide();
+								}
+						else{
+							$(btn).removeAttr('style');
+							$(el).show();
+							}
+					}
+				else if(nome == 'publicado' && status=='P'){
+					if($(btn).attr('style') === undefined){
+							$(btn).css('color','red');
+							$(el).hide();
+								}
+						else{
+							$(btn).removeAttr('style');
+							$(el).show();
+							}
+					}
+				});
+			});
+		$(':button').click(function(ev){
+			ev.preventDefault();
+			var temp = $(this).attr('name');
+			if(temp == 'aprovar'){
+				$('form').attr('action','../intranet/posts_cadastro/aprovar');
+			}
+			else if(temp == 'rejeitar'){
+				$('form').attr('action','../intranet/posts_cadastro/telaJustificar');
+				}
+			else if(temp == 'publicar'){
+				$('form').attr('action','../intranet/posts_cadastro/publicar');
+				}
+			else if(temp == 'remover'){
+				$('form').attr('action','../intranet/posts_cadastro/deletar');
+				}
+			if(temp != 'adicionar'){
+				$('form').submit();	
+			}
+			});
 		});
    </script>
 </head>
@@ -75,7 +143,13 @@
  	?>
  	</nav>
  	<section id="infoList">
- 		{cc_aberto} Novos | {cc_aprovado} Aprovados | {cc_rejeitado} Rejeitados | {cc_publicado} Publicados
+ 		<a href="#" class="active" name="novo">{cc_aberto} Novos</a>
+ 		 | 
+ 		 <a href="#" class="active" name="aprovado">{cc_aprovado} Aprovados </a>
+ 		 |
+ 		 <a href="#" class="active" name="rejeitado">{cc_rejeitado} Rejeitados</a> 
+ 		 | 
+ 		 <a href="#" class="active" name="publicado">{cc_publicado} Publicados</a>
  	</section>
  			<hr />
  	<table>
