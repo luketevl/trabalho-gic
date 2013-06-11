@@ -41,6 +41,19 @@
 		font-weight: normal;
 	}
 
+	ul.slidesjs-pagination {
+		list-style-type: none !important;
+		margin-left:-40px;
+	}
+	li.slidesjs-pagination-item{
+		padding-right:5px;
+		float:left;
+	}
+	.slidesjs-navigation{
+		float:right;
+		clear:right;
+	}
+
 	code {
 		font-family: Consolas, Monaco, Courier New, Courier, monospace;
 		font-size: 12px;
@@ -430,3 +443,8 @@ label , textarea, #cke_editor1{
 .ui-autocomplete-loading {
     background: white url('../jquery-ui/demos/autocomplete/images/ui-anim_basic_16x16.gif') right center no-repeat;
   }
+  
+
+#arquivos a{
+	padding-right:20px !important;
+}

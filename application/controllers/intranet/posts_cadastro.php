@@ -33,9 +33,9 @@ class Posts_Cadastro extends CI_Controller{
 	public function upload(){
 		$config['upload_path'] = './././resources/img/uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '10000';
-		$config['max_width']  = '10024';
-		$config['max_height']  = '1768';
+// 		$config['max_size']	= '10000';
+// 		$config['max_width']  = '10024';
+// 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
 // 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
 // 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
@@ -54,6 +54,41 @@ class Posts_Cadastro extends CI_Controller{
 			$msg['full_path'] = $dadosImg['full_path'];
 // 						echo "<pre>";
 // 						echo print_r($dadosImg);
+// 						echo "</pre>";
+			echo json_encode($msg); 
+		}
+		else{
+			echo "<pre>";
+			echo print_r($this->upload->data());
+			echo "</pre>";
+			echo "erro". $this->upload->display_errors();
+		}
+	}
+	
+	public function uploadArq(){
+		$config['upload_path'] = './././resources/arquivos/uploads/';
+		$config['allowed_types'] = '*';
+// 		$config['max_size']	= '10000';
+// 		$config['max_width']  = '10024';
+// 		$config['max_height']  = '1768';
+		$this->upload->initialize($config);
+// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
+// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
+// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
+		$id_post = $_GET['id_post'];
+		if($this->upload->do_upload('qqfile')){
+			$arq = new Arquivos();
+			$dados = $arq->getFields();
+			$dadosArq = $this->upload->data();
+			$dados['nome_arq'] = $dadosArq['file_name'];
+			$dados['id_post'] = $id_post;
+			// FALTA ID DO POST
+			$arq->setFields($dados);
+			$arq->insert();
+			$msg['success'] = "true";
+			$msg['full_path'] = $dadosArq['full_path'];
+// 						echo "<pre>";
+// 						echo print_r($dadosArq);
 // 						echo "</pre>";
 			echo json_encode($msg); 
 		}
@@ -132,6 +167,8 @@ class Posts_Cadastro extends CI_Controller{
 		$c = new Categorias();
 		$i = new Imagens();
 		$i = $i->get_by_idpost($id);
+		$a = new Arquivos();
+		$a = $a->get_by_idpost($id);
 		foreach($p->all as $key=>$valor){
 			$dados['id_post'] = $p->id_post;
 			$dados['titulo_post'] = $p->titulo_post;
@@ -167,6 +204,12 @@ class Posts_Cadastro extends CI_Controller{
 		foreach($i as $ke=>$valor){
 			$dados['imagens'][$ke]['nome_img'] = $valor->nome_img;
 			$dados['imagens'][$ke]['id_img'] =$valor->id_img;
+		}
+		
+			$dados['arquivos'] = array();
+		foreach($a as $ke=>$valor){
+			$dados['arquivos'][$ke]['nome_arq'] = $valor->nome_arq;
+			$dados['arquivos'][$ke]['id_arq'] =$valor->id_arq;
 		}
 		
 // 		echo "<pre>";
