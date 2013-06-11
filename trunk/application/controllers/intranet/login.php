@@ -24,7 +24,8 @@ class Login extends CI_Controller{
 		  $appSecret = FB_APP_SECRET;
 		 
 		  // Url informada no campo "Site URL"
-		  $redirectUri = urlencode(FB_SITELOGIN);
+		  $base = base_url();
+		  $redirectUri = urlencode($base.FB_SITELOGIN);
 		 
 		  // Obtém o código da query string
 		  $code = $_GET['code'];

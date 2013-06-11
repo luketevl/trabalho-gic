@@ -53,7 +53,7 @@ define('MENU_POSTS',		'P');
 
 /*	Constantes para o facebook */
 define('FB_APP_ID',	'325552027571289');
-define('FB_SITELOGIN',	'http://localhost/portal-gic/index.php/intranet/login/facebook');
+define('FB_SITELOGIN',	'index.php/intranet/login/facebook');
 define('FB_APP_SECRET',	'9e36c1f5179ec980ec77484d06faaf9f');
 define('FB_SCOPE',	'email,user_website,user_location,user_birthday,user_photos');
 

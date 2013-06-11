@@ -71,7 +71,7 @@
         onComplete: function(id, fileName, responseJSON) {
           if (responseJSON.success) {
               fileName = fileName.replace(new RegExp(' ','g'),'_');
-            $('#thumbnail-fine-uploader').append('<img src="http://localhost/portal-gic/resources/img/uploads/'+fileName+'" alt="' + fileName + '">');
+            $('#thumbnail-fine-uploader').append('<img src="<?php echo base_url();?>resources/img/uploads/'+fileName+'" alt="' + fileName + '">');
           }
         }
       }
