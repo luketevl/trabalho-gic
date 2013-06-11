@@ -19,6 +19,11 @@ class Usuarios extends DataMapper{
 		return $u->where('email_usu',$email)->get();
 	}
 	
+	public function get_by_id($id){
+		$u = new Usuarios();
+		return $u->where('id_usu',$id)->get();
+	}
+	
 	public function verifica_usuario($email,$uass){
 		$u = new Usuarios();
 		return $u->where('email_usu',$email)
