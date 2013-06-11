@@ -6,6 +6,9 @@ class Posts_Cadastro extends CI_Controller{
 			$p = new Posts();
 			$dados = $p->getFields();
 			$dados['status'] ="";
+			$dados['usu_criou'] ="";
+			$dados['usu_aprovou'] ="";
+			
 			$dados['categoria'] ="";
 			$this->lang->load('posts');
 			$this->lang->load('upload');
@@ -34,12 +37,16 @@ class Posts_Cadastro extends CI_Controller{
 		$config['max_width']  = '10024';
 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
-// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";die;
+// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
+// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
+// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
+		$id_post = $_GET['id_post'];
 		if($this->upload->do_upload('qqfile')){
 			$img = new Imagens();
 			$dados = $img->getFields();
 			$dadosImg = $this->upload->data();
 			$dados['nome_img'] = $dadosImg['file_name'];
+			$dados['id_post'] = $id_post;
 			// FALTA ID DO POST
 			$img->setFields($dados);
 			$img->insert();
@@ -119,9 +126,12 @@ class Posts_Cadastro extends CI_Controller{
 		}
 		$p = new Posts();
 		$p = $p->get_by_id($id);
+		$u = new Usuarios();
 		$v = new Videos();
 		$v = $v->get_by_idpost($id);
 		$c = new Categorias();
+		$i = new Imagens();
+		$i = $i->get_by_idpost($id);
 		foreach($p->all as $key=>$valor){
 			$dados['id_post'] = $p->id_post;
 			$dados['titulo_post'] = $p->titulo_post;
@@ -137,6 +147,11 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['obs_post']= $p->obs_post;
 			$dados['keywords_post']= str_replace('|',',',$p->keywords_post);
 			$dados['id_usu_aprovou']= $p->id_usu_aprovou;
+			$u = $u->get_by_id($p->id_usu_aprovou);
+			$dados['usu_aprovou']= $u->nome_usu;
+			$u = $u->get_by_id($p->id_usu);
+			$dados['usu_criou']= $u->nome_usu;
+			
 			$dados['id_usu']= $p->id_usu;
 			$dados['id_cat']= $p->id_cat;
 			$c = $c->get_by_id($p->id_cat);
@@ -147,8 +162,15 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['urls'][$k]['url'] = $valor->url_vid;
 			$dados['urls'][$k]['id_vid'] =$valor->id_vid;
 		}
+		
+			$dados['imagens'] = array();
+		foreach($i as $ke=>$valor){
+			$dados['imagens'][$ke]['nome_img'] = $valor->nome_img;
+			$dados['imagens'][$ke]['id_img'] =$valor->id_img;
+		}
+		
 // 		echo "<pre>";
-// 		echo print_r($dados);
+// 		echo print_r($i);
 // 		echo count($dados);
 // 		echo "</pre>";
 // 		die;

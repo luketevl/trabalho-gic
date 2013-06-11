@@ -41,7 +41,7 @@ $(document).ready(function() {
 		else if(temp == 'remover'){
 			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/deletar');
 			}
-		if(temp != 'adicionar'){
+		if(temp == 'adicionar'){
 			$('form').submit();	
 		}
 		});

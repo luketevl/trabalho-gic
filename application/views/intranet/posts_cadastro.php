@@ -22,6 +22,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery-ui/ui/jquery-ui.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery.fineuploader/jquery.fineuploader-3.6.0.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>resources/Slides-SlidesJS-3/source/jquery.slides.js"></script>
 	<link href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet">
@@ -33,6 +34,7 @@
   </head>
 <script>
   $(document).ready(function() {
+		 
     $('#failed-fine-uploader').fineUploader({
       request: {
         endpoint: 'server/handleUploads'
@@ -42,13 +44,17 @@
         maxChars: 40,
         responseProperty: 'error',
         enableTooltip: true
-      }
+      },
+      text: {
+    	  uploadButton: $('#btnUploadArq').text()
+          },
     });
+    var id_post = $('[name="hd_id"]').val();
     var thumbnailuploader = new qq.FineUploader({
       element: $('#thumbnail-fine-uploader')[0],
       data: "teste",
       request: {
-        endpoint: 'upload'
+        endpoint: 'upload?id_post='+id_post
       },
       text: {
     	  uploadButton: $('#btnUpload').text()
@@ -71,6 +77,15 @@
         }
       }
     });
+    $("#imagens").slidesjs({
+    	pagination: {
+    	      active: true,
+    	        // [boolean] Create pagination items.
+    	        // You cannot use your own pagination. Sorry.
+    	      effect: "slide",
+    	        // [string] Can be either "slide" or "fade".
+    	    }
+	  });
   });
 </script>
 <h1>Cadastrar Materia</h1>
@@ -86,23 +101,23 @@ echo form_fieldset('Principal');
 
 echo form_fieldset('','class="lblInput" style="width:100%;"');
 echo form_label('Titulo','lbl_titulo');
-echo form_input('titulo','{titulo_post}');
+echo form_input('titulo','{titulo_post}','class="required"');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput" style="width:100%;"');
 echo form_label('Descricao Resumida','lbl_desc_resumida');
-echo form_input('desc_resumida','{resumo_post}');
+echo form_input('desc_resumida','{resumo_post}','class="required"');
 echo form_fieldset_close();
 
 
 echo form_fieldset('','class="lblInput" style="width:250px;"');
 echo form_label('Categoria','lbl_categoria');
-echo form_input('ac_categoria','{categoria}','id="ac_categoria"');
+echo form_input('ac_categoria','{categoria}','id="ac_categoria" class="required"');
 echo form_fieldset_close();
 
 
 echo form_label('Conteudo','lbl_conteudo');
-echo form_textarea('editor1','{conteudo_post}');
+echo form_textarea('editor1','{conteudo_post}','class="required"');
 echo form_fieldset_close();
 
 
@@ -124,12 +139,12 @@ echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Criado por:','lbl_usu_criou');
-echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"');
+echo form_input('usu_criou','{usu_criou}','readonly=readonly');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Aprovado por:','lbl_usu_aprovou');
-echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"');
+echo form_input('dt_aprovacao','{usu_aprovou}','readonly=readonly');
 echo form_fieldset_close();
 
 
@@ -171,7 +186,12 @@ echo form_input('url_youtube','{url_youtube}','class="linkvideo"');
 <section id="imagem">
 	<div id="thumbnail-fine-uploader"></div>
 	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload_img');?></span>
-</section>
+	<nav id="imagens">
+	{imagens}
+	<img src="<?php echo base_url();?>resources/img/uploads/{nome_img}" />
+	{/imagens}
+	</nav>
+	</section>
 
 
 
@@ -183,7 +203,7 @@ echo form_label('Arquivos','lbl_arq');
 ?>
 <section id="arquivo">
 	<div id="failed-fine-uploader"></div>
-	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload_arq');?></span>
+	<span id="btnUploadArq" style="display:none"><?php echo lang('btn_upload_arq');?></span>
 </section>
 
 
@@ -199,14 +219,14 @@ echo form_close();
 ?>
 <script>
 $(document).ready(function(){
-	$('[name="enviar"]').click(function(){
-		$('form').submit();
+	$('[name="enviar"]').click(function(ev){
+		ev.preventDefault();
+			});
 		});
 	$('#addUrl').click(function(){
 		var qtd = $('.linkvideo').length;
 		var clone =$('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('');
 		$('#addUrl').before(clone);
-		
 		});
 });
 </script>

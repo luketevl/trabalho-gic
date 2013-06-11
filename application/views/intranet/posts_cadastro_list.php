@@ -33,7 +33,6 @@
 	$(document).ready(function(){
 		$('button').click(function(){
 			var id = $('.selected').find('td[name="hd_id"]').text();
-			console.log(id);
         	$('[name="id"]').val(id);
 			$('[name="adicionar"]').click(function(){
 				window.location = "http://localhost/portal-gic/index.php/intranet/posts_cadastro/";
