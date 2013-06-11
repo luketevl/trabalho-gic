@@ -34,10 +34,10 @@
   </head>
 <script>
   $(document).ready(function() {
-		 
+    var id_post = $('[name="hd_id"]').val();
     $('#failed-fine-uploader').fineUploader({
       request: {
-        endpoint: 'server/handleUploads'
+        endpoint: 'uploadArq?id_post='+id_post
       },
       failedUploadTextDisplay: {
         mode: 'custom',
@@ -49,7 +49,6 @@
     	  uploadButton: $('#btnUploadArq').text()
           },
     });
-    var id_post = $('[name="hd_id"]').val();
     var thumbnailuploader = new qq.FineUploader({
       element: $('#thumbnail-fine-uploader')[0],
       data: "teste",
@@ -204,6 +203,11 @@ echo form_label('Arquivos','lbl_arq');
 <section id="arquivo">
 	<div id="failed-fine-uploader"></div>
 	<span id="btnUploadArq" style="display:none"><?php echo lang('btn_upload_arq');?></span>
+	<nav id="arquivos">
+	{arquivos}
+	<a href="<?php echo base_url();?>resources/img/uploads/{nome_arq}" target="__blank" ><img src="<?php echo base_url();?>resources/icons/download.png" />{nome_arq}</a>
+	{/arquivos}
+	</nav>
 </section>
 
 
