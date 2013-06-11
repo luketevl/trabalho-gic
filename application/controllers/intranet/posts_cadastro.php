@@ -211,7 +211,6 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['arquivos'][$ke]['nome_arq'] = $valor->nome_arq;
 			$dados['arquivos'][$ke]['id_arq'] =$valor->id_arq;
 		}
-		
 // 		echo "<pre>";
 // 		echo print_r($i);
 // 		echo count($dados);

@@ -30,16 +30,16 @@ $(document).ready(function() {
 		ev.preventDefault();
 		var temp = $(this).attr('name');
 		if(temp == 'aprovar'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/aprovar');
+			$('form').attr('action','../intranet/posts_cadastro/aprovar');
 		}
 		else if(temp == 'rejeitar'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/telaJustificar');
+			$('form').attr('action','../intranet/posts_cadastro/telaJustificar');
 			}
 		else if(temp == 'publicar'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/publicar');
+			$('form').attr('action','../intranet/posts_cadastro/publicar');
 			}
 		else if(temp == 'remover'){
-			$('form').attr('action','http://localhost/portal-gic/index.php/intranet/posts_cadastro/deletar');
+			$('form').attr('action','../intranet/posts_cadastro/deletar');
 			}
 		if(temp != 'adicionar'){
 			$('form').submit();	
@@ -261,7 +261,7 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
               response( cache[ term ] );
               return;
             }
-            $.getJSON( "http://localhost/portal-gic/index.php/intranet/categoria_cadastro/au_get_by_name", request, function( data, status, xhr ) {
+            $.getJSON( "portal-gic/../../categoria_cadastro/au_get_by_name", request, function( data, status, xhr ) {
               cache[ term ] = data;
               response( $.map( data.dados, function( item ) {
                 return {

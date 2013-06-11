@@ -35,7 +35,7 @@
 			var id = $('.selected').find('td[name="hd_id"]').text();
         	$('[name="id"]').val(id);
 			$('[name="adicionar"]').click(function(){
-				window.location = "http://localhost/portal-gic/index.php/intranet/posts_cadastro/";
+				window.location = "../intranet/posts_cadastro/";
 				});
 			});
 		});
@@ -58,7 +58,7 @@
 </form>
 
  -->
- <form action="http://localhost/portal-gic/index.php/intranet/posts_cadastro/load_form_edit" method="get" accept-charset="utf-8">
+ <form action="../intranet/posts_cadastro/load_form_edit" method="get" accept-charset="utf-8">
 <?php  echo form_hidden('id',0);
  	   echo form_close();
  ?>
@@ -73,19 +73,19 @@
  			echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_publicar').'"');
  			echo form_button('remover','<img title="'.lang('btn_aprovar'). '" src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
  	?>
- 	<section id="infoList">
- 		12 Novos | 3 Aprovados | 15 Recusados | 16 Publicados
- 	</section>
  	</nav>
+ 	<section id="infoList">
+ 		{cc_aberto} Novos | {cc_aprovado} Aprovados | {cc_rejeitado} Rejeitados | {cc_publicado} Publicados
+ 	</section>
  			<hr />
  	<table>
  		<thead>
  			<tr>
 	 			<td class="coluna" name="id_post" style="display: none">id_post</td>
-	 			<td class="coluna" style="width: 750px;" >Titulo</td>
+	 			<td class="coluna" style="width: 72%;" >Titulo</td>
 	 			<td class="coluna" style="width: 5px;">Data Criacao</td>
 	 			<td class="coluna" style="width: 5px;">Data Aprovacao</td>
-	 			<td class="coluna">Categoria</td> 
+	 			<td class="coluna" style="width: 158px;">Categoria</td> 
 	 			<td class="coluna" style="width: 5px;">Status</td>
 	 			<td class="coluna" name="status" style="display: none">sts_post</td>
 	 		</tr>

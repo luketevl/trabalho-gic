@@ -39,7 +39,7 @@ echo form_fieldset_close();
 ?>
 
 <section id="signFb" class="tooltip" title="<?php echo $tp_fb_login;?>" >
-	<a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo FB_APP_ID;?>&redirect_uri=<?php echo FB_SITELOGIN;?>&scope=<?php echo FB_SCOPE;?>" name="fb_login">
+	<a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo FB_APP_ID;?>&redirect_uri=<?php echo base_url().FB_SITELOGIN;?>&scope=<?php echo FB_SCOPE;?>" name="fb_login">
 	<img src="<?php echo base_url();?>resources/icons/fb2.png" style="position:absolute;" />
 	<span>Continuar</span>
 	</a>

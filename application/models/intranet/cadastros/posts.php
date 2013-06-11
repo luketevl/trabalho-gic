@@ -140,4 +140,25 @@
 			$p->where('id_post',$id)
 				->update('url_youtube',$url);
 		}
+		
+		public function count_aberto(){
+			$p = new Posts();
+			return $p->where('status_post',ABERTO)->count();
+		}
+		
+		public function count_aprovado(){
+			$p = new Posts();
+			
+			return $p->where('status_post',APROVADO)->count();
+		}
+		public function count_rejeitado(){
+			$p = new Posts();
+			return $p->where('status_post',REJEITADO)->count();
+		}
+		
+		public function count_publicado(){
+			$p = new Posts();
+			return $p->where('status_post',PUBLICADO)->count();
+		}
+		
 	}

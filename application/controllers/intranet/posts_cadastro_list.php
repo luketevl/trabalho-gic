@@ -39,6 +39,10 @@ class Posts_Cadastro_List extends CI_Controller{
 // 		echo "<pre>";
 // 		echo print_r($dados);
 // 		echo "</pre>";
+		$dados['cc_aberto'] 	= $p->count_aberto();
+		$dados['cc_aprovado'] 	= $p->count_aprovado();
+		$dados['cc_rejeitado'] 	= $p->count_rejeitado();
+		$dados['cc_publicado'] 	= $p->count_publicado();
 		$this->parser->parse('intranet/posts_cadastro_list',$dados);
 	}
 

@@ -405,10 +405,7 @@ span#circle >img{
 #infoList{
    	float: right;
     text-align: right;
-    width: 857px;
-    margin-right: 15px;
-    margin-top: -51px;
-    font-style:italic;
+    margin-right:2%;
 }
 hr{
     width:99%;
