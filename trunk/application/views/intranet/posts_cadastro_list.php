@@ -85,7 +85,7 @@
 	 			<td class="coluna" style="width: 72%;" >Titulo</td>
 	 			<td class="coluna" style="width: 5px;">Data Criacao</td>
 	 			<td class="coluna" style="width: 5px;">Data Aprovacao</td>
-	 			<td class="coluna" style="width: 158px;">Categoria</td> 
+	 			<td class="coluna" style="width: 200px;">Categoria</td> 
 	 			<td class="coluna" style="width: 5px;">Status</td>
 	 			<td class="coluna" name="status" style="display: none">sts_post</td>
 	 		</tr>

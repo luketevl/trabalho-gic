@@ -89,8 +89,8 @@ $(document).ready(function() {
 		$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="editar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="remover"]').addClass('tooltip btn btn-large btn-block btn-primary');
-
-		if(status == ""){
+		
+		if(status == "" ||  !status ){
 			$('[name="publicar"]').attr('disabled','disabled');
 			$('[name="publicar"]').removeClass('tooltip btn-primary');
 			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');

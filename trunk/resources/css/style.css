@@ -1,6 +1,6 @@
 * {
 	margin:0px;
-	
+		
 }
 	::selection{ background-color: #E13300; color: white; }
 	::moz-selection{ background-color: #E13300; color: white; }
@@ -64,7 +64,10 @@
 		margin: 14px 0 14px 0;
 		padding: 12px 10px 12px 10px;
 	}
-
+	#dummybodyid{
+		overflow: hidden;
+		
+	}
 	#body{
 		margin: 0 15px 0 15px;
 	}
@@ -235,8 +238,9 @@ nav#user{
     margin-top:5px;
     left:100px;
     height:100%;
+    min-height: 100%;
     z-index:999999;
-    width:88%;
+    width:91.3%;
     margin-left:42px;
     margin-right:800px;
     background-color: #E7E7E7E7;
@@ -350,10 +354,12 @@ span#circle >img{
     float:left;
 }
 #list {
-    margin: -20px;
-    width:103%;
+    margin-top: -21px;
+    margin-left: -19px;
+    width:auto;
     border-style: solid;
     border-width: 2px;
+    border-top-width: 1px;
    }
    #list table td.coluna{
     text-align:center;
