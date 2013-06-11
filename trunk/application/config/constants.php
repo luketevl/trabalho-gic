@@ -65,7 +65,7 @@ define('APROVADO'	,'A');
 define('REJEITADO'	,'R');
 define('PUBLICADO'	,'P');
 define('ADM'		,'1');
-define('COMUM'			,'2');
+define('COMUM'		,'2');
 
 
 /* End of file constants.php */

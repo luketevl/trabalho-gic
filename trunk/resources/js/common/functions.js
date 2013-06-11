@@ -30,16 +30,16 @@ $(document).ready(function() {
 		ev.preventDefault();
 		var temp = $(this).attr('name');
 		if(temp == 'aprovar'){
-			$('form').attr('action','../intranet/posts_cadastro/aprovar');
+			$('form').attr('action','../posts_cadastro/aprovar');
 		}
 		else if(temp == 'rejeitar'){
-			$('form').attr('action','../intranet/posts_cadastro/telaJustificar');
+			$('form').attr('action','../posts_cadastro/telaJustificar');
 			}
 		else if(temp == 'publicar'){
-			$('form').attr('action','../intranet/posts_cadastro/publicar');
+			$('form').attr('action','../posts_cadastro/publicar');
 			}
 		else if(temp == 'remover'){
-			$('form').attr('action','../intranet/posts_cadastro/deletar');
+			$('form').attr('action','../posts_cadastro/deletar');
 			}
 		if(temp != 'adicionar'){
 			$('form').submit();	
@@ -307,8 +307,10 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
         		$(this).removeClass('selected');
         	});
         	$(this).addClass('selected');
-        	hide_button($(this).find('td[name="hd_status"]').text(),id_perf);
+        	el_status = $(this).find('td[name="hd_status"]');
+        	hide_button(el_status.text(),id_perf);
         	$('[name="id"]').val($(this).find('td[name="hd_id"]').text());
+        	
         });
         $('tbody tr').dblclick(function(){
         	var id = $(this).find('td[name="hd_id"]').text();
