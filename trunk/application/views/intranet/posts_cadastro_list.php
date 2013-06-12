@@ -31,58 +31,55 @@
    
    <script>
 	$(document).ready(function(){
+		$('[name="adicionar"]').click(function(){
+			window.location = "../intranet/posts_cadastro/";
+			});
 		$('button').click(function(){
 			var id = $('.selected').find('td[name="hd_id"]').text();
         	$('[name="id"]').val(id);
-			$('[name="adicionar"]').click(function(){
-				window.location = "../intranet/posts_cadastro/";
-				});
 			});
 		$('a.active').click(function(){
 				nome = $(this).attr('name');
 				btn = this;
+				if($(btn).attr('style') === undefined){
+					$(btn).css('color','red');
+				}				
+				else{
+					$(btn).removeAttr('style');
+					}
 			$('tbody tr').each(function(){
 				var el = this;
 				status = $(el).find('td[name="hd_status"]').text();
 				if(nome == 'novo' && status=='N'){
-					if($(btn).attr('style') === undefined){
-						$(btn).css('color','red');
-						$(el).hide();
-							}
+					if($(btn).attr('style') !== undefined){
+						$(el).hide(700);
+					}
 					else{
-						$(btn).removeAttr('style');
-						$(el).show();
+						$(el).show(700);
 						}
 					}
 				else if(nome == 'aprovado' && status=='A'){
-					if($(btn).attr('style') === undefined){
-							$(btn).css('color','red');
-							$(el).hide();
+					if($(btn).attr('style') !== undefined){
+							$(el).hide(700);
 								}
 						else{
-							$(btn).removeAttr('style');
-							$(el).show();
+							$(el).show(700);
 							}
 					}
 				else if(nome == 'rejeitado' && status=='R'){
-					alert(status);
-					if($(btn).attr('style') === undefined){
-							$(btn).css('color','red');
-							$(el).hide();
+					if($(btn).attr('style') !== undefined){
+							$(el).hide(700);
 								}
 						else{
-							$(btn).removeAttr('style');
-							$(el).show();
+							$(el).show(700);
 							}
 					}
 				else if(nome == 'publicado' && status=='P'){
-					if($(btn).attr('style') === undefined){
-							$(btn).css('color','red');
-							$(el).hide();
+					if($(btn).attr('style') !== undefined){
+							$(el).hide(700);
 								}
 						else{
-							$(btn).removeAttr('style');
-							$(el).show();
+							$(el).show(700);
 							}
 					}
 				});
@@ -143,13 +140,14 @@
  	?>
  	</nav>
  	<section id="infoList">
- 		<a href="#" class="active" name="novo">{cc_aberto} Novos</a>
+ 		<img src="<?php echo base_url();?>resources/icons/menu.png" />
+ 		<a href="#" class="active" name="novo">{cc_aberto} Novos </a>
  		 | 
  		 <a href="#" class="active" name="aprovado">{cc_aprovado} Aprovados </a>
  		 |
- 		 <a href="#" class="active" name="rejeitado">{cc_rejeitado} Rejeitados</a> 
+ 		 <a href="#" class="active" name="rejeitado">{cc_rejeitado} Rejeitados </a> 
  		 | 
- 		 <a href="#" class="active" name="publicado">{cc_publicado} Publicados</a>
+ 		 <a href="#" class="active" name="publicado">{cc_publicado} Publicados </a>
  	</section>
  			<hr />
  	<table>

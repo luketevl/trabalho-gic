@@ -317,6 +317,9 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
         	$('[name="id"]').val(id);
         	$('form').submit();
         });
+        $('[name="adicionar"]').click(function(){
+			window.location = "../posts_cadastro/";
+			});
 });
 $(window).load(function(){
 		$('#canvasloader-container').addClass("centro hide");
