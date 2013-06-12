@@ -4,7 +4,7 @@ $(document).ready(function() {
 	createLoad();
 	 var id_perf=0;
 	$('.tooltip').tooltipster();
-	$("#form").validate();
+	$("form").validate();
 	$("#tagsinput").tagsInput();
 	disabled_all();
 	hide_button($('[name="hd_status"]').val(),id_perf);

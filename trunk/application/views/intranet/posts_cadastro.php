@@ -24,6 +24,7 @@
 	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery.fineuploader/jquery.fineuploader-3.6.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>resources/Slides-SlidesJS-3/source/jquery.slides.js"></script>
 	<link href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>resources/jquery-validation/demo/css/screen.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet">
    <!--  

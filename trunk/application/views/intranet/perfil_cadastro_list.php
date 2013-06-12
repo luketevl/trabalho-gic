@@ -40,6 +40,7 @@
         <label for="sobrenome">Sobrenome:</label>
         <input type="text" name="sobrenome" id="sobrenome" class="required" />
     </div>            
+        <button>Teste</button>
     <div class="submit">
         <input type="submit" />
     </div>
