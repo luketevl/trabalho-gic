@@ -18,7 +18,10 @@ class Principal extends CI_Controller{
 					  						 'name' => $this->lang->line('posts')),
 				'tp_posts'		=> $this->lang->line('tp_posts')
 				);
-		$this->load->view('intranet/principal',$menu);
+		$p = new Perfis();
+		$p = $p->get_by_id($this->session->userdata('id_perf'));
+		$menu['perfil_usu'] = $p->nome_perf;
+		$this->parser->parse('intranet/principal',$menu);
 	}
 }
 ?>

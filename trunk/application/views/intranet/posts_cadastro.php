@@ -156,7 +156,7 @@ echo form_label('Referencias','lbl_ref');
 echo form_textarea('referencias','{ref_post}','style="width:100%;"'); 
 echo form_fieldset_close();
 echo form_fieldset('','class="lblInput"  style="width:98%;height: 109px;;"');
-echo form_label('Palavra Chave','lbl_keywords') .'<br />';
+echo form_label('Palavras Chaves','lbl_keywords') .'<br />';
 ?>
 
 <section class="palavrasChave">
@@ -180,8 +180,9 @@ echo form_input('url_youtube','{url_youtube}','class="linkvideo"');
 <?php 
 	echo form_fieldset_close();
 	echo form_fieldset('','class="lblInput" style="width:480px;"');
-	echo form_label('Imagens','lbl_img');
+	echo form_label('Imagens ','lbl_img');
 ?>
+<img src="<?php echo base_url();?>resources/icons/info.png" class="tooltip" title="<?php echo lang('info_imagens')?>" />
 <section id="imagem">
 	<div id="thumbnail-fine-uploader"></div>
 	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload_img');?></span>
@@ -200,12 +201,13 @@ echo form_fieldset('','class="lblInput" style="width:480px;"');
 echo form_label('Arquivos','lbl_arq');
 
 ?>
+<img src="<?php echo base_url();?>resources/icons/info.png" class="tooltip" title="<?php echo lang('info_arquivos')?>" />
 <section id="arquivo">
 	<div id="failed-fine-uploader"></div>
 	<span id="btnUploadArq" style="display:none"><?php echo lang('btn_upload_arq');?></span>
 	<nav id="arquivos">
 	{arquivos}
-	<a href="<?php echo base_url();?>resources/img/uploads/{nome_arq}" target="__blank" ><img src="<?php echo base_url();?>resources/icons/download.png" />{nome_arq}</a>
+	<a href="<?php echo base_url();?>resources/arquivos/uploads/{nome_arq}" target="__blank" ><img src="<?php echo base_url();?>resources/icons/download.png" />{nome_arq}</a>
 	{/arquivos}
 	</nav>
 </section>
@@ -218,7 +220,7 @@ echo form_button('enviar','<img src='. base_url() .'resources/icons/save.png wid
 echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_aprovar').'"');
 echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_rejeitar').'"');
 echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_publicar').'"');
-echo form_button('remover','<img title="'.lang('btn_aprovar'). '" src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
+echo form_button('remover','<img  src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
 echo form_close();
 ?>
 <script>
@@ -226,10 +228,14 @@ $(document).ready(function(){
 	$('[name="enviar"]').click(function(ev){
 		ev.preventDefault();
 			});
-		});
 	$('#addUrl').click(function(){
-		var qtd = $('.linkvideo').length;
-		var clone =$('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('');
+		var qtd 	= 	$('.linkvideo').length;
+		var clone 	= 	$('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('');
+		$(clone).html('<span> URL videos</span>');
+		console.log('<span> URL videos</span> '+clone);
+		var t= '<span> URL do video</span>';
+		$('#addUrl').before(t);
+
 		$('#addUrl').before(clone);
 		});
 });

@@ -161,4 +161,31 @@
 			return $p->where('status_post',PUBLICADO)->count();
 		}
 		
+		public function count_aberto_usu($id){
+			$p = new Posts();
+			return $p->where('status_post',ABERTO)
+			 ->where('id_usu',$id)
+			->count();
+		}
+		
+		public function count_aprovado_usu($id){
+			$p = new Posts();
+			return $p->where('status_post',APROVADO)
+			 ->where('id_usu',$id)
+				->count();
+		}
+		public function count_rejeitado_usu($id){
+			$p = new Posts();
+			return $p->where('status_post',REJEITADO)
+			->where('id_usu',$id)
+			->count();
+		}
+		
+		public function count_publicado_usu($id){
+			$p = new Posts();
+			return $p->where('status_post',PUBLICADO)
+			->where('id_usu',$id)
+			->count();
+		}
+		
 	}
