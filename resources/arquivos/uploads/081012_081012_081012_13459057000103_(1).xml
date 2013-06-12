@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<export>
+  <produtos>
+    <produto>
+      <nes_>1</nes_>
+      <ativo>1</ativo>
+      <descricao_produto>GRADE EXPORTACAO</descricao_produto>
+      <descricao_resumida>GRADE EXPORTACAO</descricao_resumida>
+      <cod_secundario>2071992349802</cod_secundario>
+      <cod_barra>42343243243423</cod_barra>
+      <comercializavel>1</comercializavel>
+      <vendido_separado>1</vendido_separado>
+      <cod_ncm>03055100</cod_ncm>
+      <data_criacao>08/10/2012</data_criacao>
+      <custo_outras_despesas>0.00</custo_outras_despesas>
+      <custo_utilizado>0.00</custo_utilizado>
+      <tipo_mercadoria>00</tipo_mercadoria>
+      <tipo_producao>T</tipo_producao>
+      <tx_conversao_e_s>1.0000</tx_conversao_e_s>
+      <tx_conversao_s_i>1.0000</tx_conversao_s_i>
+      <tx_conversao_e_i>1.0000</tx_conversao_e_i>
+      <tx_conversao_trib>1.0000</tx_conversao_trib>
+      <altura>0.000</altura>
+      <comprimento>0.000</comprimento>
+      <largura>0.000</largura>
+      <peso>0.000</peso>
+      <comissao>0.00</comissao>
+      <categoria>TERMOG&#xCA;NICO</categoria>
+      <unidade_entrada>DD</unidade_entrada>
+      <unidade_saida>DD</unidade_saida>
+      <unidade_inventario>DD</unidade_inventario>
+      <unidade_tributavel>DD</unidade_tributavel>
+      <valor_venda_varejo>0.01</valor_venda_varejo>
+      <lucro_utilizado>0.01</lucro_utilizado>
+      <estoque_imobilizado>0.000</estoque_imobilizado>
+      <estoque_proprio>0.000</estoque_proprio>
+      <estoque_revenda>0.000</estoque_revenda>
+      <grade>
+        <item>
+          <cod_grade>001</cod_grade>
+          <descricao_produto>GRADE EXPORTACAO - a</descricao_produto>
+          <estoque>0.000</estoque>
+          <cod_secundario></cod_secundario>
+        </item>
+        <item>
+          <cod_grade>002</cod_grade>
+          <descricao_produto>GRADE EXPORTACAO - b</descricao_produto>
+          <estoque>0.000</estoque>
+          <cod_secundario></cod_secundario>
+        </item>
+      </grade>
+    </produto>
+    <produto>
+      <nes_>1</nes_>
+      <ativo>1</ativo>
+      <descricao_produto>EXPORTACAO NORMAL</descricao_produto>
+      <descricao_resumida>EXPORTACAO NORMAL</descricao_resumida>
+      <cod_secundario>2069654625562</cod_secundario>
+      <comercializavel>1</comercializavel>
+      <vendido_separado>1</vendido_separado>
+      <cod_ncm>03055100</cod_ncm>
+      <data_criacao>08/10/2012</data_criacao>
+      <custo_outras_despesas>0.00</custo_outras_despesas>
+      <custo_utilizado>0.00</custo_utilizado>
+      <tipo_mercadoria>00</tipo_mercadoria>
+      <tipo_producao>T</tipo_producao>
+      <tx_conversao_e_s>1.0000</tx_conversao_e_s>
+      <tx_conversao_s_i>1.0000</tx_conversao_s_i>
+      <tx_conversao_e_i>1.0000</tx_conversao_e_i>
+      <tx_conversao_trib>1.0000</tx_conversao_trib>
+      <altura>0.000</altura>
+      <comprimento>0.000</comprimento>
+      <largura>0.000</largura>
+      <peso>0.000</peso>
+      <comissao>0.00</comissao>
+      <categoria>CREATINA</categoria>
+      <unidade_entrada>DD</unidade_entrada>
+      <unidade_saida>DD</unidade_saida>
+      <unidade_inventario>DD</unidade_inventario>
+      <unidade_tributavel>DD</unidade_tributavel>
+      <valor_venda_varejo>0.01</valor_venda_varejo>
+      <lucro_utilizado>0.01</lucro_utilizado>
+      <estoque_imobilizado>0.000</estoque_imobilizado>
+      <estoque_proprio>0.000</estoque_proprio>
+      <estoque_revenda>0.000</estoque_revenda>
+    </produto>
+  </produtos>
+  <fornecedores/>
+  <transportadoras/>
+  <clientes/>
+</export>

@@ -39,11 +39,21 @@ class Posts_Cadastro_List extends CI_Controller{
 // 		echo "<pre>";
 // 		echo print_r($dados);
 // 		echo "</pre>";
-		$dados['cc_aberto'] 	= $p->count_aberto();
-		$dados['cc_aprovado'] 	= $p->count_aprovado();
-		$dados['cc_rejeitado'] 	= $p->count_rejeitado();
-		$dados['cc_publicado'] 	= $p->count_publicado();
-		$this->parser->parse('intranet/posts_cadastro_list',$dados);
+		$id_perf = $this->session->userdata('id_perf');
+		if($id_perf == ADM){
+			$dados['cc_aberto'] 	= $p->count_aberto();
+			$dados['cc_aprovado'] 	= $p->count_aprovado();
+			$dados['cc_rejeitado'] 	= $p->count_rejeitado();
+			$dados['cc_publicado'] 	= $p->count_publicado();
+		}
+		else{
+			$dados['cc_aberto'] 	= $p->count_aberto_usu($id_perf);
+			$dados['cc_aprovado'] 	= $p->count_aprovado_usu($id_perf);
+			$dados['cc_rejeitado'] 	= $p->count_rejeitado_usu($id_perf);
+			$dados['cc_publicado'] 	= $p->count_publicado_usu($id_perf);
+					
+		}
+			$this->parser->parse('intranet/posts_cadastro_list',$dados);
 	}
 
 	public function preenche_list(){

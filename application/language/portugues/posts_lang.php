@@ -10,3 +10,11 @@ $lang['btn_aprovar']			= 'Aprovar';
 $lang['btn_rejeitar']			= 'Rejeitar';
 $lang['btn_apagar']				= 'Apagar';
 $lang['btn_publicar']			= 'Publicar';
+
+
+
+
+
+$lang['info_imagens']			= 'Apenas será permitido inserir imagens após a matéria ter sido salva.';
+$lang['info_arquivos']			= 'Apenas será permitido inserir arquivos após a matéria ter sido salva.';
+

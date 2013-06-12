@@ -193,6 +193,12 @@ nav#user{
 #dadosUser > #userInfo{
     margin-top:10px;
     float:left;
+    text-align:left;
+}
+
+#dadosUser > #userInfo > p{
+	color:#4A5361;
+	font-style:normal;
 }
 #dadosUser >img#foto{
     width: 80px;
