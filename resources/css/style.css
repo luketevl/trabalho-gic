@@ -119,6 +119,11 @@
 		border-right-style:solid;
 		border-color: #D0D0D0;
 	} */
+	fieldset{
+		padding:5px !important;
+		
+	}
+	
 	section#column-right{
 		/*background-color: pink;*/
 		float:right;
@@ -329,8 +334,8 @@ span#circle >img{
 #signFb{
     width:190px;
     height:57px;
-    float:left;
-    margin-left:500px;
+    float:right;
+    margin-right:37%;
 }
 
 #signFb span{
@@ -348,9 +353,10 @@ span#circle >img{
 	padding-left:10px;
 	float:right;
 }
-.fieldsetLogin{
+.fieldsetLogin , .fieldsetCadastro{
+	display:none;
     width:400px;
-    height: 300px;
+    height: auto;
     float:left;
 }
 .palavrasChave{

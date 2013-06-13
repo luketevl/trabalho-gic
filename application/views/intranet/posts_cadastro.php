@@ -1,38 +1,67 @@
 <head>
-	
-	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/icheckmaster/skins/line/blue.css" />
-	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/style.css" />
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/resources/flat-ui-master/css/flat-ui.css" />
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/jquery.js" ></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/load.js" ></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/jquery-validation/dist/jquery.validate.js" ></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/js/common/functions.js" ></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/icheckmaster/js/jquery.icheck.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/tooltipster-master/js/jquery.tooltipster.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.tagsinput.js"></script>
-	<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/tooltipster-master/css/tooltipster.css" />
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.dropkick-1.0.0.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/custom_checkbox_and_radio.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/custom_radio.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/bootstrap-tooltip.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.placeholder.js"></script>
-    <script type="text/javascript" src="http://vjs.zencdn.net/c/video.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery-ui/ui/jquery-ui.js"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery.fineuploader/jquery.fineuploader-3.6.0.js"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>resources/Slides-SlidesJS-3/source/jquery.slides.js"></script>
-	<link href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>resources/jquery-validation/demo/css/screen.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet">
-   <!--  
+
+<link rel="stylesheet"
+	href="<?php echo base_url(); ?>resources/icheckmaster/skins/line/blue.css" />
+<link rel="stylesheet"
+	href="<?php echo base_url(); ?>resources/css/style.css" />
+<link rel="stylesheet"
+	href="<?php echo base_url(); ?>/resources/flat-ui-master/css/flat-ui.css" />
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/js/common/jquery.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/js/common/load.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/jquery-validation/dist/jquery.validate.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/js/common/functions.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/icheckmaster/js/jquery.icheck.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/tooltipster-master/js/jquery.tooltipster.min.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.tagsinput.js"></script>
+<link rel="stylesheet"
+	href="<?php echo base_url(); ?>resources/css/style.css" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo base_url(); ?>resources/tooltipster-master/css/tooltipster.css" />
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.dropkick-1.0.0.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/flat-ui-master/js/custom_checkbox_and_radio.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/flat-ui-master/js/custom_radio.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/flat-ui-master/js/bootstrap-tooltip.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/flat-ui-master/js/jquery.placeholder.js"></script>
+<script type="text/javascript" src="http://vjs.zencdn.net/c/video.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/ckeditor/ckeditor.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url();?>resources/jquery-ui/ui/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url();?>resources/jquery.fineuploader/jquery.fineuploader-3.6.0.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url();?>resources/Slides-SlidesJS-3/source/jquery.slides.js"></script>
+<link
+	href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css"
+	rel="stylesheet">
+<link
+	href="<?php echo base_url(); ?>resources/jquery-validation/demo/css/screen.css"
+	rel="stylesheet" />
+<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css"
+	rel="stylesheet" />
+<link
+	href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css"
+	rel="stylesheet" />
+<!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
 	</head>
    -->
 
-  </head>
+</head>
 <script>
   $(document).ready(function() {
     var id_post = $('[name="hd_id"]').val();
@@ -101,6 +130,9 @@ echo form_fieldset('Principal');
 
 echo form_fieldset('','class="lblInput" style="width:100%;"');
 echo form_label('Titulo','lbl_titulo');
+?>
+<br />
+<?php 
 echo form_input('titulo','{titulo_post}','class="required"');
 echo form_fieldset_close();
 
@@ -154,45 +186,48 @@ echo form_fieldset_close();
 echo form_fieldset('Extras');
 echo form_fieldset('','class="lblInput" style="width:98%;"');
 echo form_label('Referencias','lbl_ref');
-echo form_textarea('referencias','{ref_post}','style="width:100%;"'); 
+echo form_textarea('referencias','{ref_post}','style="width:100%;"');
 echo form_fieldset_close();
 echo form_fieldset('','class="lblInput"  style="width:98%;height: 109px;;"');
 echo form_label('Palavras Chaves','lbl_keywords') .'<br />';
 ?>
 
 <section class="palavrasChave">
-	<input name="tagsinput" id="tagsinput" class="tagsinput" value="{keywords_post}" style="display: none;">
+	<input name="tagsinput" id="tagsinput" class="tagsinput"
+		value="{keywords_post}" style="display: none;">
 </section>
 <?php 
-	echo form_fieldset_close();
-	echo form_fieldset('','class="lblInput" style="width:500px;"');
+echo form_fieldset_close();
+echo form_fieldset('','class="lblInput" style="width:500px;"');
 ?>
 <section id="url">
-<?php 
-echo form_label('URL Video Principal','lbl_url_youtube');
-echo form_input('url_youtube','{url_youtube}','class="linkvideo"');
-?>
-{urls}
-<input type="text" value ={url} name =linkvideo[{id_vid}] />
-{/urls}
-<img src="<?php echo base_url();?>resources/icons/add.png" id="addUrl"/>
+	<?php 
+	echo form_label('URL Video Principal','lbl_url_youtube');
+	echo form_input('url_youtube','{url_youtube}','class="linkvideo url"');
+	?>
+	{urls} <input type="text" value={url} name=linkvideo[{id_vid}] />
+	{/urls} <img src="<?php echo base_url();?>resources/icons/add.png"
+		id="addUrl" />
 </section>
 
 <?php 
-	echo form_fieldset_close();
-	echo form_fieldset('','class="lblInput" style="width:480px;"');
-	echo form_label('Imagens ','lbl_img');
+echo form_fieldset_close();
+echo form_fieldset('','class="lblInput" style="width:480px;"');
+echo form_label('Imagens ','lbl_img');
 ?>
-<img src="<?php echo base_url();?>resources/icons/info.png" class="tooltip" title="<?php echo lang('info_imagens')?>" />
+<img
+	src="<?php echo base_url();?>resources/icons/info.png" class="tooltip"
+	title="<?php echo lang('info_imagens')?>" />
 <section id="imagem">
 	<div id="thumbnail-fine-uploader"></div>
-	<span id="btnUpload" style="display:none"><?php echo lang('btn_upload_img');?></span>
+	<span id="btnUpload" style="display: none"><?php echo lang('btn_upload_img');?>
+	</span>
 	<nav id="imagens">
-	{imagens}
-	<img src="<?php echo base_url();?>resources/img/uploads/{nome_img}" />
-	{/imagens}
+		{imagens} <img
+			src="<?php echo base_url();?>resources/img/uploads/{nome_img}" />
+		{/imagens}
 	</nav>
-	</section>
+</section>
 
 
 
@@ -202,14 +237,19 @@ echo form_fieldset('','class="lblInput" style="width:480px;"');
 echo form_label('Arquivos','lbl_arq');
 
 ?>
-<img src="<?php echo base_url();?>resources/icons/info.png" class="tooltip" title="<?php echo lang('info_arquivos')?>" />
+<img
+	src="<?php echo base_url();?>resources/icons/info.png" class="tooltip"
+	title="<?php echo lang('info_arquivos')?>" />
 <section id="arquivo">
 	<div id="failed-fine-uploader"></div>
-	<span id="btnUploadArq" style="display:none"><?php echo lang('btn_upload_arq');?></span>
+	<span id="btnUploadArq" style="display: none"><?php echo lang('btn_upload_arq');?>
+	</span>
 	<nav id="arquivos">
-	{arquivos}
-	<a href="<?php echo base_url();?>resources/arquivos/uploads/{nome_arq}" target="__blank" ><img src="<?php echo base_url();?>resources/icons/download.png" />{nome_arq}</a>
-	{/arquivos}
+		{arquivos} <a
+			href="<?php echo base_url();?>resources/arquivos/uploads/{nome_arq}"
+			target="__blank"><img
+			src="<?php echo base_url();?>resources/icons/download.png" />{nome_arq}</a>
+		{/arquivos}
 	</nav>
 </section>
 
@@ -233,6 +273,7 @@ $(document).ready(function(){
 	$('#addUrl').click(function(){
 		var qtd 	= 	$('.linkvideo').length;
 		var clone 	= 	$('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('');
+		$(clone).removeClass('error');
 		$(clone).html('<span> URL videos</span>');
 		console.log('<span> URL videos</span> '+clone);
 		var t= '<span> URL do video</span>';

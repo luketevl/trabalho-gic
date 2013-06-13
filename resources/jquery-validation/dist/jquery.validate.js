@@ -279,22 +279,22 @@ $.extend($.validator, {
 	},
 
 	messages: {
-		required: "This field is required.",
+		required: 'Esse campo é obrigatório.',//"This field is required.",
 		remote: "Please fix this field.",
-		email: "Please enter a valid email address.",
-		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
+		email: 'Por favor, insira um e-mail válido.',//"Please enter a valid email address.",
+		url: 'Por favor, insira uma URL válida.',//"Please enter a valid URL.",
+		date: 'Por favor, insira uma data válida.',//"Please enter a valid date.",
 		dateISO: "Please enter a valid date (ISO).",
-		number: "Please enter a valid number.",
+		number: 'Por favor, insira uma número válido.',//"Please enter a valid number.",
 		digits: "Please enter only digits.",
 		creditcard: "Please enter a valid credit card number.",
-		equalTo: "Please enter the same value again.",
-		maxlength: $.validator.format("Please enter no more than {0} characters."),
-		minlength: $.validator.format("Please enter at least {0} characters."),
-		rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
-		range: $.validator.format("Please enter a value between {0} and {1}."),
-		max: $.validator.format("Please enter a value less than or equal to {0}."),
-		min: $.validator.format("Please enter a value greater than or equal to {0}.")
+		equalTo: 'Por favor, insira o mesmo valor novamente.',//"Please enter the same value again.",
+		maxlength: $.validator.format("Por favor, digite no máximo {0} caracteres."), //Please enter no more than {0} characters
+		minlength: $.validator.format("Por favor, digite no minimo {0} caracteres."), //Please enter at least {0} characters
+		rangelength: $.validator.format("Por favor, insira um valor entre {0} e {1} caracteres."), //Please enter a value between {0} and {1} characters long
+		range: $.validator.format("Por favor, insira um valor entre {0} e {1}."), //Please enter a value between {0} and {1}
+		max: $.validator.format("Por favor, insira um valor menor ou igual a {0}."), //Please enter a value less than or equal to {0}
+		min: $.validator.format("Por favor, insira um valor maior ou igual a {0}.") //Please enter a value greater than or equal to {0}
 	},
 
 	autoCreateRanges: false,
