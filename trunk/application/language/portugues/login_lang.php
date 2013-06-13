@@ -8,4 +8,6 @@ $lang['btn_entrar']				= 'Entrar';
 $lang['btn_cadastrar']			= 'Cadastrar';
 $lang['btn_cadastro']			= 'Cadastrar';
 $lang['btn_login']				= 'Entrar';
+$lang['info_cadastro']			= 'Clique para abrir o formulário de cadastro';
+$lang['info_login']				= 'Clique para abrir o formulário de login';
 
