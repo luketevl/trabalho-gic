@@ -7,6 +7,7 @@ class Login extends CI_Controller{
 			redirect('index.php/intranet/principal');
 		}else{
 			$this->lang->load('posts');
+			$this->lang->load('login');
 			$dados = array('tp_fb_login'		=> $this->lang->line('tp_fb_login'));
 			$this->load->view('intranet/login',$dados);
 		}
