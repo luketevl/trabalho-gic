@@ -19,8 +19,18 @@ class Principal extends CI_Controller{
 				'tp_posts'		=> $this->lang->line('tp_posts')
 				);
 		$p = new Perfis();
+		$u = new Usuarios();
+		$u = $u->get_by_id($this->session->userdata('id_usu'));
 		$p = $p->get_by_id($this->session->userdata('id_perf'));
+		if($this->session->userdata('avatar_usu')=='0'){
+				$dados['avatar_usu'] = 'no_avatar.png';
+		}
+		else{
+			$dados['avatar_usu'] = $u->avatar_usu;
+		}
+		$this->session->set_userdata($dados['avatar_usu']);
 		$menu['perfil_usu'] = $p->nome_perf;
+		$menu = array_merge($menu, $dados);
 		$this->parser->parse('intranet/principal',$menu);
 	}
 }

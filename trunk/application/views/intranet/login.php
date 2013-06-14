@@ -138,6 +138,7 @@ echo form_fieldset_close();
 			if(name == 'cadastrar'){
 				$('#formNew').validate();
 				pass_rules('#formNew');
+				pass_repeat_rules('#formNew');
 				if($('#formNew').valid()){
 					valida('login/cadastrar','#formNew');
 					}
@@ -168,7 +169,8 @@ echo form_fieldset_close();
 				    minlength: $.format("Por favor, digite no minimo {0} caracteres.")
 				  }
 				});
-			
+			}
+		function pass_repeat_rules(form){
 			$(form +' [name="rp_senha"]').rules( "add", {
 				  required: true,
 				  equalTo: $(form +' [name="senha"]'),
@@ -178,6 +180,7 @@ echo form_fieldset_close();
 				  }
 				});
 			}
+		
 		function valida(pag,formulario){
 			$.ajax({
 				type:'post',
