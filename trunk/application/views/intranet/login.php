@@ -43,6 +43,8 @@
 	src="<?php echo base_url();?>resources/jquery.fineuploader/jquery.fineuploader-3.6.0.js"></script>
 <script type="text/javascript"
 	src="<?php echo base_url();?>resources/Slides-SlidesJS-3/source/jquery.slides.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url();?>resources/pnotify-master/jquery.pnotify.min.js"></script>
 <link
 	href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css"
 	rel="stylesheet">
@@ -54,11 +56,19 @@
 <link
 	href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css"
 	rel="stylesheet" />
-</head>
-<section class="tira" style="width:100%; height:65px;background-color:rgb(228, 247, 235);border-bottom: solid 1px rgb(156, 185, 180);">
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css"
+	rel="stylesheet" />
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css"
+	rel="stylesheet" />
+	
+	
+	</head>
+<section class="tira">
 <?php
-echo form_button('btn_login',lang('btn_login'),'style="width:25%; margin-top:10px;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_login').'"');
-echo form_button('btn_cadastro',lang('btn_cadastro'),'style="width:25%; margin-top:10px;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_cadastro').'"');
+echo form_button('btn_login',lang('btn_login'),'style="width:25%;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_login').'"');
+echo form_button('btn_cadastro',lang('btn_cadastro'),'style="width:25%;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_cadastro').'"');
 ?>
 <section id="signFb" class="tooltip" title="<?php echo $tp_fb_login;?>" >
 	<a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo FB_APP_ID;?>&redirect_uri=<?php echo base_url().FB_SITELOGIN;?>&scope=<?php echo FB_SCOPE;?>" name="fb_login">
@@ -103,11 +113,11 @@ echo form_fieldset_close();
 			var name = $(this).attr('name'); 
 			if(name == 'cadastrar'){
 				$('#formNew').validate();
-				$('#formNew').submit();
+				valida('login/cadastrar','#formNew');
 			}
 			else if(name == 'logar'){
 				$('#formLogin').validate();		
-				$('#formLogin').submit();
+				valida('login/entrar','#formLogin');
 			}
 			else if(name == 'btn_cadastro'){
 				$('.fieldsetLogin').hide(700);;
@@ -118,5 +128,35 @@ echo form_fieldset_close();
 				$('.fieldsetLogin').toggle();
 			}
 			});
+
+		function valida(pag,formulario){
+			$.ajax({
+				type:'post',
+				url:pag,
+				success: function(retorno){
+					if(retorno==0){
+						alerta_msg('error',retorno);
+						}
+					else{
+						$(formulario).submit();
+						}
+				    }
+				});
+			}
+		function alerta_msg(tipo, msg){
+			var titulo,texto='';
+			if(tipo=='sucesso'){
+				titulo = titulo;
+				title= msg;
+			}
+			else{
+				titulo = "Erro!";
+				texto= 'Deu erro';
+			}
+		    $.pnotify({
+		        title: titulo,
+		        text: msg
+		    });
+			}
 		});
 </script>
