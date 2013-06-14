@@ -108,7 +108,7 @@ echo form_open('index.php/intranet/login/entrar','id="formLogin"');
 echo form_label(lang('lbl_email'),'lbl_email');
 echo form_input('email','','class="email required"');
 echo form_label(lang('lbl_pass'),'lbl_senha');
-echo form_password('senha');
+echo form_password('senha','','class="required"');
 echo form_button('logar','Entrar','style="width:100%; margin-top:10px;" class="btn btn-large btn-block btn-primary"');
 echo form_close();
 echo form_fieldset_close();
@@ -137,12 +137,14 @@ echo form_fieldset_close();
 			var name = $(this).attr('name'); 
 			if(name == 'cadastrar'){
 				$('#formNew').validate();
+				pass_rules('#formNew');
 				if($('#formNew').valid()){
 					valida('login/cadastrar','#formNew');
 					}
 			}
 			else if(name == 'logar'){
 				$('#formLogin').validate();
+				pass_rules('#formLogin');
 				if($('#formLogin').valid()){
 					valida('login/entrar','#formLogin');
 					}
@@ -157,6 +159,25 @@ echo form_fieldset_close();
 			}
 			});
 
+		function pass_rules(form){
+			$(form +' [name="senha"]').rules( "add", {
+				  required: true,
+				  minlength: 6,
+				  messages: {
+				    required: "Campo obrigatório",
+				    minlength: $.format("Por favor, digite no minimo {0} caracteres.")
+				  }
+				});
+			
+			$(form +' [name="rp_senha"]').rules( "add", {
+				  required: true,
+				  equalTo: $(form +' [name="senha"]'),
+				  messages: {
+				    required: "Campo obrigatório",
+				    minlength: $.format("Por favor, digite no minimo {0} caracteres.")
+				  }
+				});
+			}
 		function valida(pag,formulario){
 			$.ajax({
 				type:'post',
@@ -165,10 +186,10 @@ echo form_fieldset_close();
 				success: function(retorno){
 						if(retorno == 0){
 							if(formulario == '#formLogin'){
-								alerta_msg('error','Usuario nao cadastrado','bottom');	
+								alerta_msg('error','Usuario nao cadastrado','top');	
 								} 
 							else{
-								alerta_msg('error','Usuario ja existe','bottom');	
+								alerta_msg('error','Usuario ja existe','top');	
 								}
 						}
 						else{
@@ -200,15 +221,5 @@ echo form_fieldset_close();
 		        width: "100%"	
 		    });
 			}
-
-		$('[name="senha"]').rules( "add", {
-			  required: true,
-			  minlength: 6,
-			  messages: {
-			    required: "Campo obrigatório",
-			    minlength: jQuery.format("Por favor, digite no minimo {0} caracteres.")
-			  }
-			});
-		
 		});
 </script>
