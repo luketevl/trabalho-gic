@@ -98,7 +98,7 @@ class Login extends CI_Controller{
 						'dt_nascimento'		=> $this->input->post('dp_nascimento'),
 						'dt_criacao'		=> unix_to_human(time(), TRUE, 'us'), // U.S. time with seconds,
 						'avatar_usu'		=> $this->input->post('img_avatar'),
-						'id_perf'			=> $this->input->post('id_perf')
+						'id_perf'			=> COMUM//$this->input->post('id_perf')
 					  );
 		
 		if($this->exist_user($dados['email_usu'])){
