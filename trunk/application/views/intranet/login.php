@@ -56,12 +56,36 @@
 <link
 	href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css"
 	rel="stylesheet" />
-<link
-	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css"
-	rel="stylesheet" />
-<link
-	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css"
-	rel="stylesheet" />
+	
+	
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.min.js"></script>
+<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css" media="all" rel="stylesheet" type="text/css" />
+<!-- Include this file if you are using Pines Icons. -->
+<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css" media="all" rel="stylesheet" type="text/css" />
+	
+	
+	<link href="<?php echo base_url(); ?>resources/pnotify-master/devnote.css" rel="stylesheet" type="text/css" />
+	<!-- Page Style -->
+	<link href="<?php echo base_url(); ?>resources/pnotify-master/includes/style.css" rel="stylesheet" type="text/css" />
+	<!-- jQuery -->
+	<link href="<?php echo base_url(); ?>resources/pnotify-master/includes/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/includes/bootstrap/js/bootstrap.min.js"></script>
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- Oxygen Icons -->
+	<link href="<?php echo base_url(); ?>resources/pnotify-master/oxygen/icons.css" rel="stylesheet" type="text/css" />
+	<!-- JavaScript Source Formatting -->
+	<link href="<?php echo base_url(); ?>resources/pnotify-master/includes/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/includes/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/includes/beautify.js"></script>
+	<!-- Pines Notify -->
+	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.js"></script>
+	<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css" rel="stylesheet" type="text/css" />
+	
+	
 	
 	
 	</head>
@@ -84,7 +108,7 @@ echo form_open('index.php/intranet/login/entrar','id="formLogin"');
 echo form_label(lang('lbl_email'),'lbl_email');
 echo form_input('email','','class="email required"');
 echo form_label(lang('lbl_pass'),'lbl_senha');
-echo form_password('senha','','class="required"');
+echo form_password('senha');
 echo form_button('logar','Entrar','style="width:100%; margin-top:10px;" class="btn btn-large btn-block btn-primary"');
 echo form_close();
 echo form_fieldset_close();
@@ -113,11 +137,15 @@ echo form_fieldset_close();
 			var name = $(this).attr('name'); 
 			if(name == 'cadastrar'){
 				$('#formNew').validate();
-				valida('login/cadastrar','#formNew');
+				if($('#formNew').valid()){
+					valida('login/cadastrar','#formNew');
+					}
 			}
 			else if(name == 'logar'){
-				$('#formLogin').validate();		
-				valida('login/entrar','#formLogin');
+				$('#formLogin').validate();
+				if($('#formLogin').valid()){
+					valida('login/entrar','#formLogin');
+					}
 			}
 			else if(name == 'btn_cadastro'){
 				$('.fieldsetLogin').hide(700);;
@@ -133,30 +161,54 @@ echo form_fieldset_close();
 			$.ajax({
 				type:'post',
 				url:pag,
+				data: $(formulario).serialize(), 
 				success: function(retorno){
-					if(retorno==0){
-						alerta_msg('error',retorno);
+						if(retorno == 0){
+							if(formulario == '#formLogin'){
+								alerta_msg('error','Usuario nao cadastrado','bottom');	
+								} 
+							else{
+								alerta_msg('error','Usuario ja existe','bottom');	
+								}
 						}
-					else{
-						$(formulario).submit();
-						}
+						else{
+							window.location = "../intranet/principal/";
+							}
 				    }
 				});
 			}
-		function alerta_msg(tipo, msg){
+		function alerta_msg(tipo, msg,posicao){
 			var titulo,texto='';
 			if(tipo=='sucesso'){
 				titulo = titulo;
 				title= msg;
+				tipo = 'success';
+				classe = 'stack-bar-bottom alert-success';
 			}
 			else{
 				titulo = "Erro!";
+				tipo = 'error';
 				texto= 'Deu erro';
+				classe = 'stack-bar-bottom alert-error';
 			}
 		    $.pnotify({
 		        title: titulo,
-		        text: msg
+		        text: msg,
+		        type: tipo,
+		        addclass: "stack-bar-"+posicao,
+		        cornerclass: "",
+		        width: "100%"	
 		    });
 			}
+
+		$('[name="senha"]').rules( "add", {
+			  required: true,
+			  minlength: 6,
+			  messages: {
+			    required: "Campo obrigatório",
+			    minlength: jQuery.format("Por favor, digite no minimo {0} caracteres.")
+			  }
+			});
+		
 		});
 </script>
