@@ -92,8 +92,6 @@ class Login extends CI_Controller{
 	
 	public function cadastrar(){
 		$u = new Usuarios();
-	
-		
 		$dados = array( 'nome_usu'			=> $this->input->post('nome') , 
 						'email_usu'			=> $this->input->post('email'), 
 						'pass_usu'			=> $this->input->post('senha'),
@@ -104,7 +102,7 @@ class Login extends CI_Controller{
 					  );
 		
 		if($this->exist_user($dados['email_usu'])){
-			echo "Existe";			
+			echo 0;			
 		}
 		else{
 				$u->inserir($dados);
@@ -121,7 +119,7 @@ class Login extends CI_Controller{
 		);
 		$aux = $this->verifica_dados_usuario($dados);
 		if(!$aux){
-			echo 'Nao cadastrado';
+			echo 0;
 		}
 		else{
 			$this->logar($aux);
