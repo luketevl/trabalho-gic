@@ -143,12 +143,14 @@ class Posts_Cadastro extends CI_Controller{
 		$dadosVideo['id_post'] = $aux['id_post'];
 			if(is_array($extras['url_youtube_varios'])){
 				foreach($extras['url_youtube_varios'] as $k=>$valor){
-					$dadosVideo['url_vid'] = $valor;
-					$v->setFields($dadosVideo);
-					if(!$v->verifica_url_post($valor)){
-						$v->insert();
-					}
-				}	
+					if(!empty($valor)){
+						$dadosVideo['url_vid'] = $valor;
+						$v->setFields($dadosVideo);
+						if(!$v->verifica_url_post($valor)){
+							$v->insert();
+						}
+					}	
+				}
 		}
 		$this->load_form_edit($aux['id_post']);
 	}
