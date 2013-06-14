@@ -116,21 +116,21 @@ create table log_atividades(
 
 create table imagens(
 	id_img int unsigned auto_increment not null primary key,
-	nome_img varchar(45) not null,
+	nome_img text not null,
 	id_post int not null,
 	foreign key(id_post) references post(id_post)
 )ENGINE= MYISAM;
 
 create table arquivos(
 	id_arq int unsigned auto_increment not null primary key,
-	nome_arq varchar(45) not null,
+	nome_arq text not null,
 	id_post int not null,
 	foreign key(id_post) references post(id_post)
 )ENGINE= MYISAM;
 
 create table videos(
 	id_vid int unsigned auto_increment not null primary key,
-	url_vid varchar(45) not null,
+	url_vid text not null,
 	id_post int not null,
 	foreign key(id_post) references post(id_post)
 )ENGINE= MYISAM;
