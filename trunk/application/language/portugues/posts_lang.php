@@ -10,6 +10,7 @@ $lang['btn_aprovar']			= 'Aprovar';
 $lang['btn_rejeitar']			= 'Rejeitar';
 $lang['btn_apagar']				= 'Apagar';
 $lang['btn_publicar']			= 'Publicar';
+$lang['btn_cancelar']			= 'Cancelar';
 
 
 
