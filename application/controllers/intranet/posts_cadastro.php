@@ -32,7 +32,7 @@ class Posts_Cadastro extends CI_Controller{
 	
 	public function upload(){
 		$config['upload_path'] = './././resources/img/uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'jpeg|bmp|gif|jpg|png';
 // 		$config['max_size']	= '10000';
 // 		$config['max_width']  = '10024';
 // 		$config['max_height']  = '1768';
@@ -286,6 +286,7 @@ class Posts_Cadastro extends CI_Controller{
 		}
 		$dados['id'] = $id;
 		$dados['list'] = $list;
+		$this->lang->load('posts');
 		$this->parser->parse('intranet/justificativa',$dados);
 	}
 	public function justificar(){

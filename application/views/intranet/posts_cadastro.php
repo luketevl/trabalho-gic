@@ -90,7 +90,7 @@
           },
       multiple: false,
       validation: {
-        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png'],
+        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp'],
       },
       deleteFile: {
           enabled: true,
@@ -205,7 +205,9 @@ echo form_fieldset('','class="lblInput" style="width:500px;"');
 	echo form_label('URL Video Principal','lbl_url_youtube');
 	echo form_input('url_youtube','{url_youtube}','class="linkvideo url"');
 	?>
-	{urls} <input type="text" value={url} name=linkvideo[{id_vid}] />
+	{urls} 
+	<span> URL video</span>
+	<input type="text" value={url} name=linkvideo[{id_vid}] />
 	{/urls} <img src="<?php echo base_url();?>resources/icons/add.png"
 		id="addUrl" />
 </section>
@@ -274,8 +276,8 @@ $(document).ready(function(){
 		var qtd 	= 	$('.linkvideo').length;
 		var clone 	= 	$('[name="url_youtube"]').clone().attr('name','url_youtube_varios['+qtd+']').val('');
 		$(clone).removeClass('error');
-		$(clone).html('<span> URL videos</span>');
-		console.log('<span> URL videos</span> '+clone);
+		$(clone).html('<span> URL video</span>');
+		console.log('<span> URL video</span> '+clone);
 		var t= '<span> URL do video</span>';
 		$('#addUrl').before(t);
 
