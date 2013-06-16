@@ -47,10 +47,10 @@ class Posts_Cadastro_List extends CI_Controller{
 			$dados['cc_publicado'] 	= $p->count_publicado();
 		}
 		else{
-			$dados['cc_aberto'] 	= $p->count_aberto_usu($id_perf);
-			$dados['cc_aprovado'] 	= $p->count_aprovado_usu($id_perf);
-			$dados['cc_rejeitado'] 	= $p->count_rejeitado_usu($id_perf);
-			$dados['cc_publicado'] 	= $p->count_publicado_usu($id_perf);
+			$dados['cc_aberto'] 	= $p->count_aberto_usu($id_usu);
+			$dados['cc_aprovado'] 	= $p->count_aprovado_usu($id_usu);
+			$dados['cc_rejeitado'] 	= $p->count_rejeitado_usu($id_usu);
+			$dados['cc_publicado'] 	= $p->count_publicado_usu($id_usu);
 					
 		}
 			$this->parser->parse('intranet/posts_cadastro_list',$dados);

@@ -49,5 +49,8 @@
         	$a->id_post = $this->campos['id_post'];
         	$a->save();
         }
+        public function deletar($id){
+        	$this->db->query('delete from arquivos where id_post = ' .$id);
+        }
 	}
 ?>
