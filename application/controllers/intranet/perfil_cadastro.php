@@ -51,6 +51,46 @@ class Perfil_cadastro extends CI_Controller {
 		redirect('index.php/intranet/perfil_cadastro_list');
 		
 	}
+	
+	
+	public function au_get_by_name(){
+		$p = new Perfis();
+		$p = $p->get_by_nome($_GET['term']);
+		$result = array();
+		$result=$this->func_array($p);
+	
+		// 		echo "<pre>";
+		// 		echo print_r($result);
+		// 		echo "</pre>";
+	
+		echo json_encode($result);
+	}
+	
+	private function func_array(Perfis $p){
+		$campos= array();
+		// 		$campos = array(	array(
+		// 											'id_cat'   		=>$c->id_cat ,
+		// 											'nome_cat'  	=>$c->nome_cat ,
+		// 											'fk_id_cat' 	=>$c->fk_id_cat
+		// 										  ),
+			
+		// 				array(
+		// 											'id_cat'   		=>$c->id_cat ,
+		// 											'nome_cat'  	=>$c->nome_cat ,
+		// 											'fk_id_cat' 	=>$c->fk_id_cat
+		// 							  )
+		// 				);
+	
+		foreach ($p as $key=>$v){
+			$campos['dados'][$key]['id_perf'] =		$v->id_perf ;
+			$campos['dados'][$key]['nome_perf'] =	$v->nome_perf ;
+		}
+		// 		echo "<pre>";
+		// 		echo print_r($campos);
+		// 		echo "</pre>";
+		// 				die;
+		return $campos;
+	}
 }
 
 /* End of file welcome.php */

@@ -60,5 +60,11 @@
 			$p->where('id_perf',$id)
 			  ->delete();
 		}
+		
+		public function get_by_nome($nome=""){
+			$p = new Perfis();
+			return $p->like('nome_perf',$nome,'both')
+			->get();
+		}
 	}
 ?>

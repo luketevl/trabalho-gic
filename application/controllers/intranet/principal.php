@@ -8,7 +8,7 @@ class Principal extends CI_Controller{
 		$menu = array('principal' 	=> array('url' => base_url().'index.php/intranet/principal' ,
 											 'name' => $this->lang->line('principal')),
 				
-					  'usuarios'	=> array('url' =>base_url().'index.php/intranet/usuarios_cadastro_list',
+					  'usuarios'	=> array('url' =>base_url().'index.php/intranet/usuarios_cadastro',
 					  						 'name' => $this->lang->line('usuarios')),
 				
 					  'perfil'		=> array('url' =>base_url().'index.php/intranet/perfil_cadastro_list',
