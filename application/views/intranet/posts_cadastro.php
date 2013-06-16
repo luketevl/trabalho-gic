@@ -45,6 +45,14 @@
 	src="<?php echo base_url();?>resources/jquery.fineuploader/jquery.fineuploader-3.6.0.js"></script>
 <script type="text/javascript"
 	src="<?php echo base_url();?>resources/Slides-SlidesJS-3/source/jquery.slides.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url();?>resources/jquery.confirm/jquery.confirm/jquery.confirm.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url();?>resources/jquery.confirm/js/script.js"></script>
+<link
+href="<?php echo base_url(); ?>resources/jquery.confirm/jquery.confirm/jquery.confirm.css"
+rel="stylesheet" />
+	
 <link
 	href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css"
 	rel="stylesheet">
@@ -56,6 +64,7 @@
 <link
 	href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css"
 	rel="stylesheet" />
+
 <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
 	</head>

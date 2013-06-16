@@ -268,7 +268,15 @@ class Posts_Cadastro extends CI_Controller{
 		$id= $this->input->post('hd_id');
 		}
 		$p = new Posts();
+		$i = new Imagens();
+		$v = new Videos();
+		$a = new Arquivos();
+		$h = new Historicos();
 		$p->deletar($id);
+		$i->deletar($id);
+		$v->deletar($id);
+		$a->deletar($id);
+		$h->deletar($id);
 			redirect('index.php/intranet/posts_cadastro_list');
 // 		$this->index();
 	}

@@ -117,8 +117,7 @@
 		}
 		
 		public function deletar($id){
-			$p = new Posts();
-			$p->where('id_post',$id)->get()->delete();
+			$this->db->query('delete from posts where id_post = ' .$id);
 		}
 		
 		public function get_posts_dono($id){

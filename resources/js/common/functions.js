@@ -28,6 +28,8 @@ $(document).ready(function() {
 	createNotificationUser('https://twimg0-a.akamaihd.net/profile_images/770845756/45_normal.jpg','Criei um novo POST chamado MEU TESTE, tem como olhar? Obrigado');
 	$(':button').click(function(ev){
 		ev.preventDefault();
+		get_key_words();
+		var enviar = true;
 		var temp = $(this).attr('name');
 		if(temp == 'aprovar'){
 			$('form').attr('action','../posts_cadastro/aprovar');
@@ -40,9 +42,11 @@ $(document).ready(function() {
 			}
 		else if(temp == 'remover'){
 			$('form').attr('action','../posts_cadastro/deletar');
+				confirm_mensagem('Atencao','Confirma a exclusao da materia?');
+				
 			}
-		if(temp != 'adicionar'){
-			$('form').submit();	
+		if(temp != 'adicionar' && temp != 'remover'){
+				$('form').submit();	
 		}
 		});
 	
@@ -245,9 +249,12 @@ $(document).ready(function() {
 		});
 		$('[name="hd_keywords"]').val(keys);
 };
-$('#tagsinput_tagsinput').focusout(function(){get_key_words();});
+$('#tagsinput_tagsinput').focusout(function(){
+	get_key_words();
+	});
         var cache = {};
         var dados;
+        
         function log( message ) {
             $('[name="hd_cat_id"]').val(message);
           }
@@ -286,6 +293,28 @@ $('#tagsinput_tagsinput').focusout(function(){get_key_words();});
             	  $('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
               }
         });
+        
+        function confirm_mensagem(titulo, messagem){
+        	var elem = $(this).closest('.item');
+            $.confirm({
+                'title'		: titulo,
+                'message'	: messagem,
+                'buttons'	: {
+                    'Sim'	: {
+                        'class'	: 'blue',
+                        'action': function(){
+                            elem.slideUp();
+            				$('form').submit();	
+                        }
+                    },
+                    'Nao'	: {
+                        'class'	: 'gray',
+                        'action': function(){
+                        }	// Nothing to do in this case. You can as well omit the action property.
+                    }
+                }
+            });
+        }
         
 //        --------------------------------------------TESTE---------------------------------------
 

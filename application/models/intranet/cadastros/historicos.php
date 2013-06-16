@@ -40,4 +40,7 @@ class Historicos extends DataMapper{
 		$h->dt_criacao			= unix_to_human(time(), TRUE, 'us');
 		$h->save();
 	}
+	public function deletar($id){
+		$this->db->query('delete from historicos where id_post = ' .$id);
+	}
 }

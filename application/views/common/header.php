@@ -21,10 +21,10 @@
 <body>
 <header id="cabecalho">
 <nav id="user">
+
+
 	<span>Bem vindo [Apelido] | <a href="#">{[Cadastrar], [Sair]}</span></a>
-	<a class="twitter-timeline" href="https://twitter.com/AgropecuariaGIC" data-widget-id="345638818021531648">Tweets de @AgropecuariaGIC</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	
+	<?php echo $this->load->view('common/social')?>
 </nav>
 </header>
 <section id="content">

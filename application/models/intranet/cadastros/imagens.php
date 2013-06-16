@@ -49,5 +49,8 @@
         	$i->id_post = $this->campos['id_post'];
         	$i->save();
         }
+        public function deletar($id){
+        	$this->db->query('delete from imagens where id_post = ' .$id);
+        }
 	}
 ?>

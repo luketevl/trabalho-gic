@@ -49,6 +49,8 @@
         	$v->id_post = $this->campos['id_post'];
         	$v->save();
         }
-        
+        public function deletar($id){
+        	$this->db->query('delete from videos where id_post = ' .$id);
+        }
 	}
 ?>

@@ -25,6 +25,13 @@
 	<script type="text/javascript" src="<?php echo base_url();?>resources/jquery-ui/ui/jquery-ui.js"></script>
 	<link href="<?php echo base_url(); ?>resources/ckeditor/contents.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet">
+	<script type="text/javascript"
+	src="<?php echo base_url();?>resources/jquery.confirm/jquery.confirm/jquery.confirm.js"></script>
+	<script type="text/javascript"
+	src="<?php echo base_url();?>resources/jquery.confirm/js/script.js"></script>
+	<link
+	href="<?php echo base_url(); ?>resources/jquery.confirm/jquery.confirm/jquery.confirm.css"
+	rel="stylesheet" />
    <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
    -->
@@ -84,7 +91,7 @@
 					}
 				});
 			});
-		$(':button').click(function(ev){
+		 $(':button').click(function(ev){
 			ev.preventDefault();
 			var temp = $(this).attr('name');
 			if(temp == 'aprovar'){
@@ -98,11 +105,35 @@
 				}
 			else if(temp == 'remover'){
 				$('form').attr('action','../intranet/posts_cadastro/deletar');
+					confirm_mensagem('Atencao','Confirma a exclusao da materia?');
+					
 				}
-			if(temp != 'adicionar'){
-				$('form').submit();	
+			if(temp != 'adicionar' && temp != 'remover'){
+					$('form').submit();	
 			}
+				
 			});
+		   function confirm_mensagem(titulo, messagem){
+	        	var elem = $(this).closest('.item');
+	            $.confirm({
+	                'title'		: titulo,
+	                'message'	: messagem,
+	                'buttons'	: {
+	                    'Sim'	: {
+	                        'class'	: 'blue',
+	                        'action': function(){
+	                            elem.slideUp();
+	            				$('form').submit();	
+	                        }
+	                    },
+	                    'Nao'	: {
+	                        'class'	: 'gray',
+	                        'action': function(){
+	                        }	// Nothing to do in this case. You can as well omit the action property.
+	                    }
+	                }
+	            });
+	        }
 		});
    </script>
 </head>
@@ -178,4 +209,3 @@
  		
  	</table>
  </section>
- 
