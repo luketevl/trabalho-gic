@@ -14,6 +14,10 @@ class Usuarios extends DataMapper{
 		parent::DataMapper();
 	}
 	
+	public function getFields(){
+		return $this->campos;
+	}
+	
 	public function get_by_email($email){
 		$u = new Usuarios();
 		return $u->where('email_usu',$email)->get();
@@ -43,10 +47,38 @@ class Usuarios extends DataMapper{
 		$u->save();
 	}
 	
+	public function editar($id=0){
+		$u = new Posts();
+		$u->nome_usu							=$this->campos['nome_usu'];
+		$u->email_usu							=$this->campos['email_usu'];
+		$u->pass_usu							=$this->campos['pass_usu'];
+		$u->dt_nascimento						=$this->campos['dt_nascimento'];
+		$u->avatar_usu							=$this->campos['avatar_usu'];
+		$u->id_perf								=$this->campos['id_perf'];
+		$u->where('id_usu',$id);
+		$u->update($this->campos);
+	}
+	
+	public function deletar($id){
+		$this->db->query('delete from usuarios where id_usu = ' .$id);
+	}
+	
 	public function get_last_id(){
 		$u = new Usuarios();
 		return $u->select('id_usu')
 		  ->order_by('id_usu','desc')
 		  ->get(1);
+	}
+	
+	public function atualiza_foto($id,$url){
+		$u = new Usuarios();
+		$u->where('id_usu',$id)
+		->update('avatar_usu',$url);
+	}
+	
+	public function get_by_nome($nome=""){
+		$u = new Usuarios();
+		return $u->like('nome_usu',$nome,'both')
+		->get();
 	}
 }

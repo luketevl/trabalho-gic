@@ -255,8 +255,8 @@ $('#tagsinput_tagsinput').focusout(function(){
         var cache = {};
         var dados;
         
-        function log( message ) {
-            $('[name="hd_cat_id"]').val(message);
+        function log( message , campo) {
+            $(campo).val(message);
           }
         
         
@@ -283,7 +283,7 @@ $('#tagsinput_tagsinput').focusout(function(){
           },
           minLength: 2,
           select: function( event, ui ) {
-              log( ui.item.id);
+              log( ui.item.id,'[name="hd_cat_id"]');
               $('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
             },
             open: function() {
@@ -292,6 +292,38 @@ $('#tagsinput_tagsinput').focusout(function(){
               close: function() {
             	  $('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
               }
+        });
+        $( "#ac_perfil" ).autocomplete({
+        	source: function( request, response ) {
+        		var term = request.term;
+        		if ( term in cache ) {
+        			response( cache[ term ] );
+        			return;
+        		}
+        		$.getJSON( "portal-gic/../perfil_cadastro/au_get_by_name", request, function( data, status, xhr ) {
+        			cache[ term ] = data;
+        			response( $.map( data.dados, function( item ) {
+        				return {
+        					label: item.nome_perf,
+        					value: item.nome_perf,
+        					id: item.id_perf
+        				}
+        			}));
+        			dados = data;
+        			console.log(dados);
+        		});
+        	},
+        	minLength: 2,
+        	select: function( event, ui ) {
+        		log( ui.item.id,'[name="hd_perf_id"]');
+        		$('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
+        	},
+        	open: function() {
+        		$('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
+        	},
+        	close: function() {
+        		$('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
+        	}
         });
         
         function confirm_mensagem(titulo, messagem){
