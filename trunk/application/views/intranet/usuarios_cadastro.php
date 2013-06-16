@@ -114,6 +114,7 @@ rel="stylesheet" />
 </script>
 <h1>Cadastrar Usuario</h1>
 <?php
+echo form_hidden('hd_uc','usuarios_cadastro');
 echo form_open_multipart('index.php/intranet/usuarios_cadastro/save');
 
 echo form_hidden('hd_id','{id_usu}');
@@ -131,20 +132,19 @@ echo form_label('Foto ','lbl_img');
 	<span id="btnUpload" style="display: none"><?php echo lang('btn_upload_avatar');?>
 	</span>
 	<nav id="imagens">
-		{imagens} <img
-			src="<?php echo base_url();?>resources/img/uploads/{nome_img}" />
-		{/imagens}
+	<img
+			src="<?php echo base_url();?>resources/img/uploads/{avatar_usu}" />
 	</nav>
 </section>
 <?php 
 echo form_fieldset('','class="lblInput"', 'style="width:500px;"');
 echo form_label('Nome','lbl_name');
-echo form_input('nome');
+echo form_input('nome','{nome_usu}');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Data de Nascimento','lbl_dt_nasc');
-echo form_input('dt_nascimento');
+echo form_input('dt_nascimento','{dt_nascimento}');
 echo form_fieldset_close();
 echo form_fieldset_close();
 
@@ -152,18 +152,18 @@ echo form_fieldset_close();
 echo form_fieldset('Dados de acesso');
 echo form_fieldset('','class="lblInput"');
 echo form_label('Email','lbl_email');
-echo form_input('email');
+echo form_input('email','{email_usu}');
 echo form_fieldset_close();
 
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Senha','lbl_pass');
-echo form_password('pass');
+echo form_password('pass','{pass_usu}');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Confirmar senha','lbl_conf_pass');
-echo form_password('repeat_pass');
+echo form_password('repeat_pass','{pass_usu}');
 echo form_fieldset_close();
 
 

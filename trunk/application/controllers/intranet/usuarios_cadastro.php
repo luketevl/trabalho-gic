@@ -8,6 +8,7 @@ class Usuarios_Cadastro extends CI_Controller{
 			$this->lang->load('usuarios');
 			$this->lang->load('upload');
 			$this->lang->load('posts');
+			$dados['perfil']= "";
 			$this->parser->parse('intranet/usuarios_cadastro',$dados);
 		}else{
 			redirect('index.php/intranet/login');
@@ -55,12 +56,11 @@ class Usuarios_Cadastro extends CI_Controller{
 		
 		$u = new Usuarios();
 		$aux = $u->getFields();
-		
 		$aux['id_usu'] = $this->input->post('hd_id');
 		$aux['nome_usu'] = $this->input->post('nome');
-		$aux['email_usu'] = $this->input->post('nome');
+		$aux['email_usu'] = $this->input->post('email');
 		$aux['pass_usu'] = $this->input->post('pass');
-		$aux['repeat_pass'] = $this->input->post('repeat_pass');
+		$senha['repeat_pass'] = $this->input->post('repeat_pass');
 		$aux['dt_criacao'] = $this->input->post('dt_criacao');
 		$aux['dt_nascimento'] = $this->input->post('dt_nascimento');
 		$aux['avatar_usu'] = '';
@@ -69,6 +69,8 @@ class Usuarios_Cadastro extends CI_Controller{
 		$aux['id_perf'] = $this->input->post('hd_perf_id');
 		
 		if(empty($aux['id_usu'])){
+			$aux['dt_criacao'] = unix_to_human(time(), TRUE, 'us');
+			$aux['avatar_usu'] = 'no_avatar.png';
 			$u->setFields($aux);
 			$u->inserir();
 			$u = $u->get_last_id();
@@ -89,15 +91,19 @@ class Usuarios_Cadastro extends CI_Controller{
 			$id = $_GET['id'];
 		}
 		$u = new Usuarios();
+		$p = new Perfis();
 		$u = $u->get_by_id($id);
 		foreach($u->all as $key=>$valor){
+			$dados['id_usu'] = $u->id_usu;
 			$dados['nome_usu'] = $u->nome_usu;
 			$dados['email_usu'] = $u->email_usu;
 			$dados['pass_usu'] = $u->pass_usu;
 			$dados['dt_criacao'] = $u->dt_criacao;
 			$dados['dt_nascimento'] = $u->dt_nascimento;
-			$dados['avatar_usu'] = $u->avatar_usu			;
+			$dados['avatar_usu'] = $u->avatar_usu;
 			$dados['id_perf']= $u->id_perf;
+			$p = $p->get_by_id($u->id_perf);
+			$dados['perfil'] = $p->nome_perf;
 		}
 // 		echo "<pre>";
 // 		echo print_r($i);

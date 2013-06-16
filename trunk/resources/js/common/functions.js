@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 	// Pega valor dos acessos
 	createLoad();
@@ -6,6 +5,7 @@ $(document).ready(function() {
 	$('.tooltip').tooltipster();
 	$("form").validate();
 	$("#tagsinput").tagsInput();
+	var uc_case = $('[name="hd_uc"]').val();
 	disabled_all();
 	hide_button($('[name="hd_status"]').val(),id_perf);
 	$('table tbody tr:odd').addClass('tbImpar');
@@ -32,16 +32,16 @@ $(document).ready(function() {
 		var enviar = true;
 		var temp = $(this).attr('name');
 		if(temp == 'aprovar'){
-			$('form').attr('action','../posts_cadastro/aprovar');
+			$('form').attr('action','../'+uc_case+'/aprovar');
 		}
 		else if(temp == 'rejeitar'){
-			$('form').attr('action','../posts_cadastro/telaJustificar');
+			$('form').attr('action','../'+uc_case+'/telaJustificar');
 			}
 		else if(temp == 'publicar'){
-			$('form').attr('action','../posts_cadastro/publicar');
+			$('form').attr('action','../'+uc_case+'/publicar');
 			}
 		else if(temp == 'remover'){
-			$('form').attr('action','../posts_cadastro/deletar');
+			$('form').attr('action','../'+uc_case+'/deletar');
 				confirm_mensagem('Atencao','Confirma a exclusao da materia?');
 				
 			}
@@ -63,7 +63,7 @@ $(document).ready(function() {
 	function disabled_all() {
 		if (
 				($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) && 
-				($('[name="hd_status"]').val() != 'N' && $('[name="hd_status"]').val() != 'R')) {
+				($('[name="hd_status"]').val() != 'N' && $('[name="hd_status"]').val() != 'R') && uc_case =='posts_cadastro') {
 			$('input:text').each(function() {
 				$(this).attr('disabled','disabled');
 			});
@@ -121,7 +121,9 @@ $(document).ready(function() {
 			
 			$('#imagem, #arquivo').hide();
 		}
-		
+		if(uc_case !='posts_cadastro'){
+			status = 'N';
+		}
 		else if(status == 'N'){
 			$('[name="publicar"]').attr('disabled','disabled');
 			$('[name="publicar"]').removeClass('tooltip btn-primary');
@@ -148,7 +150,6 @@ $(document).ready(function() {
 				$('[name="editar"]').attr('disabled','disabled');
 				$('[name="editar"]').removeClass('tooltip btn-primary');
 				$('[name="editar"]').addClass('tooltip btn btn-large btn-block disabled');
-				
 				$('#imagem, #arquivo').hide();
 			}
 		}
@@ -300,7 +301,7 @@ $('#tagsinput_tagsinput').focusout(function(){
         			response( cache[ term ] );
         			return;
         		}
-        		$.getJSON( "portal-gic/../perfil_cadastro/au_get_by_name", request, function( data, status, xhr ) {
+        		$.getJSON( "portal-gic/.././perfil_cadastro/au_get_by_name", request, function( data, status, xhr ) {
         			cache[ term ] = data;
         			response( $.map( data.dados, function( item ) {
         				return {

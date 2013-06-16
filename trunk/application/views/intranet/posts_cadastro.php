@@ -128,8 +128,8 @@ rel="stylesheet" />
 </script>
 <h1>Cadastrar Materia</h1>
 <?php
+echo form_hidden('hd_uc','posts_cadastro');
 echo form_open_multipart('index.php/intranet/posts_cadastro/save');
-
 echo form_hidden('hd_id','{id_post}');
 echo form_hidden('hd_status','{status_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
