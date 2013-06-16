@@ -38,8 +38,9 @@
    
    <script>
 	$(document).ready(function(){
+		var uc_case = $('[name="hd_uc"]').val();
 		$('[name="adicionar"]').click(function(){
-			window.location = "../intranet/posts_cadastro/";
+			window.location = "../intranet/"+uc_case+"/";
 			});
 		$('button').click(function(){
 			var id = $('.selected').find('td[name="hd_id"]').text();
@@ -95,16 +96,16 @@
 			ev.preventDefault();
 			var temp = $(this).attr('name');
 			if(temp == 'aprovar'){
-				$('form').attr('action','../intranet/posts_cadastro/aprovar');
+				$('form').attr('action','../intranet/'+uc_case+'/aprovar');
 			}
 			else if(temp == 'rejeitar'){
-				$('form').attr('action','../intranet/posts_cadastro/telaJustificar');
+				$('form').attr('action','../intranet/'+uc_case+'/telaJustificar');
 				}
 			else if(temp == 'publicar'){
-				$('form').attr('action','../intranet/posts_cadastro/publicar');
+				$('form').attr('action','../intranet/'+uc_case+'/publicar');
 				}
 			else if(temp == 'remover'){
-				$('form').attr('action','../intranet/posts_cadastro/deletar');
+				$('form').attr('action','../intranet/'+uc_case+'/deletar');
 					confirm_mensagem('Atencao','Confirma a exclusao da materia?');
 					
 				}
@@ -156,6 +157,7 @@
  -->
  <form action="../intranet/posts_cadastro/load_form_edit" method="get" accept-charset="utf-8">
 <?php  echo form_hidden('id',0);
+ echo form_hidden('hd_uc','posts_cadastro');
  	   echo form_close();
  ?>
  

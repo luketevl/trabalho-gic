@@ -18,6 +18,10 @@ class Usuarios extends DataMapper{
 		return $this->campos;
 	}
 	
+	public function setFields(array $campos){
+		$this->campos = $campos;
+	}
+	
 	public function get_by_email($email){
 		$u = new Usuarios();
 		return $u->where('email_usu',$email)->get();
@@ -35,20 +39,20 @@ class Usuarios extends DataMapper{
 					->get();
 	}
 	
-	public function inserir($campos){
+	public function inserir(){
 		$u = new Usuarios();
-		$u->nome_usu = $campos['nome_usu'];
-		$u->email_usu = $campos['email_usu'];
-		$u->pass_usu = $campos['pass_usu'];
-		$u->dt_criacao = $campos['dt_criacao'];
-		$u->dt_nascimento = $campos['dt_nascimento'];
-		$u->avatar_usu = $campos['avatar_usu'];
-		$u->id_perf = $campos['id_perf'];
+		$u->nome_usu = $this->campos['nome_usu'];
+		$u->email_usu = $this->campos['email_usu'];
+		$u->pass_usu = $this->campos['pass_usu'];
+		$u->dt_criacao = $this->campos['dt_criacao'];
+		$u->dt_nascimento = $this->campos['dt_nascimento'];
+		$u->avatar_usu = $this->campos['avatar_usu'];
+		$u->id_perf = $this->campos['id_perf'];
 		$u->save();
 	}
 	
 	public function editar($id=0){
-		$u = new Posts();
+		$u = new Usuarios();
 		$u->nome_usu							=$this->campos['nome_usu'];
 		$u->email_usu							=$this->campos['email_usu'];
 		$u->pass_usu							=$this->campos['pass_usu'];
