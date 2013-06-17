@@ -289,9 +289,9 @@ $(document).ready(function(){
 		console.log('<span> URL video</span> '+clone);
 		var t= '<span> URL do video</span>';
 		$('#addUrl').before(t);
-
 		$('#addUrl').before(clone);
 		});
+	
 });
 </script>
 

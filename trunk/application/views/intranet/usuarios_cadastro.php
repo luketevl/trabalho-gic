@@ -101,15 +101,66 @@ rel="stylesheet" />
         }
       }
     });
-    $("#imagens").slidesjs({
-    	pagination: {
-    	      active: true,
-    	        // [boolean] Create pagination items.
-    	        // You cannot use your own pagination. Sorry.
-    	      effect: "slide",
-    	        // [string] Can be either "slide" or "fade".
-    	    }
-	  });
+
+    $('[name="pass"]').rules( "add", {
+		  required: true,
+		  minlength: 6,
+		  messages: {
+		    required: "Campo obrigatório",
+		    minlength: $.format("Por favor, digite no minimo {0} caracteres.")
+		  }
+		});
+
+    $('[name="repeat_pass"]').rules( "add", {
+		  required: true,
+		  equalTo: $('[name="pass"]'),
+		  messages: {
+		    required: "Campo obrigatório",
+		    minlength: $.format("Por favor, digite no minimo {0} caracteres.")
+		  }
+		});
+
+    $('button').click(function(){
+		if($('form').valid()){
+			valida('verifica_usuario','form');
+			}
+
+        });
+    function valida(pag,formulario){
+		$.ajax({
+			type:'post',
+			url:pag,
+			data: $('form').serialize(), 
+			success: function(retorno){
+					if(retorno == 0){
+							alerta_msg('error','Usuario ja existe','top');	
+					}
+			    }
+			});
+		}
+	function alerta_msg(tipo, msg,posicao){
+		var titulo,texto='';
+		if(tipo=='sucesso'){
+			titulo = titulo;
+			title= msg;
+			tipo = 'success';
+			classe = 'stack-bar-bottom alert-success';
+		}
+		else{
+			titulo = "Erro!";
+			tipo = 'error';
+			texto= 'Deu erro';
+			classe = 'stack-bar-bottom alert-error';
+		}
+	    $.pnotify({
+	        title: titulo,
+	        text: msg,
+	        type: tipo,
+	        addclass: "stack-bar-"+posicao,
+	        cornerclass: "",
+	        width: "100%"	
+	    });
+		}
   });
 </script>
 <h1>Cadastrar Usuario</h1>
@@ -119,6 +170,7 @@ echo form_open_multipart('index.php/intranet/usuarios_cadastro/save');
 
 echo form_hidden('hd_id','{id_usu}');
 echo form_hidden('hd_perf_id','{id_perf}');
+echo form_hidden('hd_avatar_usu','{avatar_usu}');
 
 echo form_fieldset('Dados pessoais');
 
@@ -127,7 +179,7 @@ echo form_label('Foto ','lbl_img');
 <img
 	src="<?php echo base_url();?>resources/icons/info.png" class="tooltip"
 	title="<?php echo lang('info_avatar')?>" />
-<section id="imagem">
+<section id="imagem" style="max-width: 300px ; max-height: 400px;">
 	<div id="thumbnail-fine-uploader"></div>
 	<span id="btnUpload" style="display: none"><?php echo lang('btn_upload_avatar');?>
 	</span>
@@ -139,12 +191,15 @@ echo form_label('Foto ','lbl_img');
 <?php 
 echo form_fieldset('','class="lblInput"', 'style="width:500px;"');
 echo form_label('Nome','lbl_name');
-echo form_input('nome','{nome_usu}');
+echo form_input('nome','{nome_usu}','class="required"');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Data de Nascimento','lbl_dt_nasc');
-echo form_input('dt_nascimento','{dt_nascimento}');
+?>
+<input type="date" name="dt_nascimento" value="{dt_nascimento}" />
+<?php 
+// echo form_input('dt_nascimento','');
 echo form_fieldset_close();
 echo form_fieldset_close();
 
@@ -152,22 +207,22 @@ echo form_fieldset_close();
 echo form_fieldset('Dados de acesso');
 echo form_fieldset('','class="lblInput"');
 echo form_label('Email','lbl_email');
-echo form_input('email','{email_usu}');
+echo form_input('email','{email_usu}','class="required"');
 echo form_fieldset_close();
 
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Senha','lbl_pass');
-echo form_password('pass','{pass_usu}');
+echo form_password('pass','{pass_usu}','class="required"');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput"');
 echo form_label('Confirmar senha','lbl_conf_pass');
-echo form_password('repeat_pass','{pass_usu}');
+echo form_password('repeat_pass','{pass_usu}','class="required"');
 echo form_fieldset_close();
 
 
-echo form_fieldset('','class="lblInput" style="width:250px;"');
+echo form_fieldset('','class="lblInput" style="width:250px; " id="perf"');
 echo form_label('Perfil','lbl_perfil');
 echo form_input('ac_perfil','{perfil}','id="ac_perfil" class="required"');
 echo form_fieldset_close();

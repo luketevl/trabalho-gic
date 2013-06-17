@@ -52,12 +52,13 @@ class Usuarios extends DataMapper{
 	}
 	
 	public function editar($id=0){
+		unset($this->campos['dt_criacao']);
+		unset($this->campos['avatar_usu']);
 		$u = new Usuarios();
 		$u->nome_usu							=$this->campos['nome_usu'];
 		$u->email_usu							=$this->campos['email_usu'];
 		$u->pass_usu							=$this->campos['pass_usu'];
 		$u->dt_nascimento						=$this->campos['dt_nascimento'];
-		$u->avatar_usu							=$this->campos['avatar_usu'];
 		$u->id_perf								=$this->campos['id_perf'];
 		$u->where('id_usu',$id);
 		$u->update($this->campos);

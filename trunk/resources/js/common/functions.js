@@ -63,7 +63,7 @@ $(document).ready(function() {
 	function disabled_all() {
 		if (
 				($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) && 
-				($('[name="hd_status"]').val() != 'N' && $('[name="hd_status"]').val() != 'R') && uc_case =='posts_cadastro') {
+				($('[name="hd_status"]').val() != 'N' && $('[name="hd_status"]').val() != 'R') && ( uc_case =='posts_cadastro' && uc_case != 'posts_cadastro_list')) {
 			$('input:text').each(function() {
 				$(this).attr('disabled','disabled');
 			});
@@ -93,7 +93,9 @@ $(document).ready(function() {
 		$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="editar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="remover"]').addClass('tooltip btn btn-large btn-block btn-primary');
-		
+		if((uc_case !='posts_cadastro' && uc_case != 'posts_cadastro_list') && $('[name="hd_id"]').val() >0){
+			status = 'N';
+		} 
 		if(status == "" ||  !status ){
 			$('[name="publicar"]').attr('disabled','disabled');
 			$('[name="publicar"]').removeClass('tooltip btn-primary');
@@ -106,7 +108,6 @@ $(document).ready(function() {
 			$('[name="rejeitar"]').attr('disabled','disabled');
 			$('[name="rejeitar"]').removeClass('tooltip btn-primary');
 			$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block disabled');
-			
 			$('[name="remover"]').attr('disabled','disabled');
 			$('[name="remover"]').removeClass('tooltip btn-primary');
 			$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
@@ -118,12 +119,9 @@ $(document).ready(function() {
 			$('[name="remover"]').attr('disabled','disabled');
 			$('[name="remover"]').removeClass('tooltip btn-primary');
 			$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
-			
 			$('#imagem, #arquivo').hide();
 		}
-		if(uc_case !='posts_cadastro'){
-			status = 'N';
-		}
+		
 		else if(status == 'N'){
 			$('[name="publicar"]').attr('disabled','disabled');
 			$('[name="publicar"]').removeClass('tooltip btn-primary');
@@ -142,7 +140,7 @@ $(document).ready(function() {
 			$('[name="aprovar"]').attr('disabled','disabled');
 			$('[name="aprovar"]').removeClass('tooltip btn-primary');
 			$('[name="aprovar"]').addClass('tooltip btn btn-large btn-block disabled');
-			if(id_perf!=1){
+			if(id_perf!=1 ){
 				$('[name="remover"]').attr('disabled','disabled');
 				$('[name="remover"]').removeClass('tooltip btn-primary');
 				$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
@@ -190,14 +188,16 @@ $(document).ready(function() {
 			$('[name="publicar"]').removeClass('tooltip btn-primary');
 			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
 		}
-		
 	}
-	
 	function valida_hide_button(id_perf){
 		if(id_perf!=1){
 			$('[name="publicar"]').hide();
 			$('[name="aprovar"]').hide();
 			$('[name="rejeitar"]').hide();
+			if(uc_case != 'posts_cadastro' && uc_case != 'posts_cadastro_list'){
+				$('#perf').hide();
+				$('[name="adicionar"]').hide();
+			}
 		}
 	}
 	
@@ -380,7 +380,7 @@ $('#tagsinput_tagsinput').focusout(function(){
         	$('form').submit();
         });
         $('[name="adicionar"]').click(function(){
-			window.location = "../posts_cadastro/";
+			window.location = '../'+uc_case+'/';
 			});
 });
 $(window).load(function(){
