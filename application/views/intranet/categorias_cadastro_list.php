@@ -64,7 +64,7 @@
 			}
 			else if(temp == 'remover'){
 				$('form').attr('action','../intranet/'+uc_case+'/deletar');
-					confirm_mensagem('Atencao','Confirma a exclusao da materia?');
+					confirm_mensagem('Atencao','Confirma a exclusao da categoria?');
 				}
 			if(temp != 'adicionar' && temp != 'remover'){
 					$('form').submit();	
@@ -140,7 +140,7 @@
  	<table>
  		<thead>
  			<tr>
-	 			<td class="coluna" name="id_usu" style="display: none">id_usu</td>
+	 			<td class="coluna" name="id_cat" style="display: none">id_cat</td>
 	 			<td class="coluna" style="width: 49%;" >Nome</td>
 	 			<td class="coluna" style="width: 590px;">Categoria mae</td>
 	 		</tr>
