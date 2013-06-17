@@ -42,7 +42,7 @@ $(document).ready(function() {
 			}
 		else if(temp == 'remover'){
 			$('form').attr('action','../'+uc_case+'/deletar');
-				confirm_mensagem('Atencao','Confirma a exclusao do usuario?');
+				confirm_mensagem('Atencao','Confirma a exclusao?');
 				
 			}
 		if(temp != 'adicionar' && temp != 'remover'){
