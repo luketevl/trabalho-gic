@@ -86,13 +86,21 @@
 					</aside>
 			</a> <?php echo form_hidden('hd_link',$usuarios['url']);?>
 			</li>
-			<!-- POST -->
 			<li><a href="#"> <img
 					src="<?php echo base_url();?>resources/icons/post2.png" id="arrow" />
 					<aside class="sub">
 						<?php echo $posts['name']?>
 					</aside>
 			</a> <?php echo form_hidden('hd_link',$posts['url']);?>
+			</li>
+			
+			<!-- FORUM -->
+			<li><a href="#"> <img
+					src="<?php echo base_url();?>resources/icons/post2.png" id="arrow" />
+					<aside class="sub">
+						<?php echo $forum['name']?>
+					</aside>
+			</a> <?php echo form_hidden('hd_link',$forum['url']);?>
 			</li>
 		</ul>
 	</div>

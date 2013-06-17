@@ -64,6 +64,7 @@ define('ABERTO'		,'N');
 define('APROVADO'	,'A');
 define('REJEITADO'	,'R');
 define('PUBLICADO'	,'P');
+define('FECHADO'	,'F');
 define('ADM'		,'1');
 define('COMUM'		,'2');
 
