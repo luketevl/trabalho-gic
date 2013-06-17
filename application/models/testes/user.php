@@ -16,76 +16,76 @@ class User extends DataMapper {
 	// --------------------------------------------------------------------
 	// Relationships
 	// --------------------------------------------------------------------
-	
+
 	public $has_one = array('group');
-	
+
 	public $has_many = array(
-		// bugs created by this user
-		'created_bug' => array(
-			'class' => 'bug',
-			'other_field' => 'creator'
-		),
-		// bugs edited by this user
-		'edited_bug' => array(
-			'class' => 'bug',
-			'other_field' => 'editor'
-		),
-		// bugs assigned to this user
-		'bug'
+			// bugs created by this user
+			'created_bug' => array(
+					'class' => 'bug',
+					'other_field' => 'creator'
+			),
+			// bugs edited by this user
+			'edited_bug' => array(
+					'class' => 'bug',
+					'other_field' => 'editor'
+			),
+			// bugs assigned to this user
+			'bug'
 	);
-	
+
 	// --------------------------------------------------------------------
 	// Validation
 	// --------------------------------------------------------------------
 
 	public $validation = array(
-		'name' => array(
-			'rules' => array('required', 'trim', 'unique', 'max_length' => 100)
-		),
-		'email' => array(
-			'rules' => array('required', 'trim', 'unique', 'valid_email')
-		),
-		'username' => array(
-			'rules' => array('required', 'trim', 'unique', 'alpha_dash', 'min_length' => 3, 'max_length' => 20)
-		),
-		'password' => array(
-			'rules' => array('required', 'trim', 'min_length' => 3, 'max_length' => 40, 'encrypt'),
-			'type' => 'password'
-		),
-		'confirm_password' => array(
-			'rules' => array('required', 'encrypt', 'matches' => 'password', 'min_length' => 3, 'max_length' => 40),
-			'type' => 'password'
-		),
-		'group' => array(
-			'rules' => array('required')
-		)
+			'name' => array(
+					'rules' => array('required', 'trim', 'unique', 'max_length' => 100)
+			),
+			'email' => array(
+					'rules' => array('required', 'trim', 'unique', 'valid_email')
+			),
+			'username' => array(
+					'rules' => array('required', 'trim', 'unique', 'alpha_dash', 'min_length' => 3, 'max_length' => 20)
+			),
+			'password' => array(
+					'rules' => array('required', 'trim', 'min_length' => 3, 'max_length' => 40, 'encrypt'),
+					'type' => 'password'
+			),
+			'confirm_password' => array(
+					'rules' => array('required', 'encrypt', 'matches' => 'password', 'min_length' => 3, 'max_length' => 40),
+					'type' => 'password'
+			),
+			'group' => array(
+					'rules' => array('required')
+			)
 	);
-	
+
 	// Default to ordering by name
 	public $default_order_by = array('name');
-	
+
 	// --------------------------------------------------------------------
-	
+
 	function __toString()
 	{
 		return empty($this->name) ? $this->localize_label('newuser') : $this->name;
 	}
-	
+
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Returns an array list of all users that can have bugs assigned
 	 * to them.
-	 * 
+	 *
 	 * @return $this for chaining
 	 */
 	function get_assignable()
 	{
 		return $this->where_in_related_group('id', array(1, 2))->get();
 	}
-	
+
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Login
 	 *
@@ -98,7 +98,7 @@ class User extends DataMapper {
 	{
 		// backup username for invalid logins
 		$uname = $this->username;
-		
+
 		// Create a temporary user object
 		$u = new User();
 
@@ -132,9 +132,9 @@ class User extends DataMapper {
 			return FALSE;
 		}
 	}
-	 
+
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Encrypt (prep)
 	 *

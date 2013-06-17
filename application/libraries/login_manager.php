@@ -4,15 +4,15 @@
  * Simple utility class to handle logins.
  */
 class Login_Manager {
-	
+
 	var $logged_in_user = NULL;
-	
+
 	function __construct($params = array())
 	{
-		
-		$this->CI =& get_instance(); 
+
+		$this->CI =& get_instance();
 		$this->session = & $this->CI->session;
-		
+
 		if( ! isset($params['autologin']) || $params['autologin'] !== FALSE)
 		{
 			$required_group = -1;
@@ -23,7 +23,7 @@ class Login_Manager {
 			$this->check_login($required_group);
 		}
 	}
-	
+
 	function check_login($required_group = -1)
 	{
 		// Special auto-setup routine
@@ -55,13 +55,13 @@ class Login_Manager {
 			}
 		}
 	}
-	
+
 	/**
 	 * process_login
 	 * Validates that a username and password are correct.
-	 * 
+	 *
 	 * @param object $user The user containing the login information.
-	 * @return FALSE if invalid, TRUE or a redirect string if valid. 
+	 * @return FALSE if invalid, TRUE or a redirect string if valid.
 	 */
 	function process_login($user)
 	{
@@ -82,13 +82,13 @@ class Login_Manager {
 		}
 		return $success;
 	}
-	
+
 	function logout()
 	{
 		$this->session->sess_destroy();
 		$this->logged_in_user = NULL;
 	}
-	
+
 	function get_user()
 	{
 		if(is_null($this->logged_in_user))
@@ -115,5 +115,5 @@ class Login_Manager {
 			return $this->logged_in_user;
 		}
 	}
-	
+
 }

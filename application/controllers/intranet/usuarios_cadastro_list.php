@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Usuarios_Cadastro_List extends CI_Controller{
-	
+
 	function index(){
 		$this->lang->load('posts');
 		$id_usu = $this->session->userdata('id_usu');
@@ -26,27 +26,27 @@ class Usuarios_Cadastro_List extends CI_Controller{
 			$dados['dados'][$key]['id_perf']= $usuarios->id_perf;
 			$p = $p->get_by_id($usuarios->id_perf);
 			$dados['dados'][$key]['perfil']= $p->nome_perf;
-			
-// 			$dados['dados'][$key]['id_cat']= $posts->id_cat;
+				
+			// 			$dados['dados'][$key]['id_cat']= $posts->id_cat;
 		}
-// 		echo "<pre>";
-// 		echo print_r($dados);
-// 		echo "</pre>";
-// 		$id_perf = $this->session->userdata('id_perf');
-// 		if($id_perf == ADM){
-// 			$dados['cc_aberto'] 	= $p->count_aberto();
-// 			$dados['cc_aprovado'] 	= $p->count_aprovado();
-// 			$dados['cc_rejeitado'] 	= $p->count_rejeitado();
-// 			$dados['cc_publicado'] 	= $p->count_publicado();
-// 		}
-// 		else{
-// 			$dados['cc_aberto'] 	= $p->count_aberto_usu($id_usu);
-// 			$dados['cc_aprovado'] 	= $p->count_aprovado_usu($id_usu);
-// 			$dados['cc_rejeitado'] 	= $p->count_rejeitado_usu($id_usu);
-// 			$dados['cc_publicado'] 	= $p->count_publicado_usu($id_usu);
-					
-// 		}
-			$this->parser->parse('intranet/usuarios_cadastro_list',$dados);
+		// 		echo "<pre>";
+		// 		echo print_r($dados);
+		// 		echo "</pre>";
+		// 		$id_perf = $this->session->userdata('id_perf');
+		// 		if($id_perf == ADM){
+		// 			$dados['cc_aberto'] 	= $p->count_aberto();
+		// 			$dados['cc_aprovado'] 	= $p->count_aprovado();
+		// 			$dados['cc_rejeitado'] 	= $p->count_rejeitado();
+		// 			$dados['cc_publicado'] 	= $p->count_publicado();
+		// 		}
+		// 		else{
+		// 			$dados['cc_aberto'] 	= $p->count_aberto_usu($id_usu);
+		// 			$dados['cc_aprovado'] 	= $p->count_aprovado_usu($id_usu);
+		// 			$dados['cc_rejeitado'] 	= $p->count_rejeitado_usu($id_usu);
+		// 			$dados['cc_publicado'] 	= $p->count_publicado_usu($id_usu);
+			
+		// 		}
+		$this->parser->parse('intranet/usuarios_cadastro_list',$dados);
 	}
 
 	public function preenche_list(){

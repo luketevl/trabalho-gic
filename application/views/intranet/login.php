@@ -91,6 +91,7 @@
 	</head>
 <section class="tira">
 <?php
+echo form_hidden('hd_uc','login');
 echo form_button('btn_login',lang('btn_login'),'style="width:25%;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_login').'"');
 echo form_button('btn_cadastro',lang('btn_cadastro'),'style="width:25%;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_cadastro').'"');
 ?>

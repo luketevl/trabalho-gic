@@ -8,7 +8,7 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['status'] ="";
 			$dados['usu_criou'] ="";
 			$dados['usu_aprovou'] ="";
-			
+				
 			$dados['categoria'] ="";
 			$this->lang->load('posts');
 			$this->lang->load('upload');
@@ -29,17 +29,17 @@ class Posts_Cadastro extends CI_Controller{
 		}
 		return $value;
 	}
-	
+
 	public function upload(){
 		$config['upload_path'] = './././resources/img/uploads/';
 		$config['allowed_types'] = 'jpeg|bmp|gif|jpg|png';
-// 		$config['max_size']	= '10000';
-// 		$config['max_width']  = '10024';
-// 		$config['max_height']  = '1768';
+		// 		$config['max_size']	= '10000';
+		// 		$config['max_width']  = '10024';
+		// 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
-// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
-// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
-// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
+		// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
+		// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
+		// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
 		$id_post = $_GET['id_post'];
 		if($this->upload->do_upload('qqfile')){
 			$img = new Imagens();
@@ -52,10 +52,10 @@ class Posts_Cadastro extends CI_Controller{
 			$img->insert();
 			$msg['success'] = "true";
 			$msg['full_path'] = $dadosImg['full_path'];
-// 						echo "<pre>";
-// 						echo print_r($dadosImg);
-// 						echo "</pre>";
-			echo json_encode($msg); 
+			// 						echo "<pre>";
+			// 						echo print_r($dadosImg);
+			// 						echo "</pre>";
+			echo json_encode($msg);
 		}
 		else{
 			echo "<pre>";
@@ -64,17 +64,17 @@ class Posts_Cadastro extends CI_Controller{
 			echo "erro". $this->upload->display_errors();
 		}
 	}
-	
+
 	public function uploadArq(){
 		$config['upload_path'] = './././resources/arquivos/uploads/';
 		$config['allowed_types'] = '*';
-// 		$config['max_size']	= '10000';
-// 		$config['max_width']  = '10024';
-// 		$config['max_height']  = '1768';
+		// 		$config['max_size']	= '10000';
+		// 		$config['max_width']  = '10024';
+		// 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
-// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
-// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
-// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
+		// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
+		// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
+		// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
 		$id_post = $_GET['id_post'];
 		if($this->upload->do_upload('qqfile')){
 			$arq = new Arquivos();
@@ -87,10 +87,10 @@ class Posts_Cadastro extends CI_Controller{
 			$arq->insert();
 			$msg['success'] = "true";
 			$msg['full_path'] = $dadosArq['full_path'];
-// 						echo "<pre>";
-// 						echo print_r($dadosArq);
-// 						echo "</pre>";
-			echo json_encode($msg); 
+			// 						echo "<pre>";
+			// 						echo print_r($dadosArq);
+			// 						echo "</pre>";
+			echo json_encode($msg);
 		}
 		else{
 			echo "<pre>";
@@ -99,16 +99,16 @@ class Posts_Cadastro extends CI_Controller{
 			echo "erro". $this->upload->display_errors();
 		}
 	}
-	
+
 	public function delete_file(){
-		
+
 	}
-	
+
 	public function save(){
-		
+
 		$p = new Posts();
 		$aux = $p->getFields();
-		
+
 		$aux['id_post'] = $this->input->post('hd_id');
 		$aux['titulo_post'] = $this->input->post('titulo');
 		$aux['resumo_post'] = $this->input->post('desc_resumida');
@@ -141,20 +141,20 @@ class Posts_Cadastro extends CI_Controller{
 		$v = new Videos();
 		$dadosVideo = $v->getFields();
 		$dadosVideo['id_post'] = $aux['id_post'];
-			if(is_array($extras['url_youtube_varios'])){
-				foreach($extras['url_youtube_varios'] as $k=>$valor){
-					if(!empty($valor)){
-						$dadosVideo['url_vid'] = $valor;
-						$v->setFields($dadosVideo);
-						if(!$v->verifica_url_post($valor)){
-							$v->insert();
-						}
-					}	
+		if(is_array($extras['url_youtube_varios'])){
+			foreach($extras['url_youtube_varios'] as $k=>$valor){
+				if(!empty($valor)){
+					$dadosVideo['url_vid'] = $valor;
+					$v->setFields($dadosVideo);
+					if(!$v->verifica_url_post($valor)){
+						$v->insert();
+					}
 				}
+			}
 		}
 		$this->load_form_edit($aux['id_post']);
 	}
-	
+
 	public function load_form_edit($id=0){
 		$this->lang->load('posts');
 		$this->lang->load('upload');
@@ -190,37 +190,37 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['usu_aprovou']= $u->nome_usu;
 			$u = $u->get_by_id($p->id_usu);
 			$dados['usu_criou']= $u->nome_usu;
-			
+				
 			$dados['id_usu']= $p->id_usu;
 			$dados['id_cat']= $p->id_cat;
 			$c = $c->get_by_id($p->id_cat);
 			$dados['categoria'] = $c->nome_cat;
 		}
-			$dados['urls'] = array();
+		$dados['urls'] = array();
 		foreach($v as $k=>$valor){
 			$dados['urls'][$k]['url'] = $valor->url_vid;
 			$dados['urls'][$k]['id_vid'] =$valor->id_vid;
 		}
-		
-			$dados['imagens'] = array();
+
+		$dados['imagens'] = array();
 		foreach($i as $ke=>$valor){
 			$dados['imagens'][$ke]['nome_img'] = $valor->nome_img;
 			$dados['imagens'][$ke]['id_img'] =$valor->id_img;
 		}
-		
-			$dados['arquivos'] = array();
+
+		$dados['arquivos'] = array();
 		foreach($a as $ke=>$valor){
 			$dados['arquivos'][$ke]['nome_arq'] = $valor->nome_arq;
 			$dados['arquivos'][$ke]['id_arq'] =$valor->id_arq;
 		}
-// 		echo "<pre>";
-// 		echo print_r($i);
-// 		echo count($dados);
-// 		echo "</pre>";
-// 		die;
-			$this->parser->parse('intranet/posts_cadastro',$dados);
+		// 		echo "<pre>";
+		// 		echo print_r($i);
+		// 		echo count($dados);
+		// 		echo "</pre>";
+		// 		die;
+		$this->parser->parse('intranet/posts_cadastro',$dados);
 	}
-	
+
 	public function aprovar($id=0){
 		if(!empty($_GET['id'])){
 			$id = $_GET['id'];
@@ -237,7 +237,7 @@ class Posts_Cadastro extends CI_Controller{
 			redirect('index.php/intranet/posts_cadastro_list');
 		}
 	}
-	
+
 	public function rejeitar($id=0){
 		$p = new Posts();
 		$p->rejeitar($id);
@@ -248,7 +248,7 @@ class Posts_Cadastro extends CI_Controller{
 			$id = $_GET['id'];
 		}
 		else{
-		$id= $this->input->post('hd_id');
+			$id= $this->input->post('hd_id');
 		}
 		$p = new Posts();
 		$p->publicar($id);
@@ -259,13 +259,13 @@ class Posts_Cadastro extends CI_Controller{
 			redirect('index.php/intranet/posts_cadastro_list');
 		}
 	}
-	
+
 	public function deletar($id=0){
 		if(!empty($_GET['id'])){
 			$id = $_GET['id'];
 		}
 		else {
-		$id= $this->input->post('hd_id');
+			$id= $this->input->post('hd_id');
 		}
 		$p = new Posts();
 		$i = new Imagens();
@@ -277,12 +277,12 @@ class Posts_Cadastro extends CI_Controller{
 		$v->deletar($id);
 		$a->deletar($id);
 		$h->deletar($id);
-			redirect('index.php/intranet/posts_cadastro_list');
-// 		$this->index();
+		redirect('index.php/intranet/posts_cadastro_list');
+		// 		$this->index();
 	}
-	
-	
-	
+
+
+
 	public function telaJustificar(){
 		$list=0;
 		if(!empty($_GET['id'])){
@@ -313,7 +313,7 @@ class Posts_Cadastro extends CI_Controller{
 			redirect('index.php/intranet/posts_cadastro_list');
 		}
 	}
-	
+
 	public function testeEmail(){
 		$config = array(
 				'protocol' => 'smtp',

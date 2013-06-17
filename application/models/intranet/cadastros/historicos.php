@@ -3,10 +3,10 @@
 class Historicos extends DataMapper{
 
 	private $campos = array('id_hist'     		=>"" ,
-							'descricao_hist'   	=>"" ,
-							'status'		  	=>"" ,
-							'id_post'		  	=>"" ,
-							'dt_criacao'		=>"" 
+			'descricao_hist'   	=>"" ,
+			'status'		  	=>"" ,
+			'id_post'		  	=>"" ,
+			'dt_criacao'		=>""
 	);
 
 	function Historicos(){
@@ -31,12 +31,12 @@ class Historicos extends DataMapper{
 		return $h->where('id_post',$id)
 		->get();
 	}
-	
+
 	public function inserir(){
 		$h = new Historicos();
 		$h->descricao_hist		= $this->campos['descricao_hist'];
 		$h->status				= $this->campos['status'];
-		$h->id_post				= $this->campos['id_post'];	
+		$h->id_post				= $this->campos['id_post'];
 		$h->dt_criacao			= unix_to_human(time(), TRUE, 'us');
 		$h->save();
 	}

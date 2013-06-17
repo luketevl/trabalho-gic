@@ -7,34 +7,41 @@ Copyright (C) 2012 SciActive.com. All Rights Reserved.
 	text-align: center;
 	overflow: hidden;
 }
+
 .page-banner h1 {
 	font-size: 70px;
 	line-height: 65px;
 }
+
 .page-banner p {
 	font-size: 30px;
 	line-height: 48px;
 }
+
 .page-banner .btn-large {
 	margin-top: 30px;
 	font-size: 26px;
 }
+
 .page-banner .right-button {
 	margin-left: 20px;
 }
+
 .page-points .row-fluid {
 	margin-bottom: 30px;
 }
+
 body .pf-form .pf-heading * {
 	margin-top: .1em !important;
 	margin-bottom: .1em !important;
 }
+
 #copyright {
 	text-align: center;
 	margin-top: 40px;
 }
 /* Mobile */
-@media (max-width: 768px) {
+@media ( max-width : 768px) {
 	.page-banner {
 		padding: 30px 0 20px;
 	}
@@ -63,11 +70,12 @@ body .pf-form .pf-heading * {
 		padding-right: 0;
 	}
 	#fb-root {
-		display: none; /* Facebook's code makes a horizontal scrollbar. Grr. */
+		display: none;
+		/* Facebook's code makes a horizontal scrollbar. Grr. */
 	}
 }
 /* Tablet */
-@media (min-width: 768px) and (max-width: 980px) {
+@media ( min-width : 768px) and (max-width: 980px) {
 	.page-banner {
 		float: left;
 		width: 20%;
@@ -108,6 +116,7 @@ body .pf-form .pf-heading * {
 	-o-box-shadow: 0px 6px 30px rgba(50, 50, 50, 0.75);
 	box-shadow: 0px 6px 30px rgba(50, 50, 50, 0.75);
 }
+
 pre.prettyprint {
 	display: table;
 	min-width: 100%;

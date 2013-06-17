@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>jQuery validation plug-in - dynamic forms demo</title>
 
-<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="css/screen.css" />
 
 <script src="../lib/jquery.js" type="text/javascript"></script>
 <script src="../jquery.validate.js" type="text/javascript"></script>
@@ -56,25 +57,37 @@ $().ready(function() {
 </script>
 
 <style type="text/css">
-form.cmxform { width: 50em; }
-em.error {
-  background:url("images/unchecked.gif") no-repeat 0px 0px;
-  padding-left: 16px;
+form.cmxform {
+	width: 50em;
 }
+
+em.error {
+	background: url("images/unchecked.gif") no-repeat 0px 0px;
+	padding-left: 16px;
+}
+
 em.success {
-  background:url("images/checked.gif") no-repeat 0px 0px;
-  padding-left: 16px;
+	background: url("images/checked.gif") no-repeat 0px 0px;
+	padding-left: 16px;
 }
 
 form.cmxform label.error {
 	margin-left: auto;
 	width: 250px;
 }
+
 form.cmxform input.submit {
 	margin-left: 0;
 }
-em.error { color: black; }
-#warning { display: none; }
+
+em.error {
+	color: black;
+}
+
+#warning {
+	display: none;
+}
+
 select.error {
 	border: 1px dotted red;
 }
@@ -83,10 +96,14 @@ select.error {
 </head>
 <body>
 
-<h1 id="banner"><a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">jQuery Validation Plugin</a> Demo</h1>
-<div id="main">
+	<h1 id="banner">
+		<a
+			href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">jQuery
+			Validation Plugin</a> Demo
+	</h1>
+	<div id="main">
 
-<textarea style="display:none" id="template">
+		<textarea style="display: none" id="template">
 	<tr>
 		<td>
 			<label>{0}. Item</label>
@@ -102,43 +119,49 @@ select.error {
 			</select>
 		</td>
 		<td class='quantity'>
-			<input size='4' class="quantity" min="1" id="item-quantity-{0}" name="item-quantity-{0}" />
+			<input size='4' class="quantity" min="1" id="item-quantity-{0}"
+					name="item-quantity-{0}" />
 		</td>
 		<td class='quantity-error'></td>
 	</tr>
 </textarea>
 
-<form id="orderform" class="cmxform" method="get" action="foo.html">
-	<h2 id="summary"></h2>
+		<form id="orderform" class="cmxform" method="get" action="foo.html">
+			<h2 id="summary"></h2>
 
-	<fieldset>
-		<legend>Example with custom methods and heavily customized error display</legend>
-		<table id="orderitems">
-			<tbody>
+			<fieldset>
+				<legend>Example with custom methods and heavily customized
+					error display</legend>
+				<table id="orderitems">
+					<tbody>
 
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="2"><label>Totals (max 25)</label></td>
-					<td class="totals"><input id="totals" name="totals" value="0" max="25" readonly="readonly" size='4' /></td>
-					<td class="totals-error"></td>
-				</tr>
-				<tr>
-					<td colspan="2">&nbsp;</td>
-					<td><input class="submit" type="submit" value="Submit"/></td>
-				</tr>
-			</tfoot>
-		</table>
-	</fieldset>
-</form>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2"><label>Totals (max 25)</label></td>
+							<td class="totals"><input id="totals" name="totals"
+								value="0" max="25" readonly="readonly" size='4' /></td>
+							<td class="totals-error"></td>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+							<td><input class="submit" type="submit" value="Submit" /></td>
+						</tr>
+					</tfoot>
+				</table>
+			</fieldset>
+		</form>
 
-<button id="add">Add another input to the form</button>
+		<button id="add">Add another input to the form</button>
 
-<h1 id="warning">Your form contains tons of errors! Please try again.</h1>
+		<h1 id="warning">Your form contains tons of errors! Please try
+			again.</h1>
 
-<p><a href="index.html">Back to main page</a></p>
+		<p>
+			<a href="index.html">Back to main page</a>
+		</p>
 
-</div>
+	</div>
 
 
 </body>

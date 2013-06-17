@@ -11,7 +11,7 @@
  * @author  	Harro "WanWizard" Verton
  * @link		http://datamapper.wanwizard.eu/
  * @version 	2.0.0
- */
+*/
 
 $dmclass = <<<CODE
 class DM_Loader extends $name

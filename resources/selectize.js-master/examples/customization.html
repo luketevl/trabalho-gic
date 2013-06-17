@@ -2,47 +2,52 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>jQuery Selectize Demo</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
-		<link rel="stylesheet" href="_normalize.css">
-		<link rel="stylesheet" href="_stylesheet.css">
-		<link rel="stylesheet" href="../selectize.css">
-		<script src="_jquery.js"></script>
-		<script src="../selectize.js"></script>
-		<script src="_demos.js"></script>
-		<style type="text/css">
-		.selectize-dropdown.links .option .title {
-			display: block;
-		}
-		.selectize-dropdown.links .option .url {
-			font-size: 12px;
-			display: block;
-			color: #a0a0a0;
-		}
-		.selectize-input.links .item a {
-			color: #006ef5;
-		}
-		.selectize-input.links .item.active a {
-			color: #303030;
-		}
-		</style>
-	</head>
-    <body>
-		<div id="wrapper">
-			<h1>Selectize Demos</h1>
-			<div class="demo">
-				<h2>&lt;select&gt; - Customizing Appearance</h2>
-				<p>Render items on your own &amp; apply unique CSS styles.</p>
-				<div class="control-group">
-					<label for="select-links">Links:</label>
-					<select id="select-links" placeholder="Pick some links..."></select>
-				</div>
-				<script>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>jQuery Selectize Demo</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="_normalize.css">
+<link rel="stylesheet" href="_stylesheet.css">
+<link rel="stylesheet" href="../selectize.css">
+<script src="_jquery.js"></script>
+<script src="../selectize.js"></script>
+<script src="_demos.js"></script>
+<style type="text/css">
+.selectize-dropdown.links .option .title {
+	display: block;
+}
+
+.selectize-dropdown.links .option .url {
+	font-size: 12px;
+	display: block;
+	color: #a0a0a0;
+}
+
+.selectize-input.links .item a {
+	color: #006ef5;
+}
+
+.selectize-input.links .item.active a {
+	color: #303030;
+}
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Selectize Demos</h1>
+		<div class="demo">
+			<h2>&lt;select&gt; - Customizing Appearance</h2>
+			<p>Render items on your own &amp; apply unique CSS styles.</p>
+			<div class="control-group">
+				<label for="select-links">Links:</label> <select id="select-links"
+					placeholder="Pick some links..."></select>
+			</div>
+			<script>
 				// <select id="select-links"></select>
 
 				$('#select-links').selectize({
@@ -75,8 +80,8 @@
 					}
 				});
 				</script>
-				<p>TODO: explain how to bind events.</p>
-			</div>
+			<p>TODO: explain how to bind events.</p>
 		</div>
-	</body>
+	</div>
+</body>
 </html>

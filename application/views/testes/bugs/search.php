@@ -1,27 +1,27 @@
 <div class="searchSection box">
-<h3>Search</h3>
-<?php
+	<h3>Search</h3>
+	<?php
 
 	echo $bug->render_form($form_fields, $url, array('save_button' => 'Search', 'reset_button' => TRUE));
 
-?>
+	?>
 </div>
 
 <div class="searchResults">
-<?php
+	<?php
 
-if( ! empty($bugs))
-{
+	if( ! empty($bugs))
+	{
 
-	$paging = $this->load->view('bugs/paging', array('bugs' => $bugs), TRUE);
+		$paging = $this->load->view('bugs/paging', array('bugs' => $bugs), TRUE);
 
-	echo($paging);
+		echo($paging);
 
-	$this->load->view('bugs/list', array('bugs' => $bugs));
+		$this->load->view('bugs/list', array('bugs' => $bugs));
 
-	echo($paging);
-}
-?>
+		echo($paging);
+	}
+	?>
 
 </div>
 

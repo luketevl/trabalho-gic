@@ -13,18 +13,18 @@
  */
 
 /**
-* Class registry
-*
-* This function acts as a singleton.  If the requested class does not
-* exist it is instantiated and set to a static variable.  If it has
-* previously been instantiated the variable is returned.
-*
-* @access	public
-* @param	string	the class name being requested
-* @param	string	the directory where the class should be found
-* @param	string	the class name prefix
-* @return	object
-*/
+ * Class registry
+ *
+ * This function acts as a singleton.  If the requested class does not
+ * exist it is instantiated and set to a static variable.  If it has
+ * previously been instantiated the variable is returned.
+ *
+ * @access	public
+ * @param	string	the class name being requested
+ * @param	string	the directory where the class should be found
+ * @param	string	the class name prefix
+ * @return	object
+ */
 if ( ! function_exists('load_class'))
 {
 	function &load_class($class, $directory = 'libraries', $prefix = 'CI_')

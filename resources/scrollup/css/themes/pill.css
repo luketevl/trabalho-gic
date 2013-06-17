@@ -16,6 +16,7 @@
 	-moz-transition: background 200ms linear;
 	transition: background 200ms linear;
 }
-	#scrollUp:hover {
-		background: #000;
-	}
+
+#scrollUp:hover {
+	background: #000;
+}

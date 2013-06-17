@@ -9,21 +9,21 @@
 			<id>12651</id>
 			<cod_barra>
 			</cod_barra>
-				<cod_item>2022211334505</cod_item>
-				<descricao_resumida>A111</descricao_resumida>
-				<conta_contabil>
-				</conta_contabil>
-					<descricao_produto>A111</descricao_produto>
-					<estoque_revenda>0.1800</estoque_revenda>
-					<estoque_imobilizado>0.0000</estoque_imobilizado>
-					<estoque_proprio>0.0000</estoque_proprio>
-					<qtd_revenda>180.000</qtd_revenda>
-					<data>2013-04-05</data>
-					<md5>aa5a7e5476b48b71fb8c88b1b8958be7</md5>
-					<unidade>UN</unidade>
-					<vr_custo_medio>55.49</vr_custo_medio>
-					<estoque_total>0.18</estoque_total>
-					<vr_total_produto>9.98</vr_total_produto>
-				</produto>
-			</produtos>
-		</inventario>
+			<cod_item>2022211334505</cod_item>
+			<descricao_resumida>A111</descricao_resumida>
+			<conta_contabil>
+			</conta_contabil>
+			<descricao_produto>A111</descricao_produto>
+			<estoque_revenda>0.1800</estoque_revenda>
+			<estoque_imobilizado>0.0000</estoque_imobilizado>
+			<estoque_proprio>0.0000</estoque_proprio>
+			<qtd_revenda>180.000</qtd_revenda>
+			<data>2013-04-05</data>
+			<md5>aa5a7e5476b48b71fb8c88b1b8958be7</md5>
+			<unidade>UN</unidade>
+			<vr_custo_medio>55.49</vr_custo_medio>
+			<estoque_total>0.18</estoque_total>
+			<vr_total_produto>9.98</vr_total_produto>
+		</produto>
+	</produtos>
+</inventario>

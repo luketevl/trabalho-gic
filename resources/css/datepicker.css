@@ -1,10 +1,10 @@
-
 table.jCalendar {
 	border: 1px solid #FFF;
 	background: #EEE;
-    border-collapse: separate;
-    border-spacing: 1px;
+	border-collapse: separate;
+	border-spacing: 1px;
 }
+
 table.jCalendar th {
 	background: #FFF;
 	color: #FF3300;
@@ -18,6 +18,7 @@ table.jCalendar td {
 	padding: 8px;
 	text-align: center;
 }
+
 table.jCalendar td.weekend {
 	background-color: #EFEFEF;
 }
@@ -26,33 +27,38 @@ table.jCalendar td.other-month {
 	background: #F5F5F5;
 	color: #aaa;
 }
+
 table.jCalendar td.today {
 	font-weight: bold;
 }
+
 table.jCalendar td.selected {
 	background: #FCE0B0;
 	color: #333;
 }
+
 table.jCalendar td.selected.dp-hover {
 	background: #FF9900;
 	color: #fff;
 }
-table.jCalendar td.dp-hover,
-table.jCalendar tr.activeWeekHover td {
+
+table.jCalendar td.dp-hover,table.jCalendar tr.activeWeekHover td {
 	background: #FDF4C9;
 	color: #444;
 }
+
 table.jCalendar tr.selectedWeek td {
 	background: #f66;
 	color: #fff;
 }
-table.jCalendar td.disabled, table.jCalendar td.disabled.dp-hover {
+
+table.jCalendar td.disabled,table.jCalendar td.disabled.dp-hover {
 	background: #bbb;
 	color: #888;
 }
-table.jCalendar td.unselectable,
-table.jCalendar td.unselectable:hover,
-table.jCalendar td.unselectable.dp-hover {
+
+table.jCalendar td.unselectable,table.jCalendar td.unselectable:hover,table.jCalendar td.unselectable.dp-hover
+	{
 	background: #bbb;
 	color: #888;
 }
@@ -60,11 +66,10 @@ table.jCalendar td.unselectable.dp-hover {
 /* For the popup */
 
 /* NOTE - you will probably want to style a.dp-choose-date - see how I did it in demo.css */
-
 div.dp-popup {
 	position: absolute;
 	background: #fff;
-	border:#d7d7d7 1px solid;
+	border: #d7d7d7 1px solid;
 	font-size: 10px !important;
 	font-family: arial, sans-serif;
 	line-height: 1em;
@@ -72,17 +77,18 @@ div.dp-popup {
 	box-shadow: 0px 3px 10px #BBBBBB;
 }
 
-div.dp-popup-inline{
-	box-shadow: 	none;
-	border:			0;
-	position: 		relative;
-	width: 			215px;
+div.dp-popup-inline {
+	box-shadow: none;
+	border: 0;
+	position: relative;
+	width: 215px;
 }
 
 div#dp-popup {
 	position: absolute;
 	z-index: 199;
 }
+
 div.dp-popup h2 {
 	font-size: 14px !important;
 	text-align: center;
@@ -90,21 +96,26 @@ div.dp-popup h2 {
 	color: #555;
 	text-indent: 0px !important;
 }
+
 a#dp-close {
 	font-size: 10px !important;
 	text-align: center;
 }
+
 a#dp-close:hover {
 	text-decoration: underline;
 }
+
 div.dp-popup a {
 	color: #BBB;
 	text-decoration: none;
 	padding: 2px;
 }
+
 div.dp-popup a:hover {
 	color: #666;
 }
+
 div.dp-popup div.dp-nav-prev {
 	position: absolute;
 	top: 8px;
@@ -112,8 +123,8 @@ div.dp-popup div.dp-nav-prev {
 	width: 40px;
 }
 
-div.dp-popup div.dp-nav-prev a.disabled,
-div.dp-popup div.dp-nav-next a.disabled{
+div.dp-popup div.dp-nav-prev a.disabled,div.dp-popup div.dp-nav-next a.disabled
+	{
 	color: transparent;
 }
 
@@ -121,30 +132,36 @@ div.dp-popup div.dp-nav-prev a {
 	float: left;
 }
 /* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
-div.dp-popup div.dp-nav-prev a, div.dp-popup div.dp-nav-next a {
+div.dp-popup div.dp-nav-prev a,div.dp-popup div.dp-nav-next a {
 	cursor: pointer;
 	font-size: 22px;
 }
 
-div.dp-popup div.dp-nav-prev a.disabled, div.dp-popup div.dp-nav-next a.disabled {
+div.dp-popup div.dp-nav-prev a.disabled,div.dp-popup div.dp-nav-next a.disabled
+	{
 	cursor: default;
 }
+
 div.dp-popup div.dp-nav-next {
 	position: absolute;
 	top: 8px;
 	right: 10px;
 	width: 40px;
 }
+
 div.dp-popup div.dp-nav-next a {
 	float: right;
 }
+
 div.dp-popup a.disabled {
 	cursor: default;
 	color: #aaa;
 }
+
 div.dp-popup td {
 	cursor: pointer;
 }
+
 div.dp-popup td.disabled {
 	cursor: default;
 }
@@ -159,8 +176,9 @@ a.dp-choose-date {
 	display: block;
 	text-indent: -2000px;
 	overflow: hidden;
-	/* background: url(../images/icons/calendar.gif) no-repeat; */ 
+	/* background: url(../images/icons/calendar.gif) no-repeat; */
 }
+
 a.dp-choose-date.dp-disabled {
 	background-position: 0 -20px;
 	cursor: default;
@@ -170,4 +188,3 @@ input.dp-applied {
 	width: 140px;
 	float: left;
 }
-

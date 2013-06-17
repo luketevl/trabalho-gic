@@ -16,26 +16,26 @@ class Category extends DataMapper {
 	// --------------------------------------------------------------------
 
 	public $has_many = array('bug');
-	
+
 	// --------------------------------------------------------------------
 	// Validation
-	// --------------------------------------------------------------------	
-	
+	// --------------------------------------------------------------------
+
 	public $validation = array(
-		'name' => array(
-			'rules' => array('required', 'trim', 'unique', 'max_length' => 40)
-		)
+			'name' => array(
+					'rules' => array('required', 'trim', 'unique', 'max_length' => 40)
+			)
 	);
-	
+
 	// Default to ordering by name
 	public $default_order_by = array('name');
-	
-	// --------------------------------------------------------------------	
-	
+
+	// --------------------------------------------------------------------
+
 	/**
 	 * Returns the name of this status.
 	 * @return $this->name
-	 */
+	*/
 	function __toString()
 	{
 		return empty($this->name) ? $this->localize_label('unset') : $this->name;
