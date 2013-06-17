@@ -28,8 +28,8 @@
 				<p>{perfil_usu}</p>
 			</span> <a
 				href="<?php echo base_url()?>index.php/intranet/login/deslogar"> <img
-				src="<?php echo base_url();?>resources/icons/logout.png"
-				class="exit" />
+				src="<?php echo base_url();?>resources/icons/logout.png" title="Sair"
+				class="tooltip exit" />
 			</a>
 		</section>
 		<span id="circle" class="tooltip" title="<?php echo $tp_posts;?>"> <img
