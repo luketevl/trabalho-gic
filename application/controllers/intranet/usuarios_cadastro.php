@@ -31,13 +31,13 @@ class Usuarios_Cadastro extends CI_Controller{
 			$dadosImg = $this->upload->data();
 			$dados['nome_img'] = $dadosImg['file_name'];
 			$dados['id_usu'] = $id_usu;
-			// FALTA ID DO POST
+			// FALTA ID DO POST\
 			$u->atualiza_foto($dados['id_usu'], $dados['nome_img']);
 			$msg['success'] = "true";
 			$msg['full_path'] = $dadosImg['full_path'];
 // 						echo "<pre>";
-// 						echo print_r($dadosImg);
-// 						echo "</pre>";
+// 						echo print_r($dados);
+// 						echo "</pre>";die;
 			echo json_encode($msg); 
 		}
 		else{
@@ -67,6 +67,9 @@ class Usuarios_Cadastro extends CI_Controller{
 		
 		$dados_img = $this->upload->data();
 		$aux['id_perf'] = $this->input->post('hd_perf_id');
+		if(empty($aux['id_perf'])){
+			$aux['id_perf'] = COMUM;
+		}
 		
 		if(empty($aux['id_usu'])){
 			$aux['dt_criacao'] = unix_to_human(time(), TRUE, 'us');
@@ -106,13 +109,20 @@ class Usuarios_Cadastro extends CI_Controller{
 			$dados['perfil'] = $p->nome_perf;
 		}
 // 		echo "<pre>";
-// 		echo print_r($i);
+// 		echo print_r($dados);
 // 		echo count($dados);
 // 		echo "</pre>";
 // 		die;
 			$this->parser->parse('intranet/usuarios_cadastro',$dados);
 	}
 	
+	public function verifica_usuario(){
+		$u = new Usuarios();
+		$u = $u->get_by_email($this->input->post('email'));
+		if(!empty($u['email_usu'])){
+			echo 0;
+		}
+	}
 	
 
 	

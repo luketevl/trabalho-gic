@@ -157,7 +157,7 @@
  -->
  <form action="../intranet/posts_cadastro/load_form_edit" method="get" accept-charset="utf-8">
 <?php  echo form_hidden('id',0);
- echo form_hidden('hd_uc','posts_cadastro');
+ echo form_hidden('hd_uc','posts_cadastro_list');
  	   echo form_close();
  ?>
  
