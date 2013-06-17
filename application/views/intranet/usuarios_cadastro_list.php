@@ -55,42 +55,6 @@
 				else{
 					$(btn).removeAttr('style');
 					}
-			$('tbody tr').each(function(){
-				var el = this;
-				status = $(el).find('td[name="hd_status"]').text();
-				if(nome == 'novo' && status=='N'){
-					if($(btn).attr('style') !== undefined){
-						$(el).hide(700);
-					}
-					else{
-						$(el).show(700);
-						}
-					}
-				else if(nome == 'aprovado' && status=='A'){
-					if($(btn).attr('style') !== undefined){
-							$(el).hide(700);
-								}
-						else{
-							$(el).show(700);
-							}
-					}
-				else if(nome == 'rejeitado' && status=='R'){
-					if($(btn).attr('style') !== undefined){
-							$(el).hide(700);
-								}
-						else{
-							$(el).show(700);
-							}
-					}
-				else if(nome == 'publicado' && status=='P'){
-					if($(btn).attr('style') !== undefined){
-							$(el).hide(700);
-								}
-						else{
-							$(el).show(700);
-							}
-					}
-				});
 			});
 		 $(':button').click(function(ev){
 			ev.preventDefault();
@@ -98,21 +62,13 @@
 			if(temp == 'aprovar'){
 				$('form').attr('action','../intranet/'+uc_case+'/aprovar');
 			}
-			else if(temp == 'rejeitar'){
-				$('form').attr('action','../intranet/'+uc_case+'/telaJustificar');
-				}
-			else if(temp == 'publicar'){
-				$('form').attr('action','../intranet/'+uc_case+'/publicar');
-				}
 			else if(temp == 'remover'){
 				$('form').attr('action','../intranet/'+uc_case+'/deletar');
 					confirm_mensagem('Atencao','Confirma a exclusao da materia?');
-					
 				}
 			if(temp != 'adicionar' && temp != 'remover'){
 					$('form').submit();	
 			}
-				
 			});
 		   function confirm_mensagem(titulo, messagem){
 	        	var elem = $(this).closest('.item');
@@ -155,9 +111,9 @@
 </form>
 
  -->
- <form action="../intranet/posts_cadastro/load_form_edit" method="get" accept-charset="utf-8">
+ <form action="../intranet/usuarios_cadastro/load_form_edit" method="get" accept-charset="utf-8">
 <?php  echo form_hidden('id',0);
- echo form_hidden('hd_uc','posts_cadastro');
+ echo form_hidden('hd_uc','usuarios_cadastro');
  	   echo form_close();
  ?>
  
@@ -166,45 +122,37 @@
  	<?php 
  			echo form_button('adicionar','<img src='. base_url() .'resources/icons/add.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_novo').'"');
  			echo form_button('editar','<img src='.  base_url() .'resources/icons/edit.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_edit').'"');
- 			echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_aprovar').'"');
- 			echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_rejeitar').'"');
- 			echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_publicar').'"');
  			echo form_button('remover','<img title="'.lang('btn_aprovar'). '" src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
  	?>
  	</nav>
- 	<section id="infoList">
- 		<img src="<?php echo base_url();?>resources/icons/menu.png" />
- 		<a href="#" class="active" name="novo">{cc_aberto} Novos </a>
- 		 | 
- 		 <a href="#" class="active" name="aprovado">{cc_aprovado} Aprovados </a>
- 		 |
- 		 <a href="#" class="active" name="rejeitado">{cc_rejeitado} Rejeitados </a> 
- 		 | 
- 		 <a href="#" class="active" name="publicado">{cc_publicado} Publicados </a>
- 	</section>
+<!--  	<section id="infoList"> 
+ 		<img src="resources/icons/menu.png" />
+-->
+<!--  		<a href="#" class="active" name="novo">{cc_aberto} Novos </a> -->
+<!--  		 |  -->
+<!--  		 <a href="#" class="active" name="aprovado">{cc_aprovado} Aprovados </a> -->
+<!--  		 | -->
+<!--  		 <a href="#" class="active" name="rejeitado">{cc_rejeitado} Rejeitados </a>  -->
+<!--  		 |  -->
+<!--  		 <a href="#" class="active" name="publicado">{cc_publicado} Publicados </a> -->
+<!--  	</section> -->
  			<hr />
  	<table>
  		<thead>
  			<tr>
-	 			<td class="coluna" name="id_post" style="display: none">id_post</td>
-	 			<td class="coluna" style="width: 72%;" >Titulo</td>
+	 			<td class="coluna" name="id_usu" style="display: none">id_usu</td>
+	 			<td class="coluna" style="width: 73%;" >Nome</td>
 	 			<td class="coluna" style="width: 5px;">Data Criacao</td>
-	 			<td class="coluna" style="width: 5px;">Data Aprovacao</td>
-	 			<td class="coluna" style="width: 200px;">Categoria</td> 
-	 			<td class="coluna" style="width: 5px;">Status</td>
-	 			<td class="coluna" name="status" style="display: none">sts_post</td>
+	 			<td class="coluna" style="width: 203px;">Perfil</td>
 	 		</tr>
  		</thead>
  		<tbody>
 		 {dados}
  		<tr>
- 			<td style="display: none" name="hd_id" >{id_post}</td>
- 			<td>{titulo_post}</td>
+ 			<td style="display: none" name="hd_id" >{id_usu}</td>
+ 			<td>{nome_usu}</td>
  			<td class="center" >{dt_criacao}</td>
- 			<td class="center" >{dt_modificacao}</td>
- 			<td>{categoria}</td>
- 			<td>{status}</td>
- 			<td style="display: none" name="hd_status" >{status_post}</td>
+ 			<td>{perfil}</td>
  		</tr>
  		 {/dados}
  		</tbody>

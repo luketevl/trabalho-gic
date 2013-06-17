@@ -42,11 +42,13 @@ $(document).ready(function() {
 			}
 		else if(temp == 'remover'){
 			$('form').attr('action','../'+uc_case+'/deletar');
-				confirm_mensagem('Atencao','Confirma a exclusao da materia?');
+				confirm_mensagem('Atencao','Confirma a exclusao do usuario?');
 				
 			}
 		if(temp != 'adicionar' && temp != 'remover'){
-				$('form').submit();	
+				if(uc_case == 'posts_cadastro'){
+					$('form').submit();	
+				}
 		}
 		});
 	
@@ -197,6 +199,7 @@ $(document).ready(function() {
 			if(uc_case != 'posts_cadastro' && uc_case != 'posts_cadastro_list'){
 				$('#perf').hide();
 				$('[name="adicionar"]').hide();
+				$('[name="remover"]').hide();
 			}
 		}
 	}
@@ -301,7 +304,7 @@ $('#tagsinput_tagsinput').focusout(function(){
         			response( cache[ term ] );
         			return;
         		}
-        		$.getJSON( "portal-gic/.././perfil_cadastro/au_get_by_name", request, function( data, status, xhr ) {
+        		$.getJSON( "portal-gic/../../perfil_cadastro/au_get_by_name", request, function( data, status, xhr ) {
         			cache[ term ] = data;
         			response( $.map( data.dados, function( item ) {
         				return {
@@ -370,7 +373,13 @@ $('#tagsinput_tagsinput').focusout(function(){
         	});
         	$(this).addClass('selected');
         	el_status = $(this).find('td[name="hd_status"]');
-        	hide_button(el_status.text(),id_perf);
+        	if(uc_case != 'posts_cadastro'){
+        		teemp = "N";
+        	}
+        	else{
+        		teemp =el_status.text();
+        	}
+        	hide_button(teemp,id_perf);
         	$('[name="id"]').val($(this).find('td[name="hd_id"]').text());
         	
         });
