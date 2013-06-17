@@ -18,7 +18,7 @@ Tabelas
 	- Posts(id_post, titulo_post, resumo_post, conteudo_post,ref_post,status_post,dt_criacao,dt_modificacao,img_principal_post,url_youtube,obs_post,keywords_post,id_usu_aprovou,id_usu,id_cat);
 	- Historicos(id_hist, descricao_hist,status,id_post,dt_criacao);
 	- Comentarios(id_comen, comentario_comen,id_post,id_top,id_usu)
-	- Topicos(id_top, nome_top, resumo_top,dt_criacao)
+	- Topicos(id_top, nome_top, resumo_top,dt_criacao,status_top)
 	- Categorias(id_cat,nome_cat,fk_id_cat)
 	- Logs(id_log, nome_table, id_user,dt_modificacao)
 	- Imagens(id_img, nome_img,id_post)
@@ -54,7 +54,10 @@ create table topicos(
 	id_top int unsigned auto_increment not null primary key,
 	nome_top text not null,
 	resumo_top varchar(100) null,
-	dt_criacao datetime not null
+	dt_criacao datetime not null,
+	status_top char(1) not null,
+	id_usu int not null,
+	foreign key(id_usu) references usuarios(id_usu)
 )ENGINE= MYISAM;
 
 create table comentarios(
