@@ -50,9 +50,9 @@
 <script type="text/javascript"
 	src="<?php echo base_url();?>resources/jquery.confirm/js/script.js"></script>
 <link
-href="<?php echo base_url(); ?>resources/jquery.confirm/jquery.confirm/jquery.confirm.css"
-rel="stylesheet" />
-	
+	href="<?php echo base_url(); ?>resources/jquery.confirm/jquery.confirm/jquery.confirm.css"
+	rel="stylesheet" />
+
 <link
 	href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css"
 	rel="stylesheet">
@@ -214,11 +214,9 @@ echo form_fieldset('','class="lblInput" style="width:500px;"');
 	echo form_label('URL Video Principal','lbl_url_youtube');
 	echo form_input('url_youtube','{url_youtube}','class="linkvideo url"');
 	?>
-	{urls} 
-	<span> URL video</span>
-	<input type="text" value={url} name=linkvideo[{id_vid}] />
-	{/urls} <img src="<?php echo base_url();?>resources/icons/add.png"
-		id="addUrl" />
+	{urls} <span> URL video</span> <input type="text" value={url}
+		name=linkvideo[{id_vid}] /> {/urls} <img
+		src="<?php echo base_url();?>resources/icons/add.png" id="addUrl" />
 </section>
 
 <?php 

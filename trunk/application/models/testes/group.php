@@ -16,39 +16,39 @@ class Group extends DataMapper {
 	// --------------------------------------------------------------------
 
 	public $has_many = array("user");
-	
+
 	// --------------------------------------------------------------------
 	// Validation
-	// --------------------------------------------------------------------	
-	
+	// --------------------------------------------------------------------
+
 	public $validation = array(
-		'name' => array(
-			'rules' => array('required', 'trim', 'unique', 'min_length' => 3, 'max_length' => 20)
-		)
+			'name' => array(
+					'rules' => array('required', 'trim', 'unique', 'min_length' => 3, 'max_length' => 20)
+			)
 	);
-	
+
 	// Default to ordering by name
 	public $default_order_by = array('id' => 'desc');
-	
+
 	/**
 	 * Returns the name of this status.
 	 * @return $this->name
-	 */
+	*/
 	function __toString()
 	{
 		return empty($this->name) ? $this->localize_label('unset') : $this->name;
 	}
-	
+
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * This method is provided for the htmlform extension.
 	 * It is used to prevent logged-in users from being able to accidentally
 	 * convert themselves away from being an admin.
-	 * 
+	 *
 	 * @param object $object
 	 * @param object $field
-	 * @return 
+	 * @return
 	 */
 	function get_htmlform_list($object, $field)
 	{

@@ -18,25 +18,25 @@ class categorias_Cadastro extends CI_Controller{
 			redirect('index.php/intranet/login');
 		}
 	}
-	
-	
+
+
 	public function delete_file(){
-		
+
 	}
-	
+
 	public function save(){
-		
+
 		$c = new Categorias();
 		$aux = $c->getFields();
 		$aux['id_cat'] = $this->input->post('hd_id');
 		$aux['nome_cat'] = $this->input->post('nome');
 		$aux['fk_id_cat'] = $this->input->post('hd_cat_id');
-// 		echo "<pre>";
-// 		echo print_r($aux);
-// 		echo count($dados);
-// 		echo "</pre>";
-// 		die;
-		
+		// 		echo "<pre>";
+		// 		echo print_r($aux);
+		// 		echo count($dados);
+		// 		echo "</pre>";
+		// 		die;
+
 		if(empty($aux['id_cat'])){
 			$c->setFields($aux);
 			$c->inserir();
@@ -49,7 +49,7 @@ class categorias_Cadastro extends CI_Controller{
 		}
 		$this->load_form_edit($aux['id_cat']);
 	}
-	
+
 	public function load_form_edit($id=0){
 		$this->lang->load('usuarios');
 		$this->lang->load('posts');
@@ -68,9 +68,9 @@ class categorias_Cadastro extends CI_Controller{
 			$ctemp = $ctemp->get_by_id($c->fk_id_cat);
 			$dados['nome_cat_mae'] =$ctemp->nome_cat;
 		}
-			$this->parser->parse('intranet/categorias_cadastro',$dados);
+		$this->parser->parse('intranet/categorias_cadastro',$dados);
 	}
-	
+
 	public function verifica_usuario(){
 		$dados = array();
 		$u = new Usuarios();
@@ -83,9 +83,9 @@ class categorias_Cadastro extends CI_Controller{
 			echo 1;
 		}
 	}
-	
 
-	
+
+
 	public function deletar($id=0){
 		if(!empty($_GET['id'])){
 			$id = $_GET['id'];
@@ -97,7 +97,7 @@ class categorias_Cadastro extends CI_Controller{
 		$c->deletar($id);
 		redirect('index.php/intranet/categorias_cadastro_list');
 	}
-	
+
 	public function testeEmail(){
 		$config = array(
 				'protocol' => 'smtp',

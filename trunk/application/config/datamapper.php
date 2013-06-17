@@ -4,7 +4,7 @@
  * Data Mapper Configuration
  *
  * Global configuration settings that apply to all DataMapped models.
- */
+*/
 
 $config['prefix'] = '';
 $config['join_prefix'] = '';

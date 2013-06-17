@@ -8,5 +8,5 @@ if( ! function_exists('icon'))
 	{
 		$alt = htmlspecialchars($alt);
 		return '<img src="' . site_url("img/icon/$size/$name.png") . "\" width=\"$size\" height=\"$size\" alt=\"$alt\" />";
-	} 
+	}
 }

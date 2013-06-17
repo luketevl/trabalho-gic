@@ -50,9 +50,9 @@
 <script type="text/javascript"
 	src="<?php echo base_url();?>resources/jquery.confirm/js/script.js"></script>
 <link
-href="<?php echo base_url(); ?>resources/jquery.confirm/jquery.confirm/jquery.confirm.css"
-rel="stylesheet" />
-	
+	href="<?php echo base_url(); ?>resources/jquery.confirm/jquery.confirm/jquery.confirm.css"
+	rel="stylesheet" />
+
 <link
 	href="<?php echo base_url(); ?>resources/jquery.fineuploader/fineuploader-3.6.0.css"
 	rel="stylesheet">
@@ -65,37 +65,60 @@ rel="stylesheet" />
 	href="<?php echo base_url(); ?>resources/jquery-ui/themes/base/jquery-ui.css"
 	rel="stylesheet" />
 
-		
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.min.js"></script>
-<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css" media="all" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.min.js"></script>
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css"
+	media="all" rel="stylesheet" type="text/css" />
 <!-- Include this file if you are using Pines Icons. -->
-<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css" media="all" rel="stylesheet" type="text/css" />
-	
-	
-	<link href="<?php echo base_url(); ?>resources/pnotify-master/devnote.css" rel="stylesheet" type="text/css" />
-	<!-- Page Style -->
-	<link href="<?php echo base_url(); ?>resources/pnotify-master/includes/style.css" rel="stylesheet" type="text/css" />
-	<!-- jQuery -->
-	<link href="<?php echo base_url(); ?>resources/pnotify-master/includes/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/includes/bootstrap/js/bootstrap.min.js"></script>
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css"
+	media="all" rel="stylesheet" type="text/css" />
+
+
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/devnote.css"
+	rel="stylesheet" type="text/css" />
+<!-- Page Style -->
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/includes/style.css"
+	rel="stylesheet" type="text/css" />
+<!-- jQuery -->
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/includes/bootstrap/css/bootstrap-responsive.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/pnotify-master/includes/bootstrap/js/bootstrap.min.js"></script>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<!-- Oxygen Icons -->
-	<link href="<?php echo base_url(); ?>resources/pnotify-master/oxygen/icons.css" rel="stylesheet" type="text/css" />
-	<!-- JavaScript Source Formatting -->
-	<link href="<?php echo base_url(); ?>resources/pnotify-master/includes/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/includes/google-code-prettify/prettify.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/includes/beautify.js"></script>
-	<!-- Pines Notify -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.js"></script>
-	<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css" rel="stylesheet" type="text/css" />
-	<link href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css" rel="stylesheet" type="text/css" />
-	
-	
-	
-	
+<!-- Oxygen Icons -->
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/oxygen/icons.css"
+	rel="stylesheet" type="text/css" />
+<!-- JavaScript Source Formatting -->
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/includes/google-code-prettify/prettify.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/pnotify-master/includes/google-code-prettify/prettify.js"></script>
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/pnotify-master/includes/beautify.js"></script>
+<!-- Pines Notify -->
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.js"></script>
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="<?php echo base_url(); ?>resources/pnotify-master/jquery.pnotify.default.icons.css"
+	rel="stylesheet" type="text/css" />
+
+
+
+
 <!--  
     <script type="text/javascript" src="resources/flat-ui-master/js/application.js"></script>
 	</head>

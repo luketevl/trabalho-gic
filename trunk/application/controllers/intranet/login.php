@@ -64,6 +64,7 @@ class Login extends CI_Controller{
 		        $dados['user_facebook'] = $user->username;
 		        $dados['link_facebook'] = $user->link;
 		        $this->logar($dados);
+		        redirect('index.php/intranet/login');
 		      }
 		//       echo "<pre>";
 		//       print_r($user);
@@ -97,15 +98,15 @@ class Login extends CI_Controller{
 						'pass_usu'			=> $this->input->post('senha'),
 						'dt_nascimento'		=> $this->input->post('dp_nascimento'),
 						'dt_criacao'		=> unix_to_human(time(), TRUE, 'us'), // U.S. time with seconds,
-						'avatar_usu'		=> $this->input->post('img_avatar'),
+						'avatar_usu'		=> 'no_avatar.png',
 						'id_perf'			=> COMUM//$this->input->post('id_perf')
 					  );
-		
 		if($this->exist_user($dados['email_usu'])){
 			echo 0;			
 		}
 		else{
-				$u->inserir($dados);
+				$u->setFields($dados);
+				$u->inserir();
 				$u = $u->get_last_id();
 				$dados['id_usu'] = $u->id_usu;
 				$this->logar($dados);
@@ -123,6 +124,7 @@ class Login extends CI_Controller{
 		}
 		else{
 			$this->logar($aux);
+			redirect('index.php/intranet/login');
 		}
 	}
 	
@@ -164,12 +166,14 @@ class Login extends CI_Controller{
 	}
 	private function exist_user($email){
 		$u = new Usuarios();
-		$u = $u->get_by_email($email);
-		$aux = $this->dados_usuario($u);
-		if(empty($aux)){
+		$u = $u->get_by_email($email,0);
+// 		$aux = $this->dados_usuario($u);
+		if($u>0){
+			return true;
+		}
+		else{
 			return false;
 		}
-		return true;
 	}
 	
 	public function get_perf(){

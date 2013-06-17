@@ -17,7 +17,8 @@
 	box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
 	background-color: #E6E6E6;
 	background-image: -moz-linear-gradient(top, #EBEBEB, #DEDEDE);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EBEBEB), to(#DEDEDE));
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EBEBEB),
+		to(#DEDEDE));
 	background-image: -webkit-linear-gradient(top, #EBEBEB, #DEDEDE);
 	background-image: -o-linear-gradient(top, #EBEBEB, #DEDEDE);
 	background-image: linear-gradient(to bottom, #EBEBEB, #DEDEDE);
@@ -26,6 +27,7 @@
 	-moz-transition: bottom 150ms linear;
 	transition: bottom 150ms linear;
 }
-	#scrollUp:hover {
-		bottom: 0px;
-	}
+
+#scrollUp:hover {
+	bottom: 0px;
+}

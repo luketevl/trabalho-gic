@@ -7,7 +7,7 @@ class Logout extends CI_Controller {
 		parent::__construct();
 		$this->load->library('login_manager', array('autologin' => FALSE));
 	}
-	
+
 	function index()
 	{
 		$this->login_manager->logout();

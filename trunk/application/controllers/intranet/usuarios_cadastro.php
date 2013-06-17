@@ -14,17 +14,17 @@ class Usuarios_Cadastro extends CI_Controller{
 			redirect('index.php/intranet/login');
 		}
 	}
-	
+
 	public function upload(){
 		$config['upload_path'] = './././resources/img/uploads/';
 		$config['allowed_types'] = 'jpeg|bmp|gif|jpg|png';
-// 		$config['max_size']	= '10000';
-// 		$config['max_width']  = '10024';
-// 		$config['max_height']  = '1768';
+		// 		$config['max_size']	= '10000';
+		// 		$config['max_width']  = '10024';
+		// 		$config['max_height']  = '1768';
 		$this->upload->initialize($config);
-// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
-// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
-// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
+		// 		echo "<pre>"; echo print_r($_FILES); echo "</pre>";
+		// 		echo "<pre>". "GET"; echo print_r($_GET); echo "</pre>";
+		// 		echo "<pre>". "POST"; echo print_r($_POST); echo "</pre>";die;
 		$id_usu = $_GET['id_usu'];
 		if($this->upload->do_upload('qqfile')){
 			$u = new Usuarios();
@@ -35,10 +35,10 @@ class Usuarios_Cadastro extends CI_Controller{
 			$u->atualiza_foto($dados['id_usu'], $dados['nome_img']);
 			$msg['success'] = "true";
 			$msg['full_path'] = $dadosImg['full_path'];
-// 						echo "<pre>";
-// 						echo print_r($dados);
-// 						echo "</pre>";die;
-			echo json_encode($msg); 
+			// 						echo "<pre>";
+			// 						echo print_r($dados);
+			// 						echo "</pre>";die;
+			echo json_encode($msg);
 		}
 		else{
 			echo "<pre>";
@@ -47,13 +47,13 @@ class Usuarios_Cadastro extends CI_Controller{
 			echo "erro". $this->upload->display_errors();
 		}
 	}
-	
+
 	public function delete_file(){
-		
+
 	}
-	
+
 	public function save(){
-		
+
 		$u = new Usuarios();
 		$aux = $u->getFields();
 		$aux['id_usu'] = $this->input->post('hd_id');
@@ -64,13 +64,13 @@ class Usuarios_Cadastro extends CI_Controller{
 		$aux['dt_criacao'] = $this->input->post('dt_criacao');
 		$aux['dt_nascimento'] = $this->input->post('dt_nascimento');
 		$aux['avatar_usu'] = '';
-		
+
 		$dados_img = $this->upload->data();
 		$aux['id_perf'] = $this->input->post('hd_perf_id');
 		if(empty($aux['id_perf'])){
 			$aux['id_perf'] = COMUM;
 		}
-		
+
 		if(empty($aux['id_usu'])){
 			$aux['dt_criacao'] = unix_to_human(time(), TRUE, 'us');
 			$aux['avatar_usu'] = 'no_avatar.png';
@@ -85,7 +85,7 @@ class Usuarios_Cadastro extends CI_Controller{
 		}
 		$this->load_form_edit($aux['id_usu']);
 	}
-	
+
 	public function load_form_edit($id=0){
 		$this->lang->load('usuarios');
 		$this->lang->load('posts');
@@ -108,14 +108,14 @@ class Usuarios_Cadastro extends CI_Controller{
 			$p = $p->get_by_id($u->id_perf);
 			$dados['perfil'] = $p->nome_perf;
 		}
-// 		echo "<pre>";
-// 		echo print_r($dados);
-// 		echo count($dados);
-// 		echo "</pre>";
-// 		die;
-			$this->parser->parse('intranet/usuarios_cadastro',$dados);
+		// 		echo "<pre>";
+		// 		echo print_r($dados);
+		// 		echo count($dados);
+		// 		echo "</pre>";
+		// 		die;
+		$this->parser->parse('intranet/usuarios_cadastro',$dados);
 	}
-	
+
 	public function verifica_usuario(){
 		$dados = array();
 		$u = new Usuarios();
@@ -128,9 +128,9 @@ class Usuarios_Cadastro extends CI_Controller{
 			echo 1;
 		}
 	}
-	
 
-	
+
+
 	public function deletar($id=0){
 		if(!empty($_GET['id'])){
 			$id = $_GET['id'];
@@ -142,7 +142,7 @@ class Usuarios_Cadastro extends CI_Controller{
 		$u->deletar($id);
 		redirect('index.php/intranet/usuarios_cadastro_list');
 	}
-	
+
 	public function testeEmail(){
 		$config = array(
 				'protocol' => 'smtp',

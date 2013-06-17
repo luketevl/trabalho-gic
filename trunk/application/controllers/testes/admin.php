@@ -42,7 +42,7 @@ class Admin extends CI_Controller
 		$success = TRUE;
 
 		$first_time = $this->session->userdata('first_time') ||
-				( ! $this->db->table_exists('users') && $this->login_manager->get_user() === FALSE);
+		( ! $this->db->table_exists('users') && $this->login_manager->get_user() === FALSE);
 
 		if( ! $first_time)
 		{
@@ -52,19 +52,28 @@ class Admin extends CI_Controller
 		$this->session->set_userdata('first_time', TRUE);
 
 		echo $this->load->view('template_header', array('title' => 'Resetting Database', 'section' => 'admin', 'hide_nav' => $first_time), TRUE);
-		?><div class="database_setup"><?php
-		$this->_message('Creating the Squash database at <strong>' . $this->db->database . '</strong><br/>', '');
-		$success = $success && $this->_drop_tables();
-		echo("<br/><br/>");
-		$success = $success && $this->_create_tables();
-		echo("<br/><br/>");
-		$success = $success && $this->_init_data();
+		?>
+<div class="database_setup">
+	<?php
+	$this->_message('Creating the Squash database at <strong>' . $this->db->database . '</strong><br/>', '');
+	$success = $success && $this->_drop_tables();
+	echo("<br/><br/>");
+	$success = $success && $this->_create_tables();
+	echo("<br/><br/>");
+	$success = $success && $this->_init_data();
 
-		?></div><?php
-		if($success) {
-			?><p><a href="<?php echo site_url('admin/init'); ?>">Continue</a></p><?php
+	?></div>
+<?php
+if($success) {
+			?>
+<p>
+	<a href="<?php echo site_url('admin/init'); ?>">Continue</a>
+</p>
+<?php
 		} else {
-			?>An error occurred.  Please reset the database and try again.<?php
+			?>
+An error occurred. Please reset the database and try again.
+<?php
 		}
 
 		$this->load->view('template_footer');

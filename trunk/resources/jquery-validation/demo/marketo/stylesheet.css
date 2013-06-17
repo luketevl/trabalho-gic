@@ -511,9 +511,9 @@ div.box-purple a {
 * html .icon-text01 {
 	width: 460px; /* must have a width or heigh tag for ie6*/
 	background-image: none;
-	filter: progid : DXImageTransform . Microsoft .
-		AlphaImageLoader(src = "images/icon_search-engine-market.png",
-		sizingMethod = "crop");
+	filter: progid:  DXImageTransform.  Microsoft. 
+		AlphaImageLoader(src =   "images/icon_search-engine-market.png",
+		sizingMethod =   "crop");
 }
 
 .icon-text02 {
@@ -523,9 +523,10 @@ div.box-purple a {
 * html .icon-text02 {
 	width: 460px; /* must have a width or heigh tag for ie6*/
 	background-image: none;
-	filter: progid : DXImageTransform . Microsoft .
-		AlphaImageLoader(src = "images/icon_landing-pages.png", sizingMethod =
-		"crop");
+	filter: progid:  DXImageTransform.  Microsoft. 
+		AlphaImageLoader(src =   "images/icon_landing-pages.png", sizingMethod =
+		
+		 "crop");
 }
 
 .icon-text03 {
@@ -535,9 +536,9 @@ div.box-purple a {
 * html .icon-text03 {
 	width: 460px; /* must have a width or heigh tag for ie6*/
 	background-image: none;
-	filter: progid : DXImageTransform . Microsoft .
-		AlphaImageLoader(src = "images/icon_salesforce.png", sizingMethod =
-		"crop");
+	filter: progid:  DXImageTransform.  Microsoft. 
+		AlphaImageLoader(src =   "images/icon_salesforce.png", sizingMethod = 
+		 "crop");
 }
 
 /* s4.4 - news home boxes */
@@ -615,8 +616,7 @@ div.more {
 }
 
 div.more a {
-	background: transparent url(images/arrow_r-blue.gif) no-repeat right 2px
-		;
+	background: transparent url(images/arrow_r-blue.gif) no-repeat right 2px;
 	font-weight: bold;
 	padding: 0px 20px 0px 0px;
 	font-weight: bold;
@@ -1058,7 +1058,8 @@ ul#homeBlog li div.description {
 	display: none;
 }
 
-td.field input.error, td.field select.error, tr.errorRow td.field input,tr.errorRow td.field select {
+td.field input.error,td.field select.error,tr.errorRow td.field input,tr.errorRow td.field select
+	{
 	border: 2px solid red;
 	background-color: #FFFFD5;
 	margin: 0px;
