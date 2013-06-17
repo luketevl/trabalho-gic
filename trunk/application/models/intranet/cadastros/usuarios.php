@@ -22,9 +22,18 @@ class Usuarios extends DataMapper{
 		$this->campos = $campos;
 	}
 	
-	public function get_by_email($email){
+	public function getAll(){
 		$u = new Usuarios();
-		return $u->where('email_usu',$email)->get();
+		return $u->get();
+	}
+	
+	public function get_by_email($email,$id=0){
+		$u = new Usuarios();
+		$u->where('email_usu',$email)->get();
+		if($id>0){
+			$u->where_not('id_usu',$id)->get();
+		}
+		return $u->count();
 	}
 	
 	public function get_by_id($id){

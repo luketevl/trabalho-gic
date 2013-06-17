@@ -117,10 +117,15 @@ class Usuarios_Cadastro extends CI_Controller{
 	}
 	
 	public function verifica_usuario(){
+		$dados = array();
 		$u = new Usuarios();
-		$u = $u->get_by_email($this->input->post('email'));
-		if(!empty($u['email_usu'])){
+		$u = $u->get_by_email($this->input->post('email'),$this->input->post('hd_id'));
+		echo $u;
+		if($u>0){
 			echo 0;
+		}
+		else{
+			echo 1;
 		}
 	}
 	
