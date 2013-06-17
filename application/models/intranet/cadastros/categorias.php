@@ -37,6 +37,32 @@
             ->get();
         }
         
+        public function inserir(){
+        	$c = new Categorias();
+        	$c->id_cat = $this->campos['id_cat'];
+        	$c->nome_cat = $this->campos['nome_cat'];
+        	$c->fk_id_cat = $this->campos['fk_id_cat'];
+        	$c->save();
+        }
 		
+        public function editar($id=0){
+        	$c = new Categorias();
+        	$c->id_cat = $this->campos['id_cat'];
+        	$c->nome_cat = $this->campos['nome_cat'];
+        	$c->fk_id_cat = $this->campos['fk_id_cat'];
+        	$c->where('id_cat',$id);
+        	$c->update($this->campos);
+        }
+        
+        public function get_last_id(){
+        	$c = new Categorias();
+        	return $c->select('id_cat')
+        	->order_by('id_cat','desc')
+        	->get(1);
+        }
+        
+        public function deletar($id){
+        	$this->db->query('delete from categorias where id_cat = ' .$id);
+        }
 	}
 ?>

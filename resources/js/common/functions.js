@@ -46,7 +46,7 @@ $(document).ready(function() {
 				
 			}
 		if(temp != 'adicionar' && temp != 'remover'){
-				if(uc_case == 'posts_cadastro'){
+				if(uc_case == 'posts_cadastro' || uc_case == 'categorias_cadastro'){
 					$('form').submit();	
 				}
 		}
@@ -329,6 +329,8 @@ $('#tagsinput_tagsinput').focusout(function(){
         		$('.ui-autocomplete-input ui-autocomplete-loading').removeClass();
         	}
         });
+        
+        
         
         function confirm_mensagem(titulo, messagem){
         	var elem = $(this).closest('.item');

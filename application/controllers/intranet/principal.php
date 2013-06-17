@@ -11,6 +11,9 @@ class Principal extends CI_Controller{
 					  'usuarios'	=> array('url' =>base_url().'index.php/intranet/usuarios_cadastro_list',
 					  						 'name' => $this->lang->line('usuarios')),
 				
+					  'categorias'		=> array('url' =>base_url().'index.php/intranet/categorias_cadastro_list',
+					  						 'name' =>$this->lang->line('categorias')),
+
 					  'perfil'		=> array('url' =>base_url().'index.php/intranet/perfil_cadastro_list',
 					  						 'name' =>$this->lang->line('perfil')),
 					  		

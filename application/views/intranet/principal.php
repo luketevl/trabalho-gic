@@ -65,16 +65,17 @@
 					</aside>
 			</a>
 			</li>
-			<!-- PERFIL -->
+			<!-- CATEGORIAS -->
 			<li><a href="#"> <img
-					src="<?php echo base_url();?>resources/icons/perfil.png"
-					style="margin-top: 20px;" />
+					src="<?php echo base_url();?>resources/icons/categoria.png"
+					style="margin-top: 20px;" width=64px height=64px/>
 					<aside class="sub">
-						<?php echo $perfil['name']?>
+						<?php echo $categorias['name']?>
 					</aside>
 			</a> 
-			<?php echo form_hidden('hd_link',$perfil['url']);?>
+			<?php echo form_hidden('hd_link',$categorias['url']);?>
 			</li>
+			
 			<!-- USER -->
 			<li><a href="#"> <img
 					src="<?php echo base_url();?>resources/icons/user.png"
