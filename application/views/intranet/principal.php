@@ -23,7 +23,7 @@
 
 	<nav id="user">
 		<section id="dadosUser">
-			<img src="<?php echo base_url();?>resources/icons/{avatar_usu}"
+			<img src="<?php echo base_url();?>resources/img/uploads/{avatar_usu}"
 				id="foto" /> <span id="userInfo"> <?php echo $this->session->userdata('nome_usu');?>
 				<p>{perfil_usu}</p>
 			</span> <a

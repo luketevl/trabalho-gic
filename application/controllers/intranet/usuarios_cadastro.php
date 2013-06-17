@@ -35,6 +35,7 @@ class Usuarios_Cadastro extends CI_Controller{
 			$u->atualiza_foto($dados['id_usu'], $dados['nome_img']);
 			$msg['success'] = "true";
 			$msg['full_path'] = $dadosImg['full_path'];
+			$this->session->set_userdata('avatar_usu',$dados['nome_img']);
 			// 						echo "<pre>";
 			// 						echo print_r($dados);
 			// 						echo "</pre>";die;
@@ -117,10 +118,8 @@ class Usuarios_Cadastro extends CI_Controller{
 	}
 
 	public function verifica_usuario(){
-		$dados = array();
 		$u = new Usuarios();
 		$u = $u->get_by_email($this->input->post('email'),$this->input->post('hd_id'));
-		echo $u;
 		if($u>0){
 			echo 0;
 		}
