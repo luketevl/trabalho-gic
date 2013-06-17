@@ -11,7 +11,7 @@
 						"smtp_host"			=> 'ssl://smtp.gmail.com',
 						"smtp_port"			=> '465',
 						"smtp_user"			=> 'lukete@gmail.com',
-						"smtp_pass"			=> 'keporra157',
+						"smtp_pass"			=> '',
 						"mailtype"			=> $mailtype,
 						);	
 				$this->email->initialize($config);

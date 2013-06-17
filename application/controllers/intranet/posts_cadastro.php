@@ -323,7 +323,7 @@ class Posts_Cadastro extends CI_Controller{
 				"smtp_host"			=> 'smtp.gmail.com',
 				"smtp_port"			=> '465',
 				"smtp_user"			=> 'lukete@gmail.com',
-				"smtp_pass"			=> 'keporra157',
+				"smtp_pass"			=> '',
 				"mailtype"			=> 'text',
 		);
 		$this->email->initialize($config);
