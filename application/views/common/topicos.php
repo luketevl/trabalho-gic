@@ -52,7 +52,7 @@
 </head>
 
 
-<header>Topicos</header>
+<header>Forum</header>
 {dados}
 			<article class="fancybox-media">
 				<a href="#" title="{titulo_post}">{nome_top}

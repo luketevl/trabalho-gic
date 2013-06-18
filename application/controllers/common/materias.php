@@ -10,7 +10,7 @@ class Materias extends CI_Controller{
 		$p = new Posts();
 		$c = new Categorias();
 		if($filtro){
-			$p = $p->getAll();
+			$p = $p->getAll_publicados();
 		}else{
 			$p  = $p->get_by_key($keys_words);
 		}
