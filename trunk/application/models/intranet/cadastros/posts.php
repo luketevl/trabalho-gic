@@ -28,6 +28,11 @@ class Posts extends DataMapper{
 		$p = new Posts();
 		return $p->get();
 	}
+	public function getAll_publicados(){
+		$p = new Posts();
+		$p->where('status_post',PUBLICADO);
+		return $p->get();
+	}
 
 	public function get_by_id($id){
 		$p = new Posts();
