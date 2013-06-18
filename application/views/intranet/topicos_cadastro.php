@@ -73,10 +73,10 @@
 </head>
 <script>
   $(document).ready(function() {
-    var id_post = $('[name="hd_id"]').val();
+    var id_top = $('[name="hd_id"]').val();
     $('#failed-fine-uploader').fineUploader({
       request: {
-        endpoint: 'uploadArq?id_post='+id_post
+        endpoint: 'uploadArq?id_top='+id_top
       },
       failedUploadTextDisplay: {
         mode: 'custom',
@@ -92,7 +92,7 @@
       element: $('#thumbnail-fine-uploader')[0],
       data: "teste",
       request: {
-        endpoint: 'upload?id_post='+id_post
+        endpoint: 'upload?id_top='+id_top
       },
       text: {
     	  uploadButton: $('#btnUpload').text()
@@ -130,10 +130,8 @@
 <?php
 echo form_hidden('hd_uc','topicos_cadastro');
 echo form_open_multipart('index.php/intranet/topicos_cadastro/save');
-echo form_hidden('hd_id','{id_post}');
-echo form_hidden('hd_status','{status_post}');
-echo form_hidden('hd_cat_id','{id_cat}');
-echo form_hidden('hd_keywords','{keywords_post}');
+echo form_hidden('hd_id','{id_top}');
+echo form_hidden('hd_status','{status_top}');
 
 echo form_fieldset('Principal');
 
@@ -142,24 +140,19 @@ echo form_label('Titulo','lbl_titulo');
 ?>
 <br />
 <?php 
-echo form_input('titulo','{titulo_post}','class="required"');
+echo form_input('titulo','{nome_top}','class="required"');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput" style="width:100%;"');
-echo form_label('Descricao Resumida','lbl_desc_resumida');
-echo form_input('desc_resumida','{resumo_post}','class="required"');
-echo form_fieldset_close();
-
-
-echo form_fieldset('','class="lblInput" style="width:250px;"');
-echo form_label('Categoria','lbl_categoria');
-echo form_input('ac_categoria','{categoria}','id="ac_categoria" class="required"');
-echo form_fieldset_close();
-
-
 echo form_label('Conteudo','lbl_conteudo');
-echo form_textarea('editor1','{conteudo_post}','class="required"');
+echo form_textarea('desc_resumida','{resumo_top}','style="width:98%;" class="required"');
 echo form_fieldset_close();
+
+echo form_fieldset_close();
+
+// echo form_label('Conteudo','lbl_conteudo');
+// echo form_textarea('editor1','{desc_resumida}','class="required"');
+// echo form_fieldset_close();
 
 
 echo form_fieldset('Informacoes');
@@ -174,103 +167,16 @@ echo form_input('dtcriacao','{dt_criacao}','readonly=readonly class="center"');
 echo form_fieldset_close();
 
 echo form_fieldset('','class="lblInput"');
-echo form_label('Data Aprovacao','lbl_dt_aprovacao');
-echo form_input('dt_aprovacao','{dt_modificacao}','readonly=readonly class="center"');
-echo form_fieldset_close();
-
-echo form_fieldset('','class="lblInput"');
 echo form_label('Criado por:','lbl_usu_criou');
 echo form_input('usu_criou','{usu_criou}','readonly=readonly');
 echo form_fieldset_close();
-
-echo form_fieldset('','class="lblInput"');
-echo form_label('Aprovado por:','lbl_usu_aprovou');
-echo form_input('dt_aprovacao','{usu_aprovou}','readonly=readonly');
 echo form_fieldset_close();
 
 
-echo form_fieldset_close();
-
-
-echo form_fieldset('Extras');
-echo form_fieldset('','class="lblInput" style="width:98%;"');
-echo form_label('Referencias','lbl_ref');
-echo form_textarea('referencias','{ref_post}','style="width:100%;"');
-echo form_fieldset_close();
-echo form_fieldset('','class="lblInput"  style="width:98%;height: 109px;;"');
-echo form_label('Palavras Chaves','lbl_keywords') .'<br />';
-?>
-
-<section class="palavrasChave">
-	<input name="tagsinput" id="tagsinput" class="tagsinput"
-		value="{keywords_post}" style="display: none;">
-</section>
-<?php 
-echo form_fieldset_close();
-echo form_fieldset('','class="lblInput" style="width:500px;"');
-?>
-<section id="url">
-	<?php 
-	echo form_label('URL Video Principal','lbl_url_youtube');
-	echo form_input('url_youtube','{url_youtube}','class="linkvideo url"');
-	?>
-	{urls} <span> URL video</span> <input type="text" value={url}
-		name=linkvideo[{id_vid}] /> {/urls} <img
-		src="<?php echo base_url();?>resources/icons/add.png" id="addUrl" />
-</section>
-
-<?php 
-echo form_fieldset_close();
-echo form_fieldset('','class="lblInput" style="width:480px;"');
-echo form_label('Imagens ','lbl_img');
-?>
-<img
-	src="<?php echo base_url();?>resources/icons/info.png" class="tooltip"
-	title="<?php echo lang('info_imagens')?>" />
-<section id="imagem">
-	<div id="thumbnail-fine-uploader"></div>
-	<span id="btnUpload" style="display: none"><?php echo lang('btn_upload_img');?>
-	</span>
-	<nav id="imagens">
-		{imagens} <img
-			src="<?php echo base_url();?>resources/img/uploads/{nome_img}" />
-		{/imagens}
-	</nav>
-</section>
-
-
-
-<?php  
-echo form_fieldset_close();
-echo form_fieldset('','class="lblInput" style="width:480px;"');
-echo form_label('Arquivos','lbl_arq');
-
-?>
-<img
-	src="<?php echo base_url();?>resources/icons/info.png" class="tooltip"
-	title="<?php echo lang('info_arquivos')?>" />
-<section id="arquivo">
-	<div id="failed-fine-uploader"></div>
-	<span id="btnUploadArq" style="display: none"><?php echo lang('btn_upload_arq');?>
-	</span>
-	<nav id="arquivos">
-		{arquivos} <a
-			href="<?php echo base_url();?>resources/arquivos/uploads/{nome_arq}"
-			target="__blank"><img
-			src="<?php echo base_url();?>resources/icons/download.png" />{nome_arq}</a>
-		{/arquivos}
-	</nav>
-</section>
-
-
-<?php 
-echo form_fieldset_close();
-echo form_fieldset_close();
 echo form_button('adicionar','<img src='. base_url() .'resources/icons/add.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_novo').'"');
 echo form_button('enviar','<img src='. base_url() .'resources/icons/save.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_salvar').'"');
-echo form_button('aprovar','<img src='. base_url() .'resources/icons/aprovar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_aprovar').'"');
-echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_rejeitar').'"');
-echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_publicar').'"');
+echo form_button('fechar_forum','<img src='.  base_url() .'resources/icons/fechar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_fechar_forum').'"');
+echo form_button('abrir_forum','<img src='.  base_url() .'resources/icons/abrir.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_abrir_forum').'"');
 echo form_button('remover','<img  src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
 echo form_close();
 ?>

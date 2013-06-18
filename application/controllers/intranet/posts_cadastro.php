@@ -5,10 +5,10 @@ class Posts_Cadastro extends CI_Controller{
 		if($this->login_permission->is_logado()){
 			$p = new Posts();
 			$dados = $p->getFields();
+			$dados['dados']=array();
 			$dados['status'] ="";
 			$dados['usu_criou'] ="";
 			$dados['usu_aprovou'] ="";
-				
 			$dados['categoria'] ="";
 			$this->lang->load('posts');
 			$this->lang->load('upload');
@@ -213,11 +213,12 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['arquivos'][$ke]['nome_arq'] = $valor->nome_arq;
 			$dados['arquivos'][$ke]['id_arq'] =$valor->id_arq;
 		}
-		// 		echo "<pre>";
-		// 		echo print_r($i);
-		// 		echo count($dados);
-		// 		echo "</pre>";
-		// 		die;
+// 				echo "<pre>";
+// 				echo print_r($this->historico_table($dados['id_post']));
+// 				echo count($dados);
+// 				echo "</pre>";
+// 				die;
+		$dados = array_merge($dados, $this->historico_table($dados['id_post']));
 		$this->parser->parse('intranet/posts_cadastro',$dados);
 	}
 
@@ -230,6 +231,7 @@ class Posts_Cadastro extends CI_Controller{
 		$p = new Posts();
 		$id_usu_aprovou = $this->session->userdata('id_usu');
 		$p->aprovar($id,$id_usu_aprovou);
+		$this->historico($id,APROVADO,"");
 		if(empty($_GET['id'])){
 			$this->load_form_edit($id);
 		}
@@ -238,9 +240,20 @@ class Posts_Cadastro extends CI_Controller{
 		}
 	}
 
+	public function historico($id, $status,$desc=""){
+		$h = new Historicos();
+		$history = $h->getFields();
+		$history['descricao_hist']= $desc;
+		$history['status']= $status;
+		$history['id_post']= $id;
+		$h->setFields($history);
+		$h->inserir();
+	}
+	
 	public function rejeitar($id=0){
 		$p = new Posts();
 		$p->rejeitar($id);
+		$this->historico($id,REJEITADO,"");
 	}
 
 	public function publicar($id=0){
@@ -252,6 +265,7 @@ class Posts_Cadastro extends CI_Controller{
 		}
 		$p = new Posts();
 		$p->publicar($id);
+		$this->historico($id,PUBLICADO,"");
 		if(empty($_GET['id'])){
 			$this->load_form_edit($id);
 		}
@@ -272,11 +286,13 @@ class Posts_Cadastro extends CI_Controller{
 		$v = new Videos();
 		$a = new Arquivos();
 		$h = new Historicos();
+		$c = new Comentarios();
 		$p->deletar($id);
 		$i->deletar($id);
 		$v->deletar($id);
 		$a->deletar($id);
 		$h->deletar($id);
+		$c->deletar_id_post($id);
 		redirect('index.php/intranet/posts_cadastro_list');
 		// 		$this->index();
 	}
@@ -313,7 +329,21 @@ class Posts_Cadastro extends CI_Controller{
 			redirect('index.php/intranet/posts_cadastro_list');
 		}
 	}
-
+	
+	public function historico_table($id){
+		$h = new Historicos();
+		$h = $h->get_by_id_post($id);
+		$dados['dados']=array();
+		foreach($h as $key => $hosts){
+			$dados['dados'][$key]['id_hist'] = $hosts->id_hist					;
+			$dados['dados'][$key]['descricao_hist'] = $hosts->descricao_hist					;
+			$dados['dados'][$key]['status_post_hist'] = $hosts->status				;
+			$dados['dados'][$key]['status_hist'] = converte_status($dados['dados'][$key]['status_post_hist']);
+			$dados['dados'][$key]['dt_criacao_hist'] = mdate('%d/%m/%Y',human_to_unix($hosts->dt_criacao_hist));
+		}
+		return $dados;
+	}
+	
 	public function testeEmail(){
 		$config = array(
 				'protocol' => 'smtp',

@@ -28,7 +28,7 @@ class Historicos extends DataMapper{
 
 	public function get_by_id_post($id=0){
 		$h = new Historicos();
-		return $h->where('id_post',$id)
+		return $h->where('id_post',$id)->order_by('id_hist','desc')
 		->get();
 	}
 

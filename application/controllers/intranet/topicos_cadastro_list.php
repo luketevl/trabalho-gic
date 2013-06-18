@@ -19,7 +19,7 @@ class Topicos_Cadastro_List extends CI_Controller{
 			$dados['dados'][$key]['id_top'] = $topicos->id_top;
 			$dados['dados'][$key]['nome_top'] = $topicos->nome_top;
 			$dados['dados'][$key]['resumo_top'] = $topicos->resumo_top;
-			$dados['dados'][$key]['status_top'] = $topicos->status_post;
+			$dados['dados'][$key]['status_top'] = $topicos->status_top;
 			$dados['dados'][$key]['status'] = converte_status($dados['dados'][$key]['status_top']);
 			$dados['dados'][$key]['dt_criacao'] = mdate('%d/%m/%Y',human_to_unix($topicos->dt_criacao));
 			$dados['dados'][$key]['id_usu']= $topicos->id_usu;
