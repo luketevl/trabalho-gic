@@ -52,12 +52,11 @@
 </head>
 
 
-<header>Materias</header>
+<header>Topicos</header>
 {dados}
-			<article class="forum" >
-				<a href="#" title="{titulo_post}">{resumo_post}
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/uploads/{img_principal_post}"
-					width="200" alt="{resumo_post}" />
+			<article class="fancybox-media">
+				<a href="#" title="{titulo_post}">{nome_top}
+				{resumo_top}
 				</a>
 			</article>
 {/dados}

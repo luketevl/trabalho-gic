@@ -152,6 +152,7 @@ section#column-left {
 	/*background-color: green;*/
 	width: 74%;
 	float: left;
+	height: 100%;
 }
 
 article {

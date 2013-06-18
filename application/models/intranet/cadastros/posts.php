@@ -33,6 +33,11 @@ class Posts extends DataMapper{
 		$p = new Posts();
 		return $p->where('id_post',$id)->get();
 	}
+	
+	public function get_by_key($keys_words){
+		$p = new Posts();
+		return $p->like('keywords_post',$keys_words,'both')->get();
+	}
 	public function get_last_id(){
 		$p = new Posts();
 		return $p->select('id_post')
