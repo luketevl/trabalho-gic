@@ -68,24 +68,23 @@ class Topicos extends DataMapper{
 		$t->update($this->campos);
 	}
 
-// 	public function aprovar($id,$id_usu_aprovou=0){
-// 		$t = new Topicos();
-// 		$t->where('id_top',$id)
-// 		->update(array('status_top' => APROVADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us') ,
-// 				'id_usu_aprovou' => $id_usu_aprovou));
-// 	}
-
-// 	public function rejeitar($id){
-// 		$t = new Topicos();
-// 		$t->where('id_top',$id)
-// 		->update(array('status_top' => REJEITADO , 'dt_modificacao' => unix_to_human(time(), TRUE, 'us')));
-// 	}
-
 	public function fechar($id){
 		$t = new Topicos();
 		$t->where('id_top',$id)
 		->update(array('status_top' => FECHADO));
 	}
+
+	public function abrir($id){
+		$t = new Topicos();
+		$t->where('id_top',$id)
+		->update(array('status_top' => ABERTO ));
+	}
+
+// 	public function fechar($id){
+// 		$t = new Topicos();
+// 		$t->where('id_top',$id)
+// 		->update(array('status_top' => FECHADO));
+// 	}
 
 	public function deletar($id){
 		$this->db->query('delete from topicos where id_top = ' .$id);

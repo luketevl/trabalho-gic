@@ -273,6 +273,35 @@ echo form_button('rejeitar','<img src='. base_url() .'resources/icons/cancel.png
 echo form_button('publicar','<img src='. base_url() .'resources/icons/publish.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_publicar').'"');
 echo form_button('remover','<img  src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
 echo form_close();
+
+echo form_fieldset('Historico');
+
+echo form_fieldset('','class="lblInput" style="width:100%;"');
+
+?>
+
+
+<table>
+			<thead>
+				<tr>
+					<td class="coluna" style="width: 72%;">Descricao</td>
+					<td class="coluna" style="width: 5px;">Data Alteracao</td>
+					<td class="coluna" style="width: 5px;">Status</td>
+					<td class="coluna" name="status" style="display: none">sts_post</td>
+				</tr>
+			</thead>
+				{dados}
+				<tr>
+					<td>{descricao_hist}</td>
+					<td class="center">{dt_criacao_hist}</td>
+					<td>{status_hist}</td>
+					<td style="display: none" name="hd_status">{status_post_hist}</td>
+				</tr>
+				{/dados}
+		</table>
+<?php
+	echo form_close();
+	echo form_close();
 ?>
 <script>
 $(document).ready(function(){

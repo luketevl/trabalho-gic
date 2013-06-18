@@ -62,7 +62,8 @@ create table topicos(
 
 create table comentarios(
 	id_coment int unsigned auto_increment not null primary key,
-	comentario_comet text not null,
+	comentario_coment text not null,
+	dt_criacao datetime not null,
 	id_post int not null,
 	foreign key(id_post) references posts(id_post),
 	id_top int not null,
@@ -140,6 +141,15 @@ create table videos(
 
 #DML
 
+insert into perfis values('1',
+'Administrador',
+'1111',0000,0),
+('2',
+'Usuario Comum',
+'1100',0000,0)
+;
+
+
 insert into posts values('',
 'Trabalho de GIC inovador, muito trabalho deve ser feito',
 'O goleiro Bruno Fernandes de Suza culpu Luiz Henrique Ferreira Rm�,  Macarr�, pela mrte de Eliza Samudi, mdel cm quem teve um filh, durante  seu depiment, na tarde desta quarta-feira (6), n F�rum de Cntagem, em Minas Gerais.  jgadr afirmu que, na nite d crime, Macarr� e Jrge Luiz Rsa, menr de idade na �pca, deixaram  s�ti cm Eliza e Bruninh e vltaram mais tarde smente cm a crian�a. Perguntei para eles: pxa, cad� Eliza? Pel amr de Deus,  que vc�s fizeram cm ela?, afirmu. Neste mment, Macarr� falu assim: �, eu reslvi  prblema,  prblema que tant te atrmentava.',
@@ -153,13 +163,6 @@ now(),
 1,
 1);
 
-insert into perfis values('1',
-'Administrador',
-'1111',0000,0),
-('2',
-'Usuário Comum',
-'1100',0000,0)
-;
 
 insert into usuarios values('',
 'Lucas Henrique'

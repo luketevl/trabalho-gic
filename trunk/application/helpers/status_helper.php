@@ -12,6 +12,9 @@ if(!function_exists('converte_status')){
 		else if($sigla == PUBLICADO){
 			return'Publicado';
 		}
+		else if($sigla == FECHADO){
+			return'Fechado';
+		}
 		else{
 			return'Normal';
 		}

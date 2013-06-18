@@ -70,7 +70,7 @@
 			<!-- CATEGORIAS -->
 			<li><a href="#"> <img
 					src="<?php echo base_url();?>resources/icons/categoria.png"
-					style="margin-top: 20px;" width=64px height=64px />
+					style="margin-top: 20px;" />
 					<aside class="sub">
 						<?php echo $categorias['name']?>
 					</aside>
@@ -96,7 +96,7 @@
 			
 			<!-- FORUM -->
 			<li><a href="#"> <img
-					src="<?php echo base_url();?>resources/icons/post2.png" id="arrow" />
+					src="<?php echo base_url();?>resources/icons/forum.png" id="arrow" />
 					<aside class="sub">
 						<?php echo $forum['name']?>
 					</aside>

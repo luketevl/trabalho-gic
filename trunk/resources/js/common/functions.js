@@ -43,10 +43,15 @@ $(document).ready(function() {
 		else if(temp == 'remover'){
 			$('form').attr('action','../'+uc_case+'/deletar');
 				confirm_mensagem('Atencao','Confirma a exclusao?');
-				
 			}
+		else if(temp== 'fechar_forum'){
+			$('form').attr('action','../'+uc_case+'/fechar');
+		}
+		else if(temp== 'abrir_forum'){
+			$('form').attr('action','../'+uc_case+'/abrir');
+		}
 		if(temp != 'adicionar' && temp != 'remover'){
-				if(uc_case == 'posts_cadastro' || uc_case == 'categorias_cadastro'){
+				if(uc_case == 'posts_cadastro' || uc_case == 'categorias_cadastro' || uc_case == 'topicos_cadastro'){
 					$('form').submit();	
 				}
 		}
@@ -65,7 +70,7 @@ $(document).ready(function() {
 	function disabled_all() {
 		if (
 				($('input:hidden[name=hd_editavel]').val() == 0 || $('[name="hd_id"]').val() > 0) && 
-				($('[name="hd_status"]').val() != 'N' && $('[name="hd_status"]').val() != 'R') && ( uc_case =='posts_cadastro' && uc_case != 'posts_cadastro_list')) {
+				($('[name="hd_status"]').val() != 'N' && $('[name="hd_status"]').val() != 'R') && ( (uc_case =='posts_cadastro' || uc_case =='topicos_cadastro')&& uc_case != 'posts_cadastro_list')) {
 			$('input:text').each(function() {
 				$(this).attr('disabled','disabled');
 			});
@@ -88,6 +93,8 @@ $(document).ready(function() {
 		$('[name="rejeitar"]').removeAttr('disabled');
 		$('[name="editar"]').removeAttr('disabled');
 		$('[name="remover"]').removeAttr('disabled');
+		$('[name="fechar_forum"]').removeAttr('disabled');
+		$('[name="abrir_forum"]').removeAttr('disabled');
 
 		$('[name="adicionar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="publicar"]').addClass('tooltip btn btn-large btn-block btn-primary');
@@ -95,7 +102,9 @@ $(document).ready(function() {
 		$('[name="rejeitar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="editar"]').addClass('tooltip btn btn-large btn-block btn-primary');
 		$('[name="remover"]').addClass('tooltip btn btn-large btn-block btn-primary');
-		if((uc_case !='posts_cadastro' && uc_case != 'posts_cadastro_list') && $('[name="hd_id"]').val() >0){
+		$('[name="fechar_forum"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		$('[name="abrir_forum"]').addClass('tooltip btn btn-large btn-block btn-primary');
+		if((uc_case !='posts_cadastro' && uc_case != 'posts_cadastro_list' && uc_case !='topicos_cadastro') && $('[name="hd_id"]').val() >0){
 			status = 'N';
 		} 
 		if(status == "" ||  !status ){
@@ -121,6 +130,14 @@ $(document).ready(function() {
 			$('[name="remover"]').attr('disabled','disabled');
 			$('[name="remover"]').removeClass('tooltip btn-primary');
 			$('[name="remover"]').addClass('tooltip btn btn-large btn-block disabled');
+			
+			$('[name="abrir_forum"]').attr('disabled','disabled');
+			$('[name="abrir_forum"]').removeClass('tooltip btn-primary');
+			$('[name="abrir_forum"]').addClass('tooltip btn btn-large btn-block disabled');
+
+			$('[name="fechar_forum"]').attr('disabled','disabled');
+			$('[name="fechar_forum"]').removeClass('tooltip btn-primary');
+			$('[name="fechar_forum"]').addClass('tooltip btn btn-large btn-block disabled');
 			$('#imagem, #arquivo').hide();
 		}
 		
@@ -129,6 +146,9 @@ $(document).ready(function() {
 			$('[name="publicar"]').removeClass('tooltip btn-primary');
 			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
 			
+			$('[name="abrir_forum"]').attr('disabled','disabled');
+			$('[name="abrir_forum"]').removeClass('tooltip btn-primary');
+			$('[name="abrir_forum"]').addClass('tooltip btn btn-large btn-block disabled');
 			
 //				$('[name="enviar"]').attr('disabled','disabled');
 //				$('[name="enviar"]').removeClass('tooltip btn-primary');
@@ -190,13 +210,22 @@ $(document).ready(function() {
 			$('[name="publicar"]').removeClass('tooltip btn-primary');
 			$('[name="publicar"]').addClass('tooltip btn btn-large btn-block disabled');
 		}
+		else if(status == 'F'){
+			$('[name="enviar"]').attr('disabled','disabled');
+			$('[name="enviar"]').removeClass('tooltip btn-primary');
+			$('[name="enviar"]').addClass('tooltip btn btn-large btn-block disabled');
+
+			$('[name="fechar_forum"]').attr('disabled','disabled');
+			$('[name="fechar_forum"]').removeClass('tooltip btn-primary');
+			$('[name="fechar_forum"]').addClass('tooltip btn btn-large btn-block disabled');
+		}
 	}
 	function valida_hide_button(id_perf){
 		if(id_perf!=1){
 			$('[name="publicar"]').hide();
 			$('[name="aprovar"]').hide();
 			$('[name="rejeitar"]').hide();
-			if(uc_case != 'posts_cadastro' && uc_case != 'posts_cadastro_list'){
+			if(uc_case != 'posts_cadastro' && uc_case != 'topicos_cadastro'){
 				$('#perf').hide();
 				$('[name="adicionar"]').hide();
 				$('[name="remover"]').hide();
@@ -375,7 +404,7 @@ $('#tagsinput_tagsinput').focusout(function(){
         	});
         	$(this).addClass('selected');
         	el_status = $(this).find('td[name="hd_status"]');
-        	if(uc_case != 'posts_cadastro'){
+        	if(uc_case != 'posts_cadastro' && uc_case != 'topicos_cadastro') {
         		teemp = "N";
         	}
         	else{

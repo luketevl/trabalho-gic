@@ -138,7 +138,9 @@ class Usuarios_Cadastro extends CI_Controller{
 			$id= $this->input->post('hd_id');
 		}
 		$u = new Usuarios();
+		$c = new Comentarios();
 		$u->deletar($id);
+		$c->deletar_id_usu($id);
 		redirect('index.php/intranet/usuarios_cadastro_list');
 	}
 

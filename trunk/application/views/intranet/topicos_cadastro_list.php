@@ -130,8 +130,13 @@
 			else if(temp == 'remover'){
 				$('form').attr('action','../intranet/'+uc_case+'/deletar');
 					confirm_mensagem('Atencao','Confirma a exclusao da materia?');
-					
 				}
+			else if(temp== 'fechar_forum'){
+				$('form').attr('action','../intranet/'+uc_case+'/fechar');
+			}
+			else if(temp== 'abrir_forum'){
+				$('form').attr('action','../intranet/'+uc_case+'/abrir');
+			}
 			if(temp != 'adicionar' && temp != 'remover'){
 					$('form').submit();	
 			}
@@ -178,7 +183,7 @@
 </form>
 
  -->
-<form action="../intranet/posts_cadastro/load_form_edit" method="get"
+<form action="../intranet/topicos_cadastro/load_form_edit" method="get"
 	accept-charset="utf-8">
 	<?php  echo form_hidden('id',0);
 	echo form_hidden('hd_uc','topicos_cadastro');
@@ -190,6 +195,8 @@
 			<?php 
 			echo form_button('adicionar','<img src='. base_url() .'resources/icons/add.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary tooltip" title="'.lang('btn_novo').'"');
 			echo form_button('editar','<img src='.  base_url() .'resources/icons/edit.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_edit').'"');
+			echo form_button('fechar_forum','<img src='.  base_url() .'resources/icons/fechar.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_fechar_forum').'"');
+			echo form_button('abrir_forum','<img src='.  base_url() .'resources/icons/abrir.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_abrir_forum').'"');
 			echo form_button('remover','<img title="'.lang('btn_aprovar'). '" src='. base_url() .'resources/icons/remove.png width= 22 height= 22 /> <span></span>','class="tooltip btn btn-large btn-block btn-primary" title="'.lang('btn_apagar').'"');
 			?>
 		</nav>

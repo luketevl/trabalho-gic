@@ -11,6 +11,8 @@ $lang['btn_rejeitar']			= 'Rejeitar';
 $lang['btn_apagar']				= 'Apagar';
 $lang['btn_publicar']			= 'Publicar';
 $lang['btn_cancelar']			= 'Cancelar';
+$lang['btn_fechar_forum']		= 'Fechar Topico';
+$lang['btn_abrir_forum']		= 'Reabrir Topico';
 
 
 
