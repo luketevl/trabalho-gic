@@ -24,7 +24,28 @@
 
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url(); ?>resources/fancyapps-fancyBox-18d1712/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script>window.jQuery || document.write('<script src="../resources/icheckmaster/js/jquery.js">\x3C/script>');</script>
+
+<script type="text/javascript"
+	src="<?php echo base_url(); ?>resources/icheckmaster/js/jquery.icheck.min.js?v=0.7"></script>
+	
+	
 <script>window.jQuery || document.write('<script src="../resources/icheckmaster/js/jquery.js">\x3C/script>');</script>
 
 <script type="text/javascript"
@@ -48,27 +69,30 @@
 	</header>
 	<section id="content">
 		<section id="column-left">
-		<iframe src="http://www.google.com" />
+		<iframe src="<?php echo base_url();?>index.php/common/materias" style="height:100%;"/>
+		</iframe>
+		<iframe src="<?php echo base_url();?>index.php/common/topicost" style="height:100%;"/>
 		</iframe>
 
 			
 	</section>
 		<section id="column-right">
-			<header>Videos</header>
+			<header>Video</header>
 			<article>
-				<a href="#" title="link">Policial e suspenso por foto comprometedora
-					no Facebook e culpa hacker
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
+				<a class="various fancybox.iframe" href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1">Video feito para apresentação da nosso portal Agropecuário
+					<img src="<?php echo base_url();?>resources/img/FakeYouTubeVideo.jpg"
+					width="280" alt="Clique para assistir" />
+				
+				
 				</a>
+					<hr class="clear" /> 
 			</article>
 			<article>
-				<a href="#" title="link">Policial e suspenso por foto comprometedora
-					no Facebook e culpa hacker
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
+				<?php 
+					echo $this->load->view('common/social');
+				?>
 			</article>
+			
 		</section>
 
 	</section>
@@ -86,7 +110,6 @@
 <script>
 				$(document).ready(function() {
 					  $('.tooltip').tooltipster();
-					  $("#tagsinput").tagsInput();
 					$('ul li a').click(function(){
 						var link = $(this).next('input:hidden').val();
 						$('iframe').attr('src',link);
@@ -95,5 +118,16 @@
 							});
 						$(this).parent().attr('class',"active");
 						});
+		$(".various").fancybox({
+						maxWidth	: 800,
+						maxHeight	: 600,
+						fitToView	: false,
+						width		: '70%',
+						height		: '70%',
+						autoSize	: false,
+						closeClick	: false,
+						openEffect	: 'none',
+						closeEffect	: 'none'
+					});
 				});
 			</script>

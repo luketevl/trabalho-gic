@@ -284,9 +284,9 @@ echo form_fieldset('','class="lblInput" style="width:100%;"');
 <table>
 			<thead>
 				<tr>
-					<td class="coluna" style="width: 72%;">Descricao</td>
-					<td class="coluna" style="width: 5px;">Data Alteracao</td>
-					<td class="coluna" style="width: 5px;">Status</td>
+					<td class="coluna" style="width: 76%;">Descricao</td>
+					<td class="coluna" style="width: 150px;">Data Alteracao</td>
+					<td class="coluna" style="width: 120px;">Status</td>
 					<td class="coluna" name="status" style="display: none">sts_post</td>
 				</tr>
 			</thead>
