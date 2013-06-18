@@ -51,57 +51,7 @@
 		<iframe src="http://www.google.com" />
 		</iframe>
 
-			<header>Materias</header>
-			<article>
-				<a href="#" title="link">Quaaase! Rachel vai a casa de Livia de
-					surpresa e Wanda se esconde
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
-			</article>
-			<article>
-				<a href="#" title="link">Quaaase! Rachel vai a casa de Livia de
-					surpresa e Wanda se esconde
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
-			</article>
-			<article>
-				<a href="#" title="link">Quaaase! Rachel vai a casa de Livia de
-					surpresa e Wanda se esconde
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
-			</article>
-			<article>
-				<a href="#" title="link">Quaaase! Rachel vai a casa de Livia de
-					surpresa e Wanda se esconde
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
-			</article>
-			<article>
-				<a href="#" title="link">Quaaase! Rachel vai a casa de Livia de
-					surpresa e Wanda se esconde
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
-			</article>
-			<article>
-				<a href="#" title="link">Quaaase! Rachel vai a casa de Livia de
-					surpresa e Wanda se esconde
-					<hr class="clear" />
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
-			</article>
-			<article>
-				<a href="#" title="link">Quaaase! Rachel vai a casa de Livia de
-					surpresa e Wanda se esconde
-					<hr class="clear" /> <img src="<?php echo base_url();?>resources/img/teste.jpg"
-					width="200" alt="Imagem teste" />
-				</a>
-			</article>
+			
 	</section>
 		<section id="column-right">
 			<header>Videos</header>
@@ -136,6 +86,7 @@
 <script>
 				$(document).ready(function() {
 					  $('.tooltip').tooltipster();
+					  $("#tagsinput").tagsInput();
 					$('ul li a').click(function(){
 						var link = $(this).next('input:hidden').val();
 						$('iframe').attr('src',link);
