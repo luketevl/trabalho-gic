@@ -6,9 +6,5 @@ class Blog extends CI_Controller{
 		$data = array('title' => 'Titulo');
 		$this->parser->parse('frontend/blog',$data);
 	}
-
 }
-
-
-
 ?>
