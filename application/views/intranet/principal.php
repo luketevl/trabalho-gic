@@ -59,7 +59,7 @@
 		<!-- style="display: block; left: 0px; -->
 		<ul>
 			<!-- HOME -->
-			<li class="active"><a href="<?php echo base_url();?>index.php/common/header"> <img
+			<li class="active"><a href="<?php echo base_url();?>index.php/frontend/home"> <img
 					src="<?php echo base_url();?>resources/icons/home2.png"
 					style="margin-top: 20px;" />
 					<aside class="sub">

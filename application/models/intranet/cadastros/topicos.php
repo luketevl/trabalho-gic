@@ -18,7 +18,13 @@ class Topicos extends DataMapper{
 		$t = new Topicos();
 		return $t->get();
 	}
-
+	
+	public function getAll_filtrado(){
+		$t = new Topicos();
+		$t->order_by('dt_criacao','DESC');
+		return $t->get(3);
+	}
+	
 	public function get_by_id($id){
 		$t = new Topicos();
 		return $t->where('id_top',$id)->get();

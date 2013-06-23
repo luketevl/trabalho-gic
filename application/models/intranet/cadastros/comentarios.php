@@ -27,6 +27,12 @@ class Comentarios extends DataMapper{
 		$this->campos = $campos;
 	}
 
+	public function get_by_id_top($id=0){
+		$c = new Comentarios();
+		return $c->where('id_top',$id)
+		->get();
+	}
+	
 	public function get_by_id_post($id=0){
 		$c = new Comentarios();
 		return $c->where('id_post',$id)
@@ -47,7 +53,6 @@ class Comentarios extends DataMapper{
 
 	public function inserir(){
 		$c = new Comentarios();
-		$c->id_coment			= $this->campos['id_coment'];
 		$c->comentario_coment	= $this->campos['comentario_coment'];
 		$c->id_usu				= $this->campos['id_usu'];
 		$c->id_post				= $this->campos['id_post'];
@@ -66,5 +71,16 @@ class Comentarios extends DataMapper{
 	
 	public function deletar_id_usu($id){
 		$this->db->query('delete from comentarios where id_usu = ' .$id);
+	}
+	
+	public function count_top($id){
+		$c = new Comentarios();
+		return $c->where('id_top',$id)
+		->count();
+	}
+	public function count_post($id){
+		$c = new Comentarios();
+		return $c->where('id_post',$id)
+		->count();
 	}
 }
