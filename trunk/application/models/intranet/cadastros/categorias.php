@@ -64,5 +64,12 @@ class Categorias extends DataMapper{
 	public function deletar($id){
 		$this->db->query('delete from categorias where id_cat = ' .$id);
 	}
+	
+	public function get_vinculados_publicados(){
+		$p = new Posts();
+		$p->where('status_post','P');
+		$p->group_by('id_cat');
+		return $p->get();
+	}
 }
 ?>

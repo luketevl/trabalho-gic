@@ -128,7 +128,12 @@ class Posts_Cadastro extends CI_Controller{
 		$extras['url_youtube_varios'] = $this->input->post('url_youtube_varios');
 		if(empty($aux['id_post'])){
 			$aux['status_post'] = ABERTO;
+			$aux['img_principal_post'] = 'no_img.png';
 			$p->setFields($aux);
+// 			echo "<pre>";
+// 							echo print_r($aux);
+// 							echo "</pre>";
+// 							die;
 			$p->inserir();
 			$p = $p->get_last_id();
 			$aux['id_post'] = $p->id_post;

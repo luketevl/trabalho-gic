@@ -28,10 +28,19 @@ class Posts extends DataMapper{
 		$p = new Posts();
 		return $p->get();
 	}
+	
 	public function getAll_publicados(){
 		$p = new Posts();
 		$p->where('status_post',PUBLICADO);
+		$p->order_by('dt_modificacao','ASC');
 		return $p->get();
+	}
+	
+	public function getAll_publicados_filtrado(){
+		$p = new Posts();
+		$p->where('status_post',PUBLICADO);
+		$p->order_by('dt_modificacao','DESC');
+		return $p->get(3);
 	}
 
 	public function get_by_id($id){
@@ -157,7 +166,6 @@ class Posts extends DataMapper{
 
 	public function count_aprovado(){
 		$p = new Posts();
-			
 		return $p->where('status_post',APROVADO)->count();
 	}
 	public function count_rejeitado(){
