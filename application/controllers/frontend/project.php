@@ -14,6 +14,7 @@ class Project extends CI_Controller{
 		$t = new Topicos();
 		$u = new Usuarios();
 		$i = new Imagens();
+		$vid = new Videos();
 		$comen = new Comentarios();
 		$p = $p->get_by_id(3);
 		$dados['dados'] = array();
@@ -66,9 +67,11 @@ class Project extends CI_Controller{
 			$dados['topicos_recentes'][$k]['avatar_usu'] = $u->avatar_usu;
 		}		
 		$comen = $comen->get_by_id_post($id_post);
-		$dados['qtd_comentarios'] = $comen->count_post($v->id_post);
+		$dados['qtd_comentarios'] = $comen->count_post($id);
 		$dados['id']= $id_post;
-		$dados['texto_comments'] = 'Deixe sua Resposta';
+		$dados['texto_comments'] = 'Deixe seu Comentário';
+		$dados['form_name'] = 'project';
+		$dados['tipo'] = 'Comentários';
 		$dados['comen']= array();
 		foreach($comen->all as $k=>$v){
 			$dados['comen'][$k]['id_coment'] = $v->id_coment;
@@ -85,6 +88,14 @@ class Project extends CI_Controller{
 			$dados['comen'][$k]['tempo'] = timespan($time,$agora);
 		}
 		
+		$vid = $vid->get_by_idpost($id);
+		$dados['videos'] = array();
+		foreach($vid->all as $k=>$v){
+			$dados['videos'][$k]['url_vid'] = $v->url_vid;
+			$vid = explode('=',$v->url_vid);
+			$dados['videos'][$k]['url_cortado'] = $vid[1];
+			
+		}
 		return $dados;
 	}
 	

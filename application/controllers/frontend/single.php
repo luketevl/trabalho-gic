@@ -74,6 +74,8 @@ class Single extends CI_Controller{
 			$dados['qtd_comentarios'] = $comen->count_top($v->id_top);
 			$dados['id']= $id_top;
 			$dados['texto_comments'] = 'Deixe sua Resposta';
+			$dados['form_name'] = 'single';
+			$dados['tipo'] = 'Respostas';
 			$dados['comen']= array();
 		foreach($comen->all as $k=>$v){
 			$dados['comen'][$k]['id_coment'] = $v->id_coment;

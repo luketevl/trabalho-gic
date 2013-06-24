@@ -122,7 +122,7 @@
 						<div class="meta">
 							<span class="format">Topico</span>
 							<span class="user"><a href="#">Por {usuario}, </a></span>
-							<span class="comments">{qtd_comentarios} comentários</span>
+							<span class="comments">{qtd_comentarios} respostas</span>
 <!-- 								<span class="tags"><a href="#">red</a>, <a href="#">cyan</a>, <a href="#">white</a>, <a href="#">blue</a></span> -->
 						</div>
 							
