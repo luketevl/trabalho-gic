@@ -4,6 +4,20 @@
 				
 				<div id="logo">
 <!-- 					<a href="home"><img  src="resources/frontend/html/img/logo.png" alt="Agropecuária"></a> -->
+				<?php 
+					if($this->session->userdata('id_usu')>0){
+				echo '<span style="color:#dcd2be"> Bem vindo, '. $this->session->userdata('nome_usu');
+				echo '<a href="'.base_url().'index.php/intranet/login/deslogar" > (sair)';
+				echo '</a></span>';
+					}
+					else{
+						echo '<span style="color:#dcd2be"><a href="'.base_url().'index.php/intranet/login" > Entrar';
+						echo '</a></span>';
+
+						echo '<span style="color:#dcd2be"><a href="'.base_url().'index.php/intranet/login" >, Cadastrar';
+						echo '</a></span>';
+					}				
+				?>
 				</div>
 				
 				<!-- nav -->
