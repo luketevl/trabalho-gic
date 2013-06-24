@@ -1,7 +1,7 @@
 <html>
 
 <head>
-
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <link rel="stylesheet"
 	href="<?php echo base_url(); ?>resources/icheckmaster/skins/line/blue.css" />
 <link rel="stylesheet"
