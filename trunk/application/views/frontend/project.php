@@ -171,8 +171,18 @@
 <!-- 				</div> -->
 				<!-- ENDS related -->
 									
-				
 	        	</div>
+	        	<h4>Downloads</h4>
+	        	<br />
+			{arquivos} <a
+			href="<?php echo base_url();?>resources/arquivos/uploads/{nome_arq}"
+			target="__blank"><img
+			src="<?php echo base_url();?>resources/icons/download.png" />{nome_arq}</a>
+		{/arquivos}
+	        	<br />
+	        	<br />
+		
+	        	<h4>Vídeos</h4>
 	        		{videos}
 	        		<!-- Video -->
 					<article class="format-video">

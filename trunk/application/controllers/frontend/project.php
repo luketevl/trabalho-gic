@@ -22,6 +22,8 @@ class Project extends CI_Controller{
 		$i = new Imagens();
 		$vid = new Videos();
 		$comen = new Comentarios();
+		$a = new Arquivos();
+		$a = $a->get_by_idpost($idp);
 		$p = $p->get_by_id($idp);
 		$dados['dados'] = array();
 		$dados['categorias'] = array();
@@ -109,7 +111,11 @@ class Project extends CI_Controller{
 			$dados['videos'][$k]['url_vid'] = $v->url_vid;
 			$vid = explode('=',$v->url_vid);
 			$dados['videos'][$k]['url_cortado'] = $vid[1];
-			
+		}
+		$dados['arquivos'] = array();
+		foreach($a as $ke=>$valor){
+			$dados['arquivos'][$ke]['nome_arq'] = $valor->nome_arq;
+			$dados['arquivos'][$ke]['id_arq'] =$valor->id_arq;
 		}
 		return $dados;
 	}
