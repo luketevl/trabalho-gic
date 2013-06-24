@@ -43,6 +43,7 @@ class Project extends CI_Controller{
 			$dados['dados'][$k]['categoria-filter'] =  str_replace(' ','_',$c->nome_cat);
 		}
 		$i= $i->get_by_idpost($idp);
+		$dados['imagens']= array();
 		foreach($i->all as $k=>$v){
 			$dados['imagens'][$k]['nome_img'] = $v->nome_img;
 		}	

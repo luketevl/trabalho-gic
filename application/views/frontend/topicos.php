@@ -98,7 +98,7 @@
 <!-- 							<div class="entry-date"><div class="number">23</div><div class="month">JAN</div></div> -->
 							
 <!-- 							<div class="excerpt"> -->
-<!-- 								<a href="single.html" class="post-heading" >Miaow Track</a> -->
+<!-- 								<a href="#" class="post-heading" >Miaow Track</a> -->
 								<!-- jplayer -->
 <!-- 								<script type="text/javascript"> -->
 								<![CDATA[
@@ -173,7 +173,7 @@
 <!-- 							<div class="entry-date"><div class="number">23</div><div class="month">JAN</div></div> -->
 							
 <!-- 							<div class="excerpt"> -->
-<!-- 								<a href="single.html" class="post-heading" >YOUTUBE</a> -->
+<!-- 								<a href="#" class="post-heading" >YOUTUBE</a> -->
 <!-- 								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p> -->
 								
 								
@@ -210,16 +210,32 @@
 <!-- 						</div> -->
 <!-- 					</article> -->
 					<!-- ENDS Link -->
+					<?php 
+				echo form_open('index.php/frontend/single/index','id="singleT"');
+					echo form_hidden('id_submit');
+				echo form_close();
+			?>
+			
 					
+					<script>
+						$(document).ready(function(){
+							$('a').click(function(){
+								var id = $(this).find('[name="id_top"]').val();
+								$('[name="id_submit"]').val(id);
+								$('#singleT').submit();
+							});
+							});
+					</script>
 					<!-- Quote -->
 					{topicos}
 					<article class="format-quote">
 						<div class="box cf">
-							<div class="entry-date"><div class="number">{dt_criacao}</div><div class="month">JAN</div></div>
+							<div class="entry-date"><div class="number">{dt_criacao}</div><div class="month">JUN</div></div>
 							
 							<div class="excerpt">
-								<a href="single.html" class="post-heading" >
+								<a href="#" class="post-heading" >
 								{nome_top}
+								<?php echo form_hidden('id_top','{id_top}');?>
 								</a>
 								<p><span class="q-author"></span></p>
 
@@ -241,7 +257,7 @@
 					<!-- Standard -->
 <!-- 					<article class="format-standard"> -->
 <!-- 						<div class="feature-image"> -->
-<!-- 							<a href="single.html"> -->
+<!-- 							<a href="#"> -->
 <!-- 								<img src="img/dummies/slides/01.jpg" alt="Alt text" /> -->
 <!-- 							</a> -->
 <!-- 						</div> -->
@@ -249,10 +265,10 @@
 <!-- 							<div class="entry-date"><div class="number">23</div><div class="month">JAN</div></div> -->
 							
 <!-- 							<div class="excerpt"> -->
-<!-- 								<a href="single.html" class="post-heading" >LOREM IPSUM DOLOR AMET</a> -->
+<!-- 								<a href="#" class="post-heading" >LOREM IPSUM DOLOR AMET</a> -->
 <!-- 								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed.</p> -->
 								
-<!-- 								<p><a href="single.html" class="learnmore">Learn More</a></p> -->
+<!-- 								<p><a href="#" class="learnmore">Learn More</a></p> -->
 <!-- 							</div> -->
 							
 <!-- 							<div class="meta"> -->
@@ -278,7 +294,7 @@
 <!-- 							<div class="entry-date"><div class="number">23</div><div class="month">JAN</div></div> -->
 							
 <!-- 							<div class="excerpt"> -->
-<!-- 								<a href="single.html" class="post-heading" >AN IMAGE</a> -->
+<!-- 								<a href="#" class="post-heading" >AN IMAGE</a> -->
 <!-- 								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p> -->
 								
 								
