@@ -16,7 +16,7 @@ if(!function_exists('converte_status')){
 			return'Fechado';
 		}
 		else{
-			return'Normal';
+			return 'Em aprovação';
 		}
 	}
 }
