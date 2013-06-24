@@ -105,6 +105,7 @@
 					
 					<?php 
 					echo form_open('index.php/frontend/{form_name}/comentar' , 'id="commentform"');
+					echo form_hidden('id_submit');
 // 					?>
 <!-- 					<form action="index.php/frontend/single/comentar" method="post" id="commentform"> -->
 <!-- 					<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p> -->

@@ -1,4 +1,18 @@
 
+<?php 
+				echo form_open('index.php/frontend/project/index','id="project"');
+					echo form_hidden('id_submit');
+				echo form_close();
+			?>
+			<script>
+					$(document).ready(function(){
+						$('div .recent-post').click(function(){
+							var id = $(this).find('[name="id_post"]').val();
+							$('[name="id_submit"]').val(id);
+							$('#project').submit();
+							});
+						});
+				</script>
 		<!-- FOOTER -->
 		<footer>
 			<div class="wrapper cf">
@@ -11,6 +25,7 @@
 							<h4>Matérias recentes</h4>
 							{posts_recentes}
 							<div class="recent-post cf">
+							<?php echo form_hidden('id_post','{id_post}');?>
 								<a href="#" class="thumb">
 								<img src="<?php echo base_url(); ?>resources/img/uploads/{img_principal_post}" alt="alt" width="54" height="54" /></a>
 								<div class="post-head">
@@ -18,18 +33,6 @@
 								</div>
 							</div>
 							{/posts_recentes}
-							<div class="recent-post cf">
-								<a href="#" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/54x54.gif" alt="Post" /></a>
-								<div class="post-head">
-									<a href="#">Pellentesque habitant morbi senectus</a><span> March 12, 2011</span>
-								</div>
-							</div>
-							<div class="recent-post cf">
-								<a href="#" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/54x54.gif" alt="Post" /></a>
-								<div class="post-head">
-									<a href="#">Pellentesque habitant morbi senectus</a><span> March 12, 2011</span>
-								</div>
-							</div>
 						</div>
 					</li>
 					
@@ -47,18 +50,6 @@
 								</div>
 							</div>
 							{/topicos_recentes}
-							<div class="recent-post cf">
-								<a href="#" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/54x54.gif" alt="Post" /></a>
-								<div class="post-head">
-									<a href="#">Pellentesque habitant morbi senectus</a><span> March 12, 2011</span>
-								</div>
-							</div>
-							<div class="recent-post cf">
-								<a href="#" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/54x54.gif" alt="Post" /></a>
-								<div class="post-head">
-									<a href="#">Pellentesque habitant morbi senectus</a><span> March 12, 2011</span>
-								</div>
-							</div>
 						</div>
 						
 					</li>
