@@ -20,11 +20,17 @@ class Home extends CI_Controller{
 			$dados['dados'][$k]['id_post'] = $v->id_post;
 			$dados['dados'][$k]['titulo_post'] = $v->titulo_post;
 			$dados['dados'][$k]['resumo_post'] = $v->resumo_post;
+			
 			$keys = str_replace(' ','_',$v->keywords_post);
 			$keys = strtolower($keys);
 			$keys = explode('|',$keys);
 			foreach($keys as $key=>$valor){
 				$dados['dados'][$k]['chaves'][$key]['chave']= $valor;			
+			}
+			
+			foreach($keys as $key=>$valor){
+				$dados['dados'][$k]['metas'][$key]['meta']= trim(str_replace('_',' ',$valor));
+				$ultima_chave = $key;			
 			}
 			$dados['dados'][$k]['img_principal_post'] = $v->img_principal_post;
 			$dados['dados'][$k]['id_cat'] = $v->id_cat;
