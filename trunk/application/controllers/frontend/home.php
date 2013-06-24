@@ -16,6 +16,9 @@ class Home extends CI_Controller{
 		$p = $p->getAll_publicados();
 		$dados['dados'] = array();
 		$dados['categorias'] = array();
+		$dados['posts_recentes'] = array();
+		$dados['categorias-footer'] = array();
+		$dados['topicos_recentes'] = array();
 		foreach($p->all as $k=>$v){
 			$dados['dados'][$k]['id_post'] = $v->id_post;
 			$dados['dados'][$k]['titulo_post'] = $v->titulo_post;
@@ -47,7 +50,6 @@ class Home extends CI_Controller{
 			$dados['categorias'][$k]['categoria'] = $c->nome_cat;
 			$dados['categorias'][$k]['categoria-filter'] =  str_replace(' ','_',$c->nome_cat);
 		}
-		$dados['categorias-footer'] = array();
 		$dados['categorias-footer'] = $dados['categorias'];
 		
 		$p = $p->getAll_publicados_filtrado();

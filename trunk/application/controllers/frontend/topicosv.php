@@ -35,6 +35,7 @@ class Topicosv extends CI_Controller{
 		$dados['categorias-footer'] = $dados['categorias'];
 		
 		$p = $p->getAll_publicados_filtrado();
+		$dados['posts_recentes'] = array();
 		foreach($p->all as $k=>$v){
 			$dados['posts_recentes'][$k]['id_post'] = $v->id_post;
 			$dados['posts_recentes'][$k]['titulo_post'] = $v->titulo_post;
@@ -43,6 +44,7 @@ class Topicosv extends CI_Controller{
 		}	
 			
 		$t = $t->getAll_filtrado();
+		$dados['topicos_recentes'] = array();
 		foreach($t->all as $k=>$v){
 			$dados['topicos_recentes'][$k]['id_top'] = $v->id_top;
 			$dados['topicos_recentes'][$k]['nome_top'] = $v->nome_top;
@@ -56,6 +58,7 @@ class Topicosv extends CI_Controller{
 		
 		
 		$t = $t->getAll();
+		$dados['topicos'] = array();
 		foreach($t->all as $k=>$v){
 			$dados['topicos'][$k]['id_top'] = $v->id_top;
 			$dados['topicos'][$k]['nome_top'] = $v->nome_top;

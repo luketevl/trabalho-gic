@@ -123,8 +123,8 @@
 
 					<div class="info">
 	        			<p><strong>Criador </strong>{usuario}</p>
-	        			<p><strong>Data </strong> April 25, 2012</p>
-	        			<p><a href="http://www.luiszuno.com" class="launch" >Launch Project</a></p>
+	        			<p><strong>Data </strong> Junho {dt_criacao}, 2013</p>
+<!-- 	        			<p><a href="http://www.luiszuno.com" class="launch" >Launch Project</a></p> -->
 	        		</div>
 	        		
 	        		<!-- entry-content -->
