@@ -3,7 +3,7 @@
 			<div class="wrapper cf">
 				
 				<div id="logo">
-					<a href="home"><img  src="<?php echo base_url(); ?>resources/frontend/html/img/logo.png" alt="Agropecuária"></a>
+<!-- 					<a href="home"><img  src="resources/frontend/html/img/logo.png" alt="Agropecuária"></a> -->
 				</div>
 				
 				<!-- nav -->
