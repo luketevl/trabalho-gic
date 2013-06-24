@@ -1,6 +1,6 @@
 				<!-- comments list -->
 				<div id="comments-wrap">
-					<h4 class="heading">{qtd_comentarios} Comentários</h4>
+					<h4 class="heading">{qtd_comentarios} {tipo}</h4>
 					
 					<ol class="commentlist">
 					  
@@ -104,7 +104,7 @@
 					
 					
 					<?php 
-					echo form_open('index.php/frontend/single/comentar' , 'id="commentform"');
+					echo form_open('index.php/frontend/{form_name}/comentar' , 'id="commentform"');
 // 					?>
 <!-- 					<form action="index.php/frontend/single/comentar" method="post" id="commentform"> -->
 <!-- 					<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p> -->
@@ -114,7 +114,7 @@
 <!-- 					<p class="comment-form-email"><label for="email">Email<span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required="true"></p> -->
 <!-- 	<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p> -->
 					
-					<p class="comment-form-comment"><label for="comment">Comentário</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						
+					<p class="comment-form-comment"><label for="comment">{tipo}</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						
 													
 					<!-- allowed tags -->
 <!-- 					<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						 -->

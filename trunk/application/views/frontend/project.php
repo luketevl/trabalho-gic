@@ -92,10 +92,10 @@
 				
 				
 				<!-- project pager -->
-				<div class="project-pager cf">
-					<a class="previous-project" href="#">&#8592; Previous project</a>
-					<a class="next-project" href="#">Next project &#8594;</a>
-				</div>
+<!-- 				<div class="project-pager cf"> -->
+<!-- 					<a class="previous-project" href="#">&#8592; Previous project</a> -->
+<!-- 					<a class="next-project" href="#">Next project &#8594;</a> -->
+<!-- 				</div> -->
 				<!-- ENDS project pager -->
 					
 					
@@ -139,7 +139,7 @@
 	        		</div>
 	        		<!-- ENDS entry content -->
 	        		
-	        	</div>
+	        		
 		    	<!-- ENDS project box -->
 					
 					
@@ -172,6 +172,17 @@
 				<!-- ENDS related -->
 									
 				
+	        	</div>
+	        		{videos}
+	        		<!-- Video -->
+					<article class="format-video">
+						<div class="video-container">
+							<iframe width="640" height="360" src="http://www.youtube.com/embed/{url_cortado}?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</article>
+					<!-- ENDS Video -->
+	        		{/videos}
+					
     		</div>
     		<!-- ENDS portfolio content-->
 			
