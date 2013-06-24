@@ -91,16 +91,28 @@ jQuery(document).ready(function($) {
 		});
 	});
 	
+	
+	
+	$('#pesquisa').keypress(function(e) {
+	    if(e.which == 13) {
+	    	// select current
+//			var $optionSet = $(this).parents('#filter-buttons');
+			var selector = '.'+ $(this).val().toLowerCase().replace(' ','_');
+			$container.isotope({ filter: selector });
+			return false;
+	    	
+	    }
+	});
 	// filter buttons
 		
 	$('#filter-buttons a').click(function(){
-	
 		// select current
 		var $optionSet = $(this).parents('#filter-buttons');
 	    $optionSet.find('.selected').removeClass('selected');
 	    $(this).addClass('selected');
     
 		var selector = $(this).attr('data-filter');
+		alert(selector);
 		$container.isotope({ filter: selector });
 		return false;
 	});

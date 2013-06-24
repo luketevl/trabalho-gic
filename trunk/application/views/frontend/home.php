@@ -82,8 +82,7 @@
 		<!-- MAIN -->
 		<div id="main">
 			<div class="wrapper cf">
-			
-			
+			<input type="search" id="pesquisa" placeholder="Digite sua pesquisa" style="width:100%;" autofocus="autofocus" />
 			<?php 
 				echo form_open('index.php/frontend/project/index','id="project"');
 					echo form_hidden('id_submit');
@@ -118,7 +117,7 @@
 				<div id="filter-container" class="cf">
 				
 					{dados}
-					<figure class="{categoria-filter}">
+					<figure class="{categoria-filter}{chaves} {chave}{/chaves}">
 						<?php echo form_hidden('id_post','{id_post}');?>
 						<a href="#" class="thumb">
 							<img src="<?php echo base_url(); ?>resources/img/uploads/{img_principal_post}" alt="alt" /></a>
