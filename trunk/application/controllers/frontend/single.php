@@ -2,11 +2,17 @@
 
 class Single extends CI_Controller{
 
-	public function index(){
+	public function index($id=0){
 		$data = array('title' => 'Titulo');
-		$this->parser->parse('frontend/single',$this->dados_topicos());
+		$this->parser->parse('frontend/single',$this->dados_topicos($id));
 	}
-	public function dados_topicos(){
+	public function dados_topicos($idveio=0){
+		if($idveio > 0){
+			$idp = $idveio;
+		}
+		else{
+			$idp = $this->input->post('id_submit');
+		}
 		$p = new Posts();
 		$c = new Categorias();
 		$t = new Topicos();
@@ -15,6 +21,7 @@ class Single extends CI_Controller{
 		$p = $p->getAll_publicados();
 		$dados['dados'] = array();
 		$dados['categorias'] = array();
+		$id = $idp;
 		foreach($p->all as $k=>$v){
 			$dados['dados'][$k]['id_post'] = $v->id_post;
 			$dados['dados'][$k]['titulo_post'] = $v->titulo_post;
@@ -55,7 +62,8 @@ class Single extends CI_Controller{
 		}
 		
 		
-		$t = $t->get_by_id(6);
+		$t = $t->get_by_id($idp);
+		$id_top = $idp;
 		foreach($t->all as $k=>$v){
 			$dados['topicos'][$k]['id_top'] = $v->id_top;
 			$id_top = $v->id_top;
@@ -103,7 +111,7 @@ class Single extends CI_Controller{
 		$dados['comentario_coment'] = $this->input->post('comment');
 		$c->setFields($dados);
 		$c->inserir();
-		$this->index();
+		$this->index($dados['id_top']);
 	}
 }
 ?>

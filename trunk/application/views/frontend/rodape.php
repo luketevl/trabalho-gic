@@ -4,16 +4,24 @@
 					echo form_hidden('id_submit');
 				echo form_close();
 				
-				echo form_open('index.php/frontend/single/index','id="project"');
+				echo form_open('index.php/frontend/single/index','id="single"');
 					echo form_hidden('id_submit');
 				echo form_close();
 			?>
 			<script>
 					$(document).ready(function(){
 						$('div .recent-post').click(function(){
+							$('[name="id_submit"]').val('');
 							var id = $(this).find('[name="id_post"]').val();
+							var id2 = $(this).find('[name="id_top"]').val();
+							if(id >0){
 							$('[name="id_submit"]').val(id);
-							$('#project').submit();
+								$('#project').submit();
+							}
+							else if(id2 >0){
+							$('[name="id_submit"]').val(id2);
+								$('#single').submit();
+							}
 							});
 						});
 				</script>
@@ -45,6 +53,7 @@
 							<h4>Perguntas Recentes</h4>
 							{topicos_recentes}
 							<div class="recent-post cf">
+							<?php echo form_hidden('id_top','{id_top}');?>
 							<a href="#" class="thumb">
 							<img src="<?php echo base_url(); ?>resources/img/uploads/{avatar_usu}" alt="alt" width="54" height="54" /></a>
 							</a>
