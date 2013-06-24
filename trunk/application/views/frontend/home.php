@@ -84,7 +84,11 @@
 			<div class="wrapper cf">
 			
 			
-			
+			<?php 
+				echo form_open('index.php/frontend/project/index','id="project"');
+					echo form_hidden('id_submit');
+				echo form_close();
+			?>
 			
 				
 			<!-- featured -->
@@ -101,13 +105,22 @@
 <!-- 					<li><a href="#" data-filter=".design">design</a></li> -->
 <!-- 					<li><a href="#" data-filter=".photo">photo</a></li> -->
 				</ul>
-				
+				<script>
+					$(document).ready(function(){
+						$('figure').click(function(){
+							var id = $(this).find('[name="id_post"]').val();
+							$('[name="id_submit"]').val(id);
+							$('#project').submit();
+							});
+						});
+				</script>
 				<!-- Filter container -->
 				<div id="filter-container" class="cf">
 				
 					{dados}
 					<figure class="{categoria-filter}">
-						<a href="project.html" class="thumb">
+						<?php echo form_hidden('id_post','{id_post}');?>
+						<a href="#" class="thumb">
 							<img src="<?php echo base_url(); ?>resources/img/uploads/{img_principal_post}" alt="alt" /></a>
 						<figcaption>
 							<a href="project.html"><h3 class="heading">{titulo_post}</h3></a>
@@ -116,68 +129,60 @@
 					</figure>
 					{/dados}
 					
-					<figure class="print">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/02.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html"><h3 class="heading">Pellentesque habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="print"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html"><h3 class="heading">Pellentesque habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 					
-					<figure class="design">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/03.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html" ><h3 class="heading">Habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="design"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html" ><h3 class="heading">Habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 					
-					<figure class="photo">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/04.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="photo"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 					
-					<figure class="web photo">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/05.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="web photo"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 					
-					<figure class="web print">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/06.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="web print"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 					
-					<figure class="photo">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/04.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="photo"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 					
-					<figure class="web photo">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/05.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="web photo"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 					
-					<figure class="web print">
-						<a href="project.html" class="thumb"><img src="<?php echo base_url(); ?>resources/frontend/html/img/dummies/featured/01.jpg" alt="alt" /></a>
-						<figcaption>
-							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a>
-							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption>
-					</figure>
+<!-- 					<figure class="web print"> -->
+<!-- 						<figcaption> -->
+<!-- 							<a href="project.html" ><h3 class="heading">Pellentesque habitant morbi</h3></a> -->
+<!-- 							Tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. </figcaption> -->
+<!-- 					</figure> -->
 					
 				</div><!-- ENDS Filter container -->
 				

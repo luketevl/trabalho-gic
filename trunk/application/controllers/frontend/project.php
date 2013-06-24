@@ -2,13 +2,19 @@
 
 class Project extends CI_Controller{
 
-	public function index(){
+	public function index($id=0){
 		$data = array('title' => 'Titulo');
-		$this->parser->parse('frontend/project',$this->dados_posts());
+		$this->parser->parse('frontend/project',$this->dados_posts($id));
 		
 	}
 	
-	public function dados_posts(){
+	public function dados_posts($idveio=0){
+		if($idveio > 0){
+			$idp = $idveio;
+		}
+		else{
+			$idp = $this->input->post('id_submit');
+		}
 		$p = new Posts();
 		$c = new Categorias();
 		$t = new Topicos();
@@ -16,9 +22,11 @@ class Project extends CI_Controller{
 		$i = new Imagens();
 		$vid = new Videos();
 		$comen = new Comentarios();
-		$p = $p->get_by_id(3);
+		$p = $p->get_by_id($idp);
 		$dados['dados'] = array();
 		$dados['categorias'] = array();
+		$id_post = $idp;
+		$id = $idp;
 		foreach($p->all as $k=>$v){
 			$dados['dados'][$k]['id_post'] = $v->id_post;
 			$id_post = $v->id_post;
@@ -34,7 +42,7 @@ class Project extends CI_Controller{
 			$dados['dados'][$k]['categoria'] = $c->nome_cat;
 			$dados['dados'][$k]['categoria-filter'] =  str_replace(' ','_',$c->nome_cat);
 		}
-		$i= $i->get_by_idpost($id);
+		$i= $i->get_by_idpost($idp);
 		foreach($i->all as $k=>$v){
 			$dados['imagens'][$k]['nome_img'] = $v->nome_img;
 		}	
@@ -108,7 +116,7 @@ class Project extends CI_Controller{
 		$dados['comentario_coment'] = $this->input->post('comment');
 		$c->setFields($dados);
 		$c->inserir();
-		$this->index();
+		$this->index($dados['id_post']);
 	}
 }
 ?>

@@ -9,7 +9,6 @@
 				<!-- nav -->
 				<ul id="nav" class="sf-menu">
 					<li class="current-menu-item"><a href="<?php echo base_url();?>index.php/frontend/home">INÍCIO</a></li>
-					<li><a href="<?php echo base_url();?>index.php/frontend/blog">MATÉRIAS</a></li>
 					<li><a href="<?php echo base_url();?>index.php/frontend/topicosv">FORUM</a></li>
 					<li><a href="<?php echo base_url();?>index.php/intranet/login">GESTÃO</a></li>
 <!-- 					<li><a href="page.html">ABOUT</a> -->
