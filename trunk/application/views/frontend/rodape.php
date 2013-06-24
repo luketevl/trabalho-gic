@@ -3,6 +3,10 @@
 				echo form_open('index.php/frontend/project/index','id="project"');
 					echo form_hidden('id_submit');
 				echo form_close();
+				
+				echo form_open('index.php/frontend/single/index','id="project"');
+					echo form_hidden('id_submit');
+				echo form_close();
 			?>
 			<script>
 					$(document).ready(function(){
@@ -22,7 +26,7 @@
 					<li class="first-col">
 						
 						<div class="widget-block">
-							<h4>Matérias recentes</h4>
+							<h4>Matérias Recentes</h4>
 							{posts_recentes}
 							<div class="recent-post cf">
 							<?php echo form_hidden('id_post','{id_post}');?>
@@ -37,7 +41,6 @@
 					</li>
 					
 					<li class="second-col">
-							
 						<div class="widget-block">
 							<h4>Perguntas Recentes</h4>
 							{topicos_recentes}
