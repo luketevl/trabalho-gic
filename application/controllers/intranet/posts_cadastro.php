@@ -233,10 +233,18 @@ class Posts_Cadastro extends CI_Controller{
 		}else{
 			$id= $this->input->post('hd_id');
 		}
+		
+		$pdados = new Posts();
+		$u = new Usuarios();
+		$u_aprovou = new Usuarios();
+		$u_aprovou = $u->get_by_id($this->session->userdata('id_usu'));
 		$p = new Posts();
 		$id_usu_aprovou = $this->session->userdata('id_usu');
 		$p->aprovar($id,$id_usu_aprovou);
+		$pdados = $pdados->get_by_id($id);
+		$u = $u->get_by_id($pdados->id_usu);
 		$this->historico($id,APROVADO,"");
+		enviar_email($u->email_usu,'Materia Aprovada','Sua Materia publicada em:'.$pdados->dt_criacao. ' foi aprovado por: '.$u_aprovou->nome_usu. ' na data de: '. $pdados->dt_modificacao);
 		if(empty($_GET['id'])){
 			$this->load_form_edit($id);
 		}

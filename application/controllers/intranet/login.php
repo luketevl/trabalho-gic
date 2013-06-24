@@ -109,6 +109,7 @@ class Login extends CI_Controller{
 				$u->inserir();
 				$u = $u->get_last_id();
 				$dados['id_usu'] = $u->id_usu;
+				enviar_email($dados['email_usu'],'Cadastro realizado','Parabens, cadastro realizado com sucesso, segue dados de acesso: Usuario: '.$dados['email_usu']. ' Senha: ' . $dados['pass_usu']);
 				$this->logar($dados);
 		}
 	}
