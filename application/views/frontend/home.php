@@ -124,6 +124,12 @@
 						<figcaption>
 							<a href="#"><h3 class="heading">{titulo_post}</h3></a>
 							{resumo_post} [...]
+						<hr />
+							<div class="portfolio-cat">
+							{metas}
+								<a href="#">{meta}</a>,
+							{/metas}
+							</div>
 						</figcaption>
 					</figure>
 					{/dados}
