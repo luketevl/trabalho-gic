@@ -133,7 +133,7 @@
 			{/topicos}
 						
 				<?php 
-				if($this->session->userdata('id_perf')==1){
+				if($this->session->userdata('id_usu')>0){
 					$this->load->view('frontend/comments');
 				}
 				?>							

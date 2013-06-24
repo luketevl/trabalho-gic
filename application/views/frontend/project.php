@@ -187,8 +187,10 @@
     		<!-- ENDS portfolio content-->
 			
 			<?php 
-				echo $this->load->view('frontend/comments');
-			?>
+				if($this->session->userdata('id_usu')>0){
+					$this->load->view('frontend/comments');
+				}
+				?>	
 			
 			</div><!-- ENDS WRAPPER -->
 		</div>
@@ -201,7 +203,7 @@
 		<script>
 			$(document).ready(){
 				$('form').attr('src','');
-				}
+			}
 		</script>
 	</body>
 	
