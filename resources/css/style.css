@@ -695,3 +695,12 @@ label,textarea,#cke_editor1 {
 .alert-block p+p {
 	margin-top: 5px;
 }
+
+.img-marcada{
+	background: url(../icons/check.png) no-repeat 0px 0px;
+	z-index: -1;
+}
+
+#imagens img {
+	cursor: pointer;
+}

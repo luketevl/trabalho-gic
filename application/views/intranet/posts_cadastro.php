@@ -134,6 +134,7 @@ echo form_hidden('hd_id','{id_post}');
 echo form_hidden('hd_status','{status_post}');
 echo form_hidden('hd_cat_id','{id_cat}');
 echo form_hidden('hd_keywords','{keywords_post}');
+echo form_hidden('hd_img_principal_post','{img_principal_post}');
 
 echo form_fieldset('Principal');
 
@@ -212,6 +213,11 @@ echo form_fieldset('','class="lblInput" style="width:500px;"');
 <section id="url">
 	<?php 
 	echo form_label('URL Video Principal','lbl_url_youtube');
+	?>
+	<img
+	src="<?php echo base_url();?>resources/icons/info.png" class="tooltip"
+	title="Utilizar apenas URL do YOUTUBE" />
+	<?php 
 	echo form_input('url_youtube','{url_youtube}','class="linkvideo url"');
 	?>
 	{urls} <span> URL video</span> <input type="text" value={url}
@@ -233,7 +239,7 @@ echo form_label('Imagens ','lbl_img');
 	</span>
 	<nav id="imagens">
 		{imagens} <img
-			src="<?php echo base_url();?>resources/img/uploads/{nome_img}" />
+			src="<?php echo base_url();?>resources/img/uploads/{nome_img}" val="{nome_img}" />
 		{/imagens}
 	</nav>
 </section>
@@ -320,5 +326,10 @@ $(document).ready(function(){
 		});
 	
 });
+$(window).load(function(){
+	$('#imagens img').click(function(){
+		$('[name="hd_img_principal_post"]').val($(this).attr('val'));
+		});
+	});
 </script>
 

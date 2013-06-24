@@ -108,7 +108,6 @@ class Posts_Cadastro extends CI_Controller{
 
 		$p = new Posts();
 		$aux = $p->getFields();
-
 		$aux['id_post'] = $this->input->post('hd_id');
 		$aux['titulo_post'] = $this->input->post('titulo');
 		$aux['resumo_post'] = $this->input->post('desc_resumida');
@@ -117,7 +116,7 @@ class Posts_Cadastro extends CI_Controller{
 		$aux['dt_criacao'] = unix_to_human(time(), TRUE, 'us');
 		$aux['dt_modificacao']= null;
 		$dados_img = $this->upload->data();
-		$aux['img_principal_post'] = $dados_img['file_name'];
+		$aux['img_principal_post'] = $this->input->post('hd_img_principal_post');
 		$aux['obs_post'] = "";
 		$aux['keywords_post'] = $this->input->post('hd_keywords');
 		$aux['id_usu_aprovou'] = null; //= $this->session->userdata('id_usu');
@@ -186,7 +185,7 @@ class Posts_Cadastro extends CI_Controller{
 			$dados['status'] = converte_status($dados['status_post']);
 			$dados['dt_criacao'] = mdate('%d/%m/%Y',human_to_unix($p->dt_criacao));
 			$dados['dt_modificacao']= mdate('%d/%m/%Y',human_to_unix($p->dt_modificacao));
-			$dados['img_principal_post'] = $p->img_principal_post			;
+			$dados['img_principal_post'] = $p->img_principal_post;
 			$dados['url_youtube']= $p->url_youtube;
 			$dados['obs_post']= $p->obs_post;
 			$dados['keywords_post']= str_replace('|',',',$p->keywords_post);

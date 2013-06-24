@@ -41,7 +41,12 @@ class Project extends CI_Controller{
 			$dados['dados'][$k]['usuario'] = $u->nome_usu;
 			$dados['dados'][$k]['categoria'] = $c->nome_cat;
 			$dados['dados'][$k]['categoria-filter'] =  str_replace(' ','_',$c->nome_cat);
+			
+			$datas = explode('-',$v->dt_modificacao);
+			$datas = explode(' ',$datas[2]);
+				
 		}
+			$dados['dt_criacao'] = $datas[0];
 		$i= $i->get_by_idpost($idp);
 		$dados['imagens']= array();
 		foreach($i->all as $k=>$v){
@@ -57,6 +62,7 @@ class Project extends CI_Controller{
 		$dados['categorias-footer'] = $dados['categorias'];
 		
 		$p = $p->getAll_publicados_filtrado();
+		$dados['posts_recentes'] = array();
 		foreach($p->all as $k=>$v){
 			$dados['posts_recentes'][$k]['id_post'] = $v->id_post;
 			$dados['posts_recentes'][$k]['titulo_post'] = $v->titulo_post;

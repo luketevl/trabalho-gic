@@ -42,6 +42,7 @@ class Single extends CI_Controller{
 		$dados['categorias-footer'] = $dados['categorias'];
 		
 		$p = $p->getAll_publicados_filtrado();
+		$dados['posts_recentes'] = array();
 		foreach($p->all as $k=>$v){
 			$dados['posts_recentes'][$k]['id_post'] = $v->id_post;
 			$dados['posts_recentes'][$k]['titulo_post'] = $v->titulo_post;
