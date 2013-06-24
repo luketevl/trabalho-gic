@@ -1,5 +1,5 @@
 <head>
-	
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <link rel="stylesheet"
 	href="<?php echo base_url(); ?>resources/icheckmaster/skins/line/blue.css" />
 <link rel="stylesheet"
@@ -95,12 +95,25 @@ echo form_hidden('hd_uc','login');
 echo form_button('btn_login',lang('btn_login'),'style="width:25%;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_login').'"');
 echo form_button('btn_cadastro',lang('btn_cadastro'),'style="width:25%;" class="tooltip btn btn-large btn-block btn-primary"  title="'.lang('info_cadastro').'"');
 ?>
-<section id="signFb" class="tooltip" title="<?php echo $tp_fb_login;?>" >
-	<a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo FB_APP_ID;?>&redirect_uri=<?php echo base_url().FB_SITELOGIN;?>&scope=<?php echo FB_SCOPE;?>" name="fb_login">
-	<img src="<?php echo base_url();?>resources/icons/fb2.png" style="position:absolute;" />
-	<span><?php echo lang('btn_continuar');?></span>
-	</a>
-</section>
+
+<!-- <section id="signFb" class="tooltip" title=" -->
+<?php #echo $tp_fb_login;?>
+<!-- " > -->
+<!-- 	<a href="https://www.facebook.com/dialog/oauth?client_id= -->
+	<?php #echo FB_APP_ID;?>
+<!-- 	&redirect_uri= -->
+	<?php #echo base_url().FB_SITELOGIN;?>
+<!-- 	&scope= -->
+	<?php #echo FB_SCOPE;?>
+<!-- 	" name="fb_login"> -->
+<!-- 	<img src=" -->
+	<?php #echo base_url();?>
+<!-- 	resources/icons/fb2.png" style="position:absolute;" /> -->
+	<span>
+	<?php #echo lang('btn_continuar');?>
+<!-- 	</span> -->
+<!-- 	</a> -->
+<!-- </section> -->
 
 </section>
 <?php 
