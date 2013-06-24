@@ -112,7 +112,6 @@ jQuery(document).ready(function($) {
 	    $(this).addClass('selected');
     
 		var selector = $(this).attr('data-filter');
-		alert(selector);
 		$container.isotope({ filter: selector });
 		return false;
 	});
